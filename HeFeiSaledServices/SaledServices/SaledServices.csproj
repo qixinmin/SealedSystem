@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{731B3AA7-4FE7-438E-A501-5B4A115FD255}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SaledServices</RootNamespace>
+    <AssemblyName>SaledServices</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\SaledServices.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\SaledServices.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '问问|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\问问\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\SaledServices.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '问问|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\问问\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\SaledServices.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\SaledServices.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\SaledServices.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '问问|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\问问\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\SaledServices.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>wheat_128px_1169807_easyicon.net.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CheckBoxComboBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\CheckBoxComboBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.LabelManager2">
+      <HintPath>obj\x86\Release\Interop.LabelManager2.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>C:\Users\Administrator\Downloads\RestSharp.104.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="additionForm\CIDInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\CIDInputForm.Designer.cs">
+      <DependentUpon>CIDInputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\FilesUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\FilesUpdateForm.Designer.cs">
+      <DependentUpon>FilesUpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\MaterialNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\MaterialNameForm.Designer.cs">
+      <DependentUpon>MaterialNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\RepairFaultTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
+      <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\ReturnCustomInfoImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\ReturnCustomInfoImportForm.Designer.cs">
+      <DependentUpon>ReturnCustomInfoImportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\GenerateWorkOrderBody.cs" />
+    <Compile Include="CustomsExport\GenerateWorkOrderHead.cs" />
+    <Compile Include="Export\ExportDatabaseToExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\ExportDatabaseToExcel.Designer.cs">
+      <DependentUpon>ExportDatabaseToExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repair\RepairOperationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\RepairOperationForm.Designer.cs">
+      <DependentUpon>RepairOperationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\ReturnStoreCustomRespForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\ReturnStoreCustomRespForm.Designer.cs">
+      <DependentUpon>ReturnStoreCustomRespForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\ReturnStoreStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\ReturnStoreStatusForm.Designer.cs">
+      <DependentUpon>ReturnStoreStatusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\StoreHouseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\StoreHouseForm.Designer.cs">
+      <DependentUpon>StoreHouseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\TimerCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\TimerCheckForm.Designer.cs">
+      <DependentUpon>TimerCheckForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repair\BGAInfoInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\BGAInfoInputForm.Designer.cs">
+      <DependentUpon>BGAInfoInputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Constlist.cs" />
+    <Compile Include="additionForm\CustomResponsibilityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\CustomResponsibilityForm.Designer.cs">
+      <DependentUpon>CustomResponsibilityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\GuaranteeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\GuaranteeForm.Designer.cs">
+      <DependentUpon>GuaranteeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\CustomFaultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\CustomFaultForm.Designer.cs">
+      <DependentUpon>CustomFaultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repair\BGARepairOperationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\BGARepairOperationForm.Designer.cs">
+      <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsContentClass\OpeningStockClass.cs" />
+    <Compile Include="CustomsContentClass\WorkListHeadClass.cs" />
+    <Compile Include="CustomsExport\CompanyFixedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\CompanyFixedForm.Designer.cs">
+      <DependentUpon>CompanyFixedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\OpeningStockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\OpeningStockForm.Designer.cs">
+      <DependentUpon>OpeningStockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\RealStockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\RealStockForm.Designer.cs">
+      <DependentUpon>RealStockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\StockInOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\StockInOutForm.Designer.cs">
+      <DependentUpon>StockInOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\WorkListBodyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\WorkListBodyForm.Designer.cs">
+      <DependentUpon>WorkListBodyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\WorkListHeadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\WorkListHeadForm.Designer.cs">
+      <DependentUpon>WorkListHeadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveredTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveredTableForm.Designer.cs">
+      <DependentUpon>DeliveredTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelImportForm.Designer.cs">
+      <DependentUpon>ExcelImportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelInputCheck\RepairFaultTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\RepairFaultTypeForm.Designer.cs">
+      <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelInputCheck\DPKForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\DPKForm.Designer.cs">
+      <DependentUpon>DPKForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelInputCheck\LCFC71BOMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\LCFC71BOMForm.Designer.cs">
+      <DependentUpon>LCFC71BOMForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelInputCheck\COMPAL_MBBOMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\COMPAL_MBBOMForm.Designer.cs">
+      <DependentUpon>COMPAL_MBBOMForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelInputCheck\LCFC_MBBOMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\LCFC_MBBOMForm.Designer.cs">
+      <DependentUpon>LCFC_MBBOMForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportExcelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportExcelForm.Designer.cs">
+      <DependentUpon>ExportExcelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelInputCheck\MBMaterialCompareForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\MBMaterialCompareForm.Designer.cs">
+      <DependentUpon>MBMaterialCompareForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuType.cs" />
+    <Compile Include="ExcelInputCheck\ReceiveOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\ReceiveOrderForm.Designer.cs">
+      <DependentUpon>ReceiveOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\SourceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\SourceForm.Designer.cs">
+      <DependentUpon>SourceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\InputCIDShanghaiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\InputCIDShanghaiForm.Designer.cs">
+      <DependentUpon>InputCIDShanghaiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repair\RrepareUseListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\RrepareUseListForm.Designer.cs">
+      <DependentUpon>RrepareUseListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnStoreForm.Designer.cs">
+      <DependentUpon>ReturnStoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\CheckRequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\CheckRequestForm.Designer.cs">
+      <DependentUpon>CheckRequestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repair\RequestFRUSMTStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\RequestFRUSMTStoreForm.Designer.cs">
+      <DependentUpon>RequestFRUSMTStoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\ChooseStoreHouseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\ChooseStoreHouseForm.Designer.cs">
+      <DependentUpon>ChooseStoreHouseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\BGA_InSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\BGA_InSheetForm.Designer.cs">
+      <DependentUpon>BGA_InSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\BGA_OutSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\BGA_OutSheetForm.Designer.cs">
+      <DependentUpon>BGA_OutSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\FaultSMTStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FaultSMTStoreForm.Designer.cs">
+      <DependentUpon>FaultSMTStoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\StoreHouseInnerNGForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\StoreHouseInnerNGForm.Designer.cs">
+      <DependentUpon>StoreHouseInnerNGForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\FRU_OutSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FRU_OutSheetForm.Designer.cs">
+      <DependentUpon>FRU_OutSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\MB_InSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\MB_InSheetForm.Designer.cs">
+      <DependentUpon>MB_InSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\MB_OutSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\MB_OutSheetForm.Designer.cs">
+      <DependentUpon>MB_OutSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\FaultMBStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FaultMBStoreForm.Designer.cs">
+      <DependentUpon>FaultMBStoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\StoreHouseInnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\StoreHouseInnerForm.Designer.cs">
+      <DependentUpon>StoreHouseInnerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\ProcessReturnStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\ProcessReturnStoreForm.Designer.cs">
+      <DependentUpon>ProcessReturnStoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\StockInSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\StockInSheetForm.Designer.cs">
+      <DependentUpon>StockInSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\FRU_SMT_InSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FRU_SMT_InSheetForm.Designer.cs">
+      <DependentUpon>FRU_SMT_InSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\FRU_SMT_OutSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FRU_SMT_OutSheetForm.Designer.cs">
+      <DependentUpon>FRU_SMT_OutSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\FaultMaterialOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FaultMaterialOutForm.Designer.cs">
+      <DependentUpon>FaultMaterialOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\ObeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\ObeForm.Designer.cs">
+      <DependentUpon>ObeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\RunningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\RunningForm.Designer.cs">
+      <DependentUpon>RunningForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\OutLookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\OutLookForm.Designer.cs">
+      <DependentUpon>OutLookForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\Test1Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\Test1Form.Designer.cs">
+      <DependentUpon>Test1Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\Test2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\Test2Form.Designer.cs">
+      <DependentUpon>Test2Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\TestAllForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\TestAllForm.Designer.cs">
+      <DependentUpon>TestAllForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\PackageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\PackageForm.Designer.cs">
+      <DependentUpon>PackageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\UserDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\UserDetailForm.Designer.cs">
+      <DependentUpon>UserDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\UserSelfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\UserSelfForm.Designer.cs">
+      <DependentUpon>UserSelfForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\UserPermission.cs" />
+    <Compile Include="additionForm\VendorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\VendorForm.Designer.cs">
+      <DependentUpon>VendorForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="additionForm\CIDInputForm.resx">
+      <DependentUpon>CIDInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\FilesUpdateForm.resx">
+      <DependentUpon>FilesUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\MaterialNameForm.resx">
+      <DependentUpon>MaterialNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
+      <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\ReturnCustomInfoImportForm.resx">
+      <DependentUpon>ReturnCustomInfoImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\ExportDatabaseToExcel.resx">
+      <DependentUpon>ExportDatabaseToExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\RepairOperationForm.resx">
+      <DependentUpon>RepairOperationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\ReturnStoreCustomRespForm.resx">
+      <DependentUpon>ReturnStoreCustomRespForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\ReturnStoreStatusForm.resx">
+      <DependentUpon>ReturnStoreStatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\StoreHouseForm.resx">
+      <DependentUpon>StoreHouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\CustomResponsibilityForm.resx">
+      <DependentUpon>CustomResponsibilityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\GuaranteeForm.resx">
+      <DependentUpon>GuaranteeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\CustomFaultForm.resx">
+      <DependentUpon>CustomFaultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\TimerCheckForm.resx">
+      <DependentUpon>TimerCheckForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\BGAInfoInputForm.resx">
+      <DependentUpon>BGAInfoInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\BGARepairOperationForm.resx">
+      <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\CompanyFixedForm.resx">
+      <DependentUpon>CompanyFixedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\OpeningStockForm.resx">
+      <DependentUpon>OpeningStockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\RealStockForm.resx">
+      <DependentUpon>RealStockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\StockInOutForm.resx">
+      <DependentUpon>StockInOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\WorkListBodyForm.resx">
+      <DependentUpon>WorkListBodyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\WorkListHeadForm.resx">
+      <DependentUpon>WorkListHeadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliveredTableForm.resx">
+      <DependentUpon>DeliveredTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelImportForm.resx">
+      <DependentUpon>ExcelImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\RepairFaultTypeForm.resx">
+      <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\DPKForm.resx">
+      <DependentUpon>DPKForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\LCFC71BOMForm.resx">
+      <DependentUpon>LCFC71BOMForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\COMPAL_MBBOMForm.resx">
+      <DependentUpon>COMPAL_MBBOMForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\LCFC_MBBOMForm.resx">
+      <DependentUpon>LCFC_MBBOMForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportExcelForm.resx">
+      <DependentUpon>ExportExcelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\MBMaterialCompareForm.resx">
+      <DependentUpon>MBMaterialCompareForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\ReceiveOrderForm.resx">
+      <DependentUpon>ReceiveOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\SourceForm.resx">
+      <DependentUpon>SourceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\InputCIDShanghaiForm.resx">
+      <DependentUpon>InputCIDShanghaiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\RrepareUseListForm.resx">
+      <DependentUpon>RrepareUseListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnStoreForm.resx">
+      <DependentUpon>ReturnStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\CheckRequestForm.resx">
+      <DependentUpon>CheckRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\RequestFRUSMTStoreForm.resx">
+      <DependentUpon>RequestFRUSMTStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\ChooseStoreHouseForm.resx">
+      <DependentUpon>ChooseStoreHouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\BGA_InSheetForm.resx">
+      <DependentUpon>BGA_InSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\BGA_OutSheetForm.resx">
+      <DependentUpon>BGA_OutSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\FaultSMTStoreForm.resx">
+      <DependentUpon>FaultSMTStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\StoreHouseInnerNGForm.resx">
+      <DependentUpon>StoreHouseInnerNGForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\FRU_OutSheetForm.resx">
+      <DependentUpon>FRU_OutSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\MB_InSheetForm.resx">
+      <DependentUpon>MB_InSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\MB_OutSheetForm.resx">
+      <DependentUpon>MB_OutSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\FaultMBStoreForm.resx">
+      <DependentUpon>FaultMBStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\StoreHouseInnerForm.resx">
+      <DependentUpon>StoreHouseInnerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\ProcessReturnStoreForm.resx">
+      <DependentUpon>ProcessReturnStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\StockInSheetForm.resx">
+      <DependentUpon>StockInSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\FRU_SMT_InSheetForm.resx">
+      <DependentUpon>FRU_SMT_InSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\FRU_SMT_OutSheetForm.resx">
+      <DependentUpon>FRU_SMT_OutSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\FaultMaterialOutForm.resx">
+      <DependentUpon>FaultMaterialOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\ObeForm.resx">
+      <DependentUpon>ObeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\RunningForm.resx">
+      <DependentUpon>RunningForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\OutLookForm.resx">
+      <DependentUpon>OutLookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\Test1Form.resx">
+      <DependentUpon>Test1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\Test2Form.resx">
+      <DependentUpon>Test2Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\TestAllForm.resx">
+      <DependentUpon>TestAllForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\PackageForm.resx">
+      <DependentUpon>PackageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="User\UserDetailForm.resx">
+      <DependentUpon>UserDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UserSelfForm.resx">
+      <DependentUpon>UserSelfForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\VendorForm.resx">
+      <DependentUpon>VendorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="CustomsContentClass\RealStockClass.cs" />
+    <Compile Include="CustomsContentClass\StockInOutClass.cs" />
+    <Compile Include="CustomsContentClass\WorkListBodyClass.cs" />
+    <None Include="app.config" />
+    <None Include="Files\syncTime.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\FileInput.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="wheat_128px_1169807_easyicon.net.ico" />
+    <Content Include="资料\2.ico" />
+    <Content Include="资料\海关信息.txt" />
+    <None Include="资料\sql 语句备份.txt.sql" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

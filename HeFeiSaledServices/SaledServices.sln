@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaledServices", "SaledServices\SaledServices.csproj", "{731B3AA7-4FE7-438E-A501-5B4A115FD255}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SaledServicesSetup", "SaledServicesSetup\SaledServicesSetup.vdproj", "{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		问问|Any CPU = 问问|Any CPU
+		问问|x64 = 问问|x64
+		问问|x86 = 问问|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Debug|x64.ActiveCfg = Debug|x64
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Debug|x64.Build.0 = Debug|x64
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Debug|x86.ActiveCfg = Debug|x86
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Debug|x86.Build.0 = Debug|x86
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Release|Any CPU.ActiveCfg = Release|x86
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Release|Any CPU.Build.0 = Release|x86
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Release|x64.ActiveCfg = Release|x64
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Release|x64.Build.0 = Release|x64
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Release|x86.ActiveCfg = Release|x86
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.Release|x86.Build.0 = Release|x86
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|Any CPU.ActiveCfg = Release|x86
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|Any CPU.Build.0 = Release|x86
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|x64.ActiveCfg = 问问|x64
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|x64.Build.0 = 问问|x64
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|x86.ActiveCfg = 问问|x86
+		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|x86.Build.0 = 问问|x86
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Debug|Any CPU.ActiveCfg = Debug
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Debug|Any CPU.Build.0 = Debug
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Debug|x64.ActiveCfg = Debug
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Debug|x64.Build.0 = Debug
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Debug|x86.ActiveCfg = Debug
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Debug|x86.Build.0 = Debug
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Release|Any CPU.ActiveCfg = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Release|Any CPU.Build.0 = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Release|x64.ActiveCfg = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Release|x64.Build.0 = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Release|x86.ActiveCfg = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.Release|x86.Build.0 = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.问问|Any CPU.ActiveCfg = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.问问|Any CPU.Build.0 = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.问问|x64.ActiveCfg = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.问问|x64.Build.0 = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.问问|x86.ActiveCfg = Release
+		{FEE679B9-ECBA-4C8B-8634-33D963FA43A2}.问问|x86.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
