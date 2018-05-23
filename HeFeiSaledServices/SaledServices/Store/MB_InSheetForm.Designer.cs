@@ -413,6 +413,7 @@
             this.custom_serial_noTextBox.Name = "custom_serial_noTextBox";
             this.custom_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
             this.custom_serial_noTextBox.TabIndex = 25;
+            this.custom_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_serial_noTextBox_KeyPress);
             // 
             // buy_order_serial_noComboBox
             // 
@@ -603,6 +604,7 @@
             this.vendor_serial_noTextBox.Name = "vendor_serial_noTextBox";
             this.vendor_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
             this.vendor_serial_noTextBox.TabIndex = 20;
+            this.vendor_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vendor_serial_noTextBox_KeyPress);
             // 
             // label13
             // 
@@ -643,6 +645,7 @@
             this.track_serial_noTextBox.Name = "track_serial_noTextBox";
             this.track_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
             this.track_serial_noTextBox.TabIndex = 20;
+            this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
             // 
             // tableLayoutPanel2
             // 

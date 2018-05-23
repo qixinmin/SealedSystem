@@ -596,3 +596,6 @@ D:\BaiduNetdiskDownload\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSe
 D:\BaiduNetdiskDownload\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ExportDatabaseToExcel.resources
 D:\BaiduNetdiskDownload\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
 F:\BaiduNetdiskDownload\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ExportDatabaseToExcel.resources
+F:\github\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe.config
+F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
+F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
