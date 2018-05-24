@@ -1,0 +1,12 @@
+
+*.Cache
+HeFeiSaledServices/SaledServices/obj/x86/Release/SaledServices.csproj.GenerateResource.Cache
+HeFeiSaledServices/SaledServices/obj/x86/Release/SaledServices.pdb
+HeFeiSaledServices/SaledServicesSetup/Release/SaledServicesSetup.msi
+HeFeiSaledServices/SaledServicesSetup/Release/setup.exe
+HeFeiSaledServices/SaledServices/bin/Release/SaledServices.exe
+HeFeiSaledServices/SaledServices/bin/Release/SaledServices.pdb
+HeFeiSaledServices/SaledServices/obj/x86/Release/DesignTimeResolveAssemblyReferencesInput.cache
+HeFeiSaledServices/SaledServices/obj/x86/Release/SaledServices.csproj.FileListAbsolute.txt
+HeFeiSaledServices/SaledServices/obj/x86/Release/SaledServices.csproj.GenerateResource.Cache
+HeFeiSaledServices/SaledServices/obj/x86/Release/SaledServices.exe
