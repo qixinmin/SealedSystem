@@ -606,7 +606,6 @@ D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\Files\
 D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\Files\syncTime.bat
 D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe
 D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.pdb
-D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
 D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.CIDInputForm.resources
 D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.FilesUpdateForm.resources
 D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.MaterialNameForm.resources

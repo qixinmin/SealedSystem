@@ -16,3 +16,9 @@ HeFeiSaledServices/SaledServices/bin/Release/SaledServices.exe
 *.pdb
 *.msi
 *.suo
+*.exe
+*.exe
+*.pdb
+*.txt
+*.Cache
+*.msi
