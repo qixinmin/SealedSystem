@@ -604,7 +604,7 @@ namespace SaledServices
                         int usedNumberInt=0;
                         try
                         {
-                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.totalUseNumber);
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.thisUseNumber);
                             usedNumberInt += Int32.Parse(usedNumberStr);                        
                         }
                         catch (Exception ex)
@@ -644,7 +644,7 @@ namespace SaledServices
                         int usedNumberInt = 0;
                         try
                         {
-                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.totalUseNumber);
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail2.thisUseNumber);
                             usedNumberInt += Int32.Parse(usedNumberStr);
                         }
                         catch (Exception ex)
@@ -685,7 +685,7 @@ namespace SaledServices
                         int usedNumberInt = 0;
                         try
                         {
-                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.totalUseNumber);
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail3.thisUseNumber);
                             usedNumberInt += Int32.Parse(usedNumberStr);
                         }
                         catch (Exception ex)
@@ -726,7 +726,7 @@ namespace SaledServices
                         int usedNumberInt = 0;
                         try
                         {
-                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.totalUseNumber);
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail4.thisUseNumber);
                             usedNumberInt += Int32.Parse(usedNumberStr);
                         }
                         catch (Exception ex)
@@ -766,7 +766,7 @@ namespace SaledServices
                         int usedNumberInt = 0;
                         try
                         {
-                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.totalUseNumber);
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail5.thisUseNumber);
                             usedNumberInt += Int32.Parse(usedNumberStr);
                         }
                         catch (Exception ex)
