@@ -60,7 +60,7 @@ namespace SaledServices.Test_Outlook
 
                     if (station != "外观" && station != "Running")//等于外观怕mylar一个页面的数据插入不够，此时不能拦截
                     {
-                        MessageBox.Show("追踪条码的站别不对，请检查！");
+                        MessageBox.Show("板子已经经过站别" + station);
                         mConn.Close();
                         return;
                     }

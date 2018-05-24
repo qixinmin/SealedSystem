@@ -53,7 +53,7 @@ namespace SaledServices.Test_Outlook
 
                     if (station != "Test2" && station != "Test1&2")
                     {
-                        MessageBox.Show("板子没有经过前面的测试站别");
+                        MessageBox.Show("板子已经经过站别" + station);
                         mConn.Close();
                         this.tracker_bar_textBox.Focus();
                         this.tracker_bar_textBox.SelectAll();

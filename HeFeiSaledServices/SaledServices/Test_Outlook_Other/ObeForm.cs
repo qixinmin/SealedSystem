@@ -78,7 +78,7 @@ namespace SaledServices.Test_Outlook
                     }
                     else 
                     {
-                        MessageBox.Show("此追踪条码没有外观站别的记录！");
+                        MessageBox.Show("板子已经经过站别" + station);
                     }
                     mConn.Close();
                 }

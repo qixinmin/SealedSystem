@@ -269,6 +269,7 @@
             this.bomdownload.TabIndex = 1;
             this.bomdownload.Text = "BOM下载";
             this.bomdownload.UseVisualStyleBackColor = true;
+            this.bomdownload.Visible = false;
             this.bomdownload.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
@@ -279,7 +280,6 @@
             this.button5.TabIndex = 1;
             this.button5.Text = "DPK烧录检查";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button1

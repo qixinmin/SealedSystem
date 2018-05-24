@@ -66,7 +66,7 @@ namespace SaledServices.Test_Outlook
 
                     if (station != "维修" && station != "BGA")
                     {
-                        MessageBox.Show("板子没有经过维修站别");
+                        MessageBox.Show("板子已经经过站别" + station);
                         mConn.Close();
                         this.tracker_bar_textBox.Focus();
                         this.tracker_bar_textBox.SelectAll();
@@ -532,7 +532,7 @@ namespace SaledServices.Test_Outlook
             runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
 
             //最后做写入记录的动作
-            confirmbutton_Click(null, null);
+           // confirmbutton_Click(null, null);
         }
 
         private void button5_Click(object sender, EventArgs e)
