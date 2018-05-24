@@ -233,7 +233,7 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
-                MessageBox.Show("插入Package数据OK");
+                MessageBox.Show("插入Package Fail数据");
             }
             catch (Exception ex)
             {

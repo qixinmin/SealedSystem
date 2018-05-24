@@ -201,7 +201,7 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
-                MessageBox.Show("插入测试2数据OK");
+                MessageBox.Show("插入测试2 Fail数据, 現在需要把板子給維修人員");
             }
             catch (Exception ex)
             {

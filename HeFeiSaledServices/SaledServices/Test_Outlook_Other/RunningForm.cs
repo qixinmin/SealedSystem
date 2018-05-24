@@ -217,7 +217,7 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
-                MessageBox.Show("插入Running数据OK");
+                MessageBox.Show("插入Running的Fail数据, 現在需要把板子給維修人員");
             }
             catch (Exception ex)
             {
