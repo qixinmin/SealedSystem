@@ -15,3 +15,4 @@ HeFeiSaledServices/SaledServices/bin/Release/SaledServices.exe
 *.exe
 *.pdb
 *.msi
+*.suo
