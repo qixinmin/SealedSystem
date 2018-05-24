@@ -530,6 +530,9 @@ namespace SaledServices.Test_Outlook
             downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
 
             runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
+
+            //最后做写入记录的动作
+            confirmbutton_Click(null, null);
         }
 
         private void button5_Click(object sender, EventArgs e)

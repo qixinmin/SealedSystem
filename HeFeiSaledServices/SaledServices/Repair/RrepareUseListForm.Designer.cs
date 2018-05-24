@@ -77,7 +77,7 @@
             this.choosebutton.Enabled = false;
             this.choosebutton.Location = new System.Drawing.Point(763, 377);
             this.choosebutton.Name = "choosebutton";
-            this.choosebutton.Size = new System.Drawing.Size(75, 23);
+            this.choosebutton.Size = new System.Drawing.Size(85, 37);
             this.choosebutton.TabIndex = 1;
             this.choosebutton.Text = "使用";
             this.choosebutton.UseVisualStyleBackColor = true;
@@ -85,9 +85,9 @@
             // 
             // refreshbutton
             // 
-            this.refreshbutton.Location = new System.Drawing.Point(763, 406);
+            this.refreshbutton.Location = new System.Drawing.Point(763, 420);
             this.refreshbutton.Name = "refreshbutton";
-            this.refreshbutton.Size = new System.Drawing.Size(75, 23);
+            this.refreshbutton.Size = new System.Drawing.Size(85, 34);
             this.refreshbutton.TabIndex = 1;
             this.refreshbutton.Text = "刷新";
             this.refreshbutton.UseVisualStyleBackColor = true;
@@ -213,9 +213,9 @@
             // 
             // returnMaterialbutton
             // 
-            this.returnMaterialbutton.Location = new System.Drawing.Point(763, 435);
+            this.returnMaterialbutton.Location = new System.Drawing.Point(763, 460);
             this.returnMaterialbutton.Name = "returnMaterialbutton";
-            this.returnMaterialbutton.Size = new System.Drawing.Size(75, 23);
+            this.returnMaterialbutton.Size = new System.Drawing.Size(85, 32);
             this.returnMaterialbutton.TabIndex = 1;
             this.returnMaterialbutton.Text = "归还到库存";
             this.returnMaterialbutton.UseVisualStyleBackColor = true;

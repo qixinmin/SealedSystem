@@ -586,45 +586,36 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "INSERT INTO repair_record_table VALUES('"
-                        + track_serial_no_txt + "','"
-                        + vendor_txt + "','"
-                        + product_txt + "','"
-                        + source_txt + "','"
-                        + orderno_txt + "','"
-                        + receivedate_txt + "','"
-                        + mb_describe_txt + "','"
-                        + mb_brief_txt + "','"
-                        + custom_serial_no_txt + "','"
-                        + vendor_serail_no_txt + "','"
-                        + mpn_txt + "','"
-                        + mb_make_date_txt + "','"
-                        + customFault_txt + "','"
-                        + fault_describe_txt + "','"
-                        + mbfa1rich_txt + "','"
-                        + short_cut_txt + "','"
-                        + software_update_txt + "','"
-                        + "" + "','"
-                        + "" + "','"
-                        + "" + "','"
-                        + material_type_txt + "','"
-                        + fault_type_txt + "','"
-                        + action_txt + "','"
-                      
-                        + ECO_txt + "','"
-                        + repair_result_txt + "','"
-                        + repairer_txt + "','"
-                        + repair_date_txt + "')";
-                    
-                    cmd.ExecuteNonQuery();
+                    //检查所有要是使用的数据，如果超过所拥有的数量，则不能生产任何记录
 
-                    //更新维修站别
-                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                               + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
-                    cmd.ExecuteNonQuery();
 
+                   
                     if (mPrepareUseDetail1!=null && mPrepareUseDetail1.Id != null)
                     {
+                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                        cmd.CommandText = "select usedNumber,realNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail1.Id + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string usedNumberStr = "";
+                        while (querySdr.Read())
+                        {
+                            usedNumberStr = querySdr[0].ToString();                            
+                        }
+                        querySdr.Close();
+                        int usedNumberInt=0;
+                        try
+                        {
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.totalUseNumber);
+                            usedNumberInt += Int32.Parse(usedNumberStr);                        
+                        }
+                        catch (Exception ex)
+                        {  
+                        }
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                                  + "where Id = '" + mPrepareUseDetail1.Id + "'";
+                        cmd.ExecuteNonQuery();
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repair_result_txt + "','"
@@ -635,17 +626,36 @@ namespace SaledServices
                            + mPrepareUseDetail1.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail1.totalUseNumber + "' "
-                                  + "where Id = '" + mPrepareUseDetail1.Id + "'";
-                        cmd.ExecuteNonQuery();
-
                         //使用完毕需要清空
                         mPrepareUseDetail1.Id = null;
                     }
 
                     if (mPrepareUseDetail2 != null && mPrepareUseDetail2.Id != null)
-                    {
+                    { 
+                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail2.Id + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string usedNumberStr = "";
+                        while (querySdr.Read())
+                        {
+                            usedNumberStr = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        int usedNumberInt = 0;
+                        try
+                        {
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.totalUseNumber);
+                            usedNumberInt += Int32.Parse(usedNumberStr);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                                  + "where Id = '" + mPrepareUseDetail2.Id + "'";
+                        cmd.ExecuteNonQuery();
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repair_result_txt + "','"
@@ -656,17 +666,38 @@ namespace SaledServices
                            + mPrepareUseDetail2.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail2.totalUseNumber + "' "
-                                  + "where Id = '" + mPrepareUseDetail2.Id + "'";
-                        cmd.ExecuteNonQuery();
-
                         //使用完毕需要清空
                         mPrepareUseDetail2.Id = null;
                     }
 
                     if (mPrepareUseDetail3 != null && mPrepareUseDetail3.Id != null)
                     {
+
+                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail3.Id + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string usedNumberStr = "";
+                        while (querySdr.Read())
+                        {
+                            usedNumberStr = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        int usedNumberInt = 0;
+                        try
+                        {
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.totalUseNumber);
+                            usedNumberInt += Int32.Parse(usedNumberStr);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                                  + "where Id = '" + mPrepareUseDetail3.Id + "'";
+                        cmd.ExecuteNonQuery();
+
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repair_result_txt + "','"
@@ -677,17 +708,36 @@ namespace SaledServices
                            + mPrepareUseDetail3.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail3.totalUseNumber + "' "
-                                  + "where Id = '" + mPrepareUseDetail3.Id + "'";
-                        cmd.ExecuteNonQuery();
-
                         //使用完毕需要清空
                         mPrepareUseDetail3.Id = null;
                     }
 
                     if (mPrepareUseDetail4 != null && mPrepareUseDetail4.Id != null)
                     {
+                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail4.Id + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string usedNumberStr = "";
+                        while (querySdr.Read())
+                        {
+                            usedNumberStr = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        int usedNumberInt = 0;
+                        try
+                        {
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.totalUseNumber);
+                            usedNumberInt += Int32.Parse(usedNumberStr);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                                  + "where Id = '" + mPrepareUseDetail4.Id + "'";
+                        cmd.ExecuteNonQuery();
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repair_result_txt + "','"
@@ -698,17 +748,36 @@ namespace SaledServices
                            + mPrepareUseDetail4.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail4.totalUseNumber + "' "
-                                  + "where Id = '" + mPrepareUseDetail4.Id + "'";
-                        cmd.ExecuteNonQuery();
-
                         //使用完毕需要清空
                         mPrepareUseDetail4.Id = null;
                     }
 
                     if (mPrepareUseDetail5 != null && mPrepareUseDetail5.Id != null)
                     {
+                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail5.Id + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string usedNumberStr = "";
+                        while (querySdr.Read())
+                        {
+                            usedNumberStr = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        int usedNumberInt = 0;
+                        try
+                        {
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.totalUseNumber);
+                            usedNumberInt += Int32.Parse(usedNumberStr);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                                  + "where Id = '" + mPrepareUseDetail5.Id + "'";
+                        cmd.ExecuteNonQuery();
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repair_result_txt + "','"
@@ -719,14 +788,47 @@ namespace SaledServices
                            + mPrepareUseDetail5.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail5.totalUseNumber + "' "
-                                  + "where Id = '" + mPrepareUseDetail5.Id + "'";
-                        cmd.ExecuteNonQuery();
-
                         //使用完毕需要清空
                         mPrepareUseDetail5.Id = null;
                     }
+
+                    cmd.CommandText = "INSERT INTO repair_record_table VALUES('"
+                       + track_serial_no_txt + "','"
+                       + vendor_txt + "','"
+                       + product_txt + "','"
+                       + source_txt + "','"
+                       + orderno_txt + "','"
+                       + receivedate_txt + "','"
+                       + mb_describe_txt + "','"
+                       + mb_brief_txt + "','"
+                       + custom_serial_no_txt + "','"
+                       + vendor_serail_no_txt + "','"
+                       + mpn_txt + "','"
+                       + mb_make_date_txt + "','"
+                       + customFault_txt + "','"
+                       + fault_describe_txt + "','"
+                       + mbfa1rich_txt + "','"
+                       + short_cut_txt + "','"
+                       + software_update_txt + "','"
+                       + "" + "','"
+                       + "" + "','"
+                       + "" + "','"
+                       + material_type_txt + "','"
+                       + fault_type_txt + "','"
+                       + action_txt + "','"
+
+                       + ECO_txt + "','"
+                       + repair_result_txt + "','"
+                       + repairer_txt + "','"
+                       + repair_date_txt + "')";
+
+                    cmd.ExecuteNonQuery();
+
+                    //更新维修站别
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                               + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
                 }
                 else
                 {
@@ -1153,6 +1255,46 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void clear1_Click(object sender, EventArgs e)
+        {
+            this.not_good_placetextBox1.Text = "";
+            this.material_mpnComboBox1.Text = "";
+            this.material_71pntextBox1.Text = "";
+            this.useNum1.Text = "";
+        }
+
+        private void clear2_Click(object sender, EventArgs e)
+        {
+            this.not_good_placetextBox2.Text = "";
+            this.material_mpnComboBox2.Text = "";
+            this.material_71pntextBox2.Text = "";
+            this.useNum2.Text = "";
+        }
+
+        private void clear3_Click(object sender, EventArgs e)
+        {
+            this.not_good_placetextBox3.Text = "";
+            this.material_mpnComboBox3.Text = "";
+            this.material_71pntextBox3.Text = "";
+            this.useNum3.Text = "";
+        }
+
+        private void clear4_Click(object sender, EventArgs e)
+        {
+            this.not_good_placetextBox4.Text = "";
+            this.material_mpnComboBox4.Text = "";
+            this.material_71pntextBox4.Text = "";
+            this.useNum4.Text = "";
+        }
+
+        private void clear5_Click(object sender, EventArgs e)
+        {
+            this.not_good_placetextBox5.Text = "";
+            this.material_mpnComboBox5.Text = "";
+            this.material_71pntextBox5.Text = "";
+            this.useNum5.Text = "";
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -154,6 +154,11 @@
             this.choose_material_button3 = new System.Windows.Forms.Button();
             this.choose_material_button4 = new System.Windows.Forms.Button();
             this.choose_material_button5 = new System.Windows.Forms.Button();
+            this.clear1 = new System.Windows.Forms.Button();
+            this.clear2 = new System.Windows.Forms.Button();
+            this.clear3 = new System.Windows.Forms.Button();
+            this.clear4 = new System.Windows.Forms.Button();
+            this.clear5 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -735,8 +740,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1172,6 +1177,11 @@
             this.tableLayoutPanel5.Controls.Add(this.choose_material_button3, 8, 2);
             this.tableLayoutPanel5.Controls.Add(this.choose_material_button4, 8, 3);
             this.tableLayoutPanel5.Controls.Add(this.choose_material_button5, 8, 4);
+            this.tableLayoutPanel5.Controls.Add(this.clear1, 9, 0);
+            this.tableLayoutPanel5.Controls.Add(this.clear2, 9, 1);
+            this.tableLayoutPanel5.Controls.Add(this.clear3, 9, 2);
+            this.tableLayoutPanel5.Controls.Add(this.clear4, 9, 3);
+            this.tableLayoutPanel5.Controls.Add(this.clear5, 9, 4);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(6, 300);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -1629,6 +1639,61 @@
             this.choose_material_button5.UseVisualStyleBackColor = true;
             this.choose_material_button5.Click += new System.EventHandler(this.choose_material_button_Click);
             // 
+            // clear1
+            // 
+            this.clear1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clear1.Location = new System.Drawing.Point(1100, 5);
+            this.clear1.Name = "clear1";
+            this.clear1.Size = new System.Drawing.Size(118, 25);
+            this.clear1.TabIndex = 47;
+            this.clear1.Text = "清除选择1";
+            this.clear1.UseVisualStyleBackColor = true;
+            this.clear1.Click += new System.EventHandler(this.clear1_Click);
+            // 
+            // clear2
+            // 
+            this.clear2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clear2.Location = new System.Drawing.Point(1100, 38);
+            this.clear2.Name = "clear2";
+            this.clear2.Size = new System.Drawing.Size(118, 25);
+            this.clear2.TabIndex = 47;
+            this.clear2.Text = "清除选择2";
+            this.clear2.UseVisualStyleBackColor = true;
+            this.clear2.Click += new System.EventHandler(this.clear2_Click);
+            // 
+            // clear3
+            // 
+            this.clear3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clear3.Location = new System.Drawing.Point(1100, 71);
+            this.clear3.Name = "clear3";
+            this.clear3.Size = new System.Drawing.Size(118, 25);
+            this.clear3.TabIndex = 47;
+            this.clear3.Text = "清除选择3";
+            this.clear3.UseVisualStyleBackColor = true;
+            this.clear3.Click += new System.EventHandler(this.clear3_Click);
+            // 
+            // clear4
+            // 
+            this.clear4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clear4.Location = new System.Drawing.Point(1100, 104);
+            this.clear4.Name = "clear4";
+            this.clear4.Size = new System.Drawing.Size(118, 25);
+            this.clear4.TabIndex = 47;
+            this.clear4.Text = "清除选择4";
+            this.clear4.UseVisualStyleBackColor = true;
+            this.clear4.Click += new System.EventHandler(this.clear4_Click);
+            // 
+            // clear5
+            // 
+            this.clear5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clear5.Location = new System.Drawing.Point(1100, 137);
+            this.clear5.Name = "clear5";
+            this.clear5.Size = new System.Drawing.Size(118, 25);
+            this.clear5.TabIndex = 47;
+            this.clear5.Text = "清除选择5";
+            this.clear5.UseVisualStyleBackColor = true;
+            this.clear5.Click += new System.EventHandler(this.clear5_Click);
+            // 
             // RepairOperationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1782,5 +1847,10 @@
         private System.Windows.Forms.Button choose_material_button3;
         private System.Windows.Forms.Button choose_material_button4;
         private System.Windows.Forms.Button choose_material_button5;
+        private System.Windows.Forms.Button clear1;
+        private System.Windows.Forms.Button clear2;
+        private System.Windows.Forms.Button clear3;
+        private System.Windows.Forms.Button clear4;
+        private System.Windows.Forms.Button clear5;
     }
 }
