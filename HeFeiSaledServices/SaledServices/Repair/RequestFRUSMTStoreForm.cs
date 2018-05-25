@@ -46,7 +46,7 @@ namespace SaledServices.Store
                         + this.mb_brieftextBox.Text.Trim() + "','"
                         + this.not_good_placeTextBox.Text.Trim() + "','"
                         + this.materialMpnTextBox.Text.Trim() + "','"
-                        + this.materialDescribetextBox.Text.Trim() + "','"
+                        + this.materialDescribetextBox.Text.Trim().Replace('\'','_') + "','"
                         + this.numberTextBox.Text.Trim() + "','"
                         +  "0','"//realNumber, 开始为0
                         + this.requesterTextBox.Text.Trim() + "','"

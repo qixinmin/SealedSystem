@@ -373,7 +373,22 @@ namespace SaledServices.Test_Outlook
             {
                 MessageBox.Show(ex.ToString());
             }
-            this.Close();
+            //this.Close();
+
+            //清除内容
+            this.tracker_bar_textBox.Text = "";
+
+            this.mylar1textBox.Text = "";
+            this.mylar2textBox.Text = "";
+            this.mylar3textBox.Text = "";
+            this.mylar4textBox.Text = "";
+            this.mylar5textBox.Text = "";
+
+            this.mylar1numtextBox.Text = "";
+            this.mylar2numtextBox.Text = "";
+            this.mylar3numtextBox.Text = "";
+            this.mylar4numtextBox.Text = "";
+            this.mylar5numtextBox.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)

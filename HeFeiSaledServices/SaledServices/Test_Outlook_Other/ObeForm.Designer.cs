@@ -134,7 +134,7 @@
             this.tracker_bar_textBox.Location = new System.Drawing.Point(66, 3);
             this.tracker_bar_textBox.Name = "tracker_bar_textBox";
             this.tracker_bar_textBox.Size = new System.Drawing.Size(202, 21);
-            this.tracker_bar_textBox.TabIndex = 1;
+            this.tracker_bar_textBox.TabIndex = 0;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
             // 
             // ObeForm

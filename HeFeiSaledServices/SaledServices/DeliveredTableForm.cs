@@ -519,7 +519,7 @@ namespace SaledServices
                         this.mb_describeTextBox.Text.Trim() + "','" +
                         this.mb_make_dateTextBox.Text.Trim() + "','" +
                         this.warranty_periodTextBox.Text.Trim() + "','" +
-                        this.custom_faultComboBox.Text.Trim() + "','" +
+                        this.custom_faultComboBox.Text.Trim().Replace('\'', '_') + "','" +
                         this.guaranteeComboBox.Text.Trim() + "','" +
                         this.customResponsibilityComboBox.Text.Trim() + "','" +
                         this.lenovo_custom_service_noTextBox.Text.Trim() + "','" +

@@ -150,7 +150,7 @@ namespace SaledServices
             string source_txt = this.sourcetextBox.Text.Trim();
             string orderno_txt = this.ordernotextBox.Text.Trim();
             string receivedate_txt = this.receivedatetextBox.Text.Trim();
-            string mb_describe_txt = this.mb_describetextBox.Text.Trim();
+            string mb_describe_txt = this.mb_describetextBox.Text.Trim().Replace('\'', '_'); ;
             string mb_brief_txt = this.mb_brieftextBox.Text.Trim();
             string custom_serial_no_txt = this.custom_serial_notextBox.Text.Trim();
             string vendor_serail_no_txt = this.vendor_serail_notextBox.Text.Trim();

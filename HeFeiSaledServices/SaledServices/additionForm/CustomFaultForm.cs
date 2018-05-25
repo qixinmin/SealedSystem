@@ -39,7 +39,7 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.faultIndexTextBox.Text.Trim() + "','" + this.fault_describeTextBox.Text.Trim() + "')";
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.faultIndexTextBox.Text.Trim() + "','" + this.fault_describeTextBox.Text.Trim().Replace('\'', '_') + "')";
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }

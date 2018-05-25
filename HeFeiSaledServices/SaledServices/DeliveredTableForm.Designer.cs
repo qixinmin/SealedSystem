@@ -336,6 +336,7 @@
             // custom_orderComboBox
             // 
             this.custom_orderComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custom_orderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.custom_orderComboBox.FormattingEnabled = true;
             this.custom_orderComboBox.Location = new System.Drawing.Point(230, 7);
             this.custom_orderComboBox.Margin = new System.Windows.Forms.Padding(4);
