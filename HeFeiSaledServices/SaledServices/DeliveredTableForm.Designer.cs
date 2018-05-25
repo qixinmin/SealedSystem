@@ -363,6 +363,7 @@
             // 
             // track_serial_noTextBox
             // 
+            this.track_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.track_serial_noTextBox.Location = new System.Drawing.Point(230, 143);
             this.track_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.track_serial_noTextBox.Name = "track_serial_noTextBox";
@@ -729,6 +730,7 @@
             // 
             // source_briefComboBox
             // 
+            this.source_briefComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.source_briefComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.source_briefComboBox.FormattingEnabled = true;
             this.source_briefComboBox.Location = new System.Drawing.Point(230, 75);
@@ -828,6 +830,7 @@
             // 
             // uuidTextBox
             // 
+            this.uuidTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uuidTextBox.Location = new System.Drawing.Point(676, 347);
             this.uuidTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.uuidTextBox.Name = "uuidTextBox";
@@ -848,6 +851,7 @@
             // 
             // vendor_serail_noTextBox
             // 
+            this.vendor_serail_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vendor_serail_noTextBox.Location = new System.Drawing.Point(230, 245);
             this.vendor_serail_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendor_serail_noTextBox.Name = "vendor_serail_noTextBox";
@@ -868,6 +872,7 @@
             // 
             // custom_serial_noTextBox
             // 
+            this.custom_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custom_serial_noTextBox.Location = new System.Drawing.Point(230, 211);
             this.custom_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_serial_noTextBox.Name = "custom_serial_noTextBox";
@@ -888,6 +893,7 @@
             // 
             // flexidTextBox
             // 
+            this.flexidTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flexidTextBox.Location = new System.Drawing.Point(230, 177);
             this.flexidTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.flexidTextBox.Name = "flexidTextBox";
@@ -976,6 +982,7 @@
             // 
             // inputCustommaterialNoTextBox
             // 
+            this.inputCustommaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputCustommaterialNoTextBox.Location = new System.Drawing.Point(230, 109);
             this.inputCustommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.inputCustommaterialNoTextBox.Name = "inputCustommaterialNoTextBox";
