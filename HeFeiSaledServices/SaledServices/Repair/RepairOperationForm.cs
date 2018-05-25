@@ -625,7 +625,7 @@ namespace SaledServices
 
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repair_result_txt + "','"
+                           + repairer_txt + "','"
                            + repair_date_txt + "','"
                            + track_serial_no_txt + "','"
                            + mPrepareUseDetail1.material_mpn + "','"
@@ -665,7 +665,7 @@ namespace SaledServices
 
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repair_result_txt + "','"
+                           + repairer_txt + "','"
                            + repair_date_txt + "','"
                            + track_serial_no_txt + "','"
                            + mPrepareUseDetail2.material_mpn + "','"
@@ -707,7 +707,7 @@ namespace SaledServices
 
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repair_result_txt + "','"
+                           + repairer_txt + "','"
                            + repair_date_txt + "','"
                            + track_serial_no_txt + "','"
                            + mPrepareUseDetail3.material_mpn + "','"
@@ -747,7 +747,7 @@ namespace SaledServices
 
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repair_result_txt + "','"
+                           + repairer_txt + "','"
                            + repair_date_txt + "','"
                            + track_serial_no_txt + "','"
                            + mPrepareUseDetail4.material_mpn + "','"
@@ -787,7 +787,7 @@ namespace SaledServices
 
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repair_result_txt + "','"
+                           + repairer_txt + "','"
                            + repair_date_txt + "','"
                            + track_serial_no_txt + "','"
                            + mPrepareUseDetail5.material_mpn + "','"
