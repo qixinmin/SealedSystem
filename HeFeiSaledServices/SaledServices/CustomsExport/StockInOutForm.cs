@@ -405,7 +405,7 @@ namespace SaledServices.CustomsExport
                         string nowMatrialNo = querySdr[1].ToString();
                         if (_71bomDic.ContainsKey(nowMatrialNo))
                         {
-                            currentDeclear = _71bomDic[nowMatrialNo];
+                            currentDeclear = _71bomDic[nowMatrialNo] +"-1";//不良品的料号要加-1
                         }
                         else if (materialbomDic.ContainsKey(nowMatrialNo))//主板只查询物料对照表
                         {
@@ -642,7 +642,7 @@ namespace SaledServices.CustomsExport
                             return;
                         }
 
-                        MaterialCustomRelationTemp.mpn = currentDeclear;//因为报关原因，需要改成71料号（联想料号）
+                        MaterialCustomRelationTemp.mpn = currentDeclear +"-1";//因为报关原因，需要改成71料号（联想料号), 修改料号，以示区分
                         MaterialCustomRelationTemp.num = querySdr[2].ToString();
                         MaterialCustomRelationTemp.date = querySdr[3].ToString();
 

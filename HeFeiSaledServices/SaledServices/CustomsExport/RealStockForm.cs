@@ -214,7 +214,7 @@ namespace SaledServices.CustomsExport
                     string currentDeclear = "";
                     if (_71bomDic.ContainsKey(querySdr[0].ToString()))
                     {
-                        currentDeclear = _71bomDic[querySdr[0].ToString()];
+                        currentDeclear = _71bomDic[querySdr[0].ToString()] + "-1";//海关要求料号不一样，加-1
                     }
                     else if (currentDeclear == "")
                     {
