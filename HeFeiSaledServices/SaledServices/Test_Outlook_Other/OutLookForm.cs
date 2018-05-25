@@ -421,6 +421,7 @@ namespace SaledServices.Test_Outlook
 
                 conn.Close();
                 MessageBox.Show("插入外观 Fail数据, 現在需要把板子給維修人員");
+                this.tracker_bar_textBox.Text = "";
             }
             catch (Exception ex)
             {

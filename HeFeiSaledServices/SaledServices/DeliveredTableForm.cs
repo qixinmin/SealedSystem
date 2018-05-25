@@ -989,8 +989,8 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
 
-                this.uuidTextBox.Focus();
-                this.uuidTextBox.SelectAll();
+                this.macTextBox.Focus();
+                this.macTextBox.SelectAll();
             }
         }
 
@@ -1025,8 +1025,8 @@ namespace SaledServices
                 {
                 }
 
-                this.macTextBox.Focus();
-                this.macTextBox.SelectAll();
+                //this.macTextBox.Focus();
+                //this.macTextBox.SelectAll();
             }
         }
 
@@ -1144,6 +1144,27 @@ namespace SaledServices
                 }
                 this.custom_serial_noTextBox.Focus();
                 this.custom_serial_noTextBox.SelectAll();
+            }
+        }
+
+        private void inputCustommaterialNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.custommaterialNoTextBox.Text.Trim().Length != 0)
+                {
+                    MessageBox.Show("请先选择客户料号!");
+                    return;
+                }
+
+                if(this.custommaterialNoTextBox.Text.Trim().EndsWith(this.inputCustommaterialNoTextBox.Text.Trim()) == false)
+                {
+                    MessageBox.Show("输入的客户料号与选择的客户料号没有关联，请检查");
+                    return;
+                }
+
+                this.track_serial_noTextBox.Focus();
+                this.track_serial_noTextBox.SelectAll();
             }
         }
     }

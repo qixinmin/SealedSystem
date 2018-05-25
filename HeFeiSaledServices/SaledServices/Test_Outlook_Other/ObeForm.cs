@@ -108,21 +108,21 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                    string Id = "";
-                    while (querySdr.Read())
-                    {
-                        Id = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-                    if (Id != "")
-                    {
-                        MessageBox.Show("此序列号已经存在！");
-                        this.tracker_bar_textBox.Text = "";
-                        conn.Close();
-                        return;
-                    }
+                    //cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    //SqlDataReader querySdr = cmd.ExecuteReader();
+                    //string Id = "";
+                    //while (querySdr.Read())
+                    //{
+                    //    Id = querySdr[0].ToString();
+                    //}
+                    //querySdr.Close();
+                    //if (Id != "")
+                    //{
+                    //    MessageBox.Show("此序列号已经存在！");
+                    //    this.tracker_bar_textBox.Text = "";
+                    //    conn.Close();
+                    //    return;
+                    //}
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"

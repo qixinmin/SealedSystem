@@ -520,6 +520,13 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
+
+            if (this.mb_brieftextBox.Text == "" || this.vendorTextBox.Text == "")
+            {
+                MessageBox.Show("输入完跟踪条码需要回车！");
+                return;
+            }
+
             bool error = false;
             //1.包含NTF的逻辑， 所有输入的有效信息均为NTF， 2. 若第一次输入信息没有输入完毕，需提醒并把某些字段清空即可
             string track_serial_no_txt = this.track_serial_noTextBox.Text.Trim();
