@@ -56,6 +56,11 @@ namespace SaledServices.CustomsExport
                     MaterialCustomRelation MaterialCustomRelationTemp = new MaterialCustomRelation();
                     MaterialCustomRelationTemp.id = querySdr[0].ToString();
 
+                    if(_71bomDic.ContainsKey(querySdr[1].ToString()) == false)
+                    {
+                        MessageBox.Show(querySdr[1].ToString()+"在bom表中不存在！");
+                    }
+
                     MaterialCustomRelationTemp.mpn = _71bomDic[querySdr[1].ToString()];//因为报关原因，需要改成71料号（联想料号）done
                     MaterialCustomRelationTemp.num = querySdr[2].ToString();
                     MaterialCustomRelationTemp.date = querySdr[3].ToString();
@@ -95,13 +100,18 @@ namespace SaledServices.CustomsExport
 
                 //for bga材料
                 MaterialCustomRelationList.Clear();
-                cmd.CommandText = "select track_serial_no,mpn,repair_date from bga_repair_record_table where bga_repair_result!='BGA待换' and repair_date between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "select track_serial_no,BGAPN,repair_date from bga_repair_record_table where bga_repair_result!='BGA待换' and repair_date between '" + startTime + "' and '" + endTime + "'";
                 querySdr = cmd.ExecuteReader();
 
                 while (querySdr.Read())
                 {
                     MaterialCustomRelation MaterialCustomRelationTemp = new MaterialCustomRelation();
                     MaterialCustomRelationTemp.id = querySdr[0].ToString();
+
+                    if (_71bomDic.ContainsKey(querySdr[1].ToString()) == false)
+                    {
+                        MessageBox.Show(querySdr[1].ToString() + "在bom表中不存在！");
+                    }
 
                     MaterialCustomRelationTemp.mpn = _71bomDic[querySdr[1].ToString()];//因为报关原因，需要改成71料号（联想料号）done
                     MaterialCustomRelationTemp.date = querySdr[2].ToString();

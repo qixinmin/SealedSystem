@@ -187,6 +187,7 @@
             this.storehoustTextBox.Location = new System.Drawing.Point(203, 147);
             this.storehoustTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.storehoustTextBox.Name = "storehoustTextBox";
+            this.storehoustTextBox.ReadOnly = true;
             this.storehoustTextBox.Size = new System.Drawing.Size(164, 30);
             this.storehoustTextBox.TabIndex = 2;
             this.storehoustTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.storehoustTextBox_KeyPress);
@@ -201,6 +202,7 @@
             this.label5.Size = new System.Drawing.Size(49, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "库房";
+            this.label5.Visible = false;
             // 
             // housetextBox
             // 
@@ -210,6 +212,7 @@
             this.housetextBox.ReadOnly = true;
             this.housetextBox.Size = new System.Drawing.Size(164, 30);
             this.housetextBox.TabIndex = 2;
+            this.housetextBox.Visible = false;
             this.housetextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.storehoustTextBox_KeyPress);
             // 
             // label6
@@ -222,6 +225,7 @@
             this.label6.Size = new System.Drawing.Size(49, 20);
             this.label6.TabIndex = 0;
             this.label6.Text = "储位";
+            this.label6.Visible = false;
             // 
             // placetextBox
             // 
@@ -231,6 +235,7 @@
             this.placetextBox.ReadOnly = true;
             this.placetextBox.Size = new System.Drawing.Size(164, 30);
             this.placetextBox.TabIndex = 2;
+            this.placetextBox.Visible = false;
             this.placetextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.storehoustTextBox_KeyPress);
             // 
             // FaultSMTStoreForm

@@ -17,6 +17,8 @@ namespace SaledServices
         private SqlDataAdapter sda;
         private String tableName = "store_house_ng";
 
+        string notgood_house = "", notgood_place = "";
+
         private ChooseStock chooseStock = new ChooseStock();
 
         public FaultSMTStoreForm()
@@ -57,8 +59,19 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "update store_house_ng set number = '" + (Int32.Parse(number) + Int32.Parse(this.numberTextBox.Text)) + "', mpn='" + this.mpnTextBox.Text.Trim() + "'  where house='" + this.housetextBox.Text + "' and place='" + this.placetextBox.Text + "'";
-                    cmd.ExecuteNonQuery();
+                    //若库房不存在，则自动生成库
+                    if (house == "")
+                    {
+                        cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.notgood_house.Trim() + "','" + this.notgood_place.Trim() + "','" + this.mpnTextBox.Text.Trim() + "','" + this.numberTextBox.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
+
+                        this.storehoustTextBox.Text = "";
+                    }
+                    else
+                    {
+                        cmd.CommandText = "update store_house_ng set number = '" + (Int32.Parse(number) + Int32.Parse(this.numberTextBox.Text)) + "', mpn='" + this.mpnTextBox.Text.Trim() + "'  where house='" + this.notgood_house + "' and place='" + this.notgood_place + "'";
+                        cmd.ExecuteNonQuery();
+                    }
 
                     //同时生成一条SMT/BGA不良品入库记录
                     cmd.CommandText = "INSERT INTO smt_bga_ng_in_house_table VALUES('" +
@@ -74,6 +87,8 @@ namespace SaledServices
                 }
 
                 conn.Close();
+                this.mpnTextBox.Text = "";
+                this.numberTextBox.Text = "";
                 MessageBox.Show("新增成功！");
                 query_Click(null, null);
             }
@@ -208,34 +223,59 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select house,place,Id,number from store_house_ng where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string house = "", place = "", Id = "", number = "";
+                    string ghouse = "", gplace = "";
                     while (querySdr.Read())
                     {
-                        house = querySdr[0].ToString();
-                        place = querySdr[1].ToString();
-                        Id = querySdr[2].ToString();
-                        number = querySdr[3].ToString();
+                        ghouse = querySdr[0].ToString();
+                        gplace = querySdr[1].ToString();
                     }
                     querySdr.Close();
 
-                    if (house != "" && place != "")
+                    
+                    if (ghouse == "" || gplace == "")
                     {
-                        this.storehoustTextBox.Enabled = false;
-                        this.storehoustTextBox.Text = house + "," + place;
-                        chooseStock.Id = Id;
-                        chooseStock.house = house;
-                        chooseStock.place = place;
-                        chooseStock.number = number;
-
-                        this.housetextBox.Text = house;
-                        this.placetextBox.Text = place;
+                        MessageBox.Show("不良品库不存在，请先创建不良品库！");
+                        mConn.Close();
+                        return;
                     }
                     else
                     {
-                        this.storehoustTextBox.Enabled = true;
+                        notgood_house = "N-" + ghouse;
+                        notgood_place = "N-" + gplace;
+                        this.storehoustTextBox.Text = notgood_house + "," + notgood_place;
                     }
+
+
+                    //cmd.CommandText = "select house,place,Id,number from store_house_ng where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    //querySdr = cmd.ExecuteReader();
+                    //string house = "", place = "", Id = "", number = "";
+                    //while (querySdr.Read())
+                    //{
+                    //    house = querySdr[0].ToString();
+                    //    place = querySdr[1].ToString();
+                    //    Id = querySdr[2].ToString();
+                    //    number = querySdr[3].ToString();
+                    //}
+                    //querySdr.Close();                   
+
+                    //if (house != "" && place != "")
+                    //{
+                    //    this.storehoustTextBox.Enabled = false;
+                    //    this.storehoustTextBox.Text = house + "," + place;
+                    //    chooseStock.Id = Id;
+                    //    chooseStock.house = house;
+                    //    chooseStock.place = place;
+                    //    chooseStock.number = number;
+
+                    //    this.housetextBox.Text = house;
+                    //    this.placetextBox.Text = place;
+                    //}
+                    //else
+                    //{
+                    //    this.storehoustTextBox.Enabled = true;
+                    //}
                     mConn.Close();
                 }
                 catch (Exception ex)

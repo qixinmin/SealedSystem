@@ -20,6 +20,9 @@ namespace SaledServices
         private string requestId = "";
         private string requestNumber = "";
 
+        private string notgood_house;
+        private string notgood_place;
+
        // private ChooseStock chooseStock = new ChooseStock();
 
         public BGA_OutSheetForm()
@@ -114,8 +117,19 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "update store_house_ng set number = '" + (Int32.Parse(number) + Int32.Parse(this.stock_out_numTextBox.Text)) + "'  where house='" + house + "' and place='" + place + "'";
-                    cmd.ExecuteNonQuery();
+                    //若库房不存在，则自动生成库
+                    if (house == "")
+                    {
+                        cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.notgood_house.Trim() + "','" + this.notgood_place.Trim() + "','" + this.mpnTextBox.Text.Trim() + "','" + this.stock_out_numTextBox.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
+
+                        this.notgoodplacetextBox.Text = "";
+                    }
+                    else
+                    {
+                        cmd.CommandText = "update store_house_ng set number = '" + (Int32.Parse(number) + Int32.Parse(this.stock_out_numTextBox.Text)) + "'  where house='" + notgood_house + "' and place='" + notgood_place + "'";
+                        cmd.ExecuteNonQuery();
+                    }                  
 
                     //同时生成一条BGA不良品入库记录
                     cmd.CommandText = "INSERT INTO smt_bga_ng_in_house_table VALUES('" +
@@ -155,6 +169,7 @@ namespace SaledServices
             this.notetextBox.Text = "";
             this.takertextBox.Text = "";          
             this.input_dateTextBox.Text = "";
+            this.notgoodplacetextBox.Text = "";
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -342,6 +357,13 @@ namespace SaledServices
                         conn.Close();
                         return;
                     }
+                    else
+                    {
+                        notgood_house = "N-" + house;
+                        notgood_place = "N-" + place;
+                        this.notgoodplacetextBox.Text = notgood_house + "," + notgood_place;
+                    }
+
                     this.currentStockNumbertextBox.Text = number;
                     this.stock_placetextBox.Text = house + "," + place;
 
