@@ -39,7 +39,7 @@ namespace SaledServices
                     error = true;
                     return;
                 }
-
+                this.track_serial_noTextBox.Text = this.track_serial_noTextBox.Text.ToUpper();
                 try
                 {
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
