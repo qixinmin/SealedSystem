@@ -77,7 +77,7 @@ namespace SaledServices
                     error = true;
                     return;
                 }
-
+                this.track_serial_noTextBox.Text = this.track_serial_noTextBox.Text.ToUpper();//防止输入小写字符
                 try
                 {
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);

@@ -320,19 +320,20 @@ namespace SaledServices.CustomsExport
                         TrackNoCustomRelation TrackNoCustomRelationTemp = new TrackNoCustomRelation();
                         TrackNoCustomRelationTemp.trackno = querySdr[0].ToString();
 
-                        string currentDeclear = "";
-                        string nowMatrialNo= querySdr[1].ToString();                       
-                        if (materialbomDic.ContainsKey(nowMatrialNo))//主板只查询物料对照表
-                        {
-                            currentDeclear = materialbomDic[nowMatrialNo];
-                        }
-                        else
-                        {
-                            MessageBox.Show("MB不良品库入库物料" + nowMatrialNo + "对应找不到71料号！");
-                            querySdr.Close();
-                            mConn.Close();
-                            return;
-                        }
+                       
+                        string nowMatrialNo= querySdr[1].ToString();
+                        string currentDeclear = nowMatrialNo;
+                        //if (materialbomDic.ContainsKey(nowMatrialNo))//主板只查询物料对照表
+                        //{
+                        //    currentDeclear = materialbomDic[nowMatrialNo];
+                        //}
+                        //else
+                        //{
+                        //    MessageBox.Show("MB不良品库入库物料" + nowMatrialNo + "对应找不到71料号！");
+                        //    querySdr.Close();
+                        //    mConn.Close();
+                        //    return;
+                        //}
 
                         TrackNoCustomRelationTemp.custom_materialNo = currentDeclear;//因为报关原因，需要改成71料号（联想料号）done
                         TrackNoCustomRelationTemp.date = querySdr[2].ToString();
