@@ -322,6 +322,9 @@ namespace SaledServices
 
                 this.track_serial_noTextBox.Focus();
                 query_Click(null, null);
+
+                stockplacetextBox.Text = "";
+                stockplacetextBox.Enabled = true;
             }
         }
 

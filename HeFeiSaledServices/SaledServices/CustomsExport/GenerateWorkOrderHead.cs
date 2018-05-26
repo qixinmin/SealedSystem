@@ -40,14 +40,14 @@ namespace SaledServices.CustomsExport
                 init1.wo_date = Untils.getCustomDate(trackTemp.date);
                 init1.goods_nature = "E";
 
-                if (isGood)
-                {
-                    init1.cop_g_no = trackTemp.custom_materialNo;//此处要区分对待， 如果良品入库要用正常料号，不良品入库用71料号
-                }
-                else
-                {
-                    init1.cop_g_no = materialbomDic[trackTemp.custom_materialNo];
-                }
+                //if (isGood)
+                //{
+                    init1.cop_g_no = trackTemp.custom_materialNo;//此处要区分对待， 如果良品入库要用正常料号，不良品入库用71料号,之前已经改过，这里直接使用
+                //}
+                //else
+                //{
+                //    init1.cop_g_no = materialbomDic[trackTemp.custom_materialNo];
+                //}
                 init1.qty = "1";
                 init1.unit = Untils.getCustomCode(trackTemp.declare_unit);
                 init1.emo_no = ems_no;

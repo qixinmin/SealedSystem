@@ -67,7 +67,7 @@ namespace SaledServices.CustomsExport
                 querySdr.Close();
                 //查询物料对照表
                 Dictionary<string, string> materialbomDic = new Dictionary<string, string>();
-                cmd.CommandText = "select distinct vendormaterialNo,custommaterialNo from MBMaterialCompare";
+                cmd.CommandText = "select distinct custommaterialNo,vendormaterialNo from MBMaterialCompare";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
