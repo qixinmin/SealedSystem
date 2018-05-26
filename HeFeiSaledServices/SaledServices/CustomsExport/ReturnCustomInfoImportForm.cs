@@ -83,7 +83,7 @@ namespace SaledServices
                 SqlConnection queryConn = new SqlConnection(Constlist.ConStr);
                 queryConn.Open();
 
-                string today = DateTime.Now.ToString("yyyy/MM/dd");
+               // string today = DateTime.Now.ToString("yyyy/MM/dd");
                 if (queryConn.State == ConnectionState.Open)
                 {
                     SqlCommand cmd = new SqlCommand();
@@ -92,6 +92,18 @@ namespace SaledServices
                     if (reportList.Count > 0)
                     {
                         //首先判断是否在repaired_out_house_table表中，一一对应
+                        foreach (ReportCustomInfo temp in reportList)
+                        {
+                            cmd.CommandText = "select Id from repaired_out_house_table where track_serial_no='" + temp.track_no.Trim() + "'";
+                            SqlDataReader sqlReader = cmd.ExecuteReader();
+                            if (sqlReader.HasRows == false)
+                            {
+                                MessageBox.Show("此序列号"+temp.track_no+"不存在良品出库表中");
+                                queryConn.Close();
+                                return;
+                            }
+                        }
+
                         foreach(ReportCustomInfo temp in reportList)
                         {
                             cmd.CommandText = "INSERT INTO repaired_out_house_excel_table VALUES('"
@@ -101,6 +113,10 @@ namespace SaledServices
                               + temp.date.Trim()
                               + "')";
 
+                            cmd.ExecuteNonQuery();
+
+                            //同时更新成品出库的时间，这个时候才能拿到数据给海关
+                            cmd.CommandText = "update repaired_out_house_table set input_date='"+temp.date.Trim()+"'";
                             cmd.ExecuteNonQuery();
                         }
 

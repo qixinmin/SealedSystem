@@ -463,7 +463,7 @@ namespace SaledServices
                        this.track_serial_noTextBox.Text.Trim() + "','" +
                        customMaterialNo + "','" +
                        "1" + "','" +
-                       DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                       "1900-01-01" +"')";//DateTime.Now.ToString("yyyy/MM/dd")，在上传报关信息的时候在更新数据，那个时候才可以上传海关信息
                     cmd.ExecuteNonQuery();
                     //更新数量
                     cmd.CommandText = "select Id,leftNumber from repaired_left_house_table where custom_materialNo='" + customMaterialNo + "'";

@@ -109,9 +109,26 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    //外观做完自动出良品库，同时更新良品库的数量
+                    cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string customMaterialNo = "";
+                    while (querySdr.Read())
+                    {
+                        customMaterialNo = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (customMaterialNo == "")
+                    {
+                        MessageBox.Show("客户料号不能为空，请检查序列号是否正确!");
+                        conn.Close();
+                        return;
+                    }
+
                     //防止重复入库
                     cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     string Id = "";
                     while (querySdr.Read())
                     {
@@ -136,17 +153,6 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "update stationInformation set station = 'Package', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
-
-
-                    //外观做完自动出良品库，同时更新良品库的数量
-                    cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-                    querySdr = cmd.ExecuteReader();
-                    string customMaterialNo = "";
-                    while (querySdr.Read())
-                    {
-                        customMaterialNo = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
 
                     cmd.CommandText = "INSERT INTO repaired_in_house_table VALUES('" +
                        this.tracker_bar_textBox.Text.Trim() + "','" +

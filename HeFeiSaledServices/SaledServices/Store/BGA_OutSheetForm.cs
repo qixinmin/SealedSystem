@@ -120,7 +120,7 @@ namespace SaledServices
                     //若库房不存在，则自动生成库
                     if (house == "")
                     {
-                        cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.notgood_house.Trim() + "','" + this.notgood_place.Trim() + "','" + this.mpnTextBox.Text.Trim() + "','" + this.stock_out_numTextBox.Text.Trim() + "')";
+                        cmd.CommandText = "INSERT INTO store_house_ng VALUES('" + this.notgood_house.Trim() + "','" + this.notgood_place.Trim() + "','" + this.mpnTextBox.Text.Trim() + "','" + this.stock_out_numTextBox.Text.Trim() + "')";
                         cmd.ExecuteNonQuery();
 
                         this.notgoodplacetextBox.Text = "";

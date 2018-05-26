@@ -13,7 +13,7 @@ namespace SaledServices
 {
     public partial class FaultMBStoreForm : Form
     {
-        private string currentTableName = "";
+        private string currentTableName = "fault_mb_enter_record_table";
         private ChooseStock chooseStock = new ChooseStock();
         private PrepareUseDetail mPrepareUseDetail;
         public FaultMBStoreForm()
@@ -132,7 +132,7 @@ namespace SaledServices
                         this.custommaterialNoTextBox.Text = customMaterialNo;
 
                         //确定库位
-                        cmd.CommandText = "select Id,house, place where custom_materialNo='" + customMaterialNo + "'";
+                        cmd.CommandText = "select Id,house, place from store_house_ng where mpn='" + customMaterialNo + "'";
                         querySdr = cmd.ExecuteReader();
                         string id="",house="",place="";
                         while (querySdr.Read())
@@ -209,7 +209,7 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select Id from " + currentTableName + " where track_serial_no_txt='" + this.track_serial_noTextBox.Text + "'";
+                    cmd.CommandText = "select Id from " + currentTableName + " where track_serial_no='" + this.track_serial_noTextBox.Text + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string exist = "";
                     while (querySdr.Read())
@@ -251,7 +251,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
                     
                     //更新数量
-                    cmd.CommandText = "select Id,left_number from store_house_ng where custom_materialNo='" + custommaterialNo + "'";
+                    cmd.CommandText = "select Id,number from store_house_ng where house='" + chooseStock.house + "' and place='"+chooseStock.place+"'";
                     querySdr = cmd.ExecuteReader();
                     exist = "";
                     string left_number = "";
@@ -261,33 +261,26 @@ namespace SaledServices
                         left_number = querySdr[1].ToString();
                         break;
                     }
+                    querySdr.Close();
 
-                    if (exist == "")
+                    if (left_number == null || left_number == "")
                     {
-                        cmd.CommandText = "INSERT INTO store_house_ng VALUES('"
-                            + chooseStock.house + "','"
-                            + chooseStock.place + "','"
-                            + custommaterialNo + "','"
-                            + "1" + "')";
+                        left_number = "0";
+                    }
+                    
+                    try 
+                    {
+                        int totalLeft = Int32.Parse(left_number);
+                        int thistotal = totalLeft +1;
+
+                        cmd.CommandText = "update store_house_ng set number = '" + thistotal + "', mpn='"+this.custommaterialNoTextBox.Text.Trim()+"'"
+                                + " where house='" + chooseStock.house + "' and place='" + chooseStock.place + "'";
                         cmd.ExecuteNonQuery();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        try 
-                        {
-                            int totalLeft = Int32.Parse(left_number);
-                            int thistotal = totalLeft +1;
-
-                            cmd.CommandText = "update store_house_ng set left_number = '" + thistotal + "'"
-                                   + "where mpn = '" + custommaterialNo + "'";
-                            cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.ToString());
-                        }
+                        MessageBox.Show(ex.ToString());
                     }
-                    querySdr.Close();
                 }
                 else
                 {
@@ -376,6 +369,7 @@ namespace SaledServices
             chooseStock.place = place;
 
             this.stockplacetextBox.Text = chooseStock.house + "," + chooseStock.place;
+            this.stockplacetextBox.Enabled = false;
         }
 
         private void stockplacetextBox_KeyPress(object sender, KeyPressEventArgs e)
