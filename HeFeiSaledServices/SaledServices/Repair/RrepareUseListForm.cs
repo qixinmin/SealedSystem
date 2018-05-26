@@ -178,9 +178,41 @@ namespace SaledServices.Repair
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    //查询之前的数量，已数据库的数据为准
+                    cmd.CommandText = " select realNumber,usedNumber from request_fru_smt_to_store_table where Id='" + idTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string realNum = "", usedNum = "";
+                    if (querySdr.HasRows)
+                    {
+                        while (querySdr.Read())
+                        {
+                            realNum = querySdr[0].ToString();
+                            usedNum = querySdr[1].ToString();
+                        }
+                    }
+                    querySdr.Close();
+                    int realNumInt = 0, usedNumInt = 0;
+                    try
+                    {
+                        realNumInt = Int32.Parse(realNum);
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+
+                    try
+                    {
+                        usedNumInt = Int32.Parse(usedNum);
+                    }
+                    catch (Exception ex)
+                    {
+                        usedNumInt = 0;
+                    }
                     cmd.CommandText = "INSERT INTO fru_smt_return_store_record VALUES('"
                         + this.material_mpntextBox.Text.Trim() + "','"
-                        + (Int32.Parse(this.realNumbertextBox.Text == "" ? "0" : this.realNumbertextBox.Text) - Int32.Parse(this.totalUseNumber == "" ? "0" : this.totalUseNumber)) + "','"
+                        +(realNumInt-usedNumInt) + "','"
                         + this.notgood_placetextBox.Text.Trim() + "','"
                         + LoginForm.currentUser + "','"
                         + DateTime.Now.ToString("yyyy/MM/dd") + "','"
@@ -188,7 +220,7 @@ namespace SaledServices.Repair
                         + "" + "','"
                         + "request" + "','"
                         + idTextBox.Text.Trim() + "')";
-                    cmd.CommandType = CommandType.Text;
+                   
                     cmd.ExecuteNonQuery();
                 }
                 else
