@@ -160,7 +160,7 @@ namespace SaledServices
         private void add_Click(object sender, EventArgs e)
         {
             bool error = false;
-            if (this.track_serial_noTextBox.Text.Trim() == "" || this.bgaRepair_resultcomboBox.Text.Trim() =="")
+            if (this.track_serial_noTextBox.Text.Trim() == "" || this.bgaRepair_resultcomboBox.Text.Trim() == "" || this.custom_serial_notextBox.Text.Trim() == "")
             {
                 MessageBox.Show("需要加入的内容为空，请检查！");
                 return;
@@ -319,6 +319,8 @@ namespace SaledServices
                 MessageBox.Show("添加BGA维修数据成功");
                 this.bgaRepair_resultcomboBox.Text = "";
                 this.track_serial_noTextBox.Text = "";
+
+                clearInput();
                 query_Click(null, null);
             }
         }
