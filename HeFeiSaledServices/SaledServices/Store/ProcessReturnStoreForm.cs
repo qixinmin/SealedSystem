@@ -56,14 +56,54 @@ namespace SaledServices.Store
             {
                 return;
             }
+            this.stock_placetextBox.Text = "";
 
             this.materialMpnTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
             this.returnNumbertextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
-            this.stock_placetextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
+           // this.stock_placetextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
             this.requestertextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.requestdateTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
             this.idtextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
             this.fromIdtextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
+
+
+            //根据料号进行查询数据
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    //1 修改归还仓库状态
+                    cmd.CommandText = "select house,place from store_house where mpn = '" + this.materialMpnTextBox.Text + "'";
+                  
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string house = "", place = "";
+                    while (querySdr.Read())
+                    {
+                        house = querySdr[0].ToString();
+                        place = querySdr[1].ToString();
+                       
+                    }
+                    querySdr.Close();
+                    this.stock_placetextBox.Text = house + "," + place;                   
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }           
         }
 
         private void refreshbutton_Click(object sender, EventArgs e)
