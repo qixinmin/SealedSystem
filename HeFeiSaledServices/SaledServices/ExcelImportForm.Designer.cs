@@ -42,6 +42,7 @@
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
+            this.test = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +79,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.test);
             this.panel1.Controls.Add(this.userInputRadioButton);
             this.panel1.Controls.Add(this.storeInfoImportradioButton);
             this.panel1.Controls.Add(this.stock_in_sheetradioButton);
@@ -194,6 +196,18 @@
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
             // 
+            // test
+            // 
+            this.test.AutoSize = true;
+            this.test.Location = new System.Drawing.Point(22, 450);
+            this.test.Name = "test";
+            this.test.Size = new System.Drawing.Size(67, 24);
+            this.test.TabIndex = 4;
+            this.test.TabStop = true;
+            this.test.Text = "test";
+            this.test.UseVisualStyleBackColor = true;
+            this.test.Visible = false;
+            // 
             // ExcelImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -203,7 +217,7 @@
             this.Controls.Add(this.findFile);
             this.Controls.Add(this.filePath);
             this.Controls.Add(this.importButton);
-            this.Font = new System.Drawing.Font("SimSun", 15F);
+            this.Font = new System.Drawing.Font("宋体", 15F);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ExcelImportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -231,5 +245,6 @@
         private System.Windows.Forms.RadioButton stock_in_sheetradioButton;
         private System.Windows.Forms.RadioButton storeInfoImportradioButton;
         private System.Windows.Forms.RadioButton userInputRadioButton;
+        private System.Windows.Forms.RadioButton test;
     }
 }

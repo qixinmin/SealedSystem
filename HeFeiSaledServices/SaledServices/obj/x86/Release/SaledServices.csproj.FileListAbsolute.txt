@@ -744,3 +744,4 @@ F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.UserDet
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.User.UserSelfForm.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.VendorForm.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
+F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache

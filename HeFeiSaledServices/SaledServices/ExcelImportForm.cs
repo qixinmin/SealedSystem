@@ -164,6 +164,13 @@ namespace SaledServices
                 this.importButton.Enabled = true;
                 return;
             }
+            else if (this.test.Checked)
+            {
+                this.importButton.Enabled = true;
+               // return;
+            }
+
+
 
             app = new Microsoft.Office.Interop.Excel.Application();
             app.DisplayAlerts = false;
@@ -174,7 +181,15 @@ namespace SaledServices
                 false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, 
                 string.Empty, true, false, 0, true, 1, 0);
 
-            if ( this.DPKradioButton.Checked
+            if (this.test.Checked)
+            {
+                Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets["Test"];
+                int rowLength = ws.UsedRange.Rows.Count;
+                int columnLength = ws.UsedRange.Columns.Count;
+             
+                tesst_all(ws, rowLength, columnLength, "Test");
+            }
+            else if ( this.DPKradioButton.Checked
                 || this.faultTableRadioButton.Checked
                 
                 || this.stock_in_sheetradioButton.Checked
@@ -714,5 +729,54 @@ namespace SaledServices
             }
         }
 
+
+
+        public void tesst_all(Worksheet ws, int rowLength, int columnLength, string tableName)
+        {
+            string s = "";
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+             
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    for (int i = 2; i <= rowLength; i++)
+                    {
+                        string mpn="", number="";
+                       // for (int j = 1; j <= columnLength; j++)
+                        {
+                            //有可能有空值
+                           mpn = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString();  
+                            number =     ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 2]).Value2.ToString();  
+                        }
+                        s = "update store_house set number='"+number.Trim()+"' where mpn='"+mpn.Trim()+"'";
+                        cmd.CommandText = s;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();             
+                conn.Dispose();
+
+                MessageBox.Show("导入" + tableName + "完成！");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(s + "#" + ex.ToString());
+            }
+            finally
+            {
+                wbs.Close();
+            }
+        }
     }
 }
