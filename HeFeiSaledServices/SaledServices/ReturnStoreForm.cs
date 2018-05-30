@@ -144,7 +144,37 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,receivedNum,returnNum,ordertime from receiveOrder where vendor='" + vendorStr 
+                //start
+
+                //在更新收货表的同时，需要同时更新导入的表格收货数量，不然数据会乱掉
+                cmd.CommandText = "select _status, ordernum, receivedNum, returnNum,cid_number,Id from receiveOrder where vendor='" + vendorStr
+                    + "' and product ='" + productStr + "' and _status = 'close'";
+
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                List<string> finishID = new List<string>();
+                int receivedNum = 0, cidNum = 0;
+                while (querySdr.Read())
+                {
+                    cidNum = Int32.Parse(querySdr[4].ToString());
+                    receivedNum = Int32.Parse(querySdr[2].ToString());
+
+                    if (receivedNum == cidNum)
+                    {
+                        finishID.Add(querySdr[5].ToString());
+                    }
+                }
+                querySdr.Close();
+
+                foreach (string id in finishID)
+                {
+                    cmd.CommandText = "update receiveOrder set _status = 'return'"
+                                + "where Id = '" + id + "'";
+                    cmd.ExecuteNonQuery();
+                }
+                //end
+
+
+                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,receivedNum,returnNum,cid_number,ordertime from receiveOrder where vendor='" + vendorStr 
                     + "' and product ='" + productStr + "' and _status = 'close'";                
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -155,7 +185,7 @@ namespace SaledServices
                 dataGridViewToReturn.RowHeadersVisible = false;
 
 
-                string[] hTxt = { "订单编号", "客户料号", "MB简称", "收货数量", "还货数量", "制单时间" };
+                string[] hTxt = { "订单编号", "客户料号", "MB简称", "收货数量", "还货数量", "CID","制单时间" };
                 for (int i = 0; i < hTxt.Length; i++)
                 {
                     dataGridViewToReturn.Columns[i].HeaderText = hTxt[i];

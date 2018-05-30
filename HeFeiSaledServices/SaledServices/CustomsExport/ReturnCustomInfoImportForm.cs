@@ -102,6 +102,7 @@ namespace SaledServices
                                 queryConn.Close();
                                 return;
                             }
+                            sqlReader.Close();
                         }
 
                         foreach(ReportCustomInfo temp in reportList)
@@ -116,7 +117,7 @@ namespace SaledServices
                             cmd.ExecuteNonQuery();
 
                             //同时更新成品出库的时间，这个时候才能拿到数据给海关
-                            cmd.CommandText = "update repaired_out_house_table set input_date='"+temp.date.Trim()+"'";
+                            cmd.CommandText = "update repaired_out_house_table set input_date='" + temp.date.Trim() + "' where track_serial_no='" + temp.track_no.Trim() + "'";
                             cmd.ExecuteNonQuery();
                         }
 
