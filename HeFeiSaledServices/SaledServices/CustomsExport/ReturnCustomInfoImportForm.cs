@@ -98,7 +98,21 @@ namespace SaledServices
                             SqlDataReader sqlReader = cmd.ExecuteReader();
                             if (sqlReader.HasRows == false)
                             {
-                                MessageBox.Show("此序列号"+temp.track_no+"不存在良品出库表中");
+                                MessageBox.Show("此序列号"+temp.track_no+"不存在于良品出库表中");
+                                queryConn.Close();
+                                return;
+                            }
+                            sqlReader.Close();
+                        }
+
+                        //检查是否已经存在于repaired_out_house_excel_table
+                        foreach (ReportCustomInfo temp in reportList)
+                        {
+                            cmd.CommandText = "select Id from repaired_out_house_excel_table where track_serial_no='" + temp.track_no.Trim() + "'";
+                            SqlDataReader sqlReader = cmd.ExecuteReader();
+                            if (sqlReader.HasRows)
+                            {
+                                MessageBox.Show("此序列号" + temp.track_no + "已经存在于 良品出库上传海关信息表 中");
                                 queryConn.Close();
                                 return;
                             }
