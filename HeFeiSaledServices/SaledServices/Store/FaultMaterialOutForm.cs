@@ -22,6 +22,12 @@ namespace SaledServices
         public FaultMaterialOutForm()
         {
             InitializeComponent();
+
+            if (User.UserSelfForm.isSuperManager() == false)
+            {
+                this.modify.Visible = false;
+                this.delete.Visible = false;
+            }
         }
 
         private void add_Click(object sender, EventArgs e)

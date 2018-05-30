@@ -59,9 +59,9 @@ namespace SaledServices.CustomsExport
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    if (_71bomDic.ContainsKey(querySdr[0].ToString()) == false)
+                    if (_71bomDic.ContainsKey(querySdr[0].ToString().Trim()) == false)
                     {
-                        _71bomDic.Add(querySdr[0].ToString(), querySdr[1].ToString());
+                        _71bomDic.Add(querySdr[0].ToString().Trim(), querySdr[1].ToString().Trim());
                     }
                 }
                 querySdr.Close();
@@ -71,9 +71,9 @@ namespace SaledServices.CustomsExport
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    if (materialbomDic.ContainsKey(querySdr[0].ToString()) == false)
+                    if (materialbomDic.ContainsKey(querySdr[0].ToString().Trim()) == false)
                     {
-                        materialbomDic.Add(querySdr[0].ToString(), querySdr[1].ToString());
+                        materialbomDic.Add(querySdr[0].ToString().Trim(), querySdr[1].ToString().Trim());
                     }
                 }
                 querySdr.Close();
@@ -130,7 +130,14 @@ namespace SaledServices.CustomsExport
                 {                    
                     StoreInit init1 = new StoreInit();
                     init1.ems_no = ems_no;
-                    init1.cop_g_no = kvp.Key;//维修的板子，使用客户料号
+
+                    string temp = kvp.Key;
+                    if (temp.Length == 10 && temp.StartsWith("000"))
+                    {
+                        temp = temp.Substring(3);
+                    }
+
+                    init1.cop_g_no = temp;//维修的板子，使用客户料号
                     init1.qty = kvp.Value.ToString();
                     init1.unit = "007";//固定单位
                     init1.goods_nature = "I";//代码
@@ -262,7 +269,14 @@ namespace SaledServices.CustomsExport
                 {
                     StoreInit init1 = new StoreInit();
                     init1.ems_no = ems_no;
-                    init1.cop_g_no = querySdr[0].ToString();//正常使用客户料号
+
+                    string temp = querySdr[0].ToString();
+                    if (temp.Length == 10 && temp.StartsWith("000"))
+                    {
+                        temp = temp.Substring(3);
+                    }
+
+                    init1.cop_g_no = temp;//正常使用客户料号
                     init1.qty = querySdr[1].ToString();
                     init1.unit = "007";//固定单位
                     init1.goods_nature = "I";//代码
@@ -283,7 +297,14 @@ namespace SaledServices.CustomsExport
                 {
                     StoreInit init1 = new StoreInit();
                     init1.ems_no = ems_no;
-                    init1.cop_g_no = querySdr[0].ToString();//正常使用客户料号
+
+                    string temp = querySdr[0].ToString();
+                    if (temp.Length == 10 && temp.StartsWith("000"))
+                    {
+                        temp = temp.Substring(3);
+                    }
+
+                    init1.cop_g_no = temp;//正常使用客户料号
                     init1.qty = querySdr[1].ToString();
                     init1.unit = "007";//固定单位
                     init1.goods_nature = "I";//代码

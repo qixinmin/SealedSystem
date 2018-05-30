@@ -596,9 +596,6 @@ D:\BaiduNetdiskDownload\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSe
 D:\BaiduNetdiskDownload\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ExportDatabaseToExcel.resources
 D:\BaiduNetdiskDownload\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
 F:\BaiduNetdiskDownload\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ExportDatabaseToExcel.resources
-F:\github\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe.config
-F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
-F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe.config
 D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
@@ -675,6 +672,7 @@ D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\Sa
 D:\维修系统\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
 F:\github\HeFeiSaledServices\SaledServices\bin\Release\Files\FileInput.xml
 F:\github\HeFeiSaledServices\SaledServices\bin\Release\Files\syncTime.bat
+F:\github\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe.config
 F:\github\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe
 F:\github\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.pdb
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.CIDInputForm.resources
@@ -744,3 +742,5 @@ F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.UserDet
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.User.UserSelfForm.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.VendorForm.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
+F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
+F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb

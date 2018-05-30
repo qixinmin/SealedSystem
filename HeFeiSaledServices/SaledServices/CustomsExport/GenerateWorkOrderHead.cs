@@ -42,7 +42,13 @@ namespace SaledServices.CustomsExport
 
                 //if (isGood)
                 //{
-                    init1.cop_g_no = trackTemp.custom_materialNo;//此处要区分对待， 如果良品入库要用正常料号，不良品入库用71料号,之前已经改过，这里直接使用
+                string temp = trackTemp.custom_materialNo;
+                if (temp.Length == 10 && temp.StartsWith("000"))
+                {
+                    temp = temp.Substring(3);
+                }
+
+                init1.cop_g_no = temp;//此处要区分对待， 如果良品入库要用正常料号，不良品入库用71料号,之前已经改过，这里直接使用
                 //}
                 //else
                 //{

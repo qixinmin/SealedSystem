@@ -45,9 +45,9 @@ namespace SaledServices.CustomsExport
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    if (_71bomDic.ContainsKey(querySdr[0].ToString()) == false)
+                    if (_71bomDic.ContainsKey(querySdr[0].ToString().Trim()) == false)
                     {
-                        _71bomDic.Add(querySdr[0].ToString(), querySdr[1].ToString());
+                        _71bomDic.Add(querySdr[0].ToString().Trim(), querySdr[1].ToString().Trim());
                     }
                 }
                 querySdr.Close();
@@ -57,9 +57,9 @@ namespace SaledServices.CustomsExport
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    if (materialbomDic.ContainsKey(querySdr[0].ToString()) == false)
+                    if (materialbomDic.ContainsKey(querySdr[0].ToString().Trim()) == false)
                     {
-                        materialbomDic.Add(querySdr[0].ToString(), querySdr[1].ToString());
+                        materialbomDic.Add(querySdr[0].ToString().Trim(), querySdr[1].ToString().Trim());
                     }
                 }
                 querySdr.Close();
@@ -124,7 +124,12 @@ namespace SaledServices.CustomsExport
                     {
                         TrackNoCustomRelation TrackNoCustomRelationTemp = new TrackNoCustomRelation();
                         TrackNoCustomRelationTemp.trackno = querySdr[0].ToString();
-                        TrackNoCustomRelationTemp.custom_materialNo = querySdr[1].ToString();//正常使用客户料号
+                        string temp = querySdr[1].ToString();
+                        if(temp.Length == 10 && temp.StartsWith("000"))
+                        {
+                            temp = temp.Substring(3);
+                        }
+                        TrackNoCustomRelationTemp.custom_materialNo = temp;//正常使用客户料号
                         TrackNoCustomRelationTemp.date = querySdr[2].ToString();
 
                         TrackNoCustomRelationList.Add(TrackNoCustomRelationTemp);
@@ -214,7 +219,13 @@ namespace SaledServices.CustomsExport
                     {
                         TrackNoCustomRelation TrackNoCustomRelationTemp = new TrackNoCustomRelation();
                         TrackNoCustomRelationTemp.trackno = querySdr[0].ToString();
-                        TrackNoCustomRelationTemp.custom_materialNo = querySdr[1].ToString();//正常使用客户料号
+                        string temp = querySdr[1].ToString();
+                        if (temp.Length == 10 && temp.StartsWith("000"))
+                        {
+                            temp = temp.Substring(3);
+                        }
+
+                        TrackNoCustomRelationTemp.custom_materialNo =temp;//正常使用客户料号
                         TrackNoCustomRelationTemp.date = querySdr[2].ToString();
 
                         TrackNoCustomRelationList.Add(TrackNoCustomRelationTemp);
@@ -279,7 +290,14 @@ namespace SaledServices.CustomsExport
                     {
                         TrackNoCustomRelation TrackNoCustomRelationTemp = new TrackNoCustomRelation();
                         TrackNoCustomRelationTemp.trackno = querySdr[0].ToString();
-                        TrackNoCustomRelationTemp.custom_materialNo = querySdr[1].ToString();//正常使用客户料号
+
+                        string temp = querySdr[1].ToString();
+                        if (temp.Length == 10 && temp.StartsWith("000"))
+                        {
+                            temp = temp.Substring(3);
+                        }
+
+                        TrackNoCustomRelationTemp.custom_materialNo = temp;//正常使用客户料号
                         TrackNoCustomRelationTemp.declare_number = querySdr[2].ToString();
                         TrackNoCustomRelationTemp.date = querySdr[3].ToString();
 
@@ -322,18 +340,15 @@ namespace SaledServices.CustomsExport
 
                        
                         string nowMatrialNo= querySdr[1].ToString();
-                        string currentDeclear = nowMatrialNo;
-                        //if (materialbomDic.ContainsKey(nowMatrialNo))//主板只查询物料对照表
-                        //{
-                        //    currentDeclear = materialbomDic[nowMatrialNo];
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("MB不良品库入库物料" + nowMatrialNo + "对应找不到71料号！");
-                        //    querySdr.Close();
-                        //    mConn.Close();
-                        //    return;
-                        //}
+
+                        string temp = querySdr[1].ToString();
+                        if (temp.Length == 10 && temp.StartsWith("000"))
+                        {
+                            temp = temp.Substring(3);
+                        }
+
+                        string currentDeclear = temp;
+                       
 
                         TrackNoCustomRelationTemp.custom_materialNo = currentDeclear;//因为报关原因，需要改成71料号（联想料号）done
                         TrackNoCustomRelationTemp.date = querySdr[2].ToString();
@@ -411,6 +426,7 @@ namespace SaledServices.CustomsExport
                         else if (materialbomDic.ContainsKey(nowMatrialNo))//主板只查询物料对照表
                         {
                             currentDeclear = materialbomDic[nowMatrialNo];
+
                         }
                         else
                         {
@@ -546,6 +562,77 @@ namespace SaledServices.CustomsExport
                             init1.chk_code = "";
                             init1.entry_id = materialTemp.declare_number;
                             init1.gatejob_no = materialTemp.custom_request_number;
+                            init1.whs_code = "";
+                            init1.location_code = "";
+                            init1.note = "";
+
+                            storeTransList.Add(init1);
+                        }
+                    }
+
+                    //7-1 SMT/FRU 归还入库 信息
+                    MaterialCustomRelationList.Clear();
+                    cmd.CommandText = "select Id,material_mpn,return_number,processe_date from fru_smt_return_store_record where processe_date between '" + startTime + "' and '" + endTime + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        MaterialCustomRelation MaterialCustomRelationTemp = new MaterialCustomRelation();
+                        MaterialCustomRelationTemp.id = querySdr[0].ToString();
+                        MaterialCustomRelationTemp.buy_order_serial_no = querySdr[1].ToString();//使用料号来查询采购单号的单位，临时使用，特殊使用
+
+                        string currentDeclear = "";
+                        string nowMatrialNo = querySdr[1].ToString();
+                        if (_71bomDic.ContainsKey(nowMatrialNo))//非主板材料只需要查询bom表格
+                        {
+                            currentDeclear = _71bomDic[nowMatrialNo];
+                        }
+                        else
+                        {
+                            MessageBox.Show("SMT/FRU 入库物料" + nowMatrialNo + "对应找不到71料号！");
+                            querySdr.Close();
+                            mConn.Close();
+                            return;
+                        }
+
+                        MaterialCustomRelationTemp.mpn = currentDeclear;//因为报关原因，需要改成71料号（联想料号）TODO
+                        MaterialCustomRelationTemp.num = querySdr[2].ToString();
+                        MaterialCustomRelationTemp.date = querySdr[3].ToString();
+
+                        MaterialCustomRelationList.Add(MaterialCustomRelationTemp);
+                    }
+                    querySdr.Close();
+
+                    if (MaterialCustomRelationList.Count > 0)
+                    {
+                        foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
+                        {
+                            cmd.CommandText = "select declare_unit,declare_number,custom_request_number from stock_in_sheet where mpn ='" + materialTemp.buy_order_serial_no + "' and isdeclare='是'";
+                            querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                materialTemp.declare_unit = querySdr[0].ToString().Trim();
+                               // materialTemp.declare_number = querySdr[1].ToString().Trim();
+                               // materialTemp.custom_request_number = querySdr[2].ToString().Trim();
+                                break;//只需要一个单位数据
+                            }
+                            querySdr.Close();
+                        }
+
+                        //信息完全,生成信息
+                        foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
+                        {
+                            StoreTrans init1 = new StoreTrans();
+                            init1.ems_no = ems_no;
+                            init1.io_no = materialTemp.id;
+                            init1.goods_nature = "I";
+                            init1.io_date = Untils.getCustomDate(materialTemp.date);
+                            init1.cop_g_no = materialTemp.mpn;//因为报关原因，需要改成71料号（联想料号）->上面已经修改
+                            init1.qty = materialTemp.num;
+                            init1.unit = Untils.getCustomCode(materialTemp.declare_unit);
+                            init1.type = "I0003";
+                            init1.chk_code = "";
+                            init1.entry_id = "";
+                            init1.gatejob_no = "";
                             init1.whs_code = "";
                             init1.location_code = "";
                             init1.note = "";
@@ -927,7 +1014,14 @@ namespace SaledServices.CustomsExport
                     {
                         MaterialCustomRelation MaterialCustomRelationTemp = new MaterialCustomRelation();
                         MaterialCustomRelationTemp.id = querySdr[0].ToString();
-                        MaterialCustomRelationTemp.mpn = querySdr[1].ToString();//正常料号
+
+                        string temp = querySdr[1].ToString();
+                        if (temp.Length == 10 && temp.StartsWith("000"))
+                        {
+                            temp = temp.Substring(3);
+                        }
+
+                        MaterialCustomRelationTemp.mpn = temp;//正常料号
                         MaterialCustomRelationTemp.num = "1";
                         MaterialCustomRelationTemp.date = querySdr[2].ToString();
 
