@@ -520,6 +520,12 @@
     <Compile Include="Store\FaultMaterialOutForm.Designer.cs">
       <DependentUpon>FaultMaterialOutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\BufferFaultMBStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\BufferFaultMBStoreForm.Designer.cs">
+      <DependentUpon>BufferFaultMBStoreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test_Outlook_Other\ObeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -753,6 +759,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\FaultMaterialOutForm.resx">
       <DependentUpon>FaultMaterialOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\BufferFaultMBStoreForm.resx">
+      <DependentUpon>BufferFaultMBStoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test_Outlook_Other\ObeForm.resx">
       <DependentUpon>ObeForm.cs</DependentUpon>

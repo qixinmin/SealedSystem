@@ -1175,5 +1175,21 @@ namespace SaledServices
 
             allForm.Add(edte);
         }
+
+        private BufferFaultMBStoreForm bfmbsf;
+        private void bufferMB转不良品库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bfmbsf == null || bfmbsf.IsDisposed)
+            {
+                bfmbsf = new BufferFaultMBStoreForm();
+                bfmbsf.MdiParent = this;
+            }
+
+            bfmbsf.WindowState = FormWindowState.Maximized;
+            bfmbsf.BringToFront();
+            bfmbsf.Show();
+
+            allForm.Add(bfmbsf);
+        }
     }
 }
