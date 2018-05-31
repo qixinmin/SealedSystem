@@ -42,8 +42,6 @@
             this.warranty_periodTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.custom_orderComboBox = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.numTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -76,9 +74,7 @@
             this.storehouseTextBox = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.inputUserTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.source_briefComboBox = new System.Windows.Forms.ComboBox();
             this.custommaterialNoTextBox = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.guaranteeComboBox = new System.Windows.Forms.ComboBox();
@@ -94,12 +90,16 @@
             this.custom_serial_noTextBox = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.flexidTextBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.inputCustommaterialNoTextBox = new System.Windows.Forms.TextBox();
+            this.source_briefComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewWaitToReturn = new System.Windows.Forms.DataGridView();
-            this.label31 = new System.Windows.Forms.Label();
-            this.inputCustommaterialNoTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -349,27 +349,6 @@
             this.custom_orderComboBox.TabIndex = 6;
             this.custom_orderComboBox.SelectedValueChanged += new System.EventHandler(this.custom_orderComboBox_SelectedValueChanged);
             this.custom_orderComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_orderComboBox_KeyPress);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("宋体", 15F);
-            this.label12.Location = new System.Drawing.Point(7, 139);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 20);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "跟踪条码";
-            // 
-            // track_serial_noTextBox
-            // 
-            this.track_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.track_serial_noTextBox.Location = new System.Drawing.Point(230, 143);
-            this.track_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.track_serial_noTextBox.Name = "track_serial_noTextBox";
-            this.track_serial_noTextBox.Size = new System.Drawing.Size(212, 26);
-            this.track_serial_noTextBox.TabIndex = 0;
-            this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
             // 
             // label28
             // 
@@ -706,17 +685,6 @@
             this.inputUserTextBox.Size = new System.Drawing.Size(219, 26);
             this.inputUserTextBox.TabIndex = 7;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 15F);
-            this.label3.Location = new System.Drawing.Point(7, 71);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "来源";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -727,17 +695,6 @@
             this.label10.Size = new System.Drawing.Size(89, 20);
             this.label10.TabIndex = 2;
             this.label10.Text = "客户料号";
-            // 
-            // source_briefComboBox
-            // 
-            this.source_briefComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.source_briefComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.source_briefComboBox.FormattingEnabled = true;
-            this.source_briefComboBox.Location = new System.Drawing.Point(230, 75);
-            this.source_briefComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.source_briefComboBox.Name = "source_briefComboBox";
-            this.source_briefComboBox.Size = new System.Drawing.Size(212, 24);
-            this.source_briefComboBox.TabIndex = 5;
             // 
             // custommaterialNoTextBox
             // 
@@ -901,6 +858,70 @@
             this.flexidTextBox.TabIndex = 0;
             this.flexidTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.flexidTextBox_KeyPress);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("宋体", 15F);
+            this.label12.Location = new System.Drawing.Point(7, 139);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 20);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "跟踪条码";
+            // 
+            // track_serial_noTextBox
+            // 
+            this.track_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.track_serial_noTextBox.Location = new System.Drawing.Point(230, 143);
+            this.track_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.track_serial_noTextBox.Name = "track_serial_noTextBox";
+            this.track_serial_noTextBox.Size = new System.Drawing.Size(212, 26);
+            this.track_serial_noTextBox.TabIndex = 0;
+            this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label31.Location = new System.Drawing.Point(7, 105);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(129, 20);
+            this.label31.TabIndex = 2;
+            this.label31.Text = "输入客户料号";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 15F);
+            this.label3.Location = new System.Drawing.Point(7, 71);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "来源";
+            // 
+            // inputCustommaterialNoTextBox
+            // 
+            this.inputCustommaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputCustommaterialNoTextBox.Location = new System.Drawing.Point(230, 109);
+            this.inputCustommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.inputCustommaterialNoTextBox.Name = "inputCustommaterialNoTextBox";
+            this.inputCustommaterialNoTextBox.Size = new System.Drawing.Size(212, 26);
+            this.inputCustommaterialNoTextBox.TabIndex = 0;
+            this.inputCustommaterialNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputCustommaterialNoTextBox_KeyPress);
+            // 
+            // source_briefComboBox
+            // 
+            this.source_briefComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.source_briefComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.source_briefComboBox.FormattingEnabled = true;
+            this.source_briefComboBox.Location = new System.Drawing.Point(230, 75);
+            this.source_briefComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.source_briefComboBox.Name = "source_briefComboBox";
+            this.source_briefComboBox.Size = new System.Drawing.Size(212, 24);
+            this.source_briefComboBox.TabIndex = 5;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -968,27 +989,6 @@
             this.dataGridViewWaitToReturn.Size = new System.Drawing.Size(560, 281);
             this.dataGridViewWaitToReturn.TabIndex = 1;
             this.dataGridViewWaitToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitToReturn_CellClick);
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label31.Location = new System.Drawing.Point(7, 105);
-            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(129, 20);
-            this.label31.TabIndex = 2;
-            this.label31.Text = "输入客户料号";
-            // 
-            // inputCustommaterialNoTextBox
-            // 
-            this.inputCustommaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputCustommaterialNoTextBox.Location = new System.Drawing.Point(230, 109);
-            this.inputCustommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.inputCustommaterialNoTextBox.Name = "inputCustommaterialNoTextBox";
-            this.inputCustommaterialNoTextBox.Size = new System.Drawing.Size(212, 26);
-            this.inputCustommaterialNoTextBox.TabIndex = 0;
-            this.inputCustommaterialNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputCustommaterialNoTextBox_KeyPress);
             // 
             // DeliveredTableForm
             // 

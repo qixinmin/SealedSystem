@@ -69,6 +69,7 @@ namespace SaledServices.Test_Outlook
                         {
                             this.testerTextBox.Text = LoginForm.currentUser;
                             this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                            this.confirmbutton.Enabled = true;
                         }
                         else
                         {
@@ -204,6 +205,7 @@ namespace SaledServices.Test_Outlook
 
                 conn.Close();
                 MessageBox.Show("插入Package数据OK");
+                this.confirmbutton.Enabled = false;
             }
             catch (Exception ex)
             {

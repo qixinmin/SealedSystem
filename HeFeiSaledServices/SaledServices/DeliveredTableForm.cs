@@ -467,6 +467,13 @@ namespace SaledServices
             }
             try
             {
+                //事前检查
+                if (this.custommaterialNoTextBox.Text.Trim().Substring(3) != this.inputCustommaterialNoTextBox.Text.Trim())
+                {
+                    MessageBox.Show("输入的客户料号与选择的客户料号没有关联，请检查");
+                    return;
+                }
+
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
 
