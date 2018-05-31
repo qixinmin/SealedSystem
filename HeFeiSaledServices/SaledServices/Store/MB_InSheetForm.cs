@@ -174,11 +174,11 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     //更新采购表里面的数量与状态
-                    cmd.CommandText = "update stock_in_sheet set _status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
+                    cmd.CommandText = "update stock_in_sheet set _status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='" + this.vendormaterialNoTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
                     //更新库存占用记录，保证库房的信息被更新
-                    cmd.CommandText = "select number house from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select number house from store_house where mpn='" + this.vendormaterialNoTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
                     string stockNumber = "";
                     if (querySdr.HasRows)
@@ -203,7 +203,7 @@ namespace SaledServices
                     //{
                     //    stockNumber = this.stock_in_numTextBox.Text;
                     //}
-                    cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
+                    cmd.CommandText = "update store_house set mpn = '" + this.vendormaterialNoTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
                     cmd.ExecuteNonQuery();
 
                     //清除历史缓存，保证下次选择是新的
@@ -428,7 +428,7 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
-                cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.vendormaterialNoTextBox.Text.Trim() + "'";
                 querySdr = cmd.ExecuteReader();
                 string house = "", place = "",Id="", number="";
                 while (querySdr.Read())
@@ -610,7 +610,6 @@ namespace SaledServices
                 csform.Show();
             }
         }
-
 
         private void custom_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {

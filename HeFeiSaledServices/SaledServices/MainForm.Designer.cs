@@ -74,6 +74,7 @@
             this.bGA入库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA出库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bufferMB转不良品库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.不良品库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,8 +105,6 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bufferMB转不良品库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bufferMBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -438,8 +437,7 @@
             this.不良品库房储位管理ToolStripMenuItem,
             this.不良品出入库管理ToolStripMenuItem,
             this.fRUSMT不良品出入库管理ToolStripMenuItem,
-            this.不良品出庫ToolStripMenuItem,
-            this.bufferMBToolStripMenuItem});
+            this.不良品出庫ToolStripMenuItem});
             this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.库存管理ToolStripMenuItem.Name = "库存管理ToolStripMenuItem";
             this.库存管理ToolStripMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -500,6 +498,13 @@
             this.mBToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
             this.mBToolStripMenuItem.Text = "Buffer MB入库";
             this.mBToolStripMenuItem.Click += new System.EventHandler(this.mBToolStripMenuItem_Click);
+            // 
+            // bufferMB转不良品库ToolStripMenuItem
+            // 
+            this.bufferMB转不良品库ToolStripMenuItem.Name = "bufferMB转不良品库ToolStripMenuItem";
+            this.bufferMB转不良品库ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.bufferMB转不良品库ToolStripMenuItem.Text = "Buffer MB转不良品库";
+            this.bufferMB转不良品库ToolStripMenuItem.Click += new System.EventHandler(this.bufferMB转不良品库ToolStripMenuItem_Click);
             // 
             // mBToolStripMenuItem1
             // 
@@ -738,19 +743,6 @@
             this.包装ToolStripMenuItem.Text = "包装";
             this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
             // 
-            // bufferMB转不良品库ToolStripMenuItem
-            // 
-            this.bufferMB转不良品库ToolStripMenuItem.Name = "bufferMB转不良品库ToolStripMenuItem";
-            this.bufferMB转不良品库ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
-            this.bufferMB转不良品库ToolStripMenuItem.Text = "Buffer MB转不良品库";
-            this.bufferMB转不良品库ToolStripMenuItem.Click += new System.EventHandler(this.bufferMB转不良品库ToolStripMenuItem_Click);
-            // 
-            // bufferMBToolStripMenuItem
-            // 
-            this.bufferMBToolStripMenuItem.Name = "bufferMBToolStripMenuItem";
-            this.bufferMBToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
-            this.bufferMBToolStripMenuItem.Text = "Buffer MB不良品出库";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -852,7 +844,6 @@
         private System.Windows.Forms.ToolStripMenuItem 上传出货海关信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bufferMB转不良品库ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bufferMBToolStripMenuItem;
     }
 }
 

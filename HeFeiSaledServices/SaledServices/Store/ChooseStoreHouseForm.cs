@@ -68,7 +68,6 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
-
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -78,9 +77,7 @@ namespace SaledServices
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 
-                string sqlStr = "select top 100 * from " + tableName +" where mpn=''";
-
-                
+                string sqlStr = "select top 100 * from " + tableName +" where mpn=''";                
 
                 if (this.placeTextBox.Text.Trim() != "")
                 {
@@ -128,8 +125,7 @@ namespace SaledServices
             dr["house"] = this.houseComboBox.Text.Trim();
             dr["place"] = this.placeTextBox.Text.Trim();
             dr["mpn"] = this.mpntextBox.Text.Trim();
-            dr["number"] = this.numbertextBox.Text.Trim();
-            
+            dr["number"] = this.numbertextBox.Text.Trim();            
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
@@ -249,6 +245,10 @@ namespace SaledServices
             {
                 ((FaultSMTStoreForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseComboBox.Text.Trim(), this.placeTextBox.Text.Trim());
             }
+            else if (mFromFrom is BufferFaultMBStoreForm)
+            {
+                ((BufferFaultMBStoreForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseComboBox.Text.Trim(), this.placeTextBox.Text.Trim());
+            }
             
             this.Close();
         }
@@ -298,7 +298,6 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
         }
-
 
          private void placeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {

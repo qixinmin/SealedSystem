@@ -51,6 +51,8 @@
             this.unitComboBox = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.currentNumbertextBox = new System.Windows.Forms.TextBox();
+            this.ngHouseComboBox = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,7 +142,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 15F);
-            this.label2.Location = new System.Drawing.Point(51, 25);
+            this.label2.Location = new System.Drawing.Point(662, 82);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 20);
@@ -149,7 +151,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(203, 25);
+            this.idTextBox.Location = new System.Drawing.Point(761, 72);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
@@ -297,11 +299,37 @@
             this.currentNumbertextBox.Size = new System.Drawing.Size(164, 30);
             this.currentNumbertextBox.TabIndex = 2;
             // 
+            // ngHouseComboBox
+            // 
+            this.ngHouseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ngHouseComboBox.FormattingEnabled = true;
+            this.ngHouseComboBox.Items.AddRange(new object[] {
+            "主要不良品库",
+            "Buffer不良品库"});
+            this.ngHouseComboBox.Location = new System.Drawing.Point(203, 27);
+            this.ngHouseComboBox.Name = "ngHouseComboBox";
+            this.ngHouseComboBox.Size = new System.Drawing.Size(164, 28);
+            this.ngHouseComboBox.TabIndex = 10;
+            this.ngHouseComboBox.SelectedValueChanged += new System.EventHandler(this.ngHouseComboBox_SelectedValueChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("宋体", 15F);
+            this.label10.Location = new System.Drawing.Point(51, 27);
+            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 20);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "库房类型";
+            // 
             // FaultMaterialOutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1185, 749);
+            this.Controls.Add(this.ngHouseComboBox);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.unitComboBox);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.label2);
@@ -361,5 +389,7 @@
         private System.Windows.Forms.ComboBox unitComboBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox currentNumbertextBox;
+        private System.Windows.Forms.ComboBox ngHouseComboBox;
+        private System.Windows.Forms.Label label10;
     }
 }

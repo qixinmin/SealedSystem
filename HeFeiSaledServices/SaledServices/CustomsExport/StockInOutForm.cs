@@ -350,7 +350,7 @@ namespace SaledServices.CustomsExport
                         string currentDeclear = temp;
                        
 
-                        TrackNoCustomRelationTemp.custom_materialNo = currentDeclear;//因为报关原因，需要改成71料号（联想料号）done
+                        TrackNoCustomRelationTemp.custom_materialNo = currentDeclear;
                         TrackNoCustomRelationTemp.date = querySdr[2].ToString();
 
                         TrackNoCustomRelationList.Add(TrackNoCustomRelationTemp);
@@ -390,7 +390,7 @@ namespace SaledServices.CustomsExport
                             init1.io_no = trackTemp.trackno;
                             init1.goods_nature = "E";
                             init1.io_date = Untils.getCustomDate(trackTemp.date);
-                            init1.cop_g_no = trackTemp.custom_materialNo;//因为报关原因，需要改成71料号（联想料号）-》上面已经修改
+                            init1.cop_g_no = trackTemp.custom_materialNo;
                             init1.qty = "1";
                             init1.unit = Untils.getCustomCode(trackTemp.declare_unit);
                             init1.type = "I0003";
@@ -427,6 +427,13 @@ namespace SaledServices.CustomsExport
                         {
                             currentDeclear = materialbomDic[nowMatrialNo];
 
+                            string temp = currentDeclear;
+                            if (temp.Length == 10 && temp.StartsWith("000"))
+                            {
+                                temp = temp.Substring(3);
+                            }
+
+                            currentDeclear = temp;
                         }
                         else
                         {
@@ -939,6 +946,13 @@ namespace SaledServices.CustomsExport
                         if (materialbomDic.ContainsKey(nowMatrialNo))//主板只查询物料对照表
                         {
                             currentDeclear = materialbomDic[nowMatrialNo];
+
+                            string temp = currentDeclear;
+                            if (temp.Length == 10 && temp.StartsWith("000"))
+                            {
+                                temp = temp.Substring(3);
+                            }
+                            currentDeclear = temp;
                         }
                         else
                         {
@@ -1007,64 +1021,68 @@ namespace SaledServices.CustomsExport
                     }
 
                     //13. MB出库信息
-                    MaterialCustomRelationList.Clear();
-                    cmd.CommandText = "select track_serial_no,custommaterialNo,input_date from mb_out_stock where input_date between '" + startTime + "' and '" + endTime + "' and isdeclare = '是'";
-                    querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
-                    {
-                        MaterialCustomRelation MaterialCustomRelationTemp = new MaterialCustomRelation();
-                        MaterialCustomRelationTemp.id = querySdr[0].ToString();
 
-                        string temp = querySdr[1].ToString();
-                        if (temp.Length == 10 && temp.StartsWith("000"))
-                        {
-                            temp = temp.Substring(3);
-                        }
 
-                        MaterialCustomRelationTemp.mpn = temp;//正常料号
-                        MaterialCustomRelationTemp.num = "1";
-                        MaterialCustomRelationTemp.date = querySdr[2].ToString();
+                    //MaterialCustomRelationList.Clear();
+                    //cmd.CommandText = "select track_serial_no,custommaterialNo,input_date from mb_out_stock where input_date between '" + startTime + "' and '" + endTime + "' and isdeclare = '是'";
+                    //querySdr = cmd.ExecuteReader();
+                    //while (querySdr.Read())
+                    //{
+                    //    MaterialCustomRelation MaterialCustomRelationTemp = new MaterialCustomRelation();
+                    //    MaterialCustomRelationTemp.id = querySdr[0].ToString();
 
-                        MaterialCustomRelationList.Add(MaterialCustomRelationTemp);
-                    }
-                    querySdr.Close();
+                    //    string temp = querySdr[1].ToString();
+                    //    if (temp.Length == 10 && temp.StartsWith("000"))
+                    //    {
+                    //        temp = temp.Substring(3);
+                    //    }
 
-                    if (MaterialCustomRelationList.Count > 0)
-                    {
-                        foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
-                        {
-                            cmd.CommandText = "select declare_unit from stock_in_sheet where mpn ='" + materialTemp.mpn + "'";
-                            querySdr = cmd.ExecuteReader();
-                            while (querySdr.Read())
-                            {
-                                materialTemp.declare_unit = querySdr[0].ToString();
-                                break;//只取一次信息即可
-                            }
-                            querySdr.Close();
-                        }
+                    //    MaterialCustomRelationTemp.mpn = temp;//正常料号
+                    //    MaterialCustomRelationTemp.num = "1";
+                    //    MaterialCustomRelationTemp.date = querySdr[2].ToString();
 
-                        //信息完全,生成信息
-                        foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
-                        {
-                            StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
-                            init1.io_no = materialTemp.id;
-                            init1.goods_nature = "I";
-                            init1.io_date = Untils.getCustomDate(materialTemp.date);
-                            init1.cop_g_no = materialTemp.mpn;//正常料号
-                            init1.qty = "-" + materialTemp.num;
-                            init1.unit = Untils.getCustomCode(materialTemp.declare_unit);
-                            init1.type = "E0003";
-                            init1.chk_code = "";
-                            init1.entry_id = "";
-                            init1.gatejob_no = "";
-                            init1.whs_code = "";
-                            init1.location_code = "";
-                            init1.note = "";
+                    //    MaterialCustomRelationList.Add(MaterialCustomRelationTemp);
+                    //}
+                    //querySdr.Close();
 
-                            storeTransList.Add(init1);
-                        }
-                    }
+                    //if (MaterialCustomRelationList.Count > 0)
+                    //{
+                    //    foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
+                    //    {
+                    //        cmd.CommandText = "select declare_unit from stock_in_sheet where mpn ='" + materialTemp.mpn + "'";
+                    //        querySdr = cmd.ExecuteReader();
+                    //        while (querySdr.Read())
+                    //        {
+                    //            materialTemp.declare_unit = querySdr[0].ToString();
+                    //            break;//只取一次信息即可
+                    //        }
+                    //        querySdr.Close();
+                    //    }
+
+                    //    //信息完全,生成信息
+                    //    foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
+                    //    {
+                    //        StoreTrans init1 = new StoreTrans();
+                    //        init1.ems_no = ems_no;
+                    //        init1.io_no = materialTemp.id;
+                    //        init1.goods_nature = "I";
+                    //        init1.io_date = Untils.getCustomDate(materialTemp.date);
+                    //        init1.cop_g_no = materialTemp.mpn;//正常料号
+                    //        init1.qty = "-" + materialTemp.num;
+                    //        init1.unit = Untils.getCustomCode(materialTemp.declare_unit);
+                    //        init1.type = "E0003";
+                    //        init1.chk_code = "";
+                    //        init1.entry_id = "";
+                    //        init1.gatejob_no = "";
+                    //        init1.whs_code = "";
+                    //        init1.location_code = "";
+                    //        init1.note = "";
+
+                    //        storeTransList.Add(init1);
+                    //    }
+                    //}
+
+
                     mConn.Close();
                 }
                 catch (Exception ex)

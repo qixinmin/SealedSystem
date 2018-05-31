@@ -17,17 +17,44 @@ namespace SaledServices
         private SqlDataAdapter sda;
         private String tableName = "mb_smt_bga_ng_out_house_table";
 
+        private string ng_tablename = "store_house_ng";
+
         private ChooseStock chooseStock = new ChooseStock();
 
         public FaultMaterialOutForm()
         {
             InitializeComponent();
 
+            ngHouseComboBox.SelectedIndex = 0;
+
             if (User.UserSelfForm.isSuperManager() == false)
             {
                 this.modify.Visible = false;
                 this.delete.Visible = false;
             }
+        }
+
+        private void ngHouseComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            this.idTextBox.Text = "";
+            this.mpnTextBox.Text = ""; 
+            this.numberTextBox.Text = "";
+            this.unitComboBox.Text = "";
+            this.housetextBox.Text = "";
+            this.placetextBox.Text = "";
+            this.declare_numberTextBox.Text= "";
+            this.custom_request_numberTextBox.Text = "";
+            if (ngHouseComboBox.Text == "主要不良品库")
+            {
+                ng_tablename = "store_house_ng";
+            }
+            else//Buffer不良品库
+            {
+                ng_tablename = "store_house_ng_buffer_mb";
+            }
+
+            dataGridView1.DataSource = null;
+            dataGridView1.Columns.Clear();           
         }
 
         private void add_Click(object sender, EventArgs e)
@@ -58,7 +85,7 @@ namespace SaledServices
 
                     //不良品库, 需要更新库房对应储位的数量 减去 本次出库的数量
                     //根据mpn查对应的查询
-                    cmd.CommandText = "select house,place,Id,number from store_house_ng where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select house,place,Id,number from " + ng_tablename + " where mpn='" + this.mpnTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string house = "", place = "", Id = "", number = "0";
                     while (querySdr.Read())
@@ -79,7 +106,7 @@ namespace SaledServices
                         return;
                     }
 
-                    cmd.CommandText = "update store_house_ng set number = '" + (stockNumber - outNumber) + "', mpn='" + this.mpnTextBox.Text.Trim() + "'  where house='" + this.housetextBox.Text + "' and place='" + this.placetextBox.Text + "'";
+                    cmd.CommandText = "update " + ng_tablename + " set number = '" + (stockNumber - outNumber) + "', mpn='" + this.mpnTextBox.Text.Trim() + "'  where house='" + this.housetextBox.Text + "' and place='" + this.placetextBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
                     //插入一条不良品出库记录
@@ -206,6 +233,12 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                if (this.mpnTextBox.Text == "")
+                {
+                    MessageBox.Show("MPN的内容不能为空！");
+                    return;
+                }
+
                 try
                 {
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -215,7 +248,7 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select house,place,Id,number from store_house_ng where mpn like '%" + this.mpnTextBox.Text.Trim() + "%'";
+                    cmd.CommandText = "select house,place,Id,number from " + ng_tablename + " where mpn like '%" + this.mpnTextBox.Text.Trim() + "%'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string house = "", place = "", Id = "", number = "";
                     while (querySdr.Read())
@@ -248,5 +281,7 @@ namespace SaledServices
                 }
              }
         }
+
+        
     }
 }

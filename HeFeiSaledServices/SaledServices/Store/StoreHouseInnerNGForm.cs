@@ -20,6 +20,7 @@ namespace SaledServices
         public StoreHouseInnerNGForm()
         {
             InitializeComponent();
+            ngHouseComboBox.SelectedIndex = 0;
             loadAdditionInfomation();
 
             if (User.UserSelfForm.isSuperManager() == false)
@@ -28,7 +29,29 @@ namespace SaledServices
                 this.delete.Visible = false;
             }
         }
+        private void ngHouseComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            this.idTextBox.Text = "";
+            this.houseComboBox.Text = "";
+            this.houseComboBox.Items.Clear();
+            this.placeTextBox.Text = "";
+            this.mpntextBox.Text = "";
+            this.numbertextBox.Text = "";
+            
+            if (ngHouseComboBox.Text == "主要不良品库")
+            {
+                tableName = "store_house_ng";
+            }
+            else//Buffer不良品库
+            {
+                tableName = "store_house_ng_buffer_mb";
+            }
 
+            dataGridView1.DataSource = null;
+            dataGridView1.Columns.Clear();
+
+            loadAdditionInfomation();
+        }
         private void loadAdditionInfomation()
         {
             try
@@ -47,7 +70,10 @@ namespace SaledServices
                     string temp = querySdr[0].ToString();
                     if (temp != "")
                     {
-                        this.houseComboBox.Items.Add(temp);
+                        if (this.houseComboBox.Items.Contains(temp.Trim()) == false)
+                        {
+                            this.houseComboBox.Items.Add(temp.Trim());
+                        }
                     }
                 }
                 querySdr.Close();
@@ -264,6 +290,6 @@ namespace SaledServices
             {
                 query_Click(null, null);
             }
-        }
+        }       
     }
 }

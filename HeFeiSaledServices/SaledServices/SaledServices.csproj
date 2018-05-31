@@ -220,13 +220,13 @@
     <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomsExport\GenerateWorkOrderBody.cs" />
     <Compile Include="CustomsExport\ReturnCustomInfoImportForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CustomsExport\ReturnCustomInfoImportForm.Designer.cs">
       <DependentUpon>ReturnCustomInfoImportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomsExport\GenerateWorkOrderBody.cs" />
     <Compile Include="CustomsExport\GenerateWorkOrderHead.cs" />
     <Compile Include="Export\ExportDatabaseToExcel.cs">
       <SubType>Form</SubType>

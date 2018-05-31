@@ -18,12 +18,22 @@ in_number NVARCHAR(128), /*入库数量*/
 input_date date, /*输入日期*/
 )
 
-/*SMT/BGA不良品库房信息 把MB不良品库也放入一起*/
+/* 只放入buffer MB不良品库*/
+/*buffer 主板直接入不良品库， 为海关信息生成做准备*/
+CREATE TABLE store_house_ng_buffer_mb(
+Id INT PRIMARY KEY IDENTITY, 
+house NVARCHAR(128), /*库房*/
+place NVARCHAR(128), /*储位*/
+mpn NVARCHAR(128), /*存储料号(MB的71料号,vendormaterialNo)*/
+number NVARCHAR(128), /*已存数量,不限数量的，可以累积*/
+)
+
+/*SMT/BGA不良品库房信息 把CID的MB不良品库也放入一起*/
 CREATE TABLE store_house_ng(
 Id INT PRIMARY KEY IDENTITY, 
 house NVARCHAR(128), /*库房*/
-place NVARCHAR(128), /*储位,储位的名称开始字母可以区分可以存储的类型，fru/smt, bga, mb*/
-mpn NVARCHAR(128), /*存储料号(如果是MB则对应客户料号)*/
+place NVARCHAR(128), /*储位*/
+mpn NVARCHAR(128), /*存储料号(如果是MB则对应客户料号 0开始的料号)*/
 number NVARCHAR(128), /*已存数量,不限数量的，可以累积*/
 )
 
@@ -55,20 +65,13 @@ Id INT PRIMARY KEY IDENTITY,
 track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
-source NVARCHAR(128) NOT NULL, /*来源*/
-orderno NVARCHAR(128) NOT NULL, /*订单编号*/
-receivedate date, /*收货日期*/
-mb_describe NVARCHAR(128), /*MB描述*/
 mb_brief NVARCHAR(128), /*MB简称*/
 custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
 vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
+vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-mb_make_date date, /*MB生产日期*/
-customFault NVARCHAR(128) NOT NULL, /*客户故障*/
-ECO NVARCHAR(128), /*ECO*/
-repairer NVARCHAR(128) NOT NULL, /*维修人*/
-repair_date date, /*修复日期*/
-custommaterialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+inputer NVARCHAR(128) NOT NULL, /*维修人*/
+input_date date, /*输入日期*/
 )
 
 /*MB不良品入库表记录 CID专用*/
@@ -158,21 +161,12 @@ in_number NVARCHAR(128), /*入库数量*/
 input_date date, /*输入日期*/
 )
 
-/*buffer 主板直接入不良品库， 为海关信息生成做准备*/
-CREATE TABLE store_house_ng_buffer_mb(
-Id INT PRIMARY KEY IDENTITY, 
-house NVARCHAR(128), /*库房*/
-place NVARCHAR(128), /*储位,储位的名称开始字母可以区分可以存储的类型，fru/smt, bga, mb*/
-mpn NVARCHAR(128), /*存储料号(如果是MB则对应客户料号)*/
-number NVARCHAR(128), /*已存数量,不限数量的，可以累积*/
-)
-
 /*库房信息*/
 CREATE TABLE store_house(
 Id INT PRIMARY KEY IDENTITY, 
 house NVARCHAR(128), /*库房*/
 place NVARCHAR(128), /*储位,储位的名称开始字母可以区分可以存储的类型，fru/smt, bga, mb*/
-mpn NVARCHAR(128), /*存储料号*/
+mpn NVARCHAR(128), /*存储料号,购买的主板信息使用71料号*/
 number NVARCHAR(128), /*已存数量,不限数量的，可以累积*/
 )
 

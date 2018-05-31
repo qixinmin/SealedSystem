@@ -178,16 +178,10 @@ namespace SaledServices.CustomsExport
                     }
                     else if(currentDeclear == "")
                     {
-                        if(materialbomDic.ContainsKey( querySdr[0].ToString()))
+                        currentDeclear = querySdr[0].ToString();//buffer主板直接用71料号存储的                       
+                        if (currentDeclear.Length == 10 && currentDeclear.StartsWith("000"))
                         {
-                            currentDeclear = materialbomDic[querySdr[0].ToString()];
-                        }
-                        else
-                        {
-                            MessageBox.Show("良品库房 库存的物料" + querySdr[0].ToString() + "对应找不到71料号！");
-                            querySdr.Close();
-                            mConn.Close();
-                            return;
+                            currentDeclear = currentDeclear.Substring(3);
                         }
                     }
 
@@ -212,7 +206,7 @@ namespace SaledServices.CustomsExport
                 }
                 querySdr.Close();
 
-                //3 读取MB/SMT/BGA不良品信息
+                //3 读取MB/SMT/BGA不良品信息，此处的MB是由CID过来的，所以直接用原始料号即可
                 cmd.CommandText = "select mpn, number from store_house_ng where mpn !='' and number !='0'";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
@@ -227,16 +221,10 @@ namespace SaledServices.CustomsExport
                     }
                     else if (currentDeclear == "")
                     {
-                        if (materialbomDic.ContainsKey(querySdr[0].ToString()))
+                        currentDeclear = querySdr[0].ToString();//buffer主板直接用71料号存储的                       
+                        if (currentDeclear.Length == 10 && currentDeclear.StartsWith("000"))
                         {
-                            currentDeclear = materialbomDic[querySdr[0].ToString()];
-                        }
-                        else
-                        {
-                            MessageBox.Show("MB/SMT/BGA不良品库存的物料" + querySdr[0].ToString() + "对应找不到71料号！");
-                            querySdr.Close();
-                            mConn.Close();
-                            return;
+                            currentDeclear = currentDeclear.Substring(3);
                         }
                     }
 
@@ -260,7 +248,39 @@ namespace SaledServices.CustomsExport
                     init1.note = "";
                     storeInitList.Add(init1);
                 }
-                querySdr.Close();               
+                querySdr.Close();
+
+                //3-1 读取MB Buffer不良品信息，此处的MB是由良品库过来的，所以直接用原始料号71即可
+                cmd.CommandText = "select mpn, number from store_house_ng_buffer_mb where mpn !='' and number !='0'";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    StoreInit init1 = new StoreInit();
+                    init1.ems_no = ems_no;
+
+                    string currentDeclear = querySdr[0].ToString().Trim();
+
+                    init1.cop_g_no = currentDeclear;//因为报关原因，需要改成71料号（联想料号）TODO
+                    init1.qty = querySdr[1].ToString();
+
+                    try
+                    {
+                        init1.unit = Untils.getCustomCode(mpn_unit[querySdr[0].ToString()]);
+                    }
+                    catch (Exception ex)
+                    {
+                        init1.unit = "007";
+                    }
+                    init1.goods_nature = "I";//代码
+                    init1.bom_version = "";
+                    init1.check_date = Untils.getCustomCurrentDate();
+                    init1.date_type = "C";//代码
+                    init1.whs_code = "";
+                    init1.location_code = "";
+                    init1.note = "";
+                    storeInitList.Add(init1);
+                }
+                querySdr.Close();    
 
                 //4 读取MB待维修库信息
                 cmd.CommandText = "select custom_materialNo,leftNumber from wait_repair_left_house_table where leftNumber !='0'";

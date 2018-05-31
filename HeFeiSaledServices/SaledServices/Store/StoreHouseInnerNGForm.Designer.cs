@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.placeTextBox = new System.Windows.Forms.TextBox();
@@ -46,13 +46,15 @@
             this.releasePlacebutton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.houseComboBox = new System.Windows.Forms.ComboBox();
+            this.ngHouseComboBox = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label1.Font = new System.Drawing.Font("宋体", 15F);
             this.label1.Location = new System.Drawing.Point(436, 56);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
@@ -63,8 +65,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(95, 236);
@@ -88,7 +90,7 @@
             // 
             // add
             // 
-            this.add.Font = new System.Drawing.Font("SimSun", 15F);
+            this.add.Font = new System.Drawing.Font("宋体", 15F);
             this.add.Location = new System.Drawing.Point(95, 159);
             this.add.Margin = new System.Windows.Forms.Padding(5);
             this.add.Name = "add";
@@ -100,7 +102,7 @@
             // 
             // query
             // 
-            this.query.Font = new System.Drawing.Font("SimSun", 15F);
+            this.query.Font = new System.Drawing.Font("宋体", 15F);
             this.query.Location = new System.Drawing.Point(260, 159);
             this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
@@ -112,7 +114,7 @@
             // 
             // modify
             // 
-            this.modify.Font = new System.Drawing.Font("SimSun", 15F);
+            this.modify.Font = new System.Drawing.Font("宋体", 15F);
             this.modify.Location = new System.Drawing.Point(422, 159);
             this.modify.Margin = new System.Windows.Forms.Padding(5);
             this.modify.Name = "modify";
@@ -124,7 +126,7 @@
             // 
             // delete
             // 
-            this.delete.Font = new System.Drawing.Font("SimSun", 15F);
+            this.delete.Font = new System.Drawing.Font("宋体", 15F);
             this.delete.Location = new System.Drawing.Point(588, 159);
             this.delete.Margin = new System.Windows.Forms.Padding(5);
             this.delete.Name = "delete";
@@ -137,8 +139,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label2.Location = new System.Drawing.Point(95, 11);
+            this.label2.Font = new System.Drawing.Font("宋体", 15F);
+            this.label2.Location = new System.Drawing.Point(440, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 20);
@@ -147,7 +149,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(243, 11);
+            this.idTextBox.Location = new System.Drawing.Point(588, 0);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
@@ -157,7 +159,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label3.Font = new System.Drawing.Font("宋体", 15F);
             this.label3.Location = new System.Drawing.Point(91, 53);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
@@ -168,7 +170,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label4.Font = new System.Drawing.Font("宋体", 15F);
             this.label4.Location = new System.Drawing.Point(436, 107);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
@@ -179,7 +181,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label5.Font = new System.Drawing.Font("宋体", 15F);
             this.label5.Location = new System.Drawing.Point(91, 107);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
@@ -207,7 +209,7 @@
             // 
             // releasePlacebutton
             // 
-            this.releasePlacebutton.Font = new System.Drawing.Font("SimSun", 15F);
+            this.releasePlacebutton.Font = new System.Drawing.Font("宋体", 15F);
             this.releasePlacebutton.Location = new System.Drawing.Point(739, 289);
             this.releasePlacebutton.Margin = new System.Windows.Forms.Padding(5);
             this.releasePlacebutton.Name = "releasePlacebutton";
@@ -234,11 +236,36 @@
             this.houseComboBox.Size = new System.Drawing.Size(164, 28);
             this.houseComboBox.TabIndex = 7;
             // 
+            // ngHouseComboBox
+            // 
+            this.ngHouseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ngHouseComboBox.FormattingEnabled = true;
+            this.ngHouseComboBox.Items.AddRange(new object[] {
+            "主要不良品库",
+            "Buffer不良品库"});
+            this.ngHouseComboBox.Location = new System.Drawing.Point(243, 2);
+            this.ngHouseComboBox.Name = "ngHouseComboBox";
+            this.ngHouseComboBox.Size = new System.Drawing.Size(164, 28);
+            this.ngHouseComboBox.TabIndex = 8;
+            this.ngHouseComboBox.SelectedValueChanged += new System.EventHandler(this.ngHouseComboBox_SelectedValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 15F);
+            this.label7.Location = new System.Drawing.Point(91, 5);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 20);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "库房类型";
+            // 
             // StoreHouseInnerNGForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 716);
+            this.Controls.Add(this.ngHouseComboBox);
             this.Controls.Add(this.houseComboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.idTextBox);
@@ -254,9 +281,10 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("SimSun", 15F);
+            this.Font = new System.Drawing.Font("宋体", 15F);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "StoreHouseInnerNGForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -286,5 +314,7 @@
         private System.Windows.Forms.Button releasePlacebutton;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox houseComboBox;
+        private System.Windows.Forms.ComboBox ngHouseComboBox;
+        private System.Windows.Forms.Label label7;
     }
 }

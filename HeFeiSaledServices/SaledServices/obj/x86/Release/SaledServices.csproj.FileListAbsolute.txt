@@ -728,6 +728,7 @@ F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.StockIn
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_SMT_InSheetForm.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_SMT_OutSheetForm.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.FaultMaterialOutForm.resources
+F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.BufferFaultMBStoreForm.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.ObeForm.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.RunningForm.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.OutLookForm.resources
@@ -744,4 +745,3 @@ F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.VendorF
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
-F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.BufferFaultMBStoreForm.resources
