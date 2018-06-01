@@ -443,6 +443,26 @@ namespace SaledServices
                 return;
             }
 
+            string chooseBGA = "";
+            if (this.VGA.Checked)
+            {
+                chooseBGA = "VGA";
+            }
+            else if (this.CPU.Checked)
+            {
+                chooseBGA = "CPU";
+            }
+            else if (this.PCH.Checked)
+            {
+                chooseBGA = "PCH";
+            }
+
+            DialogResult dr = MessageBox.Show("你确定选择的是[" + chooseBGA+"]", "提示", MessageBoxButtons.OKCancel);
+            if (dr == DialogResult.Cancel)
+            {
+                return;
+            }
+
             bool error = false;
             //1.包含NTF的逻辑， 所有输入的有效信息均为NTF， 2. 若第一次输入信息没有输入完毕，需提醒并把某些字段清空即可
             string track_serial_no_txt = this.track_serial_noTextBox.Text.Trim();
