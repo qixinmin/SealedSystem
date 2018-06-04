@@ -414,7 +414,8 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                doRequestUsingMpn();            
+                //doRequestUsingMpn();            
+                queryStock_Click(null, null);
             }
         }
 
@@ -455,6 +456,11 @@ namespace SaledServices
                 if (this.material_nameTextBox.Text != "")
                 {
                     sql += " and material_name like '%" + this.material_nameTextBox.Text + "%'";
+                }
+
+                if (this.mpnTextBox.Text != "")
+                {
+                    sql += " and mpn like '%" + this.mpnTextBox.Text + "%'";
                 }
 
                 //if (this.describeTextBox.Text != "")
