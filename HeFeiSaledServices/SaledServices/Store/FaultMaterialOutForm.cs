@@ -43,7 +43,6 @@ namespace SaledServices
             this.housetextBox.Text = "";
             this.placetextBox.Text = "";
             this.declare_numberTextBox.Text= "";
-            this.custom_request_numberTextBox.Text = "";
             if (ngHouseComboBox.Text == "主要不良品库")
             {
                 ng_tablename = "store_house_ng";
@@ -65,7 +64,7 @@ namespace SaledServices
                 || this.housetextBox.Text.Trim() == ""
                 || this.placetextBox.Text.Trim() == ""
                 || this.declare_numberTextBox.Text.Trim() == ""
-                || this.custom_request_numberTextBox.Text.Trim() == ""
+               
                 )
             {
                 MessageBox.Show("需要输入的内容为空!");
@@ -116,7 +115,7 @@ namespace SaledServices
                         DateTime.Now.ToString("yyyy/MM/dd") + "','" +
                         this.unitComboBox.Text.Trim() + "','" +
                         this.declare_numberTextBox.Text.Trim() + "','" +
-                        this.custom_request_numberTextBox.Text.Trim() +                         
+                        "" + //申请单号可以为空在E0002的时候                 
                         "')";
 
                     cmd.ExecuteNonQuery();
@@ -134,6 +133,14 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+
+            this.mpnTextBox.Text ="";
+            this.numberTextBox.Text = "";
+            this.placetextBox.Text = "";
+            this.housetextBox.Text = "";
+            this.idTextBox.Text = "";
+            this.currentNumbertextBox.Text = "";
+            this.unitComboBox.Text = "";
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -144,7 +151,7 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select Id,mpn,in_number,declare_unit,declare_number,custom_request_number from  " + tableName;
+                cmd.CommandText = "select Id,mpn,in_number,declare_unit,declare_number from  " + tableName;
                 cmd.CommandType = CommandType.Text;
 
                 sda = new SqlDataAdapter();
@@ -159,7 +166,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "MPN","数量","单位","报关单号","申请单号" };
+            string[] hTxt = { "ID", "MPN","数量","单位","报关单号" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -177,7 +184,6 @@ namespace SaledServices
             dr["in_number"] = this.numberTextBox.Text.Trim();
             dr["declare_unit"] = this.unitComboBox.Text.Trim();
             dr["declare_number"] = this.declare_numberTextBox.Text.Trim();
-            dr["custom_request_number"] = this.custom_request_numberTextBox.Text.Trim();
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
@@ -225,8 +231,7 @@ namespace SaledServices
             this.mpnTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
             this.numberTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
             this.unitComboBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
-            this.declare_numberTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
-            this.custom_request_numberTextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();          
+            this.declare_numberTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString(); 
         }
 
         private void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -251,14 +256,31 @@ namespace SaledServices
                     cmd.CommandText = "select house,place,Id,number from " + ng_tablename + " where mpn like '%" + this.mpnTextBox.Text.Trim() + "%'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string house = "", place = "", Id = "", number = "";
+
+                    int rowNum = 0;
                     while (querySdr.Read())
                     {
                         house = querySdr[0].ToString();
                         place = querySdr[1].ToString();
                         Id = querySdr[2].ToString();
                         number = querySdr[3].ToString();
+
+                        rowNum++;
                     }
                     querySdr.Close();
+
+                    if (rowNum == 0)
+                    {
+                        MessageBox.Show("输入的内容查出 0 条记录，请输入准确料号！");
+                        mConn.Close();
+                        return;
+                    }
+                    else if (rowNum > 1)
+                    {
+                        MessageBox.Show("输入的内容查出多条记录，请输入准确料号！");
+                        mConn.Close();
+                        return;
+                    }
 
                     if (house != "" && place != "")
                     {                        
@@ -280,8 +302,6 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
              }
-        }
-
-        
+        }        
     }
 }

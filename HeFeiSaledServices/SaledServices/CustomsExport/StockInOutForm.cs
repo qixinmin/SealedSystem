@@ -175,7 +175,7 @@ namespace SaledServices.CustomsExport
                             init1.type = "I0002";
                             init1.chk_code = "";
                             init1.entry_id = trackTemp.declare_number;
-                            init1.gatejob_no = trackTemp.custom_request_number;
+                            init1.gatejob_no = "";
                             init1.whs_code = "";
                             init1.location_code = "";
                             init1.note = "";
@@ -453,7 +453,7 @@ namespace SaledServices.CustomsExport
                         MaterialCustomRelationList.Add(MaterialCustomRelationTemp);
                     }
                     querySdr.Close();
-                    if (TrackNoCustomRelationList.Count > 0)
+                    if (MaterialCustomRelationList.Count > 0)
                     {
                         //信息完全,生成信息
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
@@ -477,6 +477,7 @@ namespace SaledServices.CustomsExport
                             {
                                 init1.goods_nature = "I";
                             }
+                            querySdr.Close();
 
                             init1.io_date = Untils.getCustomDate(materialTemp.date);
                             init1.cop_g_no = materialTemp.mpn;//因为报关原因，需要改成71料号（联想料号）->上面已经修改
@@ -485,7 +486,7 @@ namespace SaledServices.CustomsExport
                             init1.type = "E0002";
                             init1.chk_code = "";
                             init1.entry_id = materialTemp.declare_number;
-                            init1.gatejob_no = materialTemp.custom_request_number;
+                            init1.gatejob_no = "";
                             init1.whs_code = "";
                             init1.location_code = "";
                             init1.note = "";

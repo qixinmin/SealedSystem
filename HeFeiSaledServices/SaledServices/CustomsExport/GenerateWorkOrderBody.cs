@@ -62,7 +62,7 @@ namespace SaledServices.CustomsExport
                     }
 
                     MaterialCustomRelationTemp.mpn = _71bomDic[querySdr[1].ToString()];//因为报关原因，需要改成71料号（联想料号）done
-                    MaterialCustomRelationTemp.num = querySdr[2].ToString();
+                    MaterialCustomRelationTemp.num = "-"+querySdr[2].ToString();//海关要求表体为负数
                     MaterialCustomRelationTemp.date = querySdr[3].ToString();
 
                     MaterialCustomRelationList.Add(MaterialCustomRelationTemp);                   
@@ -115,7 +115,7 @@ namespace SaledServices.CustomsExport
 
                     MaterialCustomRelationTemp.mpn = _71bomDic[querySdr[1].ToString()];//因为报关原因，需要改成71料号（联想料号）done
                     MaterialCustomRelationTemp.date = querySdr[2].ToString();
-                    MaterialCustomRelationTemp.num = "1";
+                    MaterialCustomRelationTemp.num = "-1";
 
                     MaterialCustomRelationList.Add(MaterialCustomRelationTemp);
                 }
