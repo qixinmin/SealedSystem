@@ -207,7 +207,7 @@ namespace SaledServices.CustomsExport
                             init1.note = "";
 
 
-                            storeTransList.Add(init1);
+                          //  storeTransList.Add(init1);
                         }
                     }
 
@@ -276,7 +276,7 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                            storeTransList.Add(init1);
+                           // storeTransList.Add(init1);
                         }
 
                         generateWorkOrderHead.addWorkListHeads(TrackNoCustomRelationList,true, ref materialbomDic);
@@ -401,7 +401,7 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                            storeTransList.Add(init1);
+                           // storeTransList.Add(init1);
                         }
 
                         generateWorkOrderHead.addWorkListHeads(TrackNoCustomRelationList,false,ref materialbomDic);
@@ -782,7 +782,7 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                            storeTransList.Add(init1);//料件其他出入库不上传海关
+                            storeTransList.Add(init1);//料件其他出入库不上传海关，此处不动！！！！！
                         }
                     }
 
@@ -1023,7 +1023,10 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                            storeTransList.Add(init1);
+                            if (materialTemp.type != "I0003")
+                            {
+                                storeTransList.Add(init1);
+                            }
                         }
                     }
 

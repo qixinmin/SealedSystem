@@ -461,6 +461,7 @@ namespace SaledServices.Test_Outlook
 
         private void button4_Click(object sender, EventArgs e)
         {
+            
             if (KEYID == "" || KEYSERIAL == "")
             {
                 MessageBox.Show("序列号还没有下载，请检查操作！");
