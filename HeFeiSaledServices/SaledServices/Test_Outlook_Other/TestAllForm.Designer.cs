@@ -47,9 +47,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buffertest = new System.Windows.Forms.Button();
             this.isburn = new System.Windows.Forms.CheckBox();
-            this.bomdownload = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.bomdownload = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -264,17 +264,6 @@
             this.isburn.UseVisualStyleBackColor = true;
             this.isburn.Visible = false;
             // 
-            // bomdownload
-            // 
-            this.bomdownload.Enabled = false;
-            this.bomdownload.Location = new System.Drawing.Point(552, 142);
-            this.bomdownload.Name = "bomdownload";
-            this.bomdownload.Size = new System.Drawing.Size(126, 36);
-            this.bomdownload.TabIndex = 1;
-            this.bomdownload.Text = "BOM下载";
-            this.bomdownload.UseVisualStyleBackColor = true;
-            this.bomdownload.Click += new System.EventHandler(this.button4_Click);
-            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(693, 337);
@@ -296,6 +285,17 @@
             this.button1.Text = "测试Fail";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // bomdownload
+            // 
+            this.bomdownload.Enabled = false;
+            this.bomdownload.Location = new System.Drawing.Point(552, 142);
+            this.bomdownload.Name = "bomdownload";
+            this.bomdownload.Size = new System.Drawing.Size(126, 36);
+            this.bomdownload.TabIndex = 1;
+            this.bomdownload.Text = "BOM下载";
+            this.bomdownload.UseVisualStyleBackColor = true;
+            this.bomdownload.Click += new System.EventHandler(this.button4_Click);
             // 
             // TestAllForm
             // 

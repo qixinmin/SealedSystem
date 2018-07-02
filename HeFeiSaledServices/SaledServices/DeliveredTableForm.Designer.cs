@@ -793,6 +793,7 @@
             this.uuidTextBox.Name = "uuidTextBox";
             this.uuidTextBox.Size = new System.Drawing.Size(212, 26);
             this.uuidTextBox.TabIndex = 0;
+            this.uuidTextBox.Text = "00000000000000000000000000000000";
             this.uuidTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uuidTextBox_KeyPress);
             // 
             // label14

@@ -446,70 +446,70 @@
             // 材料入库单ToolStripMenuItem
             // 
             this.材料入库单ToolStripMenuItem.Name = "材料入库单ToolStripMenuItem";
-            this.材料入库单ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.材料入库单ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.材料入库单ToolStripMenuItem.Text = "材料入库单查看";
             this.材料入库单ToolStripMenuItem.Click += new System.EventHandler(this.材料入库单ToolStripMenuItem_Click);
             // 
             // 出库请求查看ToolStripMenuItem
             // 
             this.出库请求查看ToolStripMenuItem.Name = "出库请求查看ToolStripMenuItem";
-            this.出库请求查看ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.出库请求查看ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.出库请求查看ToolStripMenuItem.Text = "出库请求查看";
             this.出库请求查看ToolStripMenuItem.Click += new System.EventHandler(this.出库请求查看ToolStripMenuItem_Click);
             // 
             // 还货请求查看ToolStripMenuItem
             // 
             this.还货请求查看ToolStripMenuItem.Name = "还货请求查看ToolStripMenuItem";
-            this.还货请求查看ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.还货请求查看ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.还货请求查看ToolStripMenuItem.Text = "还货请求查看";
             this.还货请求查看ToolStripMenuItem.Click += new System.EventHandler(this.还货请求查看ToolStripMenuItem_Click);
             // 
             // fRUToolStripMenuItem
             // 
             this.fRUToolStripMenuItem.Name = "fRUToolStripMenuItem";
-            this.fRUToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.fRUToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.fRUToolStripMenuItem.Text = "FRU/SMT入库记录";
             this.fRUToolStripMenuItem.Click += new System.EventHandler(this.fRUToolStripMenuItem_Click);
             // 
             // fRUSMT入库记录ToolStripMenuItem
             // 
             this.fRUSMT入库记录ToolStripMenuItem.Name = "fRUSMT入库记录ToolStripMenuItem";
-            this.fRUSMT入库记录ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.fRUSMT入库记录ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.fRUSMT入库记录ToolStripMenuItem.Text = "FRU出库";
             this.fRUSMT入库记录ToolStripMenuItem.Click += new System.EventHandler(this.fRUSMT入库记录ToolStripMenuItem_Click);
             // 
             // bGA入库记录ToolStripMenuItem
             // 
             this.bGA入库记录ToolStripMenuItem.Name = "bGA入库记录ToolStripMenuItem";
-            this.bGA入库记录ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.bGA入库记录ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.bGA入库记录ToolStripMenuItem.Text = "BGA入库记录";
             this.bGA入库记录ToolStripMenuItem.Click += new System.EventHandler(this.bGA入库记录ToolStripMenuItem_Click);
             // 
             // bGA出库记录ToolStripMenuItem
             // 
             this.bGA出库记录ToolStripMenuItem.Name = "bGA出库记录ToolStripMenuItem";
-            this.bGA出库记录ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.bGA出库记录ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.bGA出库记录ToolStripMenuItem.Text = "BGA出库记录";
             this.bGA出库记录ToolStripMenuItem.Click += new System.EventHandler(this.bGA出库记录ToolStripMenuItem_Click);
             // 
             // mBToolStripMenuItem
             // 
             this.mBToolStripMenuItem.Name = "mBToolStripMenuItem";
-            this.mBToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.mBToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.mBToolStripMenuItem.Text = "Buffer MB入库";
             this.mBToolStripMenuItem.Click += new System.EventHandler(this.mBToolStripMenuItem_Click);
             // 
             // bufferMB转不良品库ToolStripMenuItem
             // 
             this.bufferMB转不良品库ToolStripMenuItem.Name = "bufferMB转不良品库ToolStripMenuItem";
-            this.bufferMB转不良品库ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.bufferMB转不良品库ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.bufferMB转不良品库ToolStripMenuItem.Text = "Buffer MB转不良品库";
             this.bufferMB转不良品库ToolStripMenuItem.Click += new System.EventHandler(this.bufferMB转不良品库ToolStripMenuItem_Click);
             // 
             // mBToolStripMenuItem1
             // 
             this.mBToolStripMenuItem1.Name = "mBToolStripMenuItem1";
-            this.mBToolStripMenuItem1.Size = new System.Drawing.Size(304, 32);
+            this.mBToolStripMenuItem1.Size = new System.Drawing.Size(315, 32);
             this.mBToolStripMenuItem1.Text = "MB出库记录(不能操作）";
             this.mBToolStripMenuItem1.Visible = false;
             this.mBToolStripMenuItem1.Click += new System.EventHandler(this.mBToolStripMenuItem1_Click);
@@ -517,35 +517,35 @@
             // 库房储位管理ToolStripMenuItem
             // 
             this.库房储位管理ToolStripMenuItem.Name = "库房储位管理ToolStripMenuItem";
-            this.库房储位管理ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.库房储位管理ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.库房储位管理ToolStripMenuItem.Text = "良品库房储位管理";
             this.库房储位管理ToolStripMenuItem.Click += new System.EventHandler(this.库房储位管理ToolStripMenuItem_Click);
             // 
             // 不良品库房储位管理ToolStripMenuItem
             // 
             this.不良品库房储位管理ToolStripMenuItem.Name = "不良品库房储位管理ToolStripMenuItem";
-            this.不良品库房储位管理ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.不良品库房储位管理ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.不良品库房储位管理ToolStripMenuItem.Text = "不良品库房储位管理";
             this.不良品库房储位管理ToolStripMenuItem.Click += new System.EventHandler(this.不良品库房储位管理ToolStripMenuItem_Click);
             // 
             // 不良品出入库管理ToolStripMenuItem
             // 
             this.不良品出入库管理ToolStripMenuItem.Name = "不良品出入库管理ToolStripMenuItem";
-            this.不良品出入库管理ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.不良品出入库管理ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.不良品出入库管理ToolStripMenuItem.Text = "MB CID不良品入库";
             this.不良品出入库管理ToolStripMenuItem.Click += new System.EventHandler(this.不良品出入库管理ToolStripMenuItem_Click);
             // 
             // fRUSMT不良品出入库管理ToolStripMenuItem
             // 
             this.fRUSMT不良品出入库管理ToolStripMenuItem.Name = "fRUSMT不良品出入库管理ToolStripMenuItem";
-            this.fRUSMT不良品出入库管理ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
-            this.fRUSMT不良品出入库管理ToolStripMenuItem.Text = "SMT不良品入库管理";
+            this.fRUSMT不良品出入库管理ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
+            this.fRUSMT不良品出入库管理ToolStripMenuItem.Text = "SMT/FRU不良品入库管理";
             this.fRUSMT不良品出入库管理ToolStripMenuItem.Click += new System.EventHandler(this.fRUSMT不良品出入库管理ToolStripMenuItem_Click);
             // 
             // 不良品出庫ToolStripMenuItem
             // 
             this.不良品出庫ToolStripMenuItem.Name = "不良品出庫ToolStripMenuItem";
-            this.不良品出庫ToolStripMenuItem.Size = new System.Drawing.Size(304, 32);
+            this.不良品出庫ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.不良品出庫ToolStripMenuItem.Text = "不良品出库";
             this.不良品出庫ToolStripMenuItem.Click += new System.EventHandler(this.不良品出庫ToolStripMenuItem_Click);
             // 

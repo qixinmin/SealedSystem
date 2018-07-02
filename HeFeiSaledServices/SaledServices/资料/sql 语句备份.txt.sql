@@ -1,5 +1,6 @@
 
 /*不良品MB/SMT/BGA出库记录*/
+/*把fru的材料也放進去了，但是默認現在不報關出去，因爲要交稅，在上報的時候過濾一下*/
 CREATE TABLE mb_smt_bga_ng_out_house_table(
 Id INT PRIMARY KEY IDENTITY, 
 mpn NVARCHAR(128) NOT NULL,/*料号*/
@@ -29,6 +30,7 @@ number NVARCHAR(128), /*已存数量,不限数量的，可以累积*/
 )
 
 /*SMT/BGA不良品库房信息 把CID的MB不良品库也放入一起*/
+/*把fru的材料也放進去了，但是默認現在不報關出去，因爲要交稅*/
 CREATE TABLE store_house_ng(
 Id INT PRIMARY KEY IDENTITY, 
 house NVARCHAR(128), /*库房*/

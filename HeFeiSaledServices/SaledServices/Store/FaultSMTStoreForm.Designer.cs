@@ -264,7 +264,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FaultSMTStoreForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SMT不良品入库";
+            this.Text = "SMT/FRU不良品入库";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
