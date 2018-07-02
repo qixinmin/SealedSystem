@@ -269,7 +269,7 @@ namespace SaledServices.CustomsExport
                             init1.qty = "1";
                             init1.unit = Untils.getCustomCode(trackTemp.declare_unit);
                             init1.type = "I0003";
-                            init1.chk_code = "";
+                            init1.chk_code = "01";
                             init1.entry_id = "";
                             init1.gatejob_no = "";
                             init1.whs_code = "";
@@ -318,7 +318,7 @@ namespace SaledServices.CustomsExport
                             init1.qty = "-1";
                             init1.unit = "007";
                             init1.type = "E0002";//报关出库
-                            init1.chk_code = "";
+                            init1.chk_code = "01";
                             init1.entry_id = trackTemp.declare_number;
                             init1.gatejob_no = "";
                             init1.whs_code = "";
@@ -394,7 +394,7 @@ namespace SaledServices.CustomsExport
                             init1.qty = "1";
                             init1.unit = Untils.getCustomCode(trackTemp.declare_unit);
                             init1.type = "I0003";
-                            init1.chk_code = "";
+                            init1.chk_code = "02";
                             init1.entry_id = "";
                             init1.gatejob_no = "";
                             init1.whs_code = "";
@@ -574,7 +574,10 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                            storeTransList.Add(init1);
+                            if (materialTemp.type != "I0003")//料件其他出入库不上传海关
+                            {
+                                storeTransList.Add(init1);
+                            }
                         }
                     }
 
@@ -645,7 +648,7 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                            storeTransList.Add(init1);
+                            //storeTransList.Add(init1);//料件其他出入库不上传海关
                         }
                     }
 
@@ -712,7 +715,7 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                            storeTransList.Add(init1);
+                           // storeTransList.Add(init1);
                         }
                     }
 
@@ -779,7 +782,7 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                            storeTransList.Add(init1);
+                            storeTransList.Add(init1);//料件其他出入库不上传海关
                         }
                     }
 
@@ -861,7 +864,10 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                            storeTransList.Add(init1);
+                            if (materialTemp.type != "I0003")
+                            {
+                                storeTransList.Add(init1);
+                            }
                         }
                     }
                     //11 BGA出库信息
@@ -928,7 +934,7 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                            storeTransList.Add(init1);
+                            //storeTransList.Add(init1);
                         }
                     }
 

@@ -42,7 +42,12 @@ namespace SaledServices.Test_Outlook
                 }
 
                 try
-                {  
+                {
+                    if (Untils.isTimeError(testdatetextBox.Text.Trim()))
+                    {
+                        this.bomdownload.Enabled = false;
+                    }
+
                     Untils.deleteFile("D:\\fru\\", "BOM.bat");
                     Untils.deleteFile("D:\\fru\\", "BOM.NSH");
                     Untils.deleteFile("D:\\fru\\", "DPK.TXT");

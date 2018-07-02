@@ -42,6 +42,11 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
+                    if (Untils.isTimeError(testdatetextBox.Text.Trim()))
+                    {
+                        this.bomdownload.Enabled = false;
+                    }
+
                     //先删除已经存在的三个文件,后面再生成
                     Untils.deleteFile("D:\\fru\\", "BOM.bat");
                     Untils.deleteFile("D:\\fru\\", "BOM.NSH");

@@ -9,6 +9,8 @@ using System.Collections;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace SaledServices
 {
@@ -137,6 +139,50 @@ namespace SaledServices
 
     public class Untils
     {
+
+        public static bool isTimeError(string nowDate)
+        {
+            try
+            {
+                DateTime timeStart = Convert.ToDateTime(nowDate);
+
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = "select top 1 receivedate from receiveOrder order by receivedate desc ";
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                string oldTime = "";
+                while (querySdr.Read())
+                {
+                    oldTime = querySdr[0].ToString();
+                }
+
+                querySdr.Close();
+
+                mConn.Close();
+
+                DateTime timeOld = Convert.ToDateTime(oldTime);
+
+                if (DateTime.Compare(timeStart, timeOld) < 0) //判断日期大小
+                {
+                    MessageBox.Show("当前日期不对，请检查");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }           
+
+            return false;
+        }
+
+
         public static void setValue(ref Microsoft.Office.Interop.Excel.Worksheet xSheet, int column, int row,Object content)
         {
             if(content is ExportExcelContent)

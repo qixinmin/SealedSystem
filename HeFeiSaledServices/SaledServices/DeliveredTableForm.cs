@@ -222,6 +222,12 @@ namespace SaledServices
             //    this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
             //}
             this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+
+            if (Untils.isTimeError(this.order_out_dateTextBox.Text.Trim()))
+            {
+                this.add.Enabled = false;
+            }
+
             try
             {
                 DateTime dt1 = DateTime.Parse(inTime);

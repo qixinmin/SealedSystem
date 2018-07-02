@@ -154,6 +154,11 @@ namespace SaledServices
                         this.customFaulttextBox.Text = custom_fault;
                         this.ECOtextBox.Text = eco;
                         this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+
+                        if (Untils.isTimeError(this.repair_datetextBox.Text.Trim()))
+                        {
+                            this.add.Enabled = false;
+                        }
                     }
                     else
                     {  

@@ -19,6 +19,11 @@ namespace SaledServices.Store
 
             this.dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
             requesterTextBox.Text = LoginForm.currentUser;
+
+            if (Untils.isTimeError(this.dateTextBox.Text.Trim()))
+            {
+                this.requestbutton.Enabled = false;
+            }
         }
 
         string status = "request";

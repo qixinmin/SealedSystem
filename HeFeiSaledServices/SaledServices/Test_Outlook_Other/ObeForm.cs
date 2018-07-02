@@ -35,6 +35,11 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
+                    if (Untils.isTimeError(testdatetextBox.Text.Trim()))
+                    {
+                        this.confirmbutton.Enabled = false;
+                    }
+
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                     mConn.Open();
 

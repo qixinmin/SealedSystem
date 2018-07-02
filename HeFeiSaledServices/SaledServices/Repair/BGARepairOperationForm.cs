@@ -140,6 +140,11 @@ namespace SaledServices
                     this.bgaRepair_resultcomboBox.Focus();
                     bgarepairertextBox.Text = LoginForm.currentUser;
                     bgarepairDatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+
+                    if (Untils.isTimeError(this.repair_datetextBox.Text.Trim()))
+                    {
+                        this.add.Enabled = false;
+                    }
                 }
             }
         }

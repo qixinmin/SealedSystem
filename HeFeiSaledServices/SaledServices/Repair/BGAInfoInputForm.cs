@@ -119,6 +119,11 @@ namespace SaledServices
                     
          
                         this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+
+                        if (Untils.isTimeError(this.repair_datetextBox.Text.Trim()))
+                        {
+                            this.add.Enabled = false;
+                        }
                     }
                     else
                     {

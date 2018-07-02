@@ -247,6 +247,11 @@ namespace SaledServices
                 this.custommaterialNoTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
                 this.return_dateTextBox.Text = DateTime.Now.ToString("yyyyMMdd");
 
+                if (Untils.isTimeError(this.return_dateTextBox.Text.Trim()))
+                {
+                    this.returnStore.Enabled = false;
+                }
+
                 this.tatTextBox.Text = dataGridViewToReturn.SelectedCells[5].Value.ToString();
 
 
