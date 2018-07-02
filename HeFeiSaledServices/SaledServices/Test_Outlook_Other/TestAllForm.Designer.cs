@@ -79,9 +79,9 @@
             this.tableLayoutPanel1.Controls.Add(this.cpuTypetextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.button3, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.bomdownload, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.button5, 5, 3);
             this.tableLayoutPanel1.Controls.Add(this.button1, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.bomdownload, 4, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -227,6 +227,7 @@
             this.button3.TabIndex = 1;
             this.button3.Text = "仁宝OA3";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel1
@@ -237,6 +238,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(171, 36);
             this.panel1.TabIndex = 13;
+            this.panel1.Visible = false;
             // 
             // buffertest
             // 
@@ -247,6 +249,7 @@
             this.buffertest.TabIndex = 11;
             this.buffertest.Text = "Buffer测试";
             this.buffertest.UseVisualStyleBackColor = true;
+            this.buffertest.Visible = false;
             this.buffertest.Click += new System.EventHandler(this.button6_Click);
             // 
             // isburn
@@ -259,17 +262,17 @@
             this.isburn.TabIndex = 12;
             this.isburn.Text = "是否烧录";
             this.isburn.UseVisualStyleBackColor = true;
+            this.isburn.Visible = false;
             // 
             // bomdownload
             // 
             this.bomdownload.Enabled = false;
-            this.bomdownload.Location = new System.Drawing.Point(552, 337);
+            this.bomdownload.Location = new System.Drawing.Point(552, 142);
             this.bomdownload.Name = "bomdownload";
             this.bomdownload.Size = new System.Drawing.Size(126, 36);
             this.bomdownload.TabIndex = 1;
             this.bomdownload.Text = "BOM下载";
             this.bomdownload.UseVisualStyleBackColor = true;
-            this.bomdownload.Visible = false;
             this.bomdownload.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
@@ -280,15 +283,17 @@
             this.button5.TabIndex = 1;
             this.button5.Text = "DPK烧录检查";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(693, 142);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(784, 142);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 31);
+            this.button1.Size = new System.Drawing.Size(107, 36);
             this.button1.TabIndex = 1;
-            this.button1.Text = "确认Fail";
+            this.button1.Text = "测试Fail";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

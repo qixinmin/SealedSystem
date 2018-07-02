@@ -31,6 +31,8 @@ namespace SaledServices.CustomsExport
             
             Dictionary<string, string> _71bomDic = new Dictionary<string, string>();
             Dictionary<string, string> materialbomDic = new Dictionary<string, string>();
+
+            Dictionary<string, string> checkMpnfruOrSmt = new Dictionary<string, string>();
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -60,6 +62,17 @@ namespace SaledServices.CustomsExport
                     if (materialbomDic.ContainsKey(querySdr[0].ToString().Trim()) == false)
                     {
                         materialbomDic.Add(querySdr[0].ToString().Trim(), querySdr[1].ToString().Trim());
+                    }
+                }
+                querySdr.Close();
+
+                cmd.CommandText = "select distinct mpn,material_type from stock_in_sheet";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    if (checkMpnfruOrSmt.ContainsKey(querySdr[0].ToString().Trim()) == false)
+                    {
+                        checkMpnfruOrSmt.Add(querySdr[0].ToString().Trim(), querySdr[1].ToString().Trim());
                     }
                 }
                 querySdr.Close();
@@ -407,7 +420,7 @@ namespace SaledServices.CustomsExport
                         generateWorkOrderHead.addWorkListHeads(TrackNoCustomRelationList,false,ref materialbomDic);
                     }
 
-                    //6 mb/smt/bga不良品库出库信息
+                    //6 mb/smt/bga不良品库出库信息, 現在加入fru材料，需要判斷fru材料，不上報
                     List<MaterialCustomRelation> MaterialCustomRelationList = new List<MaterialCustomRelation>();
                     TrackNoCustomRelationList.Clear();
                     cmd.CommandText = "select Id,mpn,in_number,declare_unit,declare_number,custom_request_number,input_date from mb_smt_bga_ng_out_house_table where input_date between '" + startTime + "' and '" + endTime + "'";
@@ -419,6 +432,12 @@ namespace SaledServices.CustomsExport
 
                         string currentDeclear = "";
                         string nowMatrialNo = querySdr[1].ToString();
+
+                        if (checkMpnfruOrSmt[nowMatrialNo].Trim().ToUpper() == "FRU")
+                        {
+                            continue;//FRU 材料不上報                            
+                        }
+
                         if (_71bomDic.ContainsKey(nowMatrialNo))
                         {
                             currentDeclear = _71bomDic[nowMatrialNo] +"-1";//不良品的料号要加-1

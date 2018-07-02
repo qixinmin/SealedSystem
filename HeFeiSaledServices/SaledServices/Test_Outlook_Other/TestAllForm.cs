@@ -486,21 +486,21 @@ namespace SaledServices.Test_Outlook
             //SET OA3PID=N/A    KEYSERIAL
             //SET FRUPN=04X5152  客户料号
             //SET MODELID=VIUX2  MB简称
-            string totalStr = "SET MBID=" + track_serial_no + "\r\n"
-                            + "SET SN=" + vendor_serail_no + "\r\n"
-                            + "SET SKU=" + mpn + "\r\n"
-                            + "SET MAC=" + mac + "\r\n"
-                            + "SET UUID=" + uuid + "\r\n"
-                            + "SET MB11S=" + custom_serial_no + "\r\n"
-                            + "SET OA3KEY=" + KEYSERIAL + "\r\n"
-                            + "SET OA3PID=" + KEYID + "\r\n"
-                            + "SET FRUPN=" + customMaterialNo + "\r\n"
-                            + "SET MODELID=" + mb_brief + "\r\n"
-                            + "SET DPK=" + dpk_type;
+            string totalStr = "SET -v MBID " + track_serial_no + "\r\n"
+                            + "SET -v SN " + vendor_serail_no + "\r\n"
+                            + "SET -v SKU " + mpn + "\r\n"
+                            + "SET -v MAC " + mac + "\r\n"
+                            + "SET -v UUID " + uuid + "\r\n"
+                            + "SET -v MB11S " + custom_serial_no + "\r\n"
+                            + "SET -v OA3KEY " + KEYSERIAL + "\r\n"
+                            + "SET -v OA3PID " + KEYID + "\r\n"
+                            + "SET -v FRUPN " + customMaterialNo + "\r\n"
+                            + "SET -v MODELID " + mb_brief + "\r\n"
+                            + "SET -v DPK " + dpk_type;
             Untils.createFile("D:\\fru\\", "BOM.bat", totalStr);
             Untils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
 
-            Untils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);
+            //Untils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);
 
             //清空变量
             //KEYID = ""; 
@@ -532,12 +532,12 @@ namespace SaledServices.Test_Outlook
         {
             button2_Click(null, null);//fru
 
-            downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
+            //downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
 
-            runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
+            //runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
 
             //最后做写入记录的动作
-           // confirmbutton_Click(null, null);
+            confirmbutton_Click(null, null);
         }
 
         private void button5_Click(object sender, EventArgs e)
