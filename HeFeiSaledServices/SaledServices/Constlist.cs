@@ -251,6 +251,8 @@ namespace SaledServices
             //range = xSheet.get_Range(xSheet.Cells[2, 1], xSheet.Cells[contentList.Count+1, titleList.Count]);//此方案有问题，改成下面的方案range[,]方案
 
             range = xSheet.Range[xSheet.Cells[2, 1], xSheet.Cells[contentList.Count + 1, titleList.Count]];
+
+            xSheet.Columns.EntireColumn.AutoFit();//列宽自适应
            
             range.NumberFormatLocal = "@";
             range.Value2 = saRet;
