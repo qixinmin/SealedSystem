@@ -220,7 +220,7 @@ namespace SaledServices.CustomsExport
                             init1.note = "";
 
 
-                          //  storeTransList.Add(init1);
+                            storeTransList.Add(init1);
                         }
                     }
 
@@ -748,6 +748,12 @@ namespace SaledServices.CustomsExport
                         MaterialCustomRelationTemp.id = querySdr[0].ToString();
                         string currentDeclear = "";
                         string nowMatrialNo = querySdr[1].ToString();
+
+                        if (checkMpnfruOrSmt[nowMatrialNo].Trim().ToUpper() == "FRU")
+                        {
+                            continue;//FRU 材料不上報
+                        }
+
                         if (_71bomDic.ContainsKey(nowMatrialNo))
                         {
                             currentDeclear = _71bomDic[nowMatrialNo];

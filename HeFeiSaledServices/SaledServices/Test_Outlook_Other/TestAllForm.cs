@@ -503,8 +503,20 @@ namespace SaledServices.Test_Outlook
                             + "SET -v FRUPN " + tempCustomMaterialNo + "\r\n"
                             + "SET -v MODELID " + mb_brief + "\r\n"
                             + "SET -v DPK " + dpk_type;
-            Untils.createFile("D:\\fru\\", "BOM.bat", totalStr);
             Untils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
+
+            totalStr = "SET MBID=" + track_serial_no + "\r\n"
+                           + "SET SN=" + vendor_serail_no + "\r\n"
+                           + "SET SKU=" + mpn + "\r\n"
+                           + "SET MAC=" + mac + "\r\n"
+                           + "SET UUID=" + uuid + "\r\n"
+                           + "SET MB11S=" + custom_serial_no + "\r\n"
+                           + "SET OA3KEY=" + KEYSERIAL + "\r\n"
+                           + "SET OA3PID=" + KEYID + "\r\n"
+                           + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
+                           + "SET MODELID=" + mb_brief + "\r\n"
+                           + "SET DPK=" + dpk_type;
+            Untils.createFile("D:\\fru\\", "BOM.bat", totalStr);
 
             //Untils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);
 
