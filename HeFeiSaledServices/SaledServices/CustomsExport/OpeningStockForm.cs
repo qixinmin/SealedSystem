@@ -36,6 +36,8 @@ namespace SaledServices.CustomsExport
             OpeningStockClass openingstock = new OpeningStockClass();
             List<StoreInit> storeInitList = new List<StoreInit>();
 
+            List<StockCheck> StockCheckList = new List<StockCheck>();
+
             string seq_no = DateTime.Now.ToString("yyyyMMdd") + "2005" + "1";//日期+类型+序号
 
             string boxtype = "2005";//代码 
@@ -55,13 +57,20 @@ namespace SaledServices.CustomsExport
 
                 //查询71bom
                 Dictionary<string, string> _71bomDic = new Dictionary<string, string>();
-                cmd.CommandText = "select distinct material_mpn,material_vendor_pn from LCFC71BOM_table";
+
+                Dictionary<string, string> _71bomDescribeDic = new Dictionary<string, string>();//料号与描述对应
+                cmd.CommandText = "select distinct material_mpn,material_vendor_pn,_description from LCFC71BOM_table";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
                     if (_71bomDic.ContainsKey(querySdr[0].ToString().Trim()) == false)
                     {
                         _71bomDic.Add(querySdr[0].ToString().Trim(), querySdr[1].ToString().Trim());
+                    }
+
+                    if (_71bomDescribeDic.ContainsKey(querySdr[0].ToString().Trim()) == false)
+                    {
+                        _71bomDescribeDic.Add(querySdr[0].ToString().Trim(), querySdr[2].ToString().Trim());
                     }
                 }
                 querySdr.Close();
@@ -148,6 +157,17 @@ namespace SaledServices.CustomsExport
                     init1.location_code = "";
                     init1.note = "";
                     storeInitList.Add(init1);
+
+                    StockCheck stockcheck = new StockCheck();
+                    stockcheck.material_no = temp;
+                    stockcheck.num = kvp.Value.ToString();
+                    stockcheck.house = "成品之前";
+                    stockcheck.place = "";
+                    stockcheck.describe = "维修中主板";
+                    if (stockcheck.num != "0")
+                    {
+                        StockCheckList.Add(stockcheck);
+                    }
                 }
 
                 //2 读取良品库房信息
@@ -164,7 +184,7 @@ namespace SaledServices.CustomsExport
                 }
                 querySdr.Close();
 
-                cmd.CommandText = "select mpn, number from store_house where mpn !='' and number !='0'";
+                cmd.CommandText = "select mpn, number,house,place from store_house where mpn !='' and number !='0'";
                 querySdr = cmd.ExecuteReader();                
                 while (querySdr.Read())
                 {
@@ -172,6 +192,7 @@ namespace SaledServices.CustomsExport
                     init1.ems_no = ems_no;
 
                     string currentDeclear ="";
+                    bool isMB = false;
                     if(_71bomDic.ContainsKey( querySdr[0].ToString()))
                     {
                         currentDeclear = _71bomDic[querySdr[0].ToString()];
@@ -182,6 +203,7 @@ namespace SaledServices.CustomsExport
                         if (currentDeclear.Length == 10 && currentDeclear.StartsWith("000"))
                         {
                             currentDeclear = currentDeclear.Substring(3);
+                            isMB = true;
                         }
                     }
 
@@ -203,11 +225,25 @@ namespace SaledServices.CustomsExport
                     init1.location_code = "";
                     init1.note = "";
                     storeInitList.Add(init1);
+
+                    StockCheck stockcheck = new StockCheck();
+                    stockcheck.material_no =isMB ? currentDeclear:querySdr[0].ToString();
+                    stockcheck.num = querySdr[1].ToString();
+                    stockcheck.house = querySdr[2].ToString();
+                    stockcheck.place = querySdr[3].ToString();
+                    if (_71bomDescribeDic.ContainsKey(stockcheck.material_no))
+                    {
+                        stockcheck.describe = _71bomDescribeDic[stockcheck.material_no];
+                    }
+                    if (stockcheck.num != "0")
+                    {
+                        StockCheckList.Add(stockcheck);
+                    }
                 }
                 querySdr.Close();
 
                 //3 读取MB/SMT/BGA不良品信息，此处的MB是由CID过来的，所以直接用原始料号即可
-                cmd.CommandText = "select mpn, number from store_house_ng where mpn !='' and number !='0'";
+                cmd.CommandText = "select mpn, number,house,place from store_house_ng where mpn !='' and number !='0'";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -215,6 +251,7 @@ namespace SaledServices.CustomsExport
                     init1.ems_no = ems_no;
                     
                     string currentDeclear = "";
+                    bool isMB = false;
                     if (_71bomDic.ContainsKey(querySdr[0].ToString()))
                     {
                         currentDeclear = _71bomDic[querySdr[0].ToString()] + "-1";//海关要求料号不一样，加-1
@@ -225,6 +262,7 @@ namespace SaledServices.CustomsExport
                         if (currentDeclear.Length == 10 && currentDeclear.StartsWith("000"))
                         {
                             currentDeclear = currentDeclear.Substring(3);
+                            isMB = true;
                         }
                     }
 
@@ -247,11 +285,29 @@ namespace SaledServices.CustomsExport
                     init1.location_code = "";
                     init1.note = "";
                     storeInitList.Add(init1);
+
+                    StockCheck stockcheck = new StockCheck();
+                    stockcheck.material_no = isMB ? currentDeclear : querySdr[0].ToString();
+                    stockcheck.num = querySdr[1].ToString();
+                    stockcheck.house = querySdr[2].ToString();
+                    stockcheck.place = querySdr[3].ToString();
+                    if (_71bomDescribeDic.ContainsKey(stockcheck.material_no))
+                    {
+                        stockcheck.describe = _71bomDescribeDic[stockcheck.material_no];
+                    }
+                    else
+                    {
+                        stockcheck.describe = isMB ? "不良品主板" : "";
+                    }
+                    if (stockcheck.num != "0")
+                    {
+                        StockCheckList.Add(stockcheck);
+                    }
                 }
                 querySdr.Close();
 
                 //3-1 读取MB Buffer不良品信息，此处的MB是由良品库过来的，所以直接用原始料号71即可
-                cmd.CommandText = "select mpn, number from store_house_ng_buffer_mb where mpn !='' and number !='0'";
+                cmd.CommandText = "select mpn, number,house,place from store_house_ng_buffer_mb where mpn !='' and number !='0'";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -279,6 +335,20 @@ namespace SaledServices.CustomsExport
                     init1.location_code = "";
                     init1.note = "";
                     storeInitList.Add(init1);
+
+                    StockCheck stockcheck = new StockCheck();
+                    stockcheck.material_no = currentDeclear;
+                    stockcheck.num = querySdr[1].ToString();
+                    stockcheck.house = querySdr[2].ToString();
+                    stockcheck.place = querySdr[3].ToString();
+                    if (_71bomDescribeDic.ContainsKey(stockcheck.material_no))
+                    {
+                        stockcheck.describe = _71bomDescribeDic[stockcheck.material_no];
+                    }
+                    if (stockcheck.num != "0")
+                    {
+                        StockCheckList.Add(stockcheck);
+                    }
                 }
                 querySdr.Close();    
 
@@ -307,6 +377,17 @@ namespace SaledServices.CustomsExport
                     init1.location_code = "";
                     init1.note = "";
                     storeInitList.Add(init1);
+
+                    StockCheck stockcheck = new StockCheck();
+                    stockcheck.material_no = temp;
+                    stockcheck.num = querySdr[1].ToString();
+                    stockcheck.house = "待维修库";
+                    stockcheck.place = "";
+                    stockcheck.describe = "待维修主板";
+                    if (stockcheck.num != "0")
+                    {
+                        StockCheckList.Add(stockcheck);
+                    }
                 }
                 querySdr.Close();
 
@@ -335,6 +416,17 @@ namespace SaledServices.CustomsExport
                     init1.location_code = "";
                     init1.note = "";
                     storeInitList.Add(init1);
+
+                    StockCheck stockcheck = new StockCheck();
+                    stockcheck.material_no = temp;
+                    stockcheck.num = querySdr[1].ToString();
+                    stockcheck.house = "良品库";
+                    stockcheck.place = "";
+                    stockcheck.describe = "维修后良品主板";
+                    if (stockcheck.num != "0")
+                    {
+                        StockCheckList.Add(stockcheck);
+                    }
                 }
                 querySdr.Close();
 
@@ -344,6 +436,8 @@ namespace SaledServices.CustomsExport
             {
                 MessageBox.Show(ex.ToString());
             }
+
+            testcheck(StockCheckList);
 
             openingstock.seq_no = seq_no;
             openingstock.boxtype = boxtype;
@@ -363,6 +457,36 @@ namespace SaledServices.CustomsExport
             {
                 MessageBox.Show("没有期初库存信息！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public static void testcheck(List<StockCheck> StockCheckList)
+        {
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+            titleList.Add("料号");
+            titleList.Add("数量");
+            titleList.Add("库房");
+            titleList.Add("储位");
+            titleList.Add("描述");
+            titleList.Add("真实数量");
+
+            foreach (StockCheck stockcheck in StockCheckList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();    
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.material_no);
+                ct1.Add(stockcheck.num);
+                ct1.Add(stockcheck.house);
+                ct1.Add(stockcheck.place);
+                ct1.Add(stockcheck.describe);
+                ct1.Add("");
+
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+
+            Untils.createExcel("D:\\test.xlsx", titleList, contentList);
         }
     }
 }

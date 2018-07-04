@@ -14,6 +14,15 @@ using System.Data;
 
 namespace SaledServices
 {
+    public class StockCheck
+    {
+        public string material_no;
+        public string num;
+        public string house;
+        public string place;
+        public string describe;
+    }
+
     class ReportCustomInfo
     {
         public string track_no;

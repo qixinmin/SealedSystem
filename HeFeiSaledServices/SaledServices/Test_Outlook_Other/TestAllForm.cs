@@ -500,6 +500,8 @@ namespace SaledServices.Test_Outlook
                             + "SET -v MB11S " + custom_serial_no + "\r\n"
                             + "SET -v OA3KEY " + KEYSERIAL + "\r\n"
                             + "SET -v OA3PID " + KEYID + "\r\n"
+                            + "SET -v DPKNO " + KEYSERIAL + "\r\n"
+                            + "SET -v DPKID " + KEYID + "\r\n"
                             + "SET -v FRUPN " + tempCustomMaterialNo + "\r\n"
                             + "SET -v MODELID " + mb_brief + "\r\n"
                             + "SET -v DPK " + dpk_type;
@@ -513,6 +515,8 @@ namespace SaledServices.Test_Outlook
                            + "SET MB11S=" + custom_serial_no + "\r\n"
                            + "SET OA3KEY=" + KEYSERIAL + "\r\n"
                            + "SET OA3PID=" + KEYID + "\r\n"
+                           + "SET DPKNO=" + KEYSERIAL + "\r\n"
+                           + "SET DPKID=" + KEYID + "\r\n"
                            + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
                            + "SET MODELID=" + mb_brief + "\r\n"
                            + "SET DPK=" + dpk_type;
