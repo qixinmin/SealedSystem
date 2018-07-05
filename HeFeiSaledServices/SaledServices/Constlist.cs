@@ -252,10 +252,12 @@ namespace SaledServices
 
             range = xSheet.Range[xSheet.Cells[2, 1], xSheet.Cells[contentList.Count + 1, titleList.Count]];
 
-            xSheet.Columns.EntireColumn.AutoFit();//列宽自适应
+           
            
             range.NumberFormatLocal = "@";
             range.Value2 = saRet;
+
+            xSheet.Columns.EntireColumn.AutoFit();//列宽自适应
 
             //5.保存保存WorkBook
             workBook.SaveAs(filepathname);

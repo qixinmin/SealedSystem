@@ -234,6 +234,12 @@
     <Compile Include="Export\ExportDatabaseToExcel.Designer.cs">
       <DependentUpon>ExportDatabaseToExcel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\ReceiveOrderExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\ReceiveOrderExport.Designer.cs">
+      <DependentUpon>ReceiveOrderExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repair\RepairOperationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -618,6 +624,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\ExportDatabaseToExcel.resx">
       <DependentUpon>ExportDatabaseToExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\ReceiveOrderExport.resx">
+      <DependentUpon>ReceiveOrderExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RepairOperationForm.resx">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>

@@ -105,6 +105,7 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.收货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -657,7 +658,8 @@
             // 
             this.报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.报表1ToolStripMenuItem,
-            this.数据库导出ToolStripMenuItem});
+            this.数据库导出ToolStripMenuItem,
+            this.收货信息导出ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -666,14 +668,14 @@
             // 报表1ToolStripMenuItem
             // 
             this.报表1ToolStripMenuItem.Name = "报表1ToolStripMenuItem";
-            this.报表1ToolStripMenuItem.Size = new System.Drawing.Size(191, 32);
+            this.报表1ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.报表1ToolStripMenuItem.Text = "RMA欠货表";
             this.报表1ToolStripMenuItem.Click += new System.EventHandler(this.报表1ToolStripMenuItem_Click);
             // 
             // 数据库导出ToolStripMenuItem
             // 
             this.数据库导出ToolStripMenuItem.Name = "数据库导出ToolStripMenuItem";
-            this.数据库导出ToolStripMenuItem.Size = new System.Drawing.Size(191, 32);
+            this.数据库导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.数据库导出ToolStripMenuItem.Text = "数据库导出";
             this.数据库导出ToolStripMenuItem.Click += new System.EventHandler(this.数据库导出ToolStripMenuItem_Click);
             // 
@@ -742,6 +744,13 @@
             this.包装ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.包装ToolStripMenuItem.Text = "包装";
             this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
+            // 
+            // 收货信息导出ToolStripMenuItem
+            // 
+            this.收货信息导出ToolStripMenuItem.Name = "收货信息导出ToolStripMenuItem";
+            this.收货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.收货信息导出ToolStripMenuItem.Text = "收货信息导出";
+            this.收货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.收货信息导出ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -844,6 +853,7 @@
         private System.Windows.Forms.ToolStripMenuItem 上传出货海关信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bufferMB转不良品库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 收货信息导出ToolStripMenuItem;
     }
 }
 

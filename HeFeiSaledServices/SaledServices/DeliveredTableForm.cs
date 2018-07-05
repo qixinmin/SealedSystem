@@ -668,7 +668,7 @@ namespace SaledServices
             this.flexidTextBox.Text = "";
             this.custom_serial_noTextBox.Text = "";
             this.vendor_serail_noTextBox.Text = "";
-            this.uuidTextBox.Text = "";
+          //  this.uuidTextBox.Text = "";
             this.macTextBox.Text = "";
             this.custom_faultComboBox.Text = "";
             this.custom_faultComboBox.SelectedIndex = -1;

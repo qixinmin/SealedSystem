@@ -1191,5 +1191,21 @@ namespace SaledServices
 
             allForm.Add(bfmbsf);
         }
+
+        private ReceiveOrderExport roexport;
+        private void 收货信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (roexport == null || roexport.IsDisposed)
+            {
+                roexport = new ReceiveOrderExport();
+                roexport.MdiParent = this;
+            }
+
+            roexport.WindowState = FormWindowState.Maximized;
+            roexport.BringToFront();
+            roexport.Show();
+
+            allForm.Add(roexport);
+        }
     }
 }

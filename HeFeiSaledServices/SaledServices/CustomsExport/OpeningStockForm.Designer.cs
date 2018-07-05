@@ -105,12 +105,11 @@
             // 
             // uploadExcelButton
             // 
-            this.uploadExcelButton.Enabled = false;
             this.uploadExcelButton.Location = new System.Drawing.Point(297, 395);
             this.uploadExcelButton.Name = "uploadExcelButton";
             this.uploadExcelButton.Size = new System.Drawing.Size(133, 25);
             this.uploadExcelButton.TabIndex = 0;
-            this.uploadExcelButton.Text = "上传并导出期初库存";
+            this.uploadExcelButton.Text = "导出期初库存";
             this.uploadExcelButton.UseVisualStyleBackColor = true;
             this.uploadExcelButton.Click += new System.EventHandler(this.uploadExcelButton_Click);
             // 

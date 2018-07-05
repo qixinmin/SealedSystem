@@ -494,71 +494,55 @@ namespace SaledServices.CustomsExport
             Untils.createExcel("D:\\test.xlsx", titleList, contentList);
         }
 
-        private void chooseFolder_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.ShowDialog();
+       
 
-            string fileName = openFileDialog.FileName;
-            if (fileName.EndsWith("xls") || fileName.EndsWith("xlsx"))
-            {
-                 this.pathTextBox.Text = fileName;
-                 uploadExcelButton.Enabled = true;
-            }
-            else
-            {
-                uploadExcelButton.Enabled = false;
-                MessageBox.Show("请输入正确的xls文件 并选择正确的import目标!");
-            }
-        }
-
-        Microsoft.Office.Interop.Excel.Application app = null;// new Microsoft.Office.Interop.Excel.Application();
-        Microsoft.Office.Interop.Excel.Workbooks wbs = null;// app.Workbooks;
+        //Microsoft.Office.Interop.Excel.Application app = null;// new Microsoft.Office.Interop.Excel.Application();
+        //Microsoft.Office.Interop.Excel.Workbooks wbs = null;// app.Workbooks;
         private void uploadExcelButton_Click(object sender, EventArgs e)
         {
-            Dictionary<string, string> realMaterialNum = new Dictionary<string, string>();
+            //Dictionary<string, string> realMaterialNum = new Dictionary<string, string>();
 
 
             //解析xml，并把所以的料号与数量对上，其他类似之前的做法
-            try
-            {
-                app = new Microsoft.Office.Interop.Excel.Application();
-                wbs = app.Workbooks;
-                Microsoft.Office.Interop.Excel.Workbook wb  = wbs.Open(pathTextBox.Text, 0, false, 5, string.Empty, string.Empty,
-                false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows,
-                string.Empty, true, false, 0, true, 1, 0);
+            //try
+            //{
+            //    app = new Microsoft.Office.Interop.Excel.Application();
+            //    wbs = app.Workbooks;
+            //    Microsoft.Office.Interop.Excel.Workbook wb  = wbs.Open(pathTextBox.Text, 0, false, 5, string.Empty, string.Empty,
+            //    false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows,
+            //    string.Empty, true, false, 0, true, 1, 0);
 
-                app.DisplayAlerts = false;
+            //    app.DisplayAlerts = false;
 
-                Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets["Sheet1"];
+            //    Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets["Sheet1"];
 
-                int rowLength = ws.UsedRange.Rows.Count;
-                int columnLength = ws.UsedRange.Columns.Count;
+            //    int rowLength = ws.UsedRange.Rows.Count;
+            //    int columnLength = ws.UsedRange.Columns.Count;
 
                 
-                for (int i = 2; i <= rowLength; i++)
-                {
-                    string mpn = "", number = "";
-                        //有可能有空值
-                    mpn = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString();
-                    number = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 6]).Value2.ToString();
+            //    for (int i = 2; i <= rowLength; i++)
+            //    {
+            //        string mpn = "", number = "";
+            //            //有可能有空值
+            //        mpn = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString();
+            //        number = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 6]).Value2.ToString();
 
-                    if (mpn.Trim() == "" || number.Trim() == "")
-                    {
-                        MessageBox.Show("数量或料号有空值");
-                        break;
-                    }
+            //        if (mpn.Trim() == "" || number.Trim() == "")
+            //        {
+            //            MessageBox.Show("数量或料号有空值");
+            //            break;
+            //        }
 
-                    realMaterialNum.Add(mpn.Trim(), number.Trim());
-                }
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                closeAndKillApp();
-            }
+            //        realMaterialNum.Add(mpn.Trim(), number.Trim());
+            //    }
+            //}catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
+            //finally
+            //{
+            //    closeAndKillApp();
+            //}
 
             //下面把内容按之前的方式生成
             DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd"));
@@ -687,7 +671,7 @@ namespace SaledServices.CustomsExport
                     }
 
                     init1.cop_g_no = temp;//维修的板子，使用客户料号
-                    init1.qty = realMaterialNum[temp];
+                    init1.qty = kvp.Value.ToString();
                     init1.unit = "007";//固定单位
                     init1.goods_nature = "I";//代码
                     init1.bom_version = "";
@@ -737,7 +721,7 @@ namespace SaledServices.CustomsExport
                     }
 
                     init1.cop_g_no = currentDeclear;//因为报关原因，需要改成71料号（联想料号）TODO，包括材料与买的MB，物料对照表与71bom
-                    init1.qty = isMB ? realMaterialNum[currentDeclear] : realMaterialNum[querySdr[0].ToString()];/// querySdr[1].ToString();
+                    init1.qty = querySdr[1].ToString();
                     try
                     {
                         init1.unit = Untils.getCustomCode(mpn_unit[querySdr[0].ToString()]);
@@ -783,7 +767,7 @@ namespace SaledServices.CustomsExport
                     }
 
                     init1.cop_g_no = currentDeclear;//因为报关原因，需要改成71料号（联想料号）TODO
-                    init1.qty = isMB ? realMaterialNum[currentDeclear]: realMaterialNum[querySdr[0].ToString()];
+                    init1.qty = querySdr[1].ToString();
 
                     try
                     {
@@ -815,7 +799,7 @@ namespace SaledServices.CustomsExport
                     string currentDeclear = querySdr[0].ToString().Trim();
 
                     init1.cop_g_no = currentDeclear;//因为报关原因，需要改成71料号（联想料号）TODO
-                    init1.qty = realMaterialNum[currentDeclear];
+                    init1.qty = querySdr[1].ToString();
 
                     try
                     {
@@ -851,7 +835,7 @@ namespace SaledServices.CustomsExport
                     }
 
                     init1.cop_g_no = temp;//正常使用客户料号
-                    init1.qty = realMaterialNum[temp];// querySdr[1].ToString();
+                    init1.qty = querySdr[1].ToString();
                     init1.unit = "007";//固定单位
                     init1.goods_nature = "I";//代码
                     init1.bom_version = "";
@@ -879,7 +863,7 @@ namespace SaledServices.CustomsExport
                     }
 
                     init1.cop_g_no = temp;//正常使用客户料号
-                    init1.qty = realMaterialNum[temp];// querySdr[1].ToString();
+                    init1.qty = querySdr[1].ToString();
                     init1.unit = "007";//固定单位
                     init1.goods_nature = "I";//代码
                     init1.bom_version = "";
@@ -916,26 +900,6 @@ namespace SaledServices.CustomsExport
             {
                 MessageBox.Show("没有期初库存信息！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        [DllImport("User32.dll")]
-        public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int ProcessId);
-
-        private void closeAndKillApp()
-        {
-            try
-            {
-                wbs.Close();
-                app.Quit();
-                IntPtr intptr = new IntPtr(app.Hwnd);
-                int id;
-                GetWindowThreadProcessId(intptr, out id);
-                var p = Process.GetProcessById(id);
-                //if (p != null)
-                p.Kill();
-            }
-            catch (Exception ex)
-            {}
         }
     }
 }
