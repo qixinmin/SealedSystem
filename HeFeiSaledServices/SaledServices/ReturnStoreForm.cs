@@ -245,7 +245,7 @@ namespace SaledServices
                 this.return_file_noTextBox.Text = generateFileNo();
                 this.ordernoTextBox.Text = dataGridViewToReturn.SelectedCells[0].Value.ToString();
                 this.custommaterialNoTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
-                this.return_dateTextBox.Text = DateTime.Now.ToString("yyyyMMdd");
+                this.return_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
                 if (Untils.isTimeError(this.return_dateTextBox.Text.Trim()))
                 {
