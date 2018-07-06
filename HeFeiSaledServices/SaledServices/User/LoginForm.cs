@@ -132,6 +132,7 @@ namespace SaledServices
                         if (User.UserSelfForm.receive_return == "True")
                         {
                             mParent.appendMenu(MenuType.Recieve_Return);
+                            mParent.appendMenu(MenuType.Other);
                         }
                         if (User.UserSelfForm.outlook == "True")
                         {

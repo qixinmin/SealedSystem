@@ -41,7 +41,7 @@ namespace SaledServices.additionForm
                 cmd.ExecuteNonQuery();
                 mConn.Close();
 
-                MessageBox.Show("备份成功到 " + filename);
+                MessageBox.Show("备份成功到服务器的 " + filename);
             }
             catch (Exception ex)
             {

@@ -45,6 +45,7 @@
             this.定时任务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.文件数据库操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cID操作合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,7 +107,6 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -230,6 +230,7 @@
             this.dPKToolStripMenuItem.Name = "dPKToolStripMenuItem";
             this.dPKToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.dPKToolStripMenuItem.Text = "DPK表查看";
+            this.dPKToolStripMenuItem.Visible = false;
             this.dPKToolStripMenuItem.Click += new System.EventHandler(this.dPKToolStripMenuItem_Click);
             // 
             // 故障代码表查看ToolStripMenuItem
@@ -260,6 +261,13 @@
             this.cID操作合肥ToolStripMenuItem.Text = "CID操作合肥";
             this.cID操作合肥ToolStripMenuItem.Visible = false;
             this.cID操作合肥ToolStripMenuItem.Click += new System.EventHandler(this.cID操作合肥ToolStripMenuItem_Click);
+            // 
+            // 数据库备份ToolStripMenuItem
+            // 
+            this.数据库备份ToolStripMenuItem.Name = "数据库备份ToolStripMenuItem";
+            this.数据库备份ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.数据库备份ToolStripMenuItem.Text = "数据库备份";
+            this.数据库备份ToolStripMenuItem.Click += new System.EventHandler(this.数据库备份ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -754,13 +762,6 @@
             this.包装ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.包装ToolStripMenuItem.Text = "包装";
             this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
-            // 
-            // 数据库备份ToolStripMenuItem
-            // 
-            this.数据库备份ToolStripMenuItem.Name = "数据库备份ToolStripMenuItem";
-            this.数据库备份ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.数据库备份ToolStripMenuItem.Text = "数据库备份";
-            this.数据库备份ToolStripMenuItem.Click += new System.EventHandler(this.数据库备份ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
