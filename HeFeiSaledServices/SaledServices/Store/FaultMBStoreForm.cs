@@ -198,6 +198,13 @@ namespace SaledServices
             string input_date_txt = this.input_datetextBox.Text.Trim();
             string custommaterialNo = this.custommaterialNoTextBox.Text.Trim();
 
+
+            if (chooseStock.house == "" || chooseStock.place == "")
+            {
+                MessageBox.Show("库位不能为空，必须选择而不是手动输入，手动输入无效！");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
