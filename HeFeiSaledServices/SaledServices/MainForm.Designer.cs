@@ -97,6 +97,7 @@
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.收货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.期初库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实盘库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,7 +106,7 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.收货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -182,7 +183,8 @@
             this.故障代码表查看ToolStripMenuItem,
             this.定时任务ToolStripMenuItem,
             this.文件数据库操作ToolStripMenuItem,
-            this.cID操作合肥ToolStripMenuItem});
+            this.cID操作合肥ToolStripMenuItem,
+            this.数据库备份ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -256,6 +258,7 @@
             this.cID操作合肥ToolStripMenuItem.Name = "cID操作合肥ToolStripMenuItem";
             this.cID操作合肥ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.cID操作合肥ToolStripMenuItem.Text = "CID操作合肥";
+            this.cID操作合肥ToolStripMenuItem.Visible = false;
             this.cID操作合肥ToolStripMenuItem.Click += new System.EventHandler(this.cID操作合肥ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
@@ -679,6 +682,13 @@
             this.数据库导出ToolStripMenuItem.Text = "数据库导出";
             this.数据库导出ToolStripMenuItem.Click += new System.EventHandler(this.数据库导出ToolStripMenuItem_Click);
             // 
+            // 收货信息导出ToolStripMenuItem
+            // 
+            this.收货信息导出ToolStripMenuItem.Name = "收货信息导出ToolStripMenuItem";
+            this.收货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.收货信息导出ToolStripMenuItem.Text = "收货信息导出";
+            this.收货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.收货信息导出ToolStripMenuItem_Click);
+            // 
             // 海关ToolStripMenuItem
             // 
             this.海关ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -745,12 +755,12 @@
             this.包装ToolStripMenuItem.Text = "包装";
             this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
             // 
-            // 收货信息导出ToolStripMenuItem
+            // 数据库备份ToolStripMenuItem
             // 
-            this.收货信息导出ToolStripMenuItem.Name = "收货信息导出ToolStripMenuItem";
-            this.收货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
-            this.收货信息导出ToolStripMenuItem.Text = "收货信息导出";
-            this.收货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.收货信息导出ToolStripMenuItem_Click);
+            this.数据库备份ToolStripMenuItem.Name = "数据库备份ToolStripMenuItem";
+            this.数据库备份ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.数据库备份ToolStripMenuItem.Text = "数据库备份";
+            this.数据库备份ToolStripMenuItem.Click += new System.EventHandler(this.数据库备份ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -854,6 +864,7 @@
         private System.Windows.Forms.ToolStripMenuItem 数据库导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bufferMB转不良品库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 收货信息导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 数据库备份ToolStripMenuItem;
     }
 }
 

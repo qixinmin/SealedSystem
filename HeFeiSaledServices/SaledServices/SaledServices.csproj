@@ -202,6 +202,12 @@
     <Compile Include="additionForm\CIDInputForm.Designer.cs">
       <DependentUpon>CIDInputForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="additionForm\DatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\DatabaseForm.Designer.cs">
+      <DependentUpon>DatabaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\FilesUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -609,6 +615,9 @@
     </Compile>
     <EmbeddedResource Include="additionForm\CIDInputForm.resx">
       <DependentUpon>CIDInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\DatabaseForm.resx">
+      <DependentUpon>DatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\FilesUpdateForm.resx">
       <DependentUpon>FilesUpdateForm.cs</DependentUpon>

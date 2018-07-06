@@ -1201,11 +1201,27 @@ namespace SaledServices
                 roexport.MdiParent = this;
             }
 
-            roexport.WindowState = FormWindowState.Maximized;
+           // roexport.WindowState = FormWindowState.Maximized;
             roexport.BringToFront();
             roexport.Show();
 
             allForm.Add(roexport);
+        }
+
+        private DatabaseForm databaseForm;
+        private void 数据库备份ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (databaseForm == null || databaseForm.IsDisposed)
+            {
+                databaseForm = new DatabaseForm();
+                databaseForm.MdiParent = this;
+            }
+
+          //  databaseForm.WindowState = FormWindowState.Maximized;
+            databaseForm.BringToFront();
+            databaseForm.Show();
+
+            allForm.Add(databaseForm);
         }
     }
 }

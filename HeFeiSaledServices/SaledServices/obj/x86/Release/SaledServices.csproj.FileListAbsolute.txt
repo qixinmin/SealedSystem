@@ -746,3 +746,4 @@ F:\github\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe
 F:\github\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.pdb
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
+F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.DatabaseForm.resources
