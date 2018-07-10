@@ -246,6 +246,12 @@
     <Compile Include="Export\ReceiveOrderExport.Designer.cs">
       <DependentUpon>ReceiveOrderExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\RepairRecordExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\RepairRecordExport.Designer.cs">
+      <DependentUpon>RepairRecordExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repair\RepairOperationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -636,6 +642,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\ReceiveOrderExport.resx">
       <DependentUpon>ReceiveOrderExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\RepairRecordExport.resx">
+      <DependentUpon>RepairRecordExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RepairOperationForm.resx">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>

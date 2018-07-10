@@ -107,6 +107,7 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出维修记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -670,7 +671,8 @@
             this.报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.报表1ToolStripMenuItem,
             this.数据库导出ToolStripMenuItem,
-            this.收货信息导出ToolStripMenuItem});
+            this.收货信息导出ToolStripMenuItem,
+            this.导出维修记录ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -762,6 +764,13 @@
             this.包装ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.包装ToolStripMenuItem.Text = "包装";
             this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
+            // 
+            // 导出维修记录ToolStripMenuItem
+            // 
+            this.导出维修记录ToolStripMenuItem.Name = "导出维修记录ToolStripMenuItem";
+            this.导出维修记录ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.导出维修记录ToolStripMenuItem.Text = "维修记录导出";
+            this.导出维修记录ToolStripMenuItem.Click += new System.EventHandler(this.导出维修记录ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -866,6 +875,7 @@
         private System.Windows.Forms.ToolStripMenuItem bufferMB转不良品库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 收货信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库备份ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 导出维修记录ToolStripMenuItem;
     }
 }
 

@@ -87,7 +87,7 @@ namespace SaledServices
                 return;
             }
 
-            if (chooseStock.house == "")
+            if (chooseStock.house == "" || chooseStock.house == null)
             {
                 MessageBox.Show("请选择库位为空，而不要手动输入，请检查！");
                 this.stock_placetextBox.Text = "";

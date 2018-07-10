@@ -559,7 +559,7 @@ namespace SaledServices.Test_Outlook
             //runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
 
             //最后做写入记录的动作
-            confirmbutton_Click(null, null);
+           // confirmbutton_Click(null, null);
         }
 
         private void button5_Click(object sender, EventArgs e)
