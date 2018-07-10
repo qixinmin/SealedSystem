@@ -56,7 +56,7 @@ namespace SaledServices.Export
 
                 foreach (RepairRecordStruct repairRecord in receiveOrderList)
                 {
-                    cmd.CommandText = "select vendor,product,receivedate,mb_describe,mb_brief,custom_serial_no,vendor_serail_no,mpn from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    cmd.CommandText = "select vendor,product,receivedate,mb_describe,mb_brief,custom_serial_no,vendor_serail_no,mpn,repairer from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
@@ -68,11 +68,12 @@ namespace SaledServices.Export
                         repairRecord.custom_serial_no = querySdr[5].ToString();
                         repairRecord.vendor_serail_no = querySdr[6].ToString();
                         repairRecord.mpn = querySdr[7].ToString();
+                        repairRecord.repairer = querySdr[8].ToString();
                         break;
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select _action,repair_result,repair_date from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    cmd.CommandText = "select _action,repair_result,repair_date,fault_describe from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     repairRecord.subRecords = new List<SubRepairRecord>();
                     while (querySdr.Read())
@@ -82,6 +83,7 @@ namespace SaledServices.Export
                         sub._action = querySdr[0].ToString();
                         sub.repair_result = querySdr[1].ToString();
                         sub.repair_date = querySdr[2].ToString();
+                        sub.fault_describe = querySdr[3].ToString();
 
                         repairRecord.subRecords.Add(sub);
                     }
@@ -96,8 +98,7 @@ namespace SaledServices.Export
 
                         sub.bgampn = querySdr[0].ToString();
                         sub.bgatype = querySdr[1].ToString();
-                        sub.bgabrief = querySdr[2].ToString();
-                        sub.bganum = "1";
+                        sub.bgabrief = querySdr[2].ToString();                        
 
                         repairRecord.bgaRecords.Add(sub);
                     }
@@ -117,6 +118,22 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
                 }
+                //
+                foreach (RepairRecordStruct repairRecord in receiveOrderList)
+                {
+                    foreach (BgaRecord bgarecord in repairRecord.bgaRecords)
+                    {
+                        cmd.CommandText = "select mbfa1,short_cut from bga_wait_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and bgatype='" + bgarecord.bgatype + "' and _status='BGA不良'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            bgarecord.bgambfa1 = querySdr[0].ToString();
+                            bgarecord.bgashort_cut = querySdr[1].ToString();
+                            break;
+                        }
+                        querySdr.Close();
+                    }
+                }
 
                 mConn.Close();
             }
@@ -132,13 +149,6 @@ namespace SaledServices.Export
         {
             List<string> titleList = new List<string>();
             List<Object> contentList = new List<object>();
-
-
-        //public List<SubRepairRecord> subRecords;
-
-        //public List<BgaRecord> bgaRecords;
-        //public List<SmtRecort> smtRecords;
-
           
             titleList.Add("跟踪条码");
             titleList.Add("厂商");
@@ -149,10 +159,12 @@ namespace SaledServices.Export
             titleList.Add("客户序号");
             titleList.Add("厂商序号");
             titleList.Add("MPN");
+            titleList.Add("维修人");
             titleList.Add("维修次数");
 
             for(int i=1;i<=5;i++)
             {
+                 titleList.Add("维修原因" + i);
                  titleList.Add("维修动作"+i);
                  titleList.Add("维修结果"+i);
                  titleList.Add("维修日期"+i);
@@ -163,8 +175,8 @@ namespace SaledServices.Export
                 titleList.Add("BGA MPN" + i);
                 titleList.Add("BGA类型" + i);
                 titleList.Add("BGA简称" + i);
-                titleList.Add("BGA描述" + i);
-                titleList.Add("BGA数量" + i);
+                titleList.Add("BGA_mbfa1" + i);
+                titleList.Add("BGAShortCut" + i);
             }
     
             for (int i = 1; i <= 10; i++)
@@ -188,18 +200,21 @@ namespace SaledServices.Export
                 ct1.Add(repaircheck.custom_serial_no);
                 ct1.Add(repaircheck.vendor_serail_no);
                 ct1.Add(repaircheck.mpn);
+                ct1.Add(repaircheck.repairer);
                 ct1.Add(repaircheck.repair_Num);
 
                 for (int i = 0; i < 5; i++)
                 {
                     if (i < repaircheck.subRecords.Count)
                     {
+                        ct1.Add(repaircheck.subRecords[i].fault_describe);
                         ct1.Add(repaircheck.subRecords[i]._action);
                         ct1.Add(repaircheck.subRecords[i].repair_result);
                         ct1.Add(repaircheck.subRecords[i].repair_date);
                     }
                     else
                     {
+                        ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
@@ -213,8 +228,8 @@ namespace SaledServices.Export
                         ct1.Add(repaircheck.bgaRecords[i].bgampn);
                         ct1.Add(repaircheck.bgaRecords[i].bgatype);
                         ct1.Add(repaircheck.bgaRecords[i].bgabrief);
-                        ct1.Add(repaircheck.bgaRecords[i].bgadescribe);
-                        ct1.Add(repaircheck.bgaRecords[i].bganum);
+                        ct1.Add(repaircheck.bgaRecords[i].bgambfa1);
+                        ct1.Add(repaircheck.bgaRecords[i].bgashort_cut);
                     }
                     else
                     {
@@ -266,6 +281,8 @@ namespace SaledServices.Export
         public string custom_serial_no;
         public string vendor_serail_no;
         public string mpn;
+        public string repairer;
+       
         public string repair_Num;//维修次数
 
         public List<SubRepairRecord> subRecords;
@@ -276,6 +293,7 @@ namespace SaledServices.Export
 
     public class SubRepairRecord
     {
+        public string fault_describe;
         public string _action;//维修动作
         public string repair_result;//维修结果
         public string repair_date; /*修复日期*/
@@ -286,8 +304,8 @@ namespace SaledServices.Export
        public string bgampn;
        public string bgatype;
        public string bgabrief;
-       public string bgadescribe;
-       public string bganum;
+       public string bgambfa1;
+       public string bgashort_cut;
    }
 
    public class SmtRecort
