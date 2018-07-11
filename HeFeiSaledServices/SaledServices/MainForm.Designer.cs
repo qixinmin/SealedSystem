@@ -108,6 +108,8 @@
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导出维修记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.站别检查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.站别检查ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -309,7 +311,8 @@
             this.维修界面ToolStripMenuItem,
             this.bGAToolStripMenuItem,
             this.库房领料申请ToolStripMenuItem,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.站别检查ToolStripMenuItem1});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -364,7 +367,8 @@
             // 测试ToolStripMenuItem
             // 
             this.测试ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.测试12ToolStripMenuItem});
+            this.测试12ToolStripMenuItem,
+            this.站别检查ToolStripMenuItem});
             this.测试ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.测试ToolStripMenuItem.Name = "测试ToolStripMenuItem";
             this.测试ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -373,7 +377,7 @@
             // 测试12ToolStripMenuItem
             // 
             this.测试12ToolStripMenuItem.Name = "测试12ToolStripMenuItem";
-            this.测试12ToolStripMenuItem.Size = new System.Drawing.Size(157, 32);
+            this.测试12ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.测试12ToolStripMenuItem.Text = "测试1_2";
             this.测试12ToolStripMenuItem.Click += new System.EventHandler(this.测试12ToolStripMenuItem_Click);
             // 
@@ -772,6 +776,20 @@
             this.导出维修记录ToolStripMenuItem.Text = "维修记录导出";
             this.导出维修记录ToolStripMenuItem.Click += new System.EventHandler(this.导出维修记录ToolStripMenuItem_Click);
             // 
+            // 站别检查ToolStripMenuItem
+            // 
+            this.站别检查ToolStripMenuItem.Name = "站别检查ToolStripMenuItem";
+            this.站别检查ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.站别检查ToolStripMenuItem.Text = "站别检查";
+            this.站别检查ToolStripMenuItem.Click += new System.EventHandler(this.站别检查ToolStripMenuItem_Click);
+            // 
+            // 站别检查ToolStripMenuItem1
+            // 
+            this.站别检查ToolStripMenuItem1.Name = "站别检查ToolStripMenuItem1";
+            this.站别检查ToolStripMenuItem1.Size = new System.Drawing.Size(246, 32);
+            this.站别检查ToolStripMenuItem1.Text = "站别检查";
+            this.站别检查ToolStripMenuItem1.Click += new System.EventHandler(this.站别检查ToolStripMenuItem1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -876,6 +894,8 @@
         private System.Windows.Forms.ToolStripMenuItem 收货信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库备份ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导出维修记录ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 站别检查ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 站别检查ToolStripMenuItem;
     }
 }
 

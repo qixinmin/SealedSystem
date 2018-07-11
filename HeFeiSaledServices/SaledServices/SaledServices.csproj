@@ -586,6 +586,12 @@
     <Compile Include="Test_Outlook_Other\PackageForm.Designer.cs">
       <DependentUpon>PackageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test_Outlook_Other\StationCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\StationCheckForm.Designer.cs">
+      <DependentUpon>StationCheckForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -810,6 +816,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Test_Outlook_Other\PackageForm.resx">
       <DependentUpon>PackageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\StationCheckForm.resx">
+      <DependentUpon>StationCheckForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

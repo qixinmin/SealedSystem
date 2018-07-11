@@ -1239,5 +1239,26 @@ namespace SaledServices
 
             allForm.Add(repairRecordExport);
         }
+
+        private StationCheckForm stationcheckform;
+        private void 站别检查ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (stationcheckform == null || stationcheckform.IsDisposed)
+            {
+                stationcheckform = new StationCheckForm();
+                stationcheckform.MdiParent = this;
+            }
+
+            //  repairRecordExport.WindowState = FormWindowState.Maximized;
+            stationcheckform.BringToFront();
+            stationcheckform.Show();
+
+            allForm.Add(stationcheckform);
+        }
+
+        private void 站别检查ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            站别检查ToolStripMenuItem_Click(null,null);
+        }
     }
 }
