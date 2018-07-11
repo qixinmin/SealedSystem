@@ -219,7 +219,7 @@ namespace SaledServices.CustomsExport
                     {
                         init1.unit = "007";
                     }
-                    init1.goods_nature = "E";//代码
+                    init1.goods_nature = "I";//代码
                     init1.bom_version = "";
                     init1.check_date = Untils.getCustomCurrentDate();
                     init1.date_type = "C";//代码
@@ -279,7 +279,7 @@ namespace SaledServices.CustomsExport
                     {
                         init1.unit = "007";
                     }
-                    init1.goods_nature = isMB ? "E":"I";//代码
+                    init1.goods_nature = "I";//代码
                     init1.bom_version = "";
                     init1.check_date = Untils.getCustomCurrentDate();
                     init1.date_type = "C";//代码
@@ -330,7 +330,7 @@ namespace SaledServices.CustomsExport
                     {
                         init1.unit = "007";
                     }
-                    init1.goods_nature = "E";//代码
+                    init1.goods_nature = "I";//代码
                     init1.bom_version = "";
                     init1.check_date = Untils.getCustomCurrentDate();
                     init1.date_type = "C";//代码
@@ -412,8 +412,7 @@ namespace SaledServices.CustomsExport
                     init1.cop_g_no = temp;//正常使用客户料号
                     init1.qty = querySdr[1].ToString();
                     init1.unit = "007";//固定单位
-                    init1.goods_nature = "E
-                    ";//代码
+                    init1.goods_nature = "I";//代码
                     init1.bom_version = "";
                     init1.check_date = Untils.getCustomCurrentDate();
                     init1.date_type = "C";//代码
