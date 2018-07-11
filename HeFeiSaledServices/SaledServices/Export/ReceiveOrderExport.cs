@@ -67,10 +67,10 @@ namespace SaledServices.Export
                 MessageBox.Show(ex.ToString());
             }
 
-            generateExcelToCheck(receiveOrderList);
+            generateExcelToCheck(receiveOrderList,startTime, endTime);
         }
 
-        public void generateExcelToCheck(List<ReceiveOrderStruct> StockCheckList)
+        public void generateExcelToCheck(List<ReceiveOrderStruct> StockCheckList,string startTime, string endTime)
         {
             List<string> titleList = new List<string>();
             List<Object> contentList = new List<object>();
@@ -101,7 +101,7 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Untils.createExcel("D:\\recieveOrderExort.xlsx", titleList, contentList);
+            Untils.createExcel("D:\\收货单信息" +startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }
 

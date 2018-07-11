@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SaledServices.Export;
 
 namespace SaledServices
 {
@@ -574,7 +575,10 @@ namespace SaledServices
 
         private void exportExcel_Click(object sender, EventArgs e)
         {
-
+            BgaOutExport bgaout = new BgaOutExport();
+           // bgaout.MdiParent = this;
+            bgaout.BringToFront();
+            bgaout.Show();           
         }
     }
 }

@@ -87,7 +87,7 @@
             this.exportxmlbutton.UseVisualStyleBackColor = true;
             this.exportxmlbutton.Click += new System.EventHandler(this.exportxmlbutton_Click);
             // 
-            // ReceiveOrderExport
+            // BgaOutExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -98,9 +98,9 @@
             this.Controls.Add(this.dateTimePickerend);
             this.Controls.Add(this.dateTimePickerstart);
             this.Controls.Add(this.exportxmlbutton);
-            this.Name = "ReceiveOrderExport";
+            this.Name = "BgaOutExport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "收货信息导出";
+            this.Text = "BGA出库信息导出";
             this.ResumeLayout(false);
             this.PerformLayout();
 
