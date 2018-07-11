@@ -213,6 +213,7 @@ namespace SaledServices.CustomsExport
                     init1.ems_no = ems_no;
 
                     string currentDeclear = "";
+                    bool isMB = false;
                     if (_71bomDic.ContainsKey(querySdr[0].ToString()))
                     {
                         currentDeclear = _71bomDic[querySdr[0].ToString()] + "-1";//海关要求料号不一样，加-1
@@ -223,6 +224,7 @@ namespace SaledServices.CustomsExport
                         if (currentDeclear.Length == 10 && currentDeclear.StartsWith("000"))
                         {
                             currentDeclear = currentDeclear.Substring(3);
+                            isMB = true;
                         }
                     }
 
@@ -237,7 +239,7 @@ namespace SaledServices.CustomsExport
                     {
                         init1.unit = "007";
                     }
-                    init1.goods_nature = "I";//代码
+                    init1.goods_nature = isMB?"E": "I";//代码
                     init1.bom_version = "";
                     init1.stock_date = Untils.getCustomCurrentDate();
                     init1.date_type = "B";//代码
@@ -269,7 +271,7 @@ namespace SaledServices.CustomsExport
                     {
                         init1.unit = "007";
                     }
-                    init1.goods_nature = "I";//代码
+                    init1.goods_nature = "E";//代码
                     init1.bom_version = "";
                     init1.stock_date = Untils.getCustomCurrentDate();
                     init1.date_type = "B";//代码
@@ -325,7 +327,7 @@ namespace SaledServices.CustomsExport
                     init1.cop_g_no = temp;//正常使用客户料号
                     init1.qty = querySdr[1].ToString();
                     init1.unit = "007";//固定单位
-                    init1.goods_nature = "I";//代码
+                    init1.goods_nature = "E";//代码
                     init1.bom_version = "";
                     init1.stock_date = Untils.getCustomCurrentDate();
                     init1.date_type = "B";//代码
