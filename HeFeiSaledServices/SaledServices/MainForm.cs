@@ -1260,5 +1260,21 @@ namespace SaledServices
         {
             站别检查ToolStripMenuItem_Click(null,null);
         }
+
+        private DPKExport dpkExport;
+        private void dPK信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dpkExport == null || dpkExport.IsDisposed)
+            {
+                dpkExport = new DPKExport();
+                dpkExport.MdiParent = this;
+            }
+
+            //  repairRecordExport.WindowState = FormWindowState.Maximized;
+            dpkExport.BringToFront();
+            dpkExport.Show();
+
+            allForm.Add(dpkExport);
+        }
     }
 }

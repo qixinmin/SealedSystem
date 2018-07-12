@@ -258,6 +258,12 @@
     <Compile Include="Export\BgaOutExport.Designer.cs">
       <DependentUpon>BgaOutExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\DPKExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\DPKExport.Designer.cs">
+      <DependentUpon>DPKExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repair\RepairOperationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -660,6 +666,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\BgaOutExport.resx">
       <DependentUpon>BgaOutExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\DPKExport.resx">
+      <DependentUpon>DPKExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RepairOperationForm.resx">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>

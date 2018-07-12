@@ -1,6 +1,6 @@
 ﻿namespace SaledServices.Export
 {
-    partial class BgaOutExport
+    partial class DPKExport
     {
         /// <summary>
         /// Required designer variable.
@@ -83,11 +83,11 @@
             this.exportxmlbutton.Name = "exportxmlbutton";
             this.exportxmlbutton.Size = new System.Drawing.Size(133, 25);
             this.exportxmlbutton.TabIndex = 15;
-            this.exportxmlbutton.Text = "导出BGA出库信息Excel";
+            this.exportxmlbutton.Text = "导出DPK信息Excel";
             this.exportxmlbutton.UseVisualStyleBackColor = true;
             this.exportxmlbutton.Click += new System.EventHandler(this.exportxmlbutton_Click);
             // 
-            // BgaOutExport
+            // DPKExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -98,9 +98,9 @@
             this.Controls.Add(this.dateTimePickerend);
             this.Controls.Add(this.dateTimePickerstart);
             this.Controls.Add(this.exportxmlbutton);
-            this.Name = "BgaOutExport";
+            this.Name = "DPKExport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BGA出库信息导出";
+            this.Text = "DPK信息导出";
             this.ResumeLayout(false);
             this.PerformLayout();
 

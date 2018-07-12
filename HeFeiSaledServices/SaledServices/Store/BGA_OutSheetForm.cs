@@ -574,7 +574,7 @@ namespace SaledServices
         }
 
         private void exportExcel_Click(object sender, EventArgs e)
-        {
+        {   
             BgaOutExport bgaout = new BgaOutExport();
            // bgaout.MdiParent = this;
             bgaout.BringToFront();
