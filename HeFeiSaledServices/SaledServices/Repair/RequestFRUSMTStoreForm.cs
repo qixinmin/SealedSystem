@@ -116,7 +116,7 @@ namespace SaledServices.Store
                         {
                             useClass useclass = new useClass();
                             string material_mpn = querySdr[0].ToString();
-                            string temp = querySdr[1].ToString();
+                            string temp = querySdr[1].ToString().Trim();
                             string matertialDes = querySdr[9].ToString();
                            
                             if (temp != "" && temp.ToLower() == not_good_place.ToLower())
@@ -125,49 +125,49 @@ namespace SaledServices.Store
                                 useclass.materialDescribe = matertialDes;
                                 list.Add(useclass);
                                 continue;
-                            } temp = querySdr[2].ToString();
+                            } temp = querySdr[2].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
                                 list.Add(useclass);
                                 continue;
-                            } temp = querySdr[3].ToString();
+                            } temp = querySdr[3].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
                                 list.Add(useclass);
                                 continue;
-                            } temp = querySdr[4].ToString();
+                            } temp = querySdr[4].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
                                 list.Add(useclass);
                                 continue;
-                            } temp = querySdr[5].ToString();
+                            } temp = querySdr[5].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
                                 list.Add(useclass);
                                 continue;
-                            } temp = querySdr[6].ToString();
+                            } temp = querySdr[6].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
                                 list.Add(useclass);
                                 continue;
-                            } temp = querySdr[7].ToString();
+                            } temp = querySdr[7].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
                                 list.Add(useclass);
                                 continue;
-                            } temp = querySdr[8].ToString();
+                            } temp = querySdr[8].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 useclass.materialName = material_mpn;
