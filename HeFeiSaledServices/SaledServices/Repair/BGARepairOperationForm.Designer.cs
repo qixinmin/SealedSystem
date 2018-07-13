@@ -775,6 +775,7 @@
             this.delete.TabIndex = 1;
             this.delete.Text = "删除";
             this.delete.UseVisualStyleBackColor = true;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // query
             // 
@@ -810,7 +811,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1222, 749);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("SimSun", 12F);
+            this.Font = new System.Drawing.Font("宋体", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BGARepairOperationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

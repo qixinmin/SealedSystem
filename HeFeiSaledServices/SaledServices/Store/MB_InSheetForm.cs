@@ -174,7 +174,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     //更新采购表里面的数量与状态
-                    cmd.CommandText = "update stock_in_sheet set _status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='" + this.vendormaterialNoTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
+                    cmd.CommandText = "update stock_in_sheet set _status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
                     //更新库存占用记录，保证库房的信息被更新

@@ -87,8 +87,30 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+
+                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
+                    string stationInfo = "";
+                    while (querySdr.Read())
+                    {
+                        stationInfo = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (stationInfo != "维修")
+                    {
+                        MessageBox.Show("此序列号的站别已经在:" + stationInfo + "，不能走下面的流程！");
+                        mConn.Close();
+                        this.add.Enabled = false;
+                        return;
+                    }
+                    else
+                    {
+                        this.add.Enabled = true;
+                    }
+
+                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
                     string cidExist = "";
                     while (querySdr.Read())
                     {

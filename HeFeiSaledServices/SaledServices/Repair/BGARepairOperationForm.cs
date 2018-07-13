@@ -453,5 +453,10 @@ namespace SaledServices
                 }
             }
         }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

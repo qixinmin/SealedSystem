@@ -907,6 +907,13 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                if (this.track_serial_noTextBox.Text == "" || this.track_serial_noTextBox.Text.Length != 15)
+                {
+                    MessageBox.Show("检查内容是否为空或长度不对！");
+                    this.track_serial_noTextBox.Text = "";
+                    this.track_serial_noTextBox.Focus();
+                    return;
+                }
                 //检查跟踪条码是否在系统中存在过，否则报错
                 string vendor = "";
                 try

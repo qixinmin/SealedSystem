@@ -713,6 +713,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1203, 120);
             this.dataGridView1.TabIndex = 56;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // tableLayoutPanel3
             // 
@@ -779,6 +780,7 @@
             this.delete.TabIndex = 0;
             this.delete.Text = "删除";
             this.delete.UseVisualStyleBackColor = true;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // tableLayoutPanel4
             // 

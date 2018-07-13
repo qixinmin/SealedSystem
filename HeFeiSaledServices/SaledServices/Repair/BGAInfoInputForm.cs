@@ -691,8 +691,23 @@ namespace SaledServices
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
 
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = mConn;
-                cmd.CommandText = "select * from bga_wait_record_table";
+                cmd.Connection = mConn;              
+
+                string sqlStr = "select * from bga_wait_record_table";
+
+                if (this.track_serial_noTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where track_serial_no= '" + track_serial_noTextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and track_serial_no= '" + track_serial_noTextBox.Text.Trim() + "' ";
+                    }
+                }
+
+                cmd.CommandText = sqlStr;
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -701,7 +716,6 @@ namespace SaledServices
                 sda.Fill(ds, "bga_wait_record_table");
                 dataGridView1.DataSource = ds.Tables[0];
                 dataGridView1.RowHeadersVisible = false;
-
             }
             catch (Exception ex)
             {
@@ -715,6 +729,7 @@ namespace SaledServices
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
             }
+            MessageBox.Show("查询完毕");
         }
 
         private void BGAInfoInputForm_Load(object sender, EventArgs e)
@@ -811,6 +826,65 @@ namespace SaledServices
         private void BGA_placetextBox_Leave(object sender, EventArgs e)
         {
             checkPlace();
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            //在维修人员误操作后的删除动作
+            if (tobedeletedId.Trim() == "")
+            {
+                MessageBox.Show("请选择要删除的行ID");
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("你确定要删除ID 为" + tobedeletedId + "的信息吗， 一旦删除不能恢复", "Attention", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+             if (dr == System.Windows.Forms.DialogResult.Cancel)
+             {
+                 return;
+             }
+            
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "Delete from bga_wait_record_table where Id = '" + tobedeletedId + "'";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+
+                MessageBox.Show("删除完毕!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        string tobedeletedId = "";
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                return;
+            }
+
+            tobedeletedId = dataGridView1.SelectedCells[0].Value.ToString();
         }
     }
 }
