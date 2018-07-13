@@ -152,13 +152,14 @@ namespace SaledServices
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 List<string> finishID = new List<string>();
-                int receivedNum = 0, cidNum = 0;
+                int receivedNum = 0, cidNum = 0, returnNum=0;
                 while (querySdr.Read())
                 {
+                    returnNum = Int32.Parse(querySdr[3].ToString());
                     cidNum = Int32.Parse(querySdr[4].ToString());
                     receivedNum = Int32.Parse(querySdr[2].ToString());
 
-                    if (receivedNum == cidNum)
+                    if (receivedNum == cidNum || (receivedNum == cidNum+returnNum))
                     {
                         finishID.Add(querySdr[5].ToString());
                     }

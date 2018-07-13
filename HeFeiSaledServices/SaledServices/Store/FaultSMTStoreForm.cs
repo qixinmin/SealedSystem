@@ -223,8 +223,28 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select material_type from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
+                    string type = "";
+                    while (querySdr.Read())
+                    {
+                        type = querySdr[0].ToString(); 
+                        break;
+                    }
+                    querySdr.Close();
+
+                    if (type != "FRU" && type != "SMT")
+                    {
+                        MessageBox.Show("你输入的不是FRU/SMT材料，请检查后输入！");
+                        this.mpnTextBox.Text = "";
+                        this.storehoustTextBox.Text = "";
+                        this.mpnTextBox.Focus();
+                        mConn.Close();
+                        return;
+                    }
+
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
                     string ghouse = "", gplace = "";
                     while (querySdr.Read())
                     {
