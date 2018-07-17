@@ -98,7 +98,8 @@ namespace SaledServices.Export
 
                         sub.bgampn = querySdr[0].ToString();
                         sub.bgatype = querySdr[1].ToString();
-                        sub.bgabrief = querySdr[2].ToString();                        
+                        sub.bgabrief = querySdr[2].ToString();
+                        sub.bga_place = querySdr[3].ToString();
 
                         repairRecord.bgaRecords.Add(sub);
                     }
@@ -112,7 +113,8 @@ namespace SaledServices.Export
                         SmtRecort sub = new SmtRecort();
 
                         sub.smtMpn = querySdr[0].ToString();
-                        sub.smtNum = querySdr[1].ToString();                       
+                        sub.smtNum = querySdr[1].ToString();
+                        sub.smtplace = querySdr[2].ToString();
 
                         repairRecord.smtRecords.Add(sub);
                     }
@@ -162,27 +164,32 @@ namespace SaledServices.Export
             titleList.Add("维修人");
             titleList.Add("维修次数");
 
-            for(int i=1;i<=5;i++)
+            int repairLenght = 5;
+            int bgaLength = 3;
+            int smtLength = 10;
+
+            for (int i = 1; i <= repairLenght; i++)
             {
                  titleList.Add("维修原因" + i);
                  titleList.Add("维修动作"+i);
                  titleList.Add("维修结果"+i);
                  titleList.Add("维修日期"+i);
             }
-     
-            for (int i = 1; i <= 5; i++)
+
+            for (int i = 1; i <= bgaLength; i++)
             {
                 titleList.Add("BGA MPN" + i);
                 titleList.Add("BGA类型" + i);
                 titleList.Add("BGA简称" + i);
+                titleList.Add("BGA 位置" + i);
                 titleList.Add("BGA_mbfa1" + i);
                 titleList.Add("BGAShortCut" + i);
             }
-    
-            for (int i = 1; i <= 10; i++)
+
+            for (int i = 1; i <= smtLength; i++)
             {
                 titleList.Add("SMT MPN" + i);
-                titleList.Add("SMT描述" + i);
+                titleList.Add("SMT位置" + i);
                 titleList.Add("SMT数量" + i);
             }
 
@@ -203,7 +210,7 @@ namespace SaledServices.Export
                 ct1.Add(repaircheck.repairer);
                 ct1.Add(repaircheck.repair_Num);
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < repairLenght; i++)
                 {
                     if (i < repaircheck.subRecords.Count)
                     {
@@ -221,13 +228,14 @@ namespace SaledServices.Export
                     }
                 }
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < bgaLength; i++)
                 {
                     if (i < repaircheck.bgaRecords.Count)
                     {
                         ct1.Add(repaircheck.bgaRecords[i].bgampn);
                         ct1.Add(repaircheck.bgaRecords[i].bgatype);
                         ct1.Add(repaircheck.bgaRecords[i].bgabrief);
+                        ct1.Add(repaircheck.bgaRecords[i].bga_place);
                         ct1.Add(repaircheck.bgaRecords[i].bgambfa1);
                         ct1.Add(repaircheck.bgaRecords[i].bgashort_cut);
                     }
@@ -238,15 +246,16 @@ namespace SaledServices.Export
                         ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
+                        ct1.Add("");
                     }
                 }
 
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < smtLength; i++)
                 {
                     if (i < repaircheck.smtRecords.Count)
                     {
                         ct1.Add(repaircheck.smtRecords[i].smtMpn);
-                        ct1.Add(repaircheck.smtRecords[i].smtDescribe);
+                        ct1.Add(repaircheck.smtRecords[i].smtplace);
                         ct1.Add(repaircheck.smtRecords[i].smtNum);
                     }
                     else
@@ -306,12 +315,13 @@ namespace SaledServices.Export
        public string bgabrief;
        public string bgambfa1;
        public string bgashort_cut;
+       public string bga_place;
    }
 
    public class SmtRecort
    {
        public string smtMpn;
-       public string smtDescribe;
+       public string smtplace;
        public string smtNum;
    }
 }
