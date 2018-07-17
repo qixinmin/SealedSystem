@@ -965,36 +965,15 @@ namespace SaledServices.CustomsExport
 
                     //12. MB 入库信息 todo 牵扯到区内流程的材料，只有申请单号，没有报关单好，todo, 也有报关单号的
                     MaterialCustomRelationList.Clear();
-                    cmd.CommandText = "select Id,buy_order_serial_no,mpn,input_number,input_date from mb_in_stock where input_date between '" + startTime + "' and '" + endTime + "'";
+                    cmd.CommandText = "select Id,buy_order_serial_no,vendormaterialNo,input_number,input_date from mb_in_stock where input_date between '" + startTime + "' and '" + endTime + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         MaterialCustomRelation MaterialCustomRelationTemp = new MaterialCustomRelation();
                         MaterialCustomRelationTemp.id = querySdr[0].ToString();
                         MaterialCustomRelationTemp.buy_order_serial_no = querySdr[1].ToString();
-
-                        string currentDeclear = "";
-                        string nowMatrialNo = querySdr[2].ToString();
-                        if (materialbomDic.ContainsKey(nowMatrialNo))//主板只查询物料对照表
-                        {
-                            currentDeclear = materialbomDic[nowMatrialNo];
-
-                            string temp = currentDeclear;
-                            if (temp.Length == 10 && temp.StartsWith("000"))
-                            {
-                                temp = temp.Substring(3);
-                            }
-                            currentDeclear = temp;
-                        }
-                        else
-                        {
-                            MessageBox.Show("MB 入库信息物料" + nowMatrialNo + "对应找不到71料号！");
-                            querySdr.Close();
-                            mConn.Close();
-                            return;
-                        }
-
-                        MaterialCustomRelationTemp.mpn = currentDeclear;//因为报关原因，需要改成71料号（联想料号）done
+                        
+                        MaterialCustomRelationTemp.mpn = querySdr[2].ToString().Trim(); ;//因为报关原因，需要改成71料号（联想料号）done
                         MaterialCustomRelationTemp.num = querySdr[3].ToString();
                         MaterialCustomRelationTemp.date = querySdr[4].ToString();
 
