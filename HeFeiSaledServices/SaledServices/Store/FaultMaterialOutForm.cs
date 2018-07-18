@@ -151,7 +151,7 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select Id,mpn,in_number,declare_unit,declare_number from  " + tableName;
+                cmd.CommandText = "select Id,mpn,in_number,input_date,declare_unit,declare_number from  " + tableName;
                 cmd.CommandType = CommandType.Text;
 
                 sda = new SqlDataAdapter();
@@ -166,7 +166,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "MPN","数量","单位","报关单号" };
+            string[] hTxt = { "ID", "MPN","数量","时间","单位","报关单号" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -230,8 +230,9 @@ namespace SaledServices
          
             this.mpnTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
             this.numberTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
-            this.unitComboBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
-            this.declare_numberTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString(); 
+            //3 is time
+            this.unitComboBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
+            this.declare_numberTextBox.Text = dataGridView1.SelectedCells[5].Value.ToString(); 
         }
 
         private void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)

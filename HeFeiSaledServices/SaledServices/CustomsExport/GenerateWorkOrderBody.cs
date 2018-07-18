@@ -100,7 +100,7 @@ namespace SaledServices.CustomsExport
 
                 //for bga材料
                 MaterialCustomRelationList.Clear();
-                cmd.CommandText = "select track_serial_no,BGAPN,repair_date from bga_repair_record_table where bga_repair_result!='BGA待换' and repair_date between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "select track_serial_no,BGAPN,repair_date from bga_repair_record_table where bga_repair_result!='BGA待换' and bga_repair_date between '" + startTime + "' and '" + endTime + "'";
                 querySdr = cmd.ExecuteReader();
 
                 while (querySdr.Read())

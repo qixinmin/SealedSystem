@@ -83,11 +83,11 @@
             this.exportxmlbutton.Name = "exportxmlbutton";
             this.exportxmlbutton.Size = new System.Drawing.Size(133, 25);
             this.exportxmlbutton.TabIndex = 15;
-            this.exportxmlbutton.Text = "导出收货信息Excel";
+            this.exportxmlbutton.Text = "导出维修信息Excel";
             this.exportxmlbutton.UseVisualStyleBackColor = true;
             this.exportxmlbutton.Click += new System.EventHandler(this.exportxmlbutton_Click);
             // 
-            // ReceiveOrderExport
+            // RepairRecordExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -98,9 +98,9 @@
             this.Controls.Add(this.dateTimePickerend);
             this.Controls.Add(this.dateTimePickerstart);
             this.Controls.Add(this.exportxmlbutton);
-            this.Name = "ReceiveOrderExport";
+            this.Name = "RepairRecordExport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "收货信息导出";
+            this.Text = "维修信息导出";
             this.ResumeLayout(false);
             this.PerformLayout();
 

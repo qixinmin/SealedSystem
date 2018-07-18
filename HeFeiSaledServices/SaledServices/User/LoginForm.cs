@@ -153,6 +153,10 @@ namespace SaledServices
                             mParent.appendMenu(MenuType.Obe);
                             mParent.appendMenu(MenuType.Package);
                         }
+
+                        mParent.报表ToolStripMenuItem.DropDownItems.Remove(mParent.dPK信息导出ToolStripMenuItem);
+
+                        mParent.additionMenuItem.DropDownItems.Remove(mParent.员工管理ToolStripMenuItem);
                     }                    
                 }
 

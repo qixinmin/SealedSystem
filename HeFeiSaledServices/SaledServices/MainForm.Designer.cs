@@ -832,7 +832,7 @@
         private System.Windows.Forms.ToolStripMenuItem ExcelImportMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mBMaterialCompareMenuItem;
         private System.Windows.Forms.ToolStripMenuItem receiveReturnStoreMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem additionMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem additionMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sourceMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customFaultMenuItem;
         private System.Windows.Forms.ToolStripMenuItem guaranteeMenuItem;
@@ -853,11 +853,11 @@
         private System.Windows.Forms.ToolStripMenuItem 测试12ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 厂商信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 收货单ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 报表ToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem 报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 报表1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lCFCMBBOM查看ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lCFC71BOM表查看ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dPKToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem dPKToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 故障代码表查看ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGAToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA维修ToolStripMenuItem;
@@ -880,7 +880,7 @@
         private System.Windows.Forms.ToolStripMenuItem 还货请求查看ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA维修界面ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 库房储位管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 员工管理ToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem 员工管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 测试1ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 测试2ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem runningToolStripMenuItem;
@@ -905,7 +905,7 @@
         private System.Windows.Forms.ToolStripMenuItem 导出维修记录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 站别检查ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 站别检查ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dPK信息导出ToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem dPK信息导出ToolStripMenuItem;
     }
 }
 

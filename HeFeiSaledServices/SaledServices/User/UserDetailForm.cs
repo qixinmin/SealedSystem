@@ -21,6 +21,12 @@ namespace SaledServices
         public UserDetailForm()
         {
             InitializeComponent();
+
+            if (User.UserSelfForm.isSuperManager() == false)
+            {
+                this.modify.Visible = false;
+                this.delete.Visible = false;
+            }
         }
 
         private void UserDetailForm_FormClosed(object sender, FormClosedEventArgs e)
