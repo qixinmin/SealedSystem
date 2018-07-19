@@ -97,16 +97,16 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    if (stationInfo != "维修")
+                    if(stationInfo == "维修" || stationInfo == "收货")                   
+                    {
+                        this.add.Enabled = true;                       
+                    }
+                    else
                     {
                         MessageBox.Show("此序列号的站别已经在:" + stationInfo + "，不能走下面的流程！");
                         mConn.Close();
                         this.add.Enabled = false;
                         return;
-                    }
-                    else
-                    {
-                        this.add.Enabled = true;
                     }
 
                     cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
