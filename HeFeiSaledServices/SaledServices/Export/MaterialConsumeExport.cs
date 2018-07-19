@@ -100,6 +100,7 @@ namespace SaledServices.Export
                     while (querySdr.Read())
                     {
                         stockcheck.brief = querySdr[0].ToString();
+                        break;//只需要一条记录即可
                     }
                     querySdr.Close();
                 }
