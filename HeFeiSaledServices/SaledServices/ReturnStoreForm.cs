@@ -707,6 +707,22 @@ namespace SaledServices
                         mConn.Close();
                         return;
                     }
+
+                    cmd.CommandText = "select custom_order from flexidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string customOrder = "";
+                    while (querySdr.Read())
+                    {
+                        customOrder = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (customOrder != ordernoTextBox.Text.Trim())
+                    {
+                        MessageBox.Show("此序列号的订单编号是"+customOrder+"，跟选择的订单编号应该不符合！");
+                        mConn.Close();
+                        return;
+                    }
                     
                     cmd.CommandText = "select Id from cidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     querySdr = cmd.ExecuteReader();
