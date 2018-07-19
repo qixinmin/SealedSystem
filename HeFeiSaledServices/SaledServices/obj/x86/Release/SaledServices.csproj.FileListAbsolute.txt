@@ -751,3 +751,4 @@ F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.StationCheckForm.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.BgaOutExport.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.DPKExport.resources
+F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MaterialConsumeExport.resources

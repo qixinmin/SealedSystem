@@ -1276,5 +1276,20 @@ namespace SaledServices
 
             allForm.Add(dpkExport);
         }
+        private MaterialConsumeExport materialConsumeExport;
+        private void 库存消耗查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (materialConsumeExport == null || materialConsumeExport.IsDisposed)
+            {
+                materialConsumeExport = new MaterialConsumeExport();
+                materialConsumeExport.MdiParent = this;
+            }
+
+            //  repairRecordExport.WindowState = FormWindowState.Maximized;
+            materialConsumeExport.BringToFront();
+            materialConsumeExport.Show();
+
+            allForm.Add(materialConsumeExport);
+        }
     }
 }

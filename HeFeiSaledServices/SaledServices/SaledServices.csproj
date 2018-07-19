@@ -264,6 +264,12 @@
     <Compile Include="Export\DPKExport.Designer.cs">
       <DependentUpon>DPKExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\MaterialConsumeExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\MaterialConsumeExport.Designer.cs">
+      <DependentUpon>MaterialConsumeExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repair\RepairOperationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -669,6 +675,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\DPKExport.resx">
       <DependentUpon>DPKExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\MaterialConsumeExport.resx">
+      <DependentUpon>MaterialConsumeExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RepairOperationForm.resx">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>
