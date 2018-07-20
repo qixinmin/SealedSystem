@@ -43,6 +43,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "定时任务状态";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -52,11 +53,12 @@
             this.button2.TabIndex = 0;
             this.button2.Text = "主动执行任务";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label1.Font = new System.Drawing.Font("宋体", 15F);
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
