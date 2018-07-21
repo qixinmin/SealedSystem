@@ -616,8 +616,15 @@ namespace SaledServices
 
                         cmd.ExecuteNonQuery();
 
-                        cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                                  + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                        string stationInfo = "BGA";
+                        if (status == "BGA更换OK待测" || status == "BGA更换报废")
+                        {
+                            stationInfo = "维修";
+                        }
+
+                        cmd.CommandText = "update stationInformation set station = '" + stationInfo + "', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                      + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+
                         cmd.ExecuteNonQuery();
                     }
                 }
