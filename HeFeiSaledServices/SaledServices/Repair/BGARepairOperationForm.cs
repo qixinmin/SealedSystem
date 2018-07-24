@@ -141,7 +141,7 @@ namespace SaledServices
                     bgarepairertextBox.Text = LoginForm.currentUser;
                     bgarepairDatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
-                    if (Untils.isTimeError(this.repair_datetextBox.Text.Trim()))
+                    if (Untils.isTimeError(this.bgarepairDatetextBox.Text.Trim()))
                     {
                         this.add.Enabled = false;
                     }

@@ -60,6 +60,17 @@ namespace SaledServices.Export
                 }
                 querySdr.Close();
 
+                foreach (ReceiveOrderStruct stockcheck in receiveOrderList)
+                {
+                    cmd.CommandText = "select flex_id from flexidRecord where track_serial_no='" + stockcheck.trackno + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        stockcheck.flexid = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                }
+
                 mConn.Close();
             }
             catch (Exception ex)
@@ -79,6 +90,7 @@ namespace SaledServices.Export
             titleList.Add("跟踪条码");
             titleList.Add("客户料号");
             titleList.Add("8S码");
+            titleList.Add("FlexId");
             titleList.Add("DPK类型");
             titleList.Add("MAC");
             titleList.Add("MPN");
@@ -92,6 +104,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.trackno);
                 ct1.Add(stockcheck.customMaterialNo);
                 ct1.Add(stockcheck.custom_serial_no);
+                ct1.Add(stockcheck.flexid);
                 ct1.Add(stockcheck.dpktype);
                 ct1.Add(stockcheck.mac);
                 ct1.Add(stockcheck.mpn);
@@ -111,6 +124,7 @@ namespace SaledServices.Export
         public string trackno;
         public string customMaterialNo;
         public string custom_serial_no;
+        public string flexid;
         public string dpktype;
         public string mac;
         public string mpn;
