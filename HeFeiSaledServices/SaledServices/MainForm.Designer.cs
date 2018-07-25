@@ -103,6 +103,7 @@
             this.收货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导出维修记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dPK信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.库存消耗查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.期初库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实盘库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,7 +112,7 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.库存消耗查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flexidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -694,7 +695,8 @@
             this.收货信息导出ToolStripMenuItem,
             this.导出维修记录ToolStripMenuItem,
             this.dPK信息导出ToolStripMenuItem,
-            this.库存消耗查询ToolStripMenuItem});
+            this.库存消耗查询ToolStripMenuItem,
+            this.flexidToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -734,6 +736,13 @@
             this.dPK信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.dPK信息导出ToolStripMenuItem.Text = "DPK信息导出";
             this.dPK信息导出ToolStripMenuItem.Click += new System.EventHandler(this.dPK信息导出ToolStripMenuItem_Click);
+            // 
+            // 库存消耗查询ToolStripMenuItem
+            // 
+            this.库存消耗查询ToolStripMenuItem.Name = "库存消耗查询ToolStripMenuItem";
+            this.库存消耗查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.库存消耗查询ToolStripMenuItem.Text = "库存消耗查询";
+            this.库存消耗查询ToolStripMenuItem.Click += new System.EventHandler(this.库存消耗查询ToolStripMenuItem_Click);
             // 
             // 海关ToolStripMenuItem
             // 
@@ -801,12 +810,12 @@
             this.包装ToolStripMenuItem.Text = "包装";
             this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
             // 
-            // 库存消耗查询ToolStripMenuItem
+            // flexidToolStripMenuItem
             // 
-            this.库存消耗查询ToolStripMenuItem.Name = "库存消耗查询ToolStripMenuItem";
-            this.库存消耗查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
-            this.库存消耗查询ToolStripMenuItem.Text = "库存消耗查询";
-            this.库存消耗查询ToolStripMenuItem.Click += new System.EventHandler(this.库存消耗查询ToolStripMenuItem_Click);
+            this.flexidToolStripMenuItem.Name = "flexidToolStripMenuItem";
+            this.flexidToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.flexidToolStripMenuItem.Text = "FlexId表信息";
+            this.flexidToolStripMenuItem.Click += new System.EventHandler(this.flexidToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -916,6 +925,7 @@
         private System.Windows.Forms.ToolStripMenuItem 站别检查ToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem dPK信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 库存消耗查询ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem flexidToolStripMenuItem;
     }
 }
 

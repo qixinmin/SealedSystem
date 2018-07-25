@@ -1291,5 +1291,21 @@ namespace SaledServices
 
             allForm.Add(materialConsumeExport);
         }
+
+        private FlexIdExport flexIdExport;
+        private void flexidToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (flexIdExport == null || flexIdExport.IsDisposed)
+            {
+                flexIdExport = new FlexIdExport();
+                flexIdExport.MdiParent = this;
+            }
+
+            //  repairRecordExport.WindowState = FormWindowState.Maximized;
+            flexIdExport.BringToFront();
+            flexIdExport.Show();
+
+            allForm.Add(flexIdExport);
+        }
     }
 }
