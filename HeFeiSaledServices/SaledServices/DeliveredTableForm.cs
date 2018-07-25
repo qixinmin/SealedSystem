@@ -1162,8 +1162,46 @@ namespace SaledServices
                     MessageBox.Show("FleId不是10位!");
                     return;
                 }
-                this.custom_serial_noTextBox.Focus();
-                this.custom_serial_noTextBox.SelectAll();
+
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select Id from flexidRecord where flex_id = '" + this.flexidTextBox.Text.Trim() + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    bool exist = false;
+                    while (querySdr.Read())
+                    {
+                        exist = true;
+                        break;
+                    }
+                    querySdr.Close();
+                    mConn.Close();
+
+                    if (exist)
+                    {
+                        MessageBox.Show("此FlexId已经存在之前的收货记录了");
+                        this.add.Enabled = false;
+                        this.flexidTextBox.Focus();
+                        this.flexidTextBox.SelectAll();
+                    }
+                    else
+                    {
+                        this.add.Enabled = true;
+                        this.custom_serial_noTextBox.Focus();
+                        this.custom_serial_noTextBox.SelectAll();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
 
