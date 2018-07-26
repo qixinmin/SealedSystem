@@ -66,8 +66,15 @@ namespace SaledServices.Test_Outlook
                     if (station != "外观" && station != "Running")//等于外观怕mylar一个页面的数据插入不够，此时不能拦截
                     {
                         MessageBox.Show("板子已经经过站别" + station);
+                        this.confirmbutton.Enabled = false;
+                        this.button1.Enabled = false;
                         mConn.Close();
                         return;
+                    }
+                    else
+                    {
+                        this.confirmbutton.Enabled = true;
+                        this.button1.Enabled = true;
                     }
 
                     //cmd.CommandText = "select track_serial_no from outlookcheck where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";

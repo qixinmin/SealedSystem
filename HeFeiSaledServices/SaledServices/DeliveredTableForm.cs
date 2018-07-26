@@ -511,6 +511,23 @@ namespace SaledServices
                         querySdr.Close();
                     }
 
+                    cmd.CommandText = "select Id from flexidRecord where flex_id = '" + this.flexidTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    bool existFlexId = false;
+                    while (querySdr.Read())
+                    {
+                        existFlexId = true;
+                        break;
+                    }
+                    querySdr.Close();
+
+                    if (existFlexId)
+                    {
+                        MessageBox.Show("此FlexId已经存在之前的收货记录了");
+                        conn.Close();
+                        return;
+                    }                   
+
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + 
                         this.vendorTextBox.Text.Trim() + "','" +
                         this.productTextBox.Text.Trim() + "','" +
