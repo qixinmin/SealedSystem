@@ -1307,5 +1307,21 @@ namespace SaledServices
 
             allForm.Add(flexIdExport);
         }
+
+        private LCDDisplay lcdDisplay;
+        private void lCD显示ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lcdDisplay == null || lcdDisplay.IsDisposed)
+            {
+                lcdDisplay = new LCDDisplay();
+               // lcdDisplay.MdiParent = this;
+            }
+
+            lcdDisplay.WindowState = FormWindowState.Maximized;
+            lcdDisplay.BringToFront();
+            lcdDisplay.Show();
+
+            allForm.Add(lcdDisplay);
+        }
     }
 }
