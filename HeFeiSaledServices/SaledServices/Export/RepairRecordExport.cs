@@ -73,7 +73,7 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select _action,repair_result,repair_date,fault_describe from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    cmd.CommandText = "select _action,repair_result,repair_date,fault_describe,software_update from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     repairRecord.subRecords = new List<SubRepairRecord>();
                     while (querySdr.Read())
@@ -84,6 +84,7 @@ namespace SaledServices.Export
                         sub.repair_result = querySdr[1].ToString();
                         sub.repair_date = querySdr[2].ToString();
                         sub.fault_describe = querySdr[3].ToString();
+                        sub.software_update = querySdr[4].ToString();
 
                         repairRecord.subRecords.Add(sub);
                     }
@@ -171,6 +172,7 @@ namespace SaledServices.Export
             for (int i = 1; i <= repairLenght; i++)
             {
                  titleList.Add("维修原因" + i);
+                 titleList.Add("软件更新" + i);
                  titleList.Add("维修动作"+i);
                  titleList.Add("维修结果"+i);
                  titleList.Add("维修日期"+i);
@@ -215,12 +217,14 @@ namespace SaledServices.Export
                     if (i < repaircheck.subRecords.Count)
                     {
                         ct1.Add(repaircheck.subRecords[i].fault_describe);
+                        ct1.Add(repaircheck.subRecords[i].software_update);
                         ct1.Add(repaircheck.subRecords[i]._action);
                         ct1.Add(repaircheck.subRecords[i].repair_result);
                         ct1.Add(repaircheck.subRecords[i].repair_date);
                     }
                     else
                     {
+                        ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
@@ -303,6 +307,7 @@ namespace SaledServices.Export
     public class SubRepairRecord
     {
         public string fault_describe;
+        public string software_update;
         public string _action;//维修动作
         public string repair_result;//维修结果
         public string repair_date; /*修复日期*/
