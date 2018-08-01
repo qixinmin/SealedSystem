@@ -18,17 +18,35 @@ namespace SaledServices.CustomsExport
             InitializeComponent();
         }
 
-        private void exportxmlbutton_Click(object sender, EventArgs e)
+        public void exportxmlbutton_Click(object sender, EventArgs e)
         {
             DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd"));
             DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy/MM/dd"));
+
 
             if (DateTime.Compare(time1, time2) > 0) //判断日期大小
             {
                 MessageBox.Show("开始日期大于结束");
                 return;
             }
-            
+
+            exportXMLInfo(time1, time2, false);
+        }
+
+        private void showMessage(string info, bool isAuto)
+        {
+            if (isAuto)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show(info);
+            }
+        }
+
+        public void exportXMLInfo(DateTime time1, DateTime time2, bool isAuto)
+        {           
             Dictionary<string, string> _71bomDic = new Dictionary<string, string>();
             Dictionary<string, string> materialbomDic = new Dictionary<string, string>();
 
@@ -80,7 +98,7 @@ namespace SaledServices.CustomsExport
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                showMessage(ex.ToString(),isAuto);
             }
 
             for (DateTime dt = time1; dt <= time2; dt = dt.AddDays(1))
@@ -138,7 +156,7 @@ namespace SaledServices.CustomsExport
                         TrackNoCustomRelation TrackNoCustomRelationTemp = new TrackNoCustomRelation();
                         TrackNoCustomRelationTemp.trackno = querySdr[0].ToString();
                         string temp = querySdr[1].ToString();
-                        if(temp.Length == 10 && temp.StartsWith("000"))
+                        if (temp.Length == 10 && temp.StartsWith("000"))
                         {
                             temp = temp.Substring(3);
                         }
@@ -238,7 +256,7 @@ namespace SaledServices.CustomsExport
                             temp = temp.Substring(3);
                         }
 
-                        TrackNoCustomRelationTemp.custom_materialNo =temp;//正常使用客户料号
+                        TrackNoCustomRelationTemp.custom_materialNo = temp;//正常使用客户料号
                         TrackNoCustomRelationTemp.date = querySdr[2].ToString();
 
                         TrackNoCustomRelationList.Add(TrackNoCustomRelationTemp);
@@ -289,10 +307,10 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                           // storeTransList.Add(init1);
+                            // storeTransList.Add(init1);
                         }
 
-                        generateWorkOrderHead.addWorkListHeads(TrackNoCustomRelationList,true, ref materialbomDic);
+                        generateWorkOrderHead.addWorkListHeads(TrackNoCustomRelationList, true, ref materialbomDic);
                     }
 
                     //4. 良品出库，复用上面的信息，TODO 方案是采用excel上传的方式，比对条形码，料号，保证是今天上传的数据，然后读取上传的数据生成良品出库报文                                
@@ -351,8 +369,8 @@ namespace SaledServices.CustomsExport
                         TrackNoCustomRelation TrackNoCustomRelationTemp = new TrackNoCustomRelation();
                         TrackNoCustomRelationTemp.trackno = querySdr[0].ToString();
 
-                       
-                        string nowMatrialNo= querySdr[1].ToString();
+
+                        string nowMatrialNo = querySdr[1].ToString();
 
                         string temp = querySdr[1].ToString();
                         if (temp.Length == 10 && temp.StartsWith("000"))
@@ -361,7 +379,7 @@ namespace SaledServices.CustomsExport
                         }
 
                         string currentDeclear = temp;
-                       
+
 
                         TrackNoCustomRelationTemp.custom_materialNo = currentDeclear;
                         TrackNoCustomRelationTemp.date = querySdr[2].ToString();
@@ -414,10 +432,10 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                           // storeTransList.Add(init1);
+                            // storeTransList.Add(init1);
                         }
 
-                        generateWorkOrderHead.addWorkListHeads(TrackNoCustomRelationList,false,ref materialbomDic);
+                        generateWorkOrderHead.addWorkListHeads(TrackNoCustomRelationList, false, ref materialbomDic);
                     }
 
                     //6 mb/smt/bga不良品库出库信息, 現在加入fru材料，需要判斷fru材料，不上報
@@ -440,7 +458,7 @@ namespace SaledServices.CustomsExport
 
                         if (_71bomDic.ContainsKey(nowMatrialNo))
                         {
-                            currentDeclear = _71bomDic[nowMatrialNo] +"-1";//不良品的料号要加-1
+                            currentDeclear = _71bomDic[nowMatrialNo] + "-1";//不良品的料号要加-1
                         }
                         else if (materialbomDic.ContainsKey(nowMatrialNo))//主板只查询物料对照表
                         {
@@ -456,7 +474,8 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            MessageBox.Show("mb/smt/bga不良品库出库物料" + nowMatrialNo + "对应找不到71料号！");
+                           
+                            showMessage("mb/smt/bga不良品库出库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -529,10 +548,10 @@ namespace SaledServices.CustomsExport
                         if (_71bomDic.ContainsKey(nowMatrialNo))//非主板材料只需要查询bom表格
                         {
                             currentDeclear = _71bomDic[nowMatrialNo];
-                        }                        
+                        }
                         else
                         {
-                            MessageBox.Show("SMT/FRU 入库物料" + nowMatrialNo + "对应找不到71料号！");
+                            showMessage("SMT/FRU 入库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -618,7 +637,7 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            MessageBox.Show("SMT/FRU 入库物料" + nowMatrialNo + "对应找不到71料号！");
+                            showMessage("SMT/FRU 入库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -641,8 +660,8 @@ namespace SaledServices.CustomsExport
                             while (querySdr.Read())
                             {
                                 materialTemp.declare_unit = querySdr[0].ToString().Trim();
-                               // materialTemp.declare_number = querySdr[1].ToString().Trim();
-                               // materialTemp.custom_request_number = querySdr[2].ToString().Trim();
+                                // materialTemp.declare_number = querySdr[1].ToString().Trim();
+                                // materialTemp.custom_request_number = querySdr[2].ToString().Trim();
                                 break;//只需要一个单位数据
                             }
                             querySdr.Close();
@@ -687,7 +706,7 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            MessageBox.Show(" SMT/FRU 出库物料" + nowMatrialNo + "对应找不到71料号！");
+                            showMessage(" SMT/FRU 出库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -734,7 +753,7 @@ namespace SaledServices.CustomsExport
                             init1.location_code = "";
                             init1.note = "";
 
-                           // storeTransList.Add(init1);
+                            // storeTransList.Add(init1);
                         }
                     }
 
@@ -760,13 +779,13 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            MessageBox.Show("SMT/BGA 不良品入库物料" + nowMatrialNo + "对应找不到71料号！");
+                            showMessage("SMT/BGA 不良品入库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
                             querySdr.Close();
                             mConn.Close();
                             return;
                         }
 
-                        MaterialCustomRelationTemp.mpn = currentDeclear +"-1";//因为报关原因，需要改成71料号（联想料号), 修改料号，以示区分
+                        MaterialCustomRelationTemp.mpn = currentDeclear + "-1";//因为报关原因，需要改成71料号（联想料号), 修改料号，以示区分
                         MaterialCustomRelationTemp.num = querySdr[2].ToString();
                         MaterialCustomRelationTemp.date = querySdr[3].ToString();
 
@@ -829,7 +848,7 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            MessageBox.Show("BGA 入库信息物料" + nowMatrialNo + "对应找不到71料号！");
+                            showMessage("BGA 入库信息物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -912,7 +931,7 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            MessageBox.Show("BGA出库物料" + nowMatrialNo + "对应找不到71料号！");
+                            showMessage("BGA出库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -972,7 +991,7 @@ namespace SaledServices.CustomsExport
                         MaterialCustomRelation MaterialCustomRelationTemp = new MaterialCustomRelation();
                         MaterialCustomRelationTemp.id = querySdr[0].ToString();
                         MaterialCustomRelationTemp.buy_order_serial_no = querySdr[1].ToString();
-                        
+
                         MaterialCustomRelationTemp.mpn = querySdr[2].ToString().Trim(); ;//因为报关原因，需要改成71料号（联想料号）done
                         MaterialCustomRelationTemp.num = querySdr[3].ToString();
                         MaterialCustomRelationTemp.date = querySdr[4].ToString();
@@ -1101,7 +1120,7 @@ namespace SaledServices.CustomsExport
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    showMessage(ex.ToString(), isAuto);
                 }
 
                 stockinout.seq_no = seq_no;
@@ -1114,12 +1133,12 @@ namespace SaledServices.CustomsExport
                 stockinout.storeTransList = storeTransList;
                 if (storeTransList.Count > 0)//没有数据就不产生文件
                 {
-                    Untils.createStockInOutXML(stockinout, "D:\\WO_HCHX" + seq_no + ".xml");
-                    MessageBox.Show( dt.ToString("yyyyMMdd") + "海关出入库信息产生成功！");
+                    Untils.createStockInOutXML(stockinout, "D:\\AutoGenerate\\WO_HCHX" + seq_no + ".xml");
+                    showMessage(dt.ToString("yyyyMMdd") + "海关出入库信息产生成功！", isAuto);
                 }
                 else
                 {
-                    MessageBox.Show( dt.ToString("yyyyMMdd") + "没有出入库信息！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    showMessage(dt.ToString("yyyyMMdd") + "没有出入库信息！", isAuto);
                 }
 
                 if (generateWorkOrderHead != null)

@@ -50,24 +50,28 @@ namespace SaledServices
             int intMinute = e.SignalTime.Minute;
             int intSecond = e.SignalTime.Second;
             // 定制时间； 比如 在10：30 ：00 的时候执行某个函数  
-            int iHour = 6;
-            int iMinute = 45;
+            int iHour = 23;
+            int iMinute = 30;
             int iSecond = 00;
-            // 设置　 每分钟的开始执行一次  
-            if (intSecond == iSecond)
-            {
-                Console.WriteLine("每分钟的开始执行一次！");
-            }
-            // 设置　每个小时的３０分钟开始执行  
-            if (intMinute == iMinute && intSecond == iSecond)
-            {
-                Console.WriteLine("每个小时的３０分钟开始执行一次！");
-            }
+            //// 设置　 每分钟的开始执行一次  
+            //if (intSecond == iSecond)
+            //{
+            //    Console.WriteLine("每分钟的开始执行一次！");
+            //}
+            //// 设置　每个小时的３０分钟开始执行  
+            //if (intMinute == iMinute && intSecond == iSecond)
+            //{
+            //    Console.WriteLine("每个小时的３０分钟开始执行一次！");
+            //}
 
             // 设置　每天的１０：３０：００开始执行程序  
             if (intHour == iHour && intMinute == iMinute && intSecond == iSecond)
             {
-                Console.WriteLine("在每天１０点３０分开始执行！");
+               // Console.WriteLine("在每天１０点３０分开始执行！");
+                new StockInOutForm().exportXMLInfo(DateTime.Now, DateTime.Now, true);
+
+                //第二个任务，数据库备份
+                new DatabaseForm().button1_Click(null, null);
             }        
         }
 

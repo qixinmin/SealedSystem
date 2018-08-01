@@ -18,7 +18,7 @@ namespace SaledServices.additionForm
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace SaledServices.additionForm
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                string path = "D:\\backup\\";
+                string path = "D:\\DatabaseBackup\\";
                 if (Directory.Exists(path) == false)
                 {
                     Directory.CreateDirectory(path);

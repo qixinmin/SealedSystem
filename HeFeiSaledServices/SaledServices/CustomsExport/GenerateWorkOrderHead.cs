@@ -75,7 +75,7 @@ namespace SaledServices.CustomsExport
 
             if (workOrderHeadList.Count > 0)
             {
-                Untils.createWorkListHeadXML(workListHead, "D:\\WO_HEAD" + seq_no + ".xml");
+                Untils.createWorkListHeadXML(workListHead, "D:\\AutoGenerate\\WO_HEAD" + seq_no + ".xml");
                 MessageBox.Show(currentDay.ToString("yyyyMMdd") + "工单表头信息产生成功！");
             }
             else

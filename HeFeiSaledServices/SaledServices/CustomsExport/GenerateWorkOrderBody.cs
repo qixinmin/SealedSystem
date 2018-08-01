@@ -171,7 +171,7 @@ namespace SaledServices.CustomsExport
 
             if (workOrderList.Count > 0)
             {
-                Untils.createWorkListBodyXML(workListBody, "D:\\WO_ITEM" + seq_no + ".xml");
+                Untils.createWorkListBodyXML(workListBody, "D:\\AutoGenerate\\WO_ITEM" + seq_no + ".xml");
                 MessageBox.Show(startTime+"工单表体信息产生成功！");
             }
             else
