@@ -46,6 +46,7 @@
             this.文件数据库操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cID操作合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lCD显示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +114,7 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lCD显示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.最近一个月内容汇总ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,7 +193,8 @@
             this.文件数据库操作ToolStripMenuItem,
             this.cID操作合肥ToolStripMenuItem,
             this.数据库备份ToolStripMenuItem,
-            this.lCD显示ToolStripMenuItem});
+            this.lCD显示ToolStripMenuItem,
+            this.最近一个月内容汇总ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -276,6 +278,13 @@
             this.数据库备份ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.数据库备份ToolStripMenuItem.Text = "数据库备份";
             this.数据库备份ToolStripMenuItem.Click += new System.EventHandler(this.数据库备份ToolStripMenuItem_Click);
+            // 
+            // lCD显示ToolStripMenuItem
+            // 
+            this.lCD显示ToolStripMenuItem.Name = "lCD显示ToolStripMenuItem";
+            this.lCD显示ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.lCD显示ToolStripMenuItem.Text = "LCD显示";
+            this.lCD显示ToolStripMenuItem.Click += new System.EventHandler(this.lCD显示ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -819,12 +828,12 @@
             this.包装ToolStripMenuItem.Text = "包装";
             this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
             // 
-            // lCD显示ToolStripMenuItem
+            // 最近一个月内容汇总ToolStripMenuItem
             // 
-            this.lCD显示ToolStripMenuItem.Name = "lCD显示ToolStripMenuItem";
-            this.lCD显示ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.lCD显示ToolStripMenuItem.Text = "LCD显示";
-            this.lCD显示ToolStripMenuItem.Click += new System.EventHandler(this.lCD显示ToolStripMenuItem_Click);
+            this.最近一个月内容汇总ToolStripMenuItem.Name = "最近一个月内容汇总ToolStripMenuItem";
+            this.最近一个月内容汇总ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.最近一个月内容汇总ToolStripMenuItem.Text = "最近一个月内容汇总";
+            this.最近一个月内容汇总ToolStripMenuItem.Click += new System.EventHandler(this.最近一个月内容汇总ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -936,6 +945,7 @@
         private System.Windows.Forms.ToolStripMenuItem 库存消耗查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flexidToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lCD显示ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 最近一个月内容汇总ToolStripMenuItem;
     }
 }
 

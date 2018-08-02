@@ -1320,13 +1320,29 @@ namespace SaledServices
             allForm.Add(flexIdExport);
         }
 
-        private LCDDisplay lcdDisplay;
+        private ChartForm chartForm;
         private void lCD显示ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (chartForm == null || chartForm.IsDisposed)
+            {
+                chartForm = new ChartForm();
+               // lcdDisplay.MdiParent = this;
+            }
+
+            chartForm.WindowState = FormWindowState.Maximized;
+            chartForm.BringToFront();
+            chartForm.Show();
+
+            allForm.Add(chartForm);
+        }
+
+        private LCDDisplay lcdDisplay;
+        private void 最近一个月内容汇总ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lcdDisplay == null || lcdDisplay.IsDisposed)
             {
                 lcdDisplay = new LCDDisplay();
-               // lcdDisplay.MdiParent = this;
+                // lcdDisplay.MdiParent = this;
             }
 
             lcdDisplay.WindowState = FormWindowState.Maximized;

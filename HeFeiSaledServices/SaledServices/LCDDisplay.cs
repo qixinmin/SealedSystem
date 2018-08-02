@@ -17,6 +17,8 @@ namespace SaledServices
         {
             InitializeComponent();           
         }
+
+        public static Dictionary<string, DisplayContent> listDic = new Dictionary<string, DisplayContent>();
       
         public static int diffDays(string start, string end)
         {
@@ -27,15 +29,75 @@ namespace SaledServices
         }
 
         private void LCDDisplay_Load(object sender, EventArgs e)
-        {
-            DisplayContent displayContent = new DisplayContent();
-
-            //查询最近一个月的内容
+        {   
+            //DateBegin.ToString("Y");
+            ////查询最近一个月的内容
             DateTime timeEnd = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd")); ;
             DateTime timeStart = Convert.ToDateTime(timeEnd.AddMonths(-1).ToString("yyyy/MM/dd"));
 
+            show(timeStart, timeEnd, ref listDic);
+
+            this.totalTatLabel.Text = listDic[timeStart.ToString("yy/MM")].totalTat.ToString();
+            this.totalDoaLabel.Text = listDic[timeStart.ToString("yy/MM")].totalDoa.ToString();
+            this.totalcidratelable.Text = listDic[timeStart.ToString("yy/MM")].totalCidRate.ToString();
+
+            dataGridView1.DataSource = listDic[timeStart.ToString("yy/MM")].rmaList;
+
+            string[] hTxt = { "订单号", "TAT", "DOA", "CID RATE", "Repair", "BGA", "TEST", "OUTLOOK", "PACKAGE" };
+            for (int i = 0; i < hTxt.Length; i++)
+            {
+                dataGridView1.Columns[i].HeaderText = hTxt[i];
+            }
+
+            if (listDic[timeStart.ToString("yy/MM")].rmaList.Count != 0)
+            {
+                int height = dataGridView1.Height / listDic[timeStart.ToString("yy/MM")].rmaList.Count;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].Height = height;
+                }
+            }
+
+            //  dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        public static void query()
+        {
+            if (listDic != null)
+            {
+                listDic.Clear();
+            }
+
+            DateTime DateNow3 = DateTime.Now.AddMonths(-3);
+            DateTime DateBegin3 = new DateTime(DateNow3.Year, DateNow3.Month, 1);
+            DateTime DateEnd3 = DateBegin3.AddMonths(1).AddDays(-1);
+
+            show(DateBegin3, DateEnd3, ref listDic);
+
+            DateTime DateNow2 = DateTime.Now.AddMonths(-2);
+            DateTime DateBegin2 = new DateTime(DateNow2.Year, DateNow2.Month, 1);
+            DateTime DateEnd2 = DateBegin2.AddMonths(1).AddDays(-1);
+            show(DateBegin2, DateEnd2, ref listDic);
+
+            DateTime DateNow1 = DateTime.Now.AddMonths(-1);
+            DateTime DateBegin1 = new DateTime(DateNow1.Year, DateNow1.Month, 1);
+            DateTime DateEnd1 = DateBegin1.AddMonths(1).AddDays(-1);
+
+            show(DateBegin1, DateEnd1, ref listDic);
+
+            DateTime DateNow = DateTime.Now;
+            DateTime DateBegin = new DateTime(DateNow.Year, DateNow.Month, 1);
+            DateTime DateEnd = DateBegin.AddMonths(1).AddDays(-1);
+
+            show(DateBegin, DateEnd, ref listDic);
+        }
+
+        private static void show(DateTime timeStart, DateTime timeEnd, ref Dictionary<string, DisplayContent>  listDic)
+        {
             string startTime = timeStart.ToString("yyyy/MM/dd");
             string endTime = timeEnd.ToString("yyyy/MM/dd");
+
+            DisplayContent displayContent = new DisplayContent();
 
             try
             {
@@ -95,12 +157,12 @@ namespace SaledServices
                         }
                         querySdr.Close();
 
-
                         cmd.CommandText = "SELECT input_date FROM repaired_out_house_excel_table where track_serial_no='" + temp.trackno + "'";
                         querySdr = cmd.ExecuteReader();
                         while (querySdr.Read())
                         {
                             temp.tatEnd = querySdr[0].ToString();
+                            temp.station = "还货";
                         }
                         querySdr.Close();
 
@@ -133,6 +195,7 @@ namespace SaledServices
                     double testCount = 0;
                     double outlookCount = 0;
                     double packageCount = 0;
+                    double shipCount = 0;
                     foreach (TrackConent temp in rma.trackList)
                     {
                         switch (temp.station)
@@ -155,6 +218,9 @@ namespace SaledServices
                             case "外观":
                                 outlookCount = outlookCount + 1;
                                 break;
+                            case "还货":
+                                shipCount = shipCount + 1;
+                                break;
                         }
 
                         if (temp.doa == "true")
@@ -175,6 +241,7 @@ namespace SaledServices
                     rma.wip_test = testCount;
                     rma.wip_outlook = outlookCount;
                     rma.wip_package = packageCount;
+                    rma.wip_ship = shipCount;
                 }
 
                 double totalTatCount = 0;//算总平均值
@@ -188,9 +255,9 @@ namespace SaledServices
                     totalCidRate = totalCidRate + rma.cidRate;
                 }
 
-                displayContent.totalTat = Math.Round(totalTatCount / rmaCount,2);
-                displayContent.totalDoa = Math.Round(totalDoaCount / rmaCount,2);
-                displayContent.totalCidRate = Math.Round(totalCidRate / rmaCount,2);
+                displayContent.totalTat = Math.Round(totalTatCount / rmaCount, 2);
+                displayContent.totalDoa = Math.Round(totalDoaCount / rmaCount, 2);
+                displayContent.totalCidRate = Math.Round(totalCidRate / rmaCount, 2);
 
                 mConn.Close();
             }
@@ -199,9 +266,9 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            this.totalTatLabel.Text = displayContent.totalTat.ToString();
-            this.totalDoaLabel.Text = displayContent.totalDoa.ToString();
-            this.totalcidratelable.Text = displayContent.totalCidRate.ToString();
+            //this.totalTatLabel.Text = displayContent.totalTat.ToString();
+            //this.totalDoaLabel.Text = displayContent.totalDoa.ToString();
+            //this.totalcidratelable.Text = displayContent.totalCidRate.ToString();
 
             foreach (RmaContent rma in displayContent.rmaList)
             {
@@ -210,27 +277,33 @@ namespace SaledServices
                 rma.cidRate = Math.Round(rma.cidRate, 2);
             }
 
-             displayContent.rmaList.Reverse();
-             dataGridView1.DataSource = displayContent.rmaList;
+            displayContent.rmaList.Reverse();
 
-            string[] hTxt = { "订单号", "TAT", "DOA", "CID RATE", "Repair", "BGA", "TEST", "OUTLOOK", "PACKAGE" };
-            for (int i = 0; i < hTxt.Length; i++)
-            {
-                dataGridView1.Columns[i].HeaderText = hTxt[i];                
-            }
+            listDic.Add(timeStart.ToString("yy/MM"), displayContent);
+            //dataGridView1.DataSource = displayContent.rmaList;
 
-            int height = dataGridView1.Height/(displayContent.rmaList.Count);
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                dataGridView1.Rows[i].Height = height;
-            }
+            //string[] hTxt = { "订单号", "TAT", "DOA", "CID RATE", "Repair", "BGA", "TEST", "OUTLOOK", "PACKAGE" };
+            //for (int i = 0; i < hTxt.Length; i++)
+            //{
+            //    dataGridView1.Columns[i].HeaderText = hTxt[i];
+            //}
 
-          //  dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //if (displayContent.rmaList.Count != 0)
+            //{
+            //    int height = dataGridView1.Height / displayContent.rmaList.Count;
+            //    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            //    {
+            //        dataGridView1.Rows[i].Height = height;
+            //    }
+            //}
 
+
+
+            //  dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 
-    class DisplayContent
+    public class DisplayContent
     {
         public double totalTat;//算总平均值
         public double totalDoa;
@@ -239,7 +312,7 @@ namespace SaledServices
         public List<RmaContent> rmaList = new List<RmaContent>();
     }
 
-    class RmaContent
+    public class RmaContent
     {
         public string rma{set;get;}
         public string receiveDate;
@@ -255,9 +328,11 @@ namespace SaledServices
         public double wip_test { set; get; }
         public double wip_outlook { set; get; }
         public double wip_package { set; get; }
+
+        public double wip_ship { set; get; }
     }
 
-    class TrackConent
+    public class TrackConent
     {
         public string trackno;
         public string station;//保含cid

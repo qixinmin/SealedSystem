@@ -40,20 +40,25 @@ namespace SaledServices.CustomsExport
         {
             if (isAuto)
             {
-                string strFilePath = @"D:\logfile\log.txt";
-                string strOldText = File.ReadAllText(strFilePath, System.Text.Encoding.Default);
-
-                //需要发邮件通知
-                //SendMail("qxmin1984@126.com", "自动对接出错", "qxmin1984@126.com", "认真检查出错信息", info, "qxmin1984", "xmzx19850325", "smtp.126.com", ""); 
-
-                SendMail("xinmin.qi@maiweibao.com.cn", "海关自动对接出错", "qxmin1984@126.com", "认真检查出错信息", info, "xinmin.qi@maiweibao.com.cn", "Mwb20180802", "smtp.mxhichina.com", 25); 
-                
-                if (isError)
+                try
                 {
-                    info = "ERROR: " + info +"   "+ DateTime.Now.ToString("O") + "\r\n" + strOldText;
+                    string strFilePath = @"D:\logfile\log.txt";
+                    string strOldText = File.ReadAllText(strFilePath, System.Text.Encoding.Default);
+
+                    //需要发邮件通知
+                    //SendMail("qxmin1984@126.com", "自动对接出错", "qxmin1984@126.com", "认真检查出错信息", info, "qxmin1984", "xmzx19850325", "smtp.126.com", ""); 
+                    if (isError)
+                    {
+                        SendMail("xinmin.qi@maiweibao.com.cn", "海关自动对接出错", "qxmin1984@126.com", "认真检查出错信息", info, "xinmin.qi@maiweibao.com.cn", "Mwb20180802", "smtp.mxhichina.com", 25);
+                        info = "ERROR: " + info + "   " + DateTime.Now.ToString("O") + "\r\n" + strOldText;
+                    }
+
+                    File.WriteAllText(strFilePath, info, System.Text.Encoding.Default);
                 }
-               
-                File.WriteAllText(strFilePath, info, System.Text.Encoding.Default);
+                catch (Exception ex)
+                {
+                    SendMail("xinmin.qi@maiweibao.com.cn", "日志记录出错", "qxmin1984@126.com", "认真检查出错信息", ex.ToString(), "xinmin.qi@maiweibao.com.cn", "Mwb20180802", "smtp.mxhichina.com", 25);
+                }
             }
             else
             {
