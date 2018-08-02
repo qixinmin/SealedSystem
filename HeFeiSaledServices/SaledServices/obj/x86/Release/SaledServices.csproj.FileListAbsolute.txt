@@ -754,11 +754,9 @@ F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MaterialConsumeExport.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.FlexIdExport.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.LCDDisplay.resources
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe.config
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\Files\FileInput.xml
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\Files\syncTime.bat
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe.config
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.pdb
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.CIDInputForm.resources
@@ -838,3 +836,5 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.User.UserSelfForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.VendorForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb

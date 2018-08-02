@@ -62,7 +62,7 @@ namespace SaledServices.CustomsExport
             }
         }
 
-        public void doGenerate()
+        public void doGenerate(bool isAuto)
         {
             workListHead.seq_no = seq_no;
             workListHead.boxtype = boxtype;
@@ -75,12 +75,12 @@ namespace SaledServices.CustomsExport
 
             if (workOrderHeadList.Count > 0)
             {
-                Untils.createWorkListHeadXML(workListHead, "D:\\AutoGenerate\\WO_HEAD" + seq_no + ".xml");
-                MessageBox.Show(currentDay.ToString("yyyyMMdd") + "工单表头信息产生成功！");
+                Untils.createWorkListHeadXML(workListHead, "D:\\MOV\\WO_HEAD" + seq_no + ".xml");
+                StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "工单表头信息产生成功！", isAuto);       
             }
             else
             {
-                MessageBox.Show(currentDay.ToString("yyyyMMdd") + "没有工单表头信息产生！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "没有工单表头信息产生！", isAuto);       
             }
         }
     }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using SaledServices.CustomsExport;
 
 namespace SaledServices.additionForm
 {
@@ -41,7 +42,7 @@ namespace SaledServices.additionForm
                 cmd.ExecuteNonQuery();
                 mConn.Close();
 
-                MessageBox.Show("备份成功到服务器的 " + filename);
+                StockInOutForm.showMessage("备份成功到服务器的 " + filename, true);
             }
             catch (Exception ex)
             {

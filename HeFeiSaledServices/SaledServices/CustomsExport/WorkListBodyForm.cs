@@ -84,7 +84,7 @@ namespace SaledServices.CustomsExport
 
             openingstock.workOrderList = storeInitList;
 
-            Untils.createWorkListBodyXML(openingstock, "D:\\AutoGenerate\\WO_ITEM" + seq_no + ".xml");
+            Untils.createWorkListBodyXML(openingstock, "D:\\MOV\\WO_ITEM" + seq_no + ".xml");
 
             MessageBox.Show("finish");
         }

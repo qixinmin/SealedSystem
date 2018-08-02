@@ -85,7 +85,7 @@ namespace SaledServices.CustomsExport
 
             workListHead.workOrderHeadList = workOrderHeadList;
 
-            Untils.createWorkListHeadXML(workListHead, "D:\\AutoGenerate\\WO_HEAD" + seq_no + ".xml");
+            Untils.createWorkListHeadXML(workListHead, "D:\\MOV\\WO_HEAD" + seq_no + ".xml");
 
             MessageBox.Show("finish");
         }

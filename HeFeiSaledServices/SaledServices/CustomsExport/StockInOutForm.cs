@@ -8,11 +8,14 @@ using System.Text;
 using System.Windows.Forms;
 using SaledServices.CustomsContentClass;
 using System.Data.SqlClient;
+using System.IO;
+using System.Net.Mail;
 
 namespace SaledServices.CustomsExport
 {
     public partial class StockInOutForm : Form
     {
+        private bool isHasError = false;
         public StockInOutForm()
         {
             InitializeComponent();
@@ -33,15 +36,71 @@ namespace SaledServices.CustomsExport
             exportXMLInfo(time1, time2, false);
         }
 
-        private void showMessage(string info, bool isAuto)
+        public static void showMessage(string info, bool isAuto, bool isError=false)
         {
             if (isAuto)
             {
+                string strFilePath = @"D:\logfile\log.txt";
+                string strOldText = File.ReadAllText(strFilePath, System.Text.Encoding.Default);
 
+                //需要发邮件通知
+                //SendMail("qxmin1984@126.com", "自动对接出错", "qxmin1984@126.com", "认真检查出错信息", info, "qxmin1984", "xmzx19850325", "smtp.126.com", ""); 
+
+                SendMail("xinmin.qi@maiweibao.com.cn", "海关自动对接出错", "qxmin1984@126.com", "认真检查出错信息", info, "xinmin.qi@maiweibao.com.cn", "Mwb20180802", "smtp.mxhichina.com", 25); 
+                
+                if (isError)
+                {
+                    info = "ERROR: " + info +"   "+ DateTime.Now.ToString("O") + "\r\n" + strOldText;
+                }
+               
+                File.WriteAllText(strFilePath, info, System.Text.Encoding.Default);
             }
             else
             {
                 MessageBox.Show(info);
+            }
+        }
+       
+        /// 调用方法 SendMail("abc@126.com", "某某人", "cba@126.com", "你好", "我测试下邮件", "邮箱登录名", "邮箱密码", "smtp.126.com", ""); 
+        private static  void SendMail(string from, string fromname, string to, string subject, string body, string username, string password, string server, int port)
+        {
+            try
+            {
+                //邮件发送类 
+                MailMessage mail = new MailMessage();
+                //是谁发送的邮件 
+                mail.From = new MailAddress(from, fromname);
+                //发送给谁 
+                mail.To.Add(to);
+                mail.To.Add("ling.wang@maiweibao.com.cn");
+                mail.To.Add("fiven_sun@maiweibao.com.cn");
+                mail.To.Add("Ming.Yang@maiweibao.com.cn");
+                //标题 
+                mail.Subject = subject;
+                //内容编码 
+                mail.BodyEncoding = Encoding.Default;
+                //发送优先级 
+                mail.Priority = MailPriority.High;
+                //邮件内容 
+                mail.Body = body;
+                //是否HTML形式发送 
+                mail.IsBodyHtml = true; 
+                //邮件服务器和端口 
+                SmtpClient smtp = new SmtpClient(server, port);
+                smtp.UseDefaultCredentials = true;
+                //指定发送方式 
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //指定登录名和密码 
+                smtp.Credentials = new System.Net.NetworkCredential(username, password);
+                //超时时间 
+                smtp.Timeout = 10000;
+                smtp.Send(mail);               
+            }
+            catch (Exception exp)
+            {
+                string strFilePath = @"D:\logfile\log.txt";
+                string strOldText = File.ReadAllText(strFilePath, System.Text.Encoding.Default);
+                File.WriteAllText(strFilePath,  exp.ToString(), System.Text.Encoding.Default);
             }
         }
 
@@ -98,7 +157,9 @@ namespace SaledServices.CustomsExport
             }
             catch (Exception ex)
             {
-                showMessage(ex.ToString(),isAuto);
+                showMessage(ex.ToString(),isAuto,true);
+                isHasError = true;
+                return;
             }
 
             for (DateTime dt = time1; dt <= time2; dt = dt.AddDays(1))
@@ -475,7 +536,8 @@ namespace SaledServices.CustomsExport
                         else
                         {
                            
-                            showMessage("mb/smt/bga不良品库出库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
+                            showMessage("mb/smt/bga不良品库出库物料" + nowMatrialNo + "对应找不到71料号！", isAuto,true);
+                            isHasError = true;
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -551,7 +613,8 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            showMessage("SMT/FRU 入库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
+                            showMessage("SMT/FRU 入库物料" + nowMatrialNo + "对应找不到71料号！", isAuto,true);
+                            isHasError = true;
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -637,7 +700,8 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            showMessage("SMT/FRU 入库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
+                            showMessage("SMT/FRU 入库物料" + nowMatrialNo + "对应找不到71料号！", isAuto,true);
+                            isHasError = true;
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -706,7 +770,8 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            showMessage(" SMT/FRU 出库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
+                            showMessage(" SMT/FRU 出库物料" + nowMatrialNo + "对应找不到71料号！", isAuto,true);
+                            isHasError = true;
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -779,7 +844,8 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            showMessage("SMT/BGA 不良品入库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
+                            showMessage("SMT/BGA 不良品入库物料" + nowMatrialNo + "对应找不到71料号！", isAuto,true);
+                            isHasError = true;
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -848,7 +914,8 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            showMessage("BGA 入库信息物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
+                            showMessage("BGA 入库信息物料" + nowMatrialNo + "对应找不到71料号！", isAuto,true);
+                            isHasError = true;
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -931,7 +998,8 @@ namespace SaledServices.CustomsExport
                         }
                         else
                         {
-                            showMessage("BGA出库物料" + nowMatrialNo + "对应找不到71料号！", isAuto);
+                            showMessage("BGA出库物料" + nowMatrialNo + "对应找不到71料号！", isAuto,true);
+                            isHasError = true;
                             querySdr.Close();
                             mConn.Close();
                             return;
@@ -1120,7 +1188,9 @@ namespace SaledServices.CustomsExport
                 }
                 catch (Exception ex)
                 {
-                    showMessage(ex.ToString(), isAuto);
+                    showMessage(ex.ToString(), isAuto,true);
+                    isHasError = true;
+                    return;
                 }
 
                 stockinout.seq_no = seq_no;
@@ -1131,24 +1201,32 @@ namespace SaledServices.CustomsExport
                 stockinout.status = status;
 
                 stockinout.storeTransList = storeTransList;
-                if (storeTransList.Count > 0)//没有数据就不产生文件
+
+                if (isHasError == false)
                 {
-                    Untils.createStockInOutXML(stockinout, "D:\\AutoGenerate\\WO_HCHX" + seq_no + ".xml");
-                    showMessage(dt.ToString("yyyyMMdd") + "海关出入库信息产生成功！", isAuto);
+                    if (storeTransList.Count > 0)//没有数据就不产生文件
+                    {
+                        Untils.createStockInOutXML(stockinout, "D:\\MOV\\WO_HCHX" + seq_no + ".xml");
+                        showMessage(dt.ToString("yyyyMMdd") + "海关出入库信息产生成功！", isAuto);
+                    }
+                    else
+                    {
+                        showMessage(dt.ToString("yyyyMMdd") + "没有出入库信息！", isAuto);
+                    }
+
+                    if (generateWorkOrderHead != null)
+                    {
+                        generateWorkOrderHead.doGenerate(isAuto);
+                    }
+                    if (generateWorkOrderBody != null)
+                    {
+                        generateWorkOrderBody.addWorkOrderList(null, ref _71bomDic);
+                        generateWorkOrderBody.doGenerate(isAuto);
+                    }
                 }
                 else
-                {
-                    showMessage(dt.ToString("yyyyMMdd") + "没有出入库信息！", isAuto);
-                }
-
-                if (generateWorkOrderHead != null)
-                {
-                    generateWorkOrderHead.doGenerate();
-                }
-                if (generateWorkOrderBody != null)
-                {
-                    generateWorkOrderBody.addWorkOrderList(null, ref _71bomDic);
-                    generateWorkOrderBody.doGenerate();
+                {                    
+                    showMessage(dt.ToString("yyyyMMdd") + "生成XML文件有误，请检查！", isAuto);
                 }
             }
         }
