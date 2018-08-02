@@ -72,7 +72,15 @@ namespace SaledServices
 
                 //第二个任务，数据库备份
                 new DatabaseForm().button1_Click(null, null);
-            }        
+            }
+            int iHour2 = 11;
+            int iMinute2 = 40;
+            int iSecond2 = 00;
+            if (intHour == iHour2 && intMinute == iMinute2 && intSecond == iSecond2)
+            {
+                //第二次数据库备份
+                new DatabaseForm().button1_Click(null, null);
+            } 
         }
 
         public void clearAllMenu()
