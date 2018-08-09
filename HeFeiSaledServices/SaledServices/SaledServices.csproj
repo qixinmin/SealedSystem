@@ -283,6 +283,12 @@
     <Compile Include="Export\FlexIdExport.Designer.cs">
       <DependentUpon>FlexIdExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\CIDExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\CIDExport.Designer.cs">
+      <DependentUpon>CIDExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="LCDDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -703,6 +709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\FlexIdExport.resx">
       <DependentUpon>FlexIdExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\CIDExport.resx">
+      <DependentUpon>CIDExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LCDDisplay.resx">
       <DependentUpon>LCDDisplay.cs</DependentUpon>

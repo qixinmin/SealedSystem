@@ -1351,5 +1351,23 @@ namespace SaledServices
 
             allForm.Add(lcdDisplay);
         }
+
+        private CIDExport cidExport;
+        private void cID信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            if (cidExport == null || cidExport.IsDisposed)
+            {
+                cidExport = new CIDExport();
+                cidExport.MdiParent = this;
+            }
+
+            //  repairRecordExport.WindowState = FormWindowState.Maximized;
+            cidExport.BringToFront();
+            cidExport.Show();
+
+            allForm.Add(cidExport);
+        }
     }
 }

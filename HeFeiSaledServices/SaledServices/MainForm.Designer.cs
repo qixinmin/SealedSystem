@@ -115,6 +115,7 @@
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.最近一个月内容汇总ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cID信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -707,7 +708,8 @@
             this.导出维修记录ToolStripMenuItem,
             this.dPK信息导出ToolStripMenuItem,
             this.库存消耗查询ToolStripMenuItem,
-            this.flexidToolStripMenuItem});
+            this.flexidToolStripMenuItem,
+            this.cID信息导出ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -835,6 +837,13 @@
             this.最近一个月内容汇总ToolStripMenuItem.Text = "最近一个月内容汇总";
             this.最近一个月内容汇总ToolStripMenuItem.Click += new System.EventHandler(this.最近一个月内容汇总ToolStripMenuItem_Click);
             // 
+            // cID信息导出ToolStripMenuItem
+            // 
+            this.cID信息导出ToolStripMenuItem.Name = "cID信息导出ToolStripMenuItem";
+            this.cID信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.cID信息导出ToolStripMenuItem.Text = "CID信息导出";
+            this.cID信息导出ToolStripMenuItem.Click += new System.EventHandler(this.cID信息导出ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -946,6 +955,7 @@
         private System.Windows.Forms.ToolStripMenuItem flexidToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lCD显示ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 最近一个月内容汇总ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cID信息导出ToolStripMenuItem;
     }
 }
 
