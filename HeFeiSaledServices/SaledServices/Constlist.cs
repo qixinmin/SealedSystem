@@ -83,6 +83,9 @@ namespace SaledServices
 
         public static string table_users = "用户导入";
         public static string table_name_users_sheet = "users";
+
+        public static string table_flexId8s = "flexid对照表";
+        public static string table_name_flexId8s = "flexid_8s_mpn_table";
     }
 
     public class PrintUtils

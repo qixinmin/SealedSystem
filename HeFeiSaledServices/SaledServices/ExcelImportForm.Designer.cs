@@ -33,6 +33,7 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.test = new System.Windows.Forms.RadioButton();
             this.userInputRadioButton = new System.Windows.Forms.RadioButton();
             this.storeInfoImportradioButton = new System.Windows.Forms.RadioButton();
             this.stock_in_sheetradioButton = new System.Windows.Forms.RadioButton();
@@ -42,7 +43,7 @@
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
-            this.test = new System.Windows.Forms.RadioButton();
+            this.flexid8scheck = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +88,7 @@
             this.panel1.Controls.Add(this.DPKradioButton);
             this.panel1.Controls.Add(this.LCFC71BOMRadioButton);
             this.panel1.Controls.Add(this.LCFC_MBBOMradioButton);
+            this.panel1.Controls.Add(this.flexid8scheck);
             this.panel1.Controls.Add(this.receiveOrder);
             this.panel1.Controls.Add(this.mbmaterial);
             this.panel1.Location = new System.Drawing.Point(20, 149);
@@ -95,6 +97,17 @@
             this.panel1.Size = new System.Drawing.Size(430, 495);
             this.panel1.TabIndex = 4;
             // 
+            // test
+            // 
+            this.test.AutoSize = true;
+            this.test.Location = new System.Drawing.Point(22, 450);
+            this.test.Name = "test";
+            this.test.Size = new System.Drawing.Size(67, 24);
+            this.test.TabIndex = 4;
+            this.test.Text = "test";
+            this.test.UseVisualStyleBackColor = true;
+            this.test.Visible = false;
+            // 
             // userInputRadioButton
             // 
             this.userInputRadioButton.AutoSize = true;
@@ -102,7 +115,6 @@
             this.userInputRadioButton.Name = "userInputRadioButton";
             this.userInputRadioButton.Size = new System.Drawing.Size(147, 24);
             this.userInputRadioButton.TabIndex = 4;
-            this.userInputRadioButton.TabStop = true;
             this.userInputRadioButton.Text = "用户资料导入";
             this.userInputRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -113,7 +125,6 @@
             this.storeInfoImportradioButton.Name = "storeInfoImportradioButton";
             this.storeInfoImportradioButton.Size = new System.Drawing.Size(147, 24);
             this.storeInfoImportradioButton.TabIndex = 4;
-            this.storeInfoImportradioButton.TabStop = true;
             this.storeInfoImportradioButton.Text = "库房储位导入";
             this.storeInfoImportradioButton.UseVisualStyleBackColor = true;
             // 
@@ -124,7 +135,6 @@
             this.stock_in_sheetradioButton.Name = "stock_in_sheetradioButton";
             this.stock_in_sheetradioButton.Size = new System.Drawing.Size(127, 24);
             this.stock_in_sheetradioButton.TabIndex = 4;
-            this.stock_in_sheetradioButton.TabStop = true;
             this.stock_in_sheetradioButton.Text = "材料入库单";
             this.stock_in_sheetradioButton.UseVisualStyleBackColor = true;
             // 
@@ -135,7 +145,6 @@
             this.faultTableRadioButton.Name = "faultTableRadioButton";
             this.faultTableRadioButton.Size = new System.Drawing.Size(127, 24);
             this.faultTableRadioButton.TabIndex = 4;
-            this.faultTableRadioButton.TabStop = true;
             this.faultTableRadioButton.Text = "故障代码表";
             this.faultTableRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -146,29 +155,26 @@
             this.DPKradioButton.Name = "DPKradioButton";
             this.DPKradioButton.Size = new System.Drawing.Size(57, 24);
             this.DPKradioButton.TabIndex = 4;
-            this.DPKradioButton.TabStop = true;
             this.DPKradioButton.Text = "DPK";
             this.DPKradioButton.UseVisualStyleBackColor = true;
             // 
             // LCFC71BOMRadioButton
             // 
             this.LCFC71BOMRadioButton.AutoSize = true;
-            this.LCFC71BOMRadioButton.Location = new System.Drawing.Point(22, 171);
+            this.LCFC71BOMRadioButton.Location = new System.Drawing.Point(22, 180);
             this.LCFC71BOMRadioButton.Name = "LCFC71BOMRadioButton";
             this.LCFC71BOMRadioButton.Size = new System.Drawing.Size(117, 24);
             this.LCFC71BOMRadioButton.TabIndex = 4;
-            this.LCFC71BOMRadioButton.TabStop = true;
             this.LCFC71BOMRadioButton.Text = "LCFC71BOM";
             this.LCFC71BOMRadioButton.UseVisualStyleBackColor = true;
             // 
             // LCFC_MBBOMradioButton
             // 
             this.LCFC_MBBOMradioButton.AutoSize = true;
-            this.LCFC_MBBOMradioButton.Location = new System.Drawing.Point(22, 123);
+            this.LCFC_MBBOMradioButton.Location = new System.Drawing.Point(22, 141);
             this.LCFC_MBBOMradioButton.Name = "LCFC_MBBOMradioButton";
             this.LCFC_MBBOMradioButton.Size = new System.Drawing.Size(257, 24);
             this.LCFC_MBBOMradioButton.TabIndex = 2;
-            this.LCFC_MBBOMradioButton.TabStop = true;
             this.LCFC_MBBOMradioButton.Text = "LCFC_MBBOM&&COMPAL_MBBOM";
             this.LCFC_MBBOMradioButton.UseVisualStyleBackColor = true;
             // 
@@ -176,12 +182,11 @@
             // 
             this.receiveOrder.AutoSize = true;
             this.receiveOrder.Checked = true;
-            this.receiveOrder.Location = new System.Drawing.Point(22, 67);
+            this.receiveOrder.Location = new System.Drawing.Point(22, 48);
             this.receiveOrder.Margin = new System.Windows.Forms.Padding(5);
             this.receiveOrder.Name = "receiveOrder";
             this.receiveOrder.Size = new System.Drawing.Size(87, 24);
             this.receiveOrder.TabIndex = 1;
-            this.receiveOrder.TabStop = true;
             this.receiveOrder.Text = "收货单";
             this.receiveOrder.UseVisualStyleBackColor = true;
             // 
@@ -196,17 +201,16 @@
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
             // 
-            // test
+            // flexid8scheck
             // 
-            this.test.AutoSize = true;
-            this.test.Location = new System.Drawing.Point(22, 450);
-            this.test.Name = "test";
-            this.test.Size = new System.Drawing.Size(67, 24);
-            this.test.TabIndex = 4;
-            this.test.TabStop = true;
-            this.test.Text = "test";
-            this.test.UseVisualStyleBackColor = true;
-            this.test.Visible = false;
+            this.flexid8scheck.AutoSize = true;
+            this.flexid8scheck.Location = new System.Drawing.Point(22, 101);
+            this.flexid8scheck.Margin = new System.Windows.Forms.Padding(5);
+            this.flexid8scheck.Name = "flexid8scheck";
+            this.flexid8scheck.Size = new System.Drawing.Size(167, 24);
+            this.flexid8scheck.TabIndex = 1;
+            this.flexid8scheck.Text = "FlexId8S对照表";
+            this.flexid8scheck.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -246,5 +250,6 @@
         private System.Windows.Forms.RadioButton storeInfoImportradioButton;
         private System.Windows.Forms.RadioButton userInputRadioButton;
         private System.Windows.Forms.RadioButton test;
+        private System.Windows.Forms.RadioButton flexid8scheck;
     }
 }

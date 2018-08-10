@@ -42,7 +42,7 @@ namespace SaledServices.Export
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select custom_order,track_serial_no,custommaterialNo,custom_serial_no,dpk_status,mac,mpn,mb_describe from DeliveredTable where order_receive_date between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "select custom_order,track_serial_no,custommaterialNo,custom_serial_no,dpk_status,mac,mpn,mb_describe,source_brief from DeliveredTable where order_receive_date between '" + startTime + "' and '" + endTime + "'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -55,6 +55,7 @@ namespace SaledServices.Export
                     temp.mac = querySdr[5].ToString();
                     temp.mpn = querySdr[6].ToString();
                     temp.mbdescribe = querySdr[7].ToString();
+                    temp.source_brief = querySdr[8].ToString();
 
                     receiveOrderList.Add(temp);                  
                 }
@@ -95,6 +96,7 @@ namespace SaledServices.Export
             titleList.Add("MAC");
             titleList.Add("MPN");
             titleList.Add("MB描述");
+            titleList.Add("来源");
 
             foreach (ReceiveOrderStruct stockcheck in StockCheckList)
             {
@@ -109,6 +111,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.mac);
                 ct1.Add(stockcheck.mpn);
                 ct1.Add(stockcheck.mbdescribe);
+                ct1.Add(stockcheck.source_brief);
 
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
@@ -129,5 +132,6 @@ namespace SaledServices.Export
         public string mac;
         public string mpn;
         public string mbdescribe;
+        public string source_brief;
     }
 }
