@@ -546,7 +546,32 @@ namespace SaledServices
                         MessageBox.Show("此FlexId已经存在之前的收货记录了");
                         conn.Close();
                         return;
-                    }                   
+                    }
+
+                    cmd.CommandText = "select mpn from flexid_8s_mpn_table where flexid = '" + this.flexidTextBox.Text.Trim() + "' and orderno='" + this.custom_orderComboBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    string queryedmpn = "无";
+                    while (querySdr.Read())
+                    {
+                        queryedmpn = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (!custommaterialNoTextBox.Text.Trim().EndsWith(queryedmpn))
+                    {
+                        MessageBox.Show("此FlexId对应的料号:" + queryedmpn + ",不是已选择的料号");
+                        this.add.Enabled = false;
+                        this.flexidTextBox.Focus();
+                        this.flexidTextBox.SelectAll();
+                        conn.Close();
+                        return;
+                    }
+                    else
+                    {
+                        this.add.Enabled = true;
+                    }
+
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + 
                         this.vendorTextBox.Text.Trim() + "','" +
@@ -1229,6 +1254,8 @@ namespace SaledServices
                          mConn.Close();
                         return;
                     }
+                   
+
                     cmd.CommandText = "select mpn from flexid_8s_mpn_table where flexid = '" + this.flexidTextBox.Text.Trim() + "' and orderno='" + this.custom_orderComboBox.Text.Trim()+ "'";
 
                     querySdr = cmd.ExecuteReader();

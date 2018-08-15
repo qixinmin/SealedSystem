@@ -58,34 +58,36 @@ namespace SaledServices.Test_Outlook
                     querySdr.Close();
                     if (station != "外观")
                     {
-                        cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        //cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
-                        querySdr = cmd.ExecuteReader();
-                        string customMaterialNo = "";
+                        //querySdr = cmd.ExecuteReader();
+                        //string customMaterialNo = "";
 
-                        while (querySdr.Read())
-                        {
-                            customMaterialNo = querySdr[0].ToString();
-                        }
-                        querySdr.Close();
+                        //while (querySdr.Read())
+                        //{
+                        //    customMaterialNo = querySdr[0].ToString();
+                        //}
+                        //querySdr.Close();
 
-                        if (customMaterialNo != "")
+                        //if (customMaterialNo != "")
                         {
-                            this.testerTextBox.Text = LoginForm.currentUser;
-                            this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
-                            this.confirmbutton.Enabled = true;
-                            this.button1.Enabled = true;
+                            MessageBox.Show("板子还没有经过外观站别, 现在在"+station);
+                            
+                            this.confirmbutton.Enabled = false;
+                            this.button1.Enabled = false;
                         }
-                        else
-                        {
-                            this.tracker_bar_textBox.Focus();
-                            this.tracker_bar_textBox.SelectAll();
-                            MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
-                        }
+                        //else
+                        //{
+                        //    this.tracker_bar_textBox.Focus();
+                        //    this.tracker_bar_textBox.SelectAll();
+                        //    MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
+                        //}
                     }
                     else 
                     {
-                        MessageBox.Show("板子已经经过站别" + station);
+                       // MessageBox.Show("板子已经经过站别" + station);
+                        this.confirmbutton.Enabled = true;
+                        this.button1.Enabled = true;
                     }
                     mConn.Close();
                 }

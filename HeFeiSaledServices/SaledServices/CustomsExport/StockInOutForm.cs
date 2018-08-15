@@ -10,6 +10,7 @@ using SaledServices.CustomsContentClass;
 using System.Data.SqlClient;
 using System.IO;
 using System.Net.Mail;
+using System.Net;
 
 namespace SaledServices.CustomsExport
 {
@@ -33,17 +34,41 @@ namespace SaledServices.CustomsExport
                 return;
             }
 
-            exportXMLInfo(time1, time2, false);
+            exportXMLInfo(time1, time2, false);           
+        }
+
+        public static string GetAddressIP()
+        {
+            ///获取本地的IP地址
+            string AddressIP = string.Empty;
+            foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+            {
+                if (_IPAddress.AddressFamily.ToString() == "InterNetwork")
+                {
+                    AddressIP = _IPAddress.ToString();
+                    if (AddressIP.StartsWith("192.168.1"))
+                    {
+                        break;
+                    }
+                }
+                
+            }
+            return AddressIP;
         }
 
         public static void showMessage(string info, bool isAuto, bool isError=false)
         {
             if (isAuto)
             {
+                if (GetAddressIP() != "192.168.1.1")
+                {
+                    return;
+                }
+
                 string strFilePath = @"D:\logfile\log.txt";
                 if (!File.Exists(strFilePath))
                 {
-                    Directory.CreateDirectory(@"D:\logfile");
+                    Directory.CreateDirectory(@"D:\logfile\");
                     File.Create(strFilePath);
                 }
 
@@ -60,19 +85,27 @@ namespace SaledServices.CustomsExport
                             SendMail("xinmin.qi@maiweibao.com.cn", "海关自动对接出错", "qxmin1984@126.com", "认真检查出错信息", info, "xinmin.qi@maiweibao.com.cn", "Mwb20180802", "smtp.mxhichina.com", 25);
                             info = "ERROR: " + info + "   " + DateTime.Now.ToString("O") + "\r\n" + strOldText;
                         }
+                        else
+                        {
+                            info += "\r\n" + strOldText;
+                        }
 
                         File.WriteAllText(strFilePath, info, System.Text.Encoding.Default);
 
                     }
                     catch (Exception ex)
                     {
-                        SendMail("xinmin.qi@maiweibao.com.cn", "日志记录出错", "qxmin1984@126.com", "认真检查出错信息", ex.ToString(), "xinmin.qi@maiweibao.com.cn", "Mwb20180802", "smtp.mxhichina.com", 25);
+                        SendMail("xinmin.qi@maiweibao.com.cn", GetAddressIP() + "日志记录出错", "qxmin1984@126.com", "认真检查出错信息", ex.ToString(), "xinmin.qi@maiweibao.com.cn", "Mwb20180802", "smtp.mxhichina.com", 25);
                     }
                 }
                 else
                 {
                     MessageBox.Show(info);
                 }
+            }
+            else
+            {
+                MessageBox.Show(info);
             }
         }
        
