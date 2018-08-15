@@ -26,6 +26,7 @@ namespace SaledServices
             loadAdditionInfomation();
 
             inputUserTextBox.Text = LoginForm.currentUser;
+            this.order_receive_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
             if (User.UserSelfForm.isSuperManager() == false)
             {
@@ -428,6 +429,24 @@ namespace SaledServices
                         this.custom_serial_noTextBox.SelectAll();
                         //mConn.Close();
                         //return;
+                    }
+
+                    //根据历史出库的8s记录查找是否在90天内同一个板子再次维修
+                    cmd.CommandText = "select R.input_date,D.custom_serial_no from DeliveredTable as D inner join repaired_out_house_excel_table as R on D.track_serial_no = R.track_serial_no order by R.input_date DESC";
+                    querySdr = cmd.ExecuteReader();
+                    string latestDate = "";
+                    while (querySdr.Read())
+                    {
+                        latestDate = querySdr[0].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+                    if (latestDate != "")
+                    {
+                       if( LCDDisplay.diffDays(this.order_receive_dateTextBox.Text.Trim(),latestDate) <=90)
+                       {
+                           this.source_briefComboBox.Text = "DOA";
+                       }
                     }
 
                     mConn.Close();

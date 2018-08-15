@@ -840,3 +840,4 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ChartForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.CIDExport.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
