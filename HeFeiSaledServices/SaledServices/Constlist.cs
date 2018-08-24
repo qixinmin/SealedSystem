@@ -53,6 +53,7 @@ namespace SaledServices
     {
         //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
         public static string ConStr = "server=192.168.1.1;database=SaledService;uid=admin;pwd=admin";
+       // public static string ConStr = "server=192.168.2.121;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";

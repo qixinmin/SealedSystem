@@ -139,7 +139,7 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandType = CommandType.Text;
 
                     //检查物料是不是今天是不是已经输入进去了，如果有，同一天同一个板子不允许有同样的物料进去
-                    if(mPrepareUseDetail1 != null)
+                    if (mPrepareUseDetail1 != null && mPrepareUseDetail1.material_mpn != "")
                     {
                         cmd.CommandText = "select Id from fru_smt_used_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim()
                             + "' and material_mpn='" + mPrepareUseDetail1.material_mpn + "' and input_date between '" + DateTime.Now.ToString("yyyy/MM/dd") + "' and '" + DateTime.Now.ToString("yyyy/MM/dd") + "'";
@@ -158,7 +158,7 @@ namespace SaledServices.Test_Outlook
                         }
                     }
 
-                    if (mPrepareUseDetail2 != null)
+                    if (mPrepareUseDetail2 != null && mPrepareUseDetail2.material_mpn != "")
                     {
                         cmd.CommandText = "select Id from fru_smt_used_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim()
                             + "' and material_mpn='" + mPrepareUseDetail2.material_mpn + "' and input_date between '" + DateTime.Now.ToString("yyyy/MM/dd") + "' and '" + DateTime.Now.ToString("yyyy/MM/dd") + "'";
@@ -177,7 +177,7 @@ namespace SaledServices.Test_Outlook
                         }
                     }
 
-                    if (mPrepareUseDetail3 != null)
+                    if (mPrepareUseDetail3 != null && mPrepareUseDetail3.material_mpn !="")
                     {
                         cmd.CommandText = "select Id from fru_smt_used_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim()
                             + "' and material_mpn='" + mPrepareUseDetail3.material_mpn + "' and input_date between '" + DateTime.Now.ToString("yyyy/MM/dd") + "' and '" + DateTime.Now.ToString("yyyy/MM/dd") + "'";
@@ -196,7 +196,7 @@ namespace SaledServices.Test_Outlook
                         }
                     }
 
-                    if (mPrepareUseDetail4 != null)
+                    if (mPrepareUseDetail4 != null && mPrepareUseDetail4.material_mpn != "")
                     {
                         cmd.CommandText = "select Id from fru_smt_used_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim()
                             + "' and material_mpn='" + mPrepareUseDetail4.material_mpn + "' and input_date between '" + DateTime.Now.ToString("yyyy/MM/dd") + "' and '" + DateTime.Now.ToString("yyyy/MM/dd") + "'";
@@ -215,7 +215,7 @@ namespace SaledServices.Test_Outlook
                         }
                     }
 
-                    if (mPrepareUseDetail5 != null)
+                    if (mPrepareUseDetail5 != null && mPrepareUseDetail5.material_mpn !="")
                     {
                         cmd.CommandText = "select Id from fru_smt_used_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim()
                             + "' and material_mpn='" + mPrepareUseDetail5.material_mpn + "' and input_date between '" + DateTime.Now.ToString("yyyy/MM/dd") + "' and '" + DateTime.Now.ToString("yyyy/MM/dd") + "'";

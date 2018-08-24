@@ -437,8 +437,11 @@ namespace SaledServices
                     string latestDate = "";
                     while (querySdr.Read())
                     {
-                        latestDate = querySdr[0].ToString();
-                        break;
+                        if (querySdr[1].ToString() == this.custom_serial_noTextBox.Text.Trim())
+                        {
+                            latestDate = querySdr[0].ToString();
+                            break;
+                        }
                     }
                     querySdr.Close();
                     if (latestDate != "")

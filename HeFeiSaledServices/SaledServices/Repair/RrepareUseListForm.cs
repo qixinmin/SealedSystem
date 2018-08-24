@@ -169,6 +169,11 @@ namespace SaledServices.Repair
 
         private void returnMaterialbutton_Click(object sender, EventArgs e)
         {
+            if (this.material_mpntextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("料号为空");
+                return;
+            }
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
