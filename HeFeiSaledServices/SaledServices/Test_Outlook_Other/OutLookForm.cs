@@ -262,7 +262,7 @@ namespace SaledServices.Test_Outlook
 
                     }
 
-                    if (mPrepareUseDetail1 != null && mPrepareUseDetail1.Id != null)
+                    if (mPrepareUseDetail1 != null && mPrepareUseDetail1.Id != null && mPrepareUseDetail1.material_mpn !="")
                     {
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
