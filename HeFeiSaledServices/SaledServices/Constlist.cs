@@ -51,9 +51,12 @@ namespace SaledServices
 
     public class Constlist
     {
+        public static string ipConst = "192.168.1.1";//inner server
+        //public static string ipConst = "192.168.2.121";//huadong server
+        
         //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-        public static string ConStr = "server=192.168.1.1;database=SaledService;uid=admin;pwd=admin";
-       // public static string ConStr = "server=192.168.2.121;database=SaledService;uid=admin;pwd=admin";
+        //public static string ConStr = "server=" + ipConst + ";database=SaledService;uid=admin;pwd=admin";
+        public static string ConStr = "server=" + ipConst + ";database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";

@@ -60,7 +60,7 @@ namespace SaledServices.CustomsExport
         {
             if (isAuto)
             {
-                if (GetAddressIP() != "192.168.1.1")
+                if (GetAddressIP() !=Constlist.ipConst)
                 {
                     return;
                 }
@@ -1249,6 +1249,19 @@ namespace SaledServices.CustomsExport
                 stockinout.status = status;
 
                 stockinout.storeTransList = storeTransList;
+
+                foreach (StoreTrans temp in storeTransList)
+                {
+                    try
+                    {
+                        Int32.Parse(temp.qty);
+                    }
+                    catch (Exception ex)
+                    {
+                        showMessage(dt.ToString("yyyyMMdd") + "生成XML文件有误，请检查！", isAuto, true);
+                        break;
+                    }
+                }
 
                 if (isHasError == false)
                 {

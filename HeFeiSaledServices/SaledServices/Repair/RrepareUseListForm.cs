@@ -113,11 +113,23 @@ namespace SaledServices.Repair
                 return;
             }
 
-                if (this.thisNumbertextBox.Text == "")
+            if (this.thisNumbertextBox.Text == "")
+            {
+                MessageBox.Show("要使用的数量请填入！");
+                return;
+            }
+            else
+            {
+                try
                 {
-                    MessageBox.Show("要使用的数量请填入！");
+                    Int32.Parse(this.thisNumbertextBox.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("本次使用的數量 輸入框 輸入了非法字符，請檢查");
                     return;
                 }
+            }
 
             try
             {
@@ -153,6 +165,18 @@ namespace SaledServices.Repair
             {
                 MessageBox.Show("请输入使用数量！");
                 return;
+            }
+            else
+            {
+                try
+                {
+                    Int32.Parse(this.thisNumbertextBox.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("本次使用的數量 輸入框 輸入了非法字符，請檢查");
+                    return;
+                }
             }
 
             if (mParentForm is RepairOperationForm)

@@ -73,14 +73,36 @@ namespace SaledServices.CustomsExport
 
             workListHead.workOrderHeadList = workOrderHeadList;
 
-            if (workOrderHeadList.Count > 0)
+            bool isHasError = false;
+            foreach (WorkOrderHead temp in workOrderHeadList)
             {
-                Untils.createWorkListHeadXML(workListHead, "D:\\MOV\\WO_HEAD" + seq_no + ".xml");
-                StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "工单表头信息产生成功！", isAuto);       
+                try
+                {
+                    Int32.Parse(temp.qty);
+                }
+                catch (Exception ex)
+                {
+                    isHasError = true;
+                    StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "生成工单表头XML文件有误，请检查！", isAuto, true);
+                    break;
+                }
+            }
+
+            if (isHasError == false)
+            {
+                if (workOrderHeadList.Count > 0)
+                {
+                    Untils.createWorkListHeadXML(workListHead, "D:\\MOV\\WO_HEAD" + seq_no + ".xml");
+                    StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "工单表头信息产生成功！", isAuto);
+                }
+                else
+                {
+                    StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "没有工单表头信息产生！", isAuto);
+                }
             }
             else
             {
-                StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "没有工单表头信息产生！", isAuto);       
+                StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "没有工单表头信息产生！", isAuto);
             }
         }
     }
