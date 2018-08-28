@@ -908,6 +908,7 @@
             this.inputCustommaterialNoTextBox.Location = new System.Drawing.Point(230, 109);
             this.inputCustommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.inputCustommaterialNoTextBox.Name = "inputCustommaterialNoTextBox";
+            this.inputCustommaterialNoTextBox.ShortcutsEnabled = false;
             this.inputCustommaterialNoTextBox.Size = new System.Drawing.Size(212, 26);
             this.inputCustommaterialNoTextBox.TabIndex = 0;
             this.inputCustommaterialNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputCustommaterialNoTextBox_KeyPress);

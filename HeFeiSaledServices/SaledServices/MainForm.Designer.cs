@@ -46,6 +46,7 @@
             this.文件数据库操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cID操作合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lCD显示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,6 +105,7 @@
             this.导出维修记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dPK信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库存消耗查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flexidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.期初库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实盘库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,7 +114,8 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flexidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.最近一个月内容汇总ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cID信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,7 +193,9 @@
             this.定时任务ToolStripMenuItem,
             this.文件数据库操作ToolStripMenuItem,
             this.cID操作合肥ToolStripMenuItem,
-            this.数据库备份ToolStripMenuItem});
+            this.数据库备份ToolStripMenuItem,
+            this.lCD显示ToolStripMenuItem,
+            this.最近一个月内容汇总ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -274,6 +279,13 @@
             this.数据库备份ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.数据库备份ToolStripMenuItem.Text = "数据库备份";
             this.数据库备份ToolStripMenuItem.Click += new System.EventHandler(this.数据库备份ToolStripMenuItem_Click);
+            // 
+            // lCD显示ToolStripMenuItem
+            // 
+            this.lCD显示ToolStripMenuItem.Name = "lCD显示ToolStripMenuItem";
+            this.lCD显示ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.lCD显示ToolStripMenuItem.Text = "LCD显示";
+            this.lCD显示ToolStripMenuItem.Click += new System.EventHandler(this.lCD显示ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -696,7 +708,8 @@
             this.导出维修记录ToolStripMenuItem,
             this.dPK信息导出ToolStripMenuItem,
             this.库存消耗查询ToolStripMenuItem,
-            this.flexidToolStripMenuItem});
+            this.flexidToolStripMenuItem,
+            this.cID信息导出ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -743,6 +756,13 @@
             this.库存消耗查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.库存消耗查询ToolStripMenuItem.Text = "库存消耗查询";
             this.库存消耗查询ToolStripMenuItem.Click += new System.EventHandler(this.库存消耗查询ToolStripMenuItem_Click);
+            // 
+            // flexidToolStripMenuItem
+            // 
+            this.flexidToolStripMenuItem.Name = "flexidToolStripMenuItem";
+            this.flexidToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.flexidToolStripMenuItem.Text = "FlexId表信息";
+            this.flexidToolStripMenuItem.Click += new System.EventHandler(this.flexidToolStripMenuItem_Click);
             // 
             // 海关ToolStripMenuItem
             // 
@@ -810,12 +830,19 @@
             this.包装ToolStripMenuItem.Text = "包装";
             this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
             // 
-            // flexidToolStripMenuItem
+            // 最近一个月内容汇总ToolStripMenuItem
             // 
-            this.flexidToolStripMenuItem.Name = "flexidToolStripMenuItem";
-            this.flexidToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
-            this.flexidToolStripMenuItem.Text = "FlexId表信息";
-            this.flexidToolStripMenuItem.Click += new System.EventHandler(this.flexidToolStripMenuItem_Click);
+            this.最近一个月内容汇总ToolStripMenuItem.Name = "最近一个月内容汇总ToolStripMenuItem";
+            this.最近一个月内容汇总ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.最近一个月内容汇总ToolStripMenuItem.Text = "最近一个月内容汇总";
+            this.最近一个月内容汇总ToolStripMenuItem.Click += new System.EventHandler(this.最近一个月内容汇总ToolStripMenuItem_Click);
+            // 
+            // cID信息导出ToolStripMenuItem
+            // 
+            this.cID信息导出ToolStripMenuItem.Name = "cID信息导出ToolStripMenuItem";
+            this.cID信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.cID信息导出ToolStripMenuItem.Text = "CID信息导出";
+            this.cID信息导出ToolStripMenuItem.Click += new System.EventHandler(this.cID信息导出ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -926,6 +953,9 @@
         public System.Windows.Forms.ToolStripMenuItem dPK信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 库存消耗查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flexidToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lCD显示ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 最近一个月内容汇总ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cID信息导出ToolStripMenuItem;
     }
 }
 

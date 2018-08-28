@@ -158,7 +158,7 @@ namespace SaledServices.CustomsExport
             }
         }
 
-        public void doGenerate()
+        public void doGenerate(bool isAuto)
         {
             workListBody.seq_no = seq_no;
             workListBody.boxtype = boxtype;
@@ -169,14 +169,35 @@ namespace SaledServices.CustomsExport
 
             workListBody.workOrderList = workOrderList;
 
-            if (workOrderList.Count > 0)
+            bool isHasError = false;
+            foreach (WorkOrderList temp in workOrderList)
             {
-                Untils.createWorkListBodyXML(workListBody, "D:\\WO_ITEM" + seq_no + ".xml");
-                MessageBox.Show(startTime+"工单表体信息产生成功！");
+                try
+                {
+                    Int32.Parse(temp.qty);
+                }
+                catch (Exception ex)
+                {
+                    isHasError = true;
+                    StockInOutForm.showMessage(startTime + "生成工单表体XML文件有误，请检查！", isAuto, true);
+                    break;
+                }
+            }
+            if (isHasError == false)
+            {
+                if (workOrderList.Count > 0)
+                {
+                    Untils.createWorkListBodyXML(workListBody, "D:\\MOV\\WO_ITEM" + seq_no + ".xml");
+                    StockInOutForm.showMessage(startTime + "工单表体信息产生成功！", isAuto);
+                }
+                else
+                {
+                    StockInOutForm.showMessage(startTime + "工单表体信息不存在！", isAuto);
+                }
             }
             else
             {
-                MessageBox.Show(startTime+"工单表体信息不存在！","错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                StockInOutForm.showMessage(startTime + "工单表体信息不存在！", isAuto);
             }
         }
     }

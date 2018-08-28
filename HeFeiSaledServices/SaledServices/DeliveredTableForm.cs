@@ -26,6 +26,7 @@ namespace SaledServices
             loadAdditionInfomation();
 
             inputUserTextBox.Text = LoginForm.currentUser;
+            this.order_receive_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
             if (User.UserSelfForm.isSuperManager() == false)
             {
@@ -410,6 +411,47 @@ namespace SaledServices
                         return;
                     }
 
+                    cmd.CommandText = "select mpn from flexid_8s_mpn_table where _8sCode = '" + this.custom_serial_noTextBox.Text.Trim() + "' and orderno='" + this.custom_orderComboBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    string queryedmpn = "无";
+                    while (querySdr.Read())
+                    {
+                        queryedmpn = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (!custommaterialNoTextBox.Text.Trim().EndsWith(queryedmpn))
+                    {
+                        MessageBox.Show("此8S对应的料号:" + queryedmpn + "不是已选择的料号");
+                       // this.add.Enabled = false;
+                        this.custom_serial_noTextBox.Focus();
+                        this.custom_serial_noTextBox.SelectAll();
+                        //mConn.Close();
+                        //return;
+                    }
+
+                    //根据历史出库的8s记录查找是否在90天内同一个板子再次维修
+                    cmd.CommandText = "select R.input_date,D.custom_serial_no from DeliveredTable as D inner join repaired_out_house_excel_table as R on D.track_serial_no = R.track_serial_no order by R.input_date DESC";
+                    querySdr = cmd.ExecuteReader();
+                    string latestDate = "";
+                    while (querySdr.Read())
+                    {
+                        if (querySdr[1].ToString() == this.custom_serial_noTextBox.Text.Trim())
+                        {
+                            latestDate = querySdr[0].ToString();
+                            break;
+                        }
+                    }
+                    querySdr.Close();
+                    if (latestDate != "")
+                    {
+                       if( LCDDisplay.diffDays(this.order_receive_dateTextBox.Text.Trim(),latestDate) <=90)
+                       {
+                           this.source_briefComboBox.Text = "DOA";
+                       }
+                    }
+
                     mConn.Close();
                 }
                 catch (Exception ex)
@@ -526,7 +568,32 @@ namespace SaledServices
                         MessageBox.Show("此FlexId已经存在之前的收货记录了");
                         conn.Close();
                         return;
-                    }                   
+                    }
+
+                    cmd.CommandText = "select mpn from flexid_8s_mpn_table where flexid = '" + this.flexidTextBox.Text.Trim() + "' and orderno='" + this.custom_orderComboBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    string queryedmpn = "无";
+                    while (querySdr.Read())
+                    {
+                        queryedmpn = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (!custommaterialNoTextBox.Text.Trim().EndsWith(queryedmpn))
+                    {
+                        MessageBox.Show("此FlexId对应的料号:" + queryedmpn + ",不是已选择的料号");
+                        this.add.Enabled = false;
+                        this.flexidTextBox.Focus();
+                        this.flexidTextBox.SelectAll();
+                        conn.Close();
+                        return;
+                    }
+                    else
+                    {
+                        this.add.Enabled = true;
+                    }
+
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + 
                         this.vendorTextBox.Text.Trim() + "','" +
@@ -1199,7 +1266,6 @@ namespace SaledServices
                         break;
                     }
                     querySdr.Close();
-                    mConn.Close();
 
                     if (exist)
                     {
@@ -1207,13 +1273,35 @@ namespace SaledServices
                         this.add.Enabled = false;
                         this.flexidTextBox.Focus();
                         this.flexidTextBox.SelectAll();
+                         mConn.Close();
+                        return;
                     }
-                    else
+                   
+
+                    cmd.CommandText = "select mpn from flexid_8s_mpn_table where flexid = '" + this.flexidTextBox.Text.Trim() + "' and orderno='" + this.custom_orderComboBox.Text.Trim()+ "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    string queryedmpn = "无";
+                    while (querySdr.Read())
                     {
-                        this.add.Enabled = true;
-                        this.custom_serial_noTextBox.Focus();
-                        this.custom_serial_noTextBox.SelectAll();
+                        queryedmpn = querySdr[0].ToString();
                     }
+                    querySdr.Close();
+
+                    if (!custommaterialNoTextBox.Text.Trim().EndsWith(queryedmpn))
+                    {
+                        MessageBox.Show("此FlexId对应的料号:" + queryedmpn + "不是已选择的料号");
+                        this.add.Enabled = false;
+                        this.flexidTextBox.Focus();
+                        this.flexidTextBox.SelectAll();
+                        mConn.Close();
+                        return;
+                    }
+                    mConn.Close();
+                   
+                    this.add.Enabled = true;
+                    this.custom_serial_noTextBox.Focus();
+                    this.custom_serial_noTextBox.SelectAll();                     
                 }
                 catch (Exception ex)
                 {
@@ -1236,7 +1324,7 @@ namespace SaledServices
                 {
                     MessageBox.Show("输入的客户料号与选择的客户料号没有关联，请检查");
                     return;
-                }
+                }              
 
                 this.track_serial_noTextBox.Focus();
                 this.track_serial_noTextBox.SelectAll();

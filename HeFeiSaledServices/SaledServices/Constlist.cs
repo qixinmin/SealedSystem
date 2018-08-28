@@ -51,8 +51,12 @@ namespace SaledServices
 
     public class Constlist
     {
+        public static string ipConst = "192.168.1.1";//inner server
+        //public static string ipConst = "192.168.2.121";//huadong server
+        
         //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-        public static string ConStr = "server=192.168.1.1;database=SaledService;uid=admin;pwd=admin";
+        //public static string ConStr = "server=" + ipConst + ";database=SaledService;uid=admin;pwd=admin";
+        public static string ConStr = "server=" + ipConst + ";database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";
@@ -83,6 +87,9 @@ namespace SaledServices
 
         public static string table_users = "用户导入";
         public static string table_name_users_sheet = "users";
+
+        public static string table_flexId8s = "flexid对照表";
+        public static string table_name_flexId8s = "flexid_8s_mpn_table";
     }
 
     public class PrintUtils

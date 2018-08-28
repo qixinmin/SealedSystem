@@ -140,6 +140,11 @@ namespace SaledServices
                 sheetName = Constlist.table_stock_house;
                 tableName = Constlist.table_name_store_house_sheet;
             }
+            else if (this.flexid8scheck.Checked)
+            {
+                sheetName = Constlist.table_flexId8s;
+                tableName = Constlist.table_name_flexId8s;
+            }
             else if (this.userInputRadioButton.Checked)
             {
                 sheetName = Constlist.table_users;
@@ -193,7 +198,8 @@ namespace SaledServices
                 || this.faultTableRadioButton.Checked
                 
                 || this.stock_in_sheetradioButton.Checked
-                || this.storeInfoImportradioButton.Checked)
+                || this.storeInfoImportradioButton.Checked
+                || this.flexid8scheck.Checked)
             {
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;

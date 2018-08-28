@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using SaledServices.CustomsExport;
 
 namespace SaledServices.additionForm
 {
@@ -18,7 +19,7 @@ namespace SaledServices.additionForm
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -29,7 +30,7 @@ namespace SaledServices.additionForm
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                string path = "D:\\backup\\";
+                string path = "D:\\DatabaseBackup\\";
                 if (Directory.Exists(path) == false)
                 {
                     Directory.CreateDirectory(path);
@@ -41,7 +42,7 @@ namespace SaledServices.additionForm
                 cmd.ExecuteNonQuery();
                 mConn.Close();
 
-                MessageBox.Show("备份成功到服务器的 " + filename);
+                StockInOutForm.showMessage("备份成功到服务器的 " + filename, true);
             }
             catch (Exception ex)
             {

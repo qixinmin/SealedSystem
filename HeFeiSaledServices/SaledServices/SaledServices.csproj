@@ -186,6 +186,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -225,6 +226,12 @@
     </Compile>
     <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChartForm.Designer.cs">
+      <DependentUpon>ChartForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomsExport\GenerateWorkOrderBody.cs" />
     <Compile Include="CustomsExport\ReturnCustomInfoImportForm.cs">
@@ -275,6 +282,18 @@
     </Compile>
     <Compile Include="Export\FlexIdExport.Designer.cs">
       <DependentUpon>FlexIdExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\CIDExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\CIDExport.Designer.cs">
+      <DependentUpon>CIDExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LCDDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LCDDisplay.Designer.cs">
+      <DependentUpon>LCDDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="Repair\RepairOperationForm.cs">
       <SubType>Form</SubType>
@@ -664,6 +683,9 @@
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChartForm.resx">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomsExport\ReturnCustomInfoImportForm.resx">
       <DependentUpon>ReturnCustomInfoImportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -687,6 +709,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\FlexIdExport.resx">
       <DependentUpon>FlexIdExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\CIDExport.resx">
+      <DependentUpon>CIDExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LCDDisplay.resx">
+      <DependentUpon>LCDDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RepairOperationForm.resx">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>

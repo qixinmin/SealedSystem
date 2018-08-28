@@ -1,4 +1,14 @@
 
+/*增加数据验证的东西，防止收货的时候输错*/
+CREATE TABLE flexid_8s_mpn_table(
+Id INT PRIMARY KEY IDENTITY, 
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+flexid NVARCHAR(128) NOT NULL,/*flexid*/
+mpn NVARCHAR(128) NOT NULL,/*板子料号*/
+_8sCode NVARCHAR(128), /*8s*/
+)
+
+
 /*不良品MB/SMT/BGA出库记录*/
 /*把fru的材料也放進去了，但是默認現在不報關出去，因爲要交稅，在上報的時候過濾一下*/
 CREATE TABLE mb_smt_bga_ng_out_house_table(

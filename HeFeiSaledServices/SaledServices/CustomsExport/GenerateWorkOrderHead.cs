@@ -62,7 +62,7 @@ namespace SaledServices.CustomsExport
             }
         }
 
-        public void doGenerate()
+        public void doGenerate(bool isAuto)
         {
             workListHead.seq_no = seq_no;
             workListHead.boxtype = boxtype;
@@ -73,14 +73,36 @@ namespace SaledServices.CustomsExport
 
             workListHead.workOrderHeadList = workOrderHeadList;
 
-            if (workOrderHeadList.Count > 0)
+            bool isHasError = false;
+            foreach (WorkOrderHead temp in workOrderHeadList)
             {
-                Untils.createWorkListHeadXML(workListHead, "D:\\WO_HEAD" + seq_no + ".xml");
-                MessageBox.Show(currentDay.ToString("yyyyMMdd") + "工单表头信息产生成功！");
+                try
+                {
+                    Int32.Parse(temp.qty);
+                }
+                catch (Exception ex)
+                {
+                    isHasError = true;
+                    StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "生成工单表头XML文件有误，请检查！", isAuto, true);
+                    break;
+                }
+            }
+
+            if (isHasError == false)
+            {
+                if (workOrderHeadList.Count > 0)
+                {
+                    Untils.createWorkListHeadXML(workListHead, "D:\\MOV\\WO_HEAD" + seq_no + ".xml");
+                    StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "工单表头信息产生成功！", isAuto);
+                }
+                else
+                {
+                    StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "没有工单表头信息产生！", isAuto);
+                }
             }
             else
             {
-                MessageBox.Show(currentDay.ToString("yyyyMMdd") + "没有工单表头信息产生！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "没有工单表头信息产生！", isAuto);
             }
         }
     }

@@ -17,8 +17,7 @@ namespace SaledServices
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             parentForm = new MainForm();
-
-            
+           // ChartForm chart = new ChartForm();
 
             Application.Run(parentForm);
         }

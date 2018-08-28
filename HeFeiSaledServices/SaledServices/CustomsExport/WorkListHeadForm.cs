@@ -17,9 +17,7 @@ namespace SaledServices.CustomsExport
         public WorkListHeadForm()
         {
             InitializeComponent();
-        }
-
-       
+        }              
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
@@ -87,7 +85,7 @@ namespace SaledServices.CustomsExport
 
             workListHead.workOrderHeadList = workOrderHeadList;
 
-            Untils.createWorkListHeadXML(workListHead, "D:\\WO_HEAD"+seq_no+".xml");
+            Untils.createWorkListHeadXML(workListHead, "D:\\MOV\\WO_HEAD" + seq_no + ".xml");
 
             MessageBox.Show("finish");
         }
