@@ -60,9 +60,12 @@ namespace SaledServices.CustomsExport
         {
             if (isAuto)
             {
-                if (GetAddressIP() !=Constlist.ipConst)
+                if (!Constlist.ipConst.StartsWith("192.168.2"))
                 {
-                    return;
+                    if (GetAddressIP() != Constlist.ipConst)
+                    {
+                        return;
+                    }
                 }
 
                 string strFilePath = @"D:\logfile\log.txt";

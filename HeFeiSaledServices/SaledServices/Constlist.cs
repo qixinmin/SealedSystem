@@ -52,7 +52,9 @@ namespace SaledServices
     public class Constlist
     {
         public static string ipConst = "192.168.1.1";//inner server
-        //public static string ipConst = "192.168.2.121";//huadong server
+        
+       // public static string ipConst = "192.168.2.121";//huadong server
+        
         
         //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
         //public static string ConStr = "server=" + ipConst + ";database=SaledService;uid=admin;pwd=admin";
