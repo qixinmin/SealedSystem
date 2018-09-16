@@ -14,6 +14,37 @@ using System.Data;
 
 namespace SaledServices
 {
+
+    public class stationInfoRecord
+    {         
+        public string trackno{set;get;}
+
+        public string recordstatus { set; get; }//ok, fail
+        public string recorddate { set; get; }
+
+        //1 如果是维修，维修位置，数量，与料号，2  如果是bga则位置，数量为1， 与料号， 3 如果是mylar，则位置，数量，与料号
+        public string repairplace1 { set; get; }
+        public string repairnum1 { set; get; }
+        public string repairMaterial1 { set; get; }
+
+        public string repairplace2 { set; get; }
+        public string repairnum2 { set; get; }
+        public string repairMaterial2 { set; get; }
+
+        public string repairplace3 { set; get; }
+        public string repairnum3 { set; get; }
+        public string repairMaterial3 { set; get; }
+
+        public string repairplace4 { set; get; }
+        public string repairnum4 { set; get; }
+        public string repairMaterial4 { set; get; }
+
+        public string repairplace5 { set; get; }
+        public string repairnum5 { set; get; }
+        public string repairMaterial5 { set; get; }
+
+    }
+
     public class StockCheck
     {
         public string material_no;

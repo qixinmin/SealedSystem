@@ -1,3 +1,30 @@
+/*1 如果是维修，维修位置，数量，与料号，2  如果是bga则位置，数量为1， 与料号， 3 如果是mylar，则位置，数量，与料号*/
+CREATE TABLE stationInfoRecord(
+Id INT PRIMARY KEY IDENTITY, 
+trackno NVARCHAR(128) NOT NULL, /*订单编号*/
+recordstatus NVARCHAR(128) NOT NULL,
+recorddate NVARCHAR(128) NOT NULL,
+
+repairplace1 NVARCHAR(128) ,
+repairnum1 NVARCHAR(128) ,
+repairMaterial1 NVARCHAR(128) ,
+
+repairplace2 NVARCHAR(128) ,
+repairnum2 NVARCHAR(128) ,
+repairMaterial2 NVARCHAR(128) ,
+
+repairplace3 NVARCHAR(128) ,
+repairnum3 NVARCHAR(128) ,
+repairMaterial3 NVARCHAR(128) ,
+
+repairplace4 NVARCHAR(128) ,
+repairnum4 NVARCHAR(128) ,
+repairMaterial4 NVARCHAR(128) ,
+
+repairplace5 NVARCHAR(128) ,
+repairnum5 NVARCHAR(128) ,
+repairMaterial5 NVARCHAR(128) ,
+)
 
 /*增加数据验证的东西，防止收货的时候输错*/
 CREATE TABLE flexid_8s_mpn_table(

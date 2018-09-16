@@ -1355,8 +1355,6 @@ namespace SaledServices
         private CIDExport cidExport;
         private void cID信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
             if (cidExport == null || cidExport.IsDisposed)
             {
                 cidExport = new CIDExport();
@@ -1368,6 +1366,22 @@ namespace SaledServices
             cidExport.Show();
 
             allForm.Add(cidExport);
+        }
+
+        private MBLifeRecord mbLifeRecord;
+        private void 主板生命周期ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mbLifeRecord == null || mbLifeRecord.IsDisposed)
+            {
+                mbLifeRecord = new MBLifeRecord();
+                mbLifeRecord.MdiParent = this;
+            }
+
+            mbLifeRecord.WindowState = FormWindowState.Maximized;
+            mbLifeRecord.BringToFront();
+            mbLifeRecord.Show();
+
+            allForm.Add(mbLifeRecord);
         }
     }
 }

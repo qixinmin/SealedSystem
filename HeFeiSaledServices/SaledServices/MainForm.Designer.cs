@@ -47,6 +47,7 @@
             this.cID操作合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lCD显示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.最近一个月内容汇总ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,6 +107,7 @@
             this.dPK信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库存消耗查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flexidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cID信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.期初库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实盘库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,8 +116,7 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.最近一个月内容汇总ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cID信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.主板生命周期ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -286,6 +287,13 @@
             this.lCD显示ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.lCD显示ToolStripMenuItem.Text = "LCD显示";
             this.lCD显示ToolStripMenuItem.Click += new System.EventHandler(this.lCD显示ToolStripMenuItem_Click);
+            // 
+            // 最近一个月内容汇总ToolStripMenuItem
+            // 
+            this.最近一个月内容汇总ToolStripMenuItem.Name = "最近一个月内容汇总ToolStripMenuItem";
+            this.最近一个月内容汇总ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.最近一个月内容汇总ToolStripMenuItem.Text = "最近一个月内容汇总";
+            this.最近一个月内容汇总ToolStripMenuItem.Click += new System.EventHandler(this.最近一个月内容汇总ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -709,7 +717,8 @@
             this.dPK信息导出ToolStripMenuItem,
             this.库存消耗查询ToolStripMenuItem,
             this.flexidToolStripMenuItem,
-            this.cID信息导出ToolStripMenuItem});
+            this.cID信息导出ToolStripMenuItem,
+            this.主板生命周期ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -763,6 +772,13 @@
             this.flexidToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.flexidToolStripMenuItem.Text = "FlexId表信息";
             this.flexidToolStripMenuItem.Click += new System.EventHandler(this.flexidToolStripMenuItem_Click);
+            // 
+            // cID信息导出ToolStripMenuItem
+            // 
+            this.cID信息导出ToolStripMenuItem.Name = "cID信息导出ToolStripMenuItem";
+            this.cID信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.cID信息导出ToolStripMenuItem.Text = "CID信息导出";
+            this.cID信息导出ToolStripMenuItem.Click += new System.EventHandler(this.cID信息导出ToolStripMenuItem_Click);
             // 
             // 海关ToolStripMenuItem
             // 
@@ -830,19 +846,12 @@
             this.包装ToolStripMenuItem.Text = "包装";
             this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
             // 
-            // 最近一个月内容汇总ToolStripMenuItem
+            // 主板生命周期ToolStripMenuItem
             // 
-            this.最近一个月内容汇总ToolStripMenuItem.Name = "最近一个月内容汇总ToolStripMenuItem";
-            this.最近一个月内容汇总ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.最近一个月内容汇总ToolStripMenuItem.Text = "最近一个月内容汇总";
-            this.最近一个月内容汇总ToolStripMenuItem.Click += new System.EventHandler(this.最近一个月内容汇总ToolStripMenuItem_Click);
-            // 
-            // cID信息导出ToolStripMenuItem
-            // 
-            this.cID信息导出ToolStripMenuItem.Name = "cID信息导出ToolStripMenuItem";
-            this.cID信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
-            this.cID信息导出ToolStripMenuItem.Text = "CID信息导出";
-            this.cID信息导出ToolStripMenuItem.Click += new System.EventHandler(this.cID信息导出ToolStripMenuItem_Click);
+            this.主板生命周期ToolStripMenuItem.Name = "主板生命周期ToolStripMenuItem";
+            this.主板生命周期ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.主板生命周期ToolStripMenuItem.Text = "主板生命周期";
+            this.主板生命周期ToolStripMenuItem.Click += new System.EventHandler(this.主板生命周期ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -956,6 +965,7 @@
         private System.Windows.Forms.ToolStripMenuItem lCD显示ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 最近一个月内容汇总ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cID信息导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 主板生命周期ToolStripMenuItem;
     }
 }
 

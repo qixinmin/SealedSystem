@@ -227,6 +227,12 @@
     <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="additionForm\MBLifeRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\MBLifeRecord.Designer.cs">
+      <DependentUpon>MBLifeRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -682,6 +688,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\MBLifeRecord.resx">
+      <DependentUpon>MBLifeRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChartForm.resx">
       <DependentUpon>ChartForm.cs</DependentUpon>
