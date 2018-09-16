@@ -660,6 +660,13 @@ namespace SaledServices
                            + mPrepareUseDetail1.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+                           "'维修',','OK','" + DateTime.Now.ToString() + "','"
+                           + mPrepareUseDetail1.stock_place + "','"
+                           + mPrepareUseDetail1.thisUseNumber + "','"
+                           + mPrepareUseDetail1.material_mpn + "','','','','','','','','','','','','')";
+                        cmd.ExecuteNonQuery();
+
                         //使用完毕需要清空
                         mPrepareUseDetail1.Id = null;
                     }
@@ -698,6 +705,13 @@ namespace SaledServices
                            + mPrepareUseDetail2.material_mpn + "','"
                            + mPrepareUseDetail2.thisUseNumber + "','"
                            + mPrepareUseDetail2.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+                         "'维修',','OK','" + DateTime.Now.ToString() + "','"
+                         + mPrepareUseDetail2.stock_place + "','"
+                         + mPrepareUseDetail2.thisUseNumber + "','"
+                         + mPrepareUseDetail2.material_mpn + "','','','','','','','','','','','','')";
                         cmd.ExecuteNonQuery();
 
                         //使用完毕需要清空
@@ -742,6 +756,13 @@ namespace SaledServices
                            + mPrepareUseDetail3.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+                         "'维修',','OK','" + DateTime.Now.ToString() + "','"
+                         + mPrepareUseDetail3.stock_place + "','"
+                         + mPrepareUseDetail3.thisUseNumber + "','"
+                         + mPrepareUseDetail3.material_mpn + "','','','','','','','','','','','','')";
+                        cmd.ExecuteNonQuery();
+
                         //使用完毕需要清空
                         mPrepareUseDetail3.Id = null;
                     }
@@ -782,6 +803,13 @@ namespace SaledServices
                            + mPrepareUseDetail4.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+                         "'维修',','OK','" + DateTime.Now.ToString() + "','"
+                         + mPrepareUseDetail4.stock_place + "','"
+                         + mPrepareUseDetail4.thisUseNumber + "','"
+                         + mPrepareUseDetail4.material_mpn + "','','','','','','','','','','','','')";
+                        cmd.ExecuteNonQuery();
+
                         //使用完毕需要清空
                         mPrepareUseDetail4.Id = null;
                     }
@@ -820,6 +848,13 @@ namespace SaledServices
                            + mPrepareUseDetail5.material_mpn + "','"
                            + mPrepareUseDetail5.thisUseNumber + "','"
                            + mPrepareUseDetail5.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+                         "'外观',','OK','" + DateTime.Now.ToString() + "','"
+                         + mPrepareUseDetail5.stock_place + "','"
+                         + mPrepareUseDetail5.thisUseNumber + "','"
+                         + mPrepareUseDetail5.material_mpn + "','','','','','','','','','','','','')";
                         cmd.ExecuteNonQuery();
 
                         //使用完毕需要清空

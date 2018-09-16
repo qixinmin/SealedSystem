@@ -628,6 +628,10 @@ namespace SaledServices
                    
                     cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('"+this.track_serial_noTextBox.Text.Trim()+
+                    "'收货',','OK','"+ DateTime.Now.ToString()+"','','','','','','','','','','','','','','','')";
+                    cmd.ExecuteNonQuery();
+
                     //插入flexid的记录
                     cmd.CommandText = "INSERT INTO flexidRecord VALUES('" +
                         this.custom_orderComboBox.Text.Trim() + "','" +

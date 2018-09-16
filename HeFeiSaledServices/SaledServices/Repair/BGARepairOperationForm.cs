@@ -301,6 +301,13 @@ namespace SaledServices
                     
                     cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+                             "'BGA',','OK','" + DateTime.Now.ToString() + "','"
+                             + BGA_place_txt + "','"
+                             + "1" + "','"
+                             + this.newSntextBox.Text.Trim() + "','','','','','','','','','','','','')";
+                    cmd.ExecuteNonQuery();
+
                     cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();

@@ -175,6 +175,10 @@ namespace SaledServices.Test_Outlook
                         + "')";
                     cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                   "'Running',','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','')";
+                    cmd.ExecuteNonQuery();
+
                     cmd.CommandText = "update stationInformation set station = 'Running', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
@@ -214,6 +218,10 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                  "'Running',','FAIL','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','')";
                     cmd.ExecuteNonQuery();
                 }
                 else

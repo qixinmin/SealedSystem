@@ -274,6 +274,13 @@ namespace SaledServices.Test_Outlook
                            + mPrepareUseDetail1.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                             "'外观',','OK','" + DateTime.Now.ToString() + "','"
+                             + mPrepareUseDetail1.stock_place + "','"
+                             + mPrepareUseDetail1.thisUseNumber + "','"
+                             + mPrepareUseDetail1.material_mpn + "','','','','','','','','','','','','')";
+                        cmd.ExecuteNonQuery();
+
                         //更新预领料表的数量
                         cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail1.totalUseNumber + "' "
                                   + "where Id = '" + mPrepareUseDetail1.Id + "'";
@@ -293,6 +300,13 @@ namespace SaledServices.Test_Outlook
                            + mPrepareUseDetail2.material_mpn + "','"
                            + mPrepareUseDetail2.thisUseNumber + "','"
                            + mPrepareUseDetail2.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                             "'外观',','OK','" + DateTime.Now.ToString() + "','"
+                             + mPrepareUseDetail2.stock_place + "','"
+                             + mPrepareUseDetail2.thisUseNumber + "','"
+                             + mPrepareUseDetail2.material_mpn + "','','','','','','','','','','','','')";
                         cmd.ExecuteNonQuery();
 
                         //更新预领料表的数量
@@ -316,6 +330,13 @@ namespace SaledServices.Test_Outlook
                            + mPrepareUseDetail3.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                             "'外观',','OK','" + DateTime.Now.ToString() + "','"
+                             + mPrepareUseDetail3.stock_place + "','"
+                             + mPrepareUseDetail3.thisUseNumber + "','"
+                             + mPrepareUseDetail3.material_mpn + "','','','','','','','','','','','','')";
+                        cmd.ExecuteNonQuery();
+
                         //更新预领料表的数量
                         cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail3.totalUseNumber + "' "
                                   + "where Id = '" + mPrepareUseDetail3.Id + "'";
@@ -335,6 +356,13 @@ namespace SaledServices.Test_Outlook
                            + mPrepareUseDetail4.material_mpn + "','"
                            + mPrepareUseDetail4.thisUseNumber + "','"
                            + mPrepareUseDetail4.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                             "'外观',','OK','" + DateTime.Now.ToString() + "','"
+                             + mPrepareUseDetail4.stock_place + "','"
+                             + mPrepareUseDetail4.thisUseNumber + "','"
+                             + mPrepareUseDetail4.material_mpn + "','','','','','','','','','','','','')";
                         cmd.ExecuteNonQuery();
 
                         //更新预领料表的数量
@@ -358,6 +386,12 @@ namespace SaledServices.Test_Outlook
                            + mPrepareUseDetail5.stock_place + "')";
                         cmd.ExecuteNonQuery();
 
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                             "'外观',','OK','" + DateTime.Now.ToString() + "','"
+                             + mPrepareUseDetail5.stock_place + "','"
+                             + mPrepareUseDetail5.thisUseNumber + "','"
+                             + mPrepareUseDetail5.material_mpn + "','','','','','','','','','','','','')";
+                        cmd.ExecuteNonQuery();
                         //更新预领料表的数量
                         cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail5.totalUseNumber + "' "
                                   + "where Id = '" + mPrepareUseDetail5.Id + "'";
@@ -420,6 +454,10 @@ namespace SaledServices.Test_Outlook
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                 "'外观',','FAIL','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','')";
+                    cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";

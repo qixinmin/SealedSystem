@@ -2,6 +2,7 @@
 CREATE TABLE stationInfoRecord(
 Id INT PRIMARY KEY IDENTITY, 
 trackno NVARCHAR(128) NOT NULL, /*订单编号*/
+station NVARCHAR(128) NOT NULL, /*站别*/
 recordstatus NVARCHAR(128) NOT NULL,
 recorddate NVARCHAR(128) NOT NULL,
 

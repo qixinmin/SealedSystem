@@ -18,7 +18,7 @@ namespace SaledServices
     public class stationInfoRecord
     {         
         public string trackno{set;get;}
-
+        public string station { set; get; }
         public string recordstatus { set; get; }//ok, fail
         public string recorddate { set; get; }
 
