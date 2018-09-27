@@ -66,7 +66,7 @@
             // 
             // trackNoTextBox
             // 
-            this.trackNoTextBox.Location = new System.Drawing.Point(151, 6);
+            this.trackNoTextBox.Location = new System.Drawing.Point(150, 6);
             this.trackNoTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.trackNoTextBox.Name = "trackNoTextBox";
             this.trackNoTextBox.Size = new System.Drawing.Size(269, 30);
@@ -74,7 +74,7 @@
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(545, 6);
+            this.query.Location = new System.Drawing.Point(543, 6);
             this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(125, 38);
@@ -104,7 +104,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.77596F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.22404F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 380F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 382F));
             this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.trackNoTextBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
@@ -126,7 +126,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MBLifeRecord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "主板的生命周期";
+            this.Text = "主板流水";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

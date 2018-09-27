@@ -25,6 +25,7 @@ repairMaterial4 NVARCHAR(128) ,
 repairplace5 NVARCHAR(128) ,
 repairnum5 NVARCHAR(128) ,
 repairMaterial5 NVARCHAR(128) ,
+inputer NVARCHAR(128)
 )
 
 /*增加数据验证的东西，防止收货的时候输错*/

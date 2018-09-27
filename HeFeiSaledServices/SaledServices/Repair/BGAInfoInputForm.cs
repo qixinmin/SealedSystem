@@ -700,7 +700,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;              
 
-                string sqlStr = "select * from bga_wait_record_table";
+                string sqlStr = "select  top 20 * from bga_wait_record_table";
 
                 if (this.track_serial_noTextBox.Text.Trim() != "")
                 {
@@ -713,6 +713,8 @@ namespace SaledServices
                         sqlStr += " and track_serial_no= '" + track_serial_noTextBox.Text.Trim() + "' ";
                     }
                 }
+
+                sqlStr += " order by Id desc";
 
                 cmd.CommandText = sqlStr;
                 cmd.CommandType = CommandType.Text;

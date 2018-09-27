@@ -210,6 +210,10 @@ namespace SaledServices
                     cmd.CommandText = "insert into cidRecord values('" + track_serial_no_txt + "','" + orderno_txt + "','" + custommaterialNo_txt + "')";
                     cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+            "','CID','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','"+inputer_txt+"')";
+                    cmd.ExecuteNonQuery();
+
                     cmd.CommandText = "update receiveOrder set cid_number = '"+ (cidNumber+1)+"'"
                                + " where orderno = '" + orderno_txt + "' and custom_materialNo = '" + custommaterialNo_txt + "'";
                     cmd.ExecuteNonQuery();

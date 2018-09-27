@@ -629,7 +629,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('"+this.track_serial_noTextBox.Text.Trim()+
-                    "'收货',','OK','"+ DateTime.Now.ToString()+"','','','','','','','','','','','','','','','')";
+                    "','收货','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.inputUserTextBox.Text.Trim() + "')";
                     cmd.ExecuteNonQuery();
 
                     //插入flexid的记录
@@ -816,7 +816,7 @@ namespace SaledServices
                 }
                 else
                 {
-                    cmd.CommandText = "select * from  " + tableName;
+                    cmd.CommandText = "select top 20 * from  " + tableName + " order by id desc";
                 }
                 cmd.CommandType = CommandType.Text;
 
@@ -1245,10 +1245,21 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                if (this.flexidTextBox.Text.Trim().Length != 10)
+                if (this.custom_orderComboBox.Text.Trim().StartsWith("RMNF"))
                 {
-                    MessageBox.Show("FleId不是10位!");
-                    return;
+                    if (this.flexidTextBox.Text.Trim().Length != 10)
+                    {
+                        MessageBox.Show("北美的FlexId不是10位!");
+                        return;
+                    }
+                }
+                else  if (this.custom_orderComboBox.Text.Trim().StartsWith("RMEA"))
+                {
+                    if (this.flexidTextBox.Text.Trim().Length != 6 || this.flexidTextBox.Text.Trim().Length != 7)
+                    {
+                        MessageBox.Show("欧洲的FlexId不是6或7位!");
+                        return;
+                    }
                 }
 
                 try

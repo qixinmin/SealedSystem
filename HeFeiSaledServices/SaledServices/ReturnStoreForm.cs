@@ -527,9 +527,17 @@ namespace SaledServices
                         {
                             int totalLeft = Int32.Parse(left_number);
                             int thistotal = totalLeft - 1;
-                            cmd.CommandText = "update repaired_left_house_table set leftNumber = '" + thistotal + "'"
-                                   + "where custom_materialNo = '" + customMaterialNo + "'";
-                            cmd.ExecuteNonQuery();
+                            if (thistotal >= 0)
+                            {
+                                cmd.CommandText = "update repaired_left_house_table set leftNumber = '" + thistotal + "'"
+                                       + "where custom_materialNo = '" + customMaterialNo + "'";
+                                cmd.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                MessageBox.Show("数据不对,请停止操作，请立即联系技术人员!");
+                                //conn.Close();
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -623,7 +631,7 @@ namespace SaledServices
                 }
                 else
                 {
-                    cmd.CommandText = "select * from  " + tableName;
+                    cmd.CommandText = "select top 20 * from  " + tableName + " order by Id desc";
                 }
                 cmd.CommandType = CommandType.Text;
 

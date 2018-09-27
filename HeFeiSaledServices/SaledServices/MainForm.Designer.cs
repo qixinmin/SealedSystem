@@ -84,6 +84,7 @@
             this.库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.不良品库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.不良品出入库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mB未休出不良品入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fRUSMT不良品出入库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.不良品出庫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,6 +109,7 @@
             this.库存消耗查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flexidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cID信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.主板生命周期ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.期初库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实盘库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,7 +118,6 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.主板生命周期ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -490,6 +491,7 @@
             this.库房储位管理ToolStripMenuItem,
             this.不良品库房储位管理ToolStripMenuItem,
             this.不良品出入库管理ToolStripMenuItem,
+            this.mB未休出不良品入库ToolStripMenuItem,
             this.fRUSMT不良品出入库管理ToolStripMenuItem,
             this.不良品出庫ToolStripMenuItem});
             this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
@@ -588,6 +590,13 @@
             this.不良品出入库管理ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
             this.不良品出入库管理ToolStripMenuItem.Text = "MB CID不良品入库";
             this.不良品出入库管理ToolStripMenuItem.Click += new System.EventHandler(this.不良品出入库管理ToolStripMenuItem_Click);
+            // 
+            // mB未休出不良品入库ToolStripMenuItem
+            // 
+            this.mB未休出不良品入库ToolStripMenuItem.Name = "mB未休出不良品入库ToolStripMenuItem";
+            this.mB未休出不良品入库ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
+            this.mB未休出不良品入库ToolStripMenuItem.Text = "MB未修出入不良品库";
+            this.mB未休出不良品入库ToolStripMenuItem.Click += new System.EventHandler(this.mB未休出不良品入库ToolStripMenuItem_Click);
             // 
             // fRUSMT不良品出入库管理ToolStripMenuItem
             // 
@@ -780,6 +789,13 @@
             this.cID信息导出ToolStripMenuItem.Text = "CID信息导出";
             this.cID信息导出ToolStripMenuItem.Click += new System.EventHandler(this.cID信息导出ToolStripMenuItem_Click);
             // 
+            // 主板生命周期ToolStripMenuItem
+            // 
+            this.主板生命周期ToolStripMenuItem.Name = "主板生命周期ToolStripMenuItem";
+            this.主板生命周期ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.主板生命周期ToolStripMenuItem.Text = "主板流水";
+            this.主板生命周期ToolStripMenuItem.Click += new System.EventHandler(this.主板生命周期ToolStripMenuItem_Click);
+            // 
             // 海关ToolStripMenuItem
             // 
             this.海关ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -845,13 +861,6 @@
             this.包装ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.包装ToolStripMenuItem.Text = "包装";
             this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
-            // 
-            // 主板生命周期ToolStripMenuItem
-            // 
-            this.主板生命周期ToolStripMenuItem.Name = "主板生命周期ToolStripMenuItem";
-            this.主板生命周期ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
-            this.主板生命周期ToolStripMenuItem.Text = "主板生命周期";
-            this.主板生命周期ToolStripMenuItem.Click += new System.EventHandler(this.主板生命周期ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -966,6 +975,7 @@
         private System.Windows.Forms.ToolStripMenuItem 最近一个月内容汇总ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cID信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 主板生命周期ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mB未休出不良品入库ToolStripMenuItem;
     }
 }
 

@@ -764,6 +764,8 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.FilesUpdateForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.MaterialNameForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.RepairFaultTypeForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.MBLifeRecord.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ChartForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnCustomInfoImportForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ExportDatabaseToExcel.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ReceiveOrderExport.resources
@@ -772,6 +774,7 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.DPKExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MaterialConsumeExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.FlexIdExport.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.CIDExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.LCDDisplay.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.RepairOperationForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnStoreCustomRespForm.resources
@@ -821,6 +824,7 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_SMT_OutSheetForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.FaultMaterialOutForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.BufferFaultMBStoreForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.FaultMBUnRepairForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.ObeForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.RunningForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.OutLookForm.resources
@@ -838,6 +842,3 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ChartForm.resources
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.CIDExport.resources
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.MBLifeRecord.resources

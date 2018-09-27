@@ -168,6 +168,18 @@ namespace SaledServices
                     }
                 }
 
+                if (this.mpntextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where mpn like '%" + mpntextBox.Text.Trim() + "%' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and mpn like '%" + mpntextBox.Text.Trim() + "%' ";
+                    }
+                }
+
                 mConn = new SqlConnection(Constlist.ConStr);
 
                 SqlCommand cmd = new SqlCommand();

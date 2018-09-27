@@ -16,7 +16,8 @@ namespace SaledServices
 {
 
     public class stationInfoRecord
-    {         
+    {
+        public string id { set; get; }
         public string trackno{set;get;}
         public string station { set; get; }
         public string recordstatus { set; get; }//ok, fail
@@ -27,21 +28,22 @@ namespace SaledServices
         public string repairnum1 { set; get; }
         public string repairMaterial1 { set; get; }
 
-        public string repairplace2 { set; get; }
-        public string repairnum2 { set; get; }
-        public string repairMaterial2 { set; get; }
+        public string inputer { set; get; }
+        //public string repairplace2 { set; get; }
+        //public string repairnum2 { set; get; }
+        //public string repairMaterial2 { set; get; }
 
-        public string repairplace3 { set; get; }
-        public string repairnum3 { set; get; }
-        public string repairMaterial3 { set; get; }
+        //public string repairplace3 { set; get; }
+        //public string repairnum3 { set; get; }
+        //public string repairMaterial3 { set; get; }
 
-        public string repairplace4 { set; get; }
-        public string repairnum4 { set; get; }
-        public string repairMaterial4 { set; get; }
+        //public string repairplace4 { set; get; }
+        //public string repairnum4 { set; get; }
+        //public string repairMaterial4 { set; get; }
 
-        public string repairplace5 { set; get; }
-        public string repairnum5 { set; get; }
-        public string repairMaterial5 { set; get; }
+        //public string repairplace5 { set; get; }
+        //public string repairnum5 { set; get; }
+        //public string repairMaterial5 { set; get; }
 
     }
 

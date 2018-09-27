@@ -11,12 +11,12 @@ using SaledServices.Repair;
 
 namespace SaledServices
 {
-    public partial class FaultMBStoreForm : Form
+    public partial class FaultMBUnRepairForm : Form
     {
         private string currentTableName = "fault_mb_enter_record_table";
         private ChooseStock chooseStock = new ChooseStock();
         private PrepareUseDetail mPrepareUseDetail;
-        public FaultMBStoreForm()
+        public FaultMBUnRepairForm()
         {
             InitializeComponent();
 
@@ -258,7 +258,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
-            "','不良品库','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + inputer_txt + "')";
+              "','不良品库','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + inputer_txt + "')";
                     cmd.ExecuteNonQuery();
                     
                     //更新数量
@@ -292,6 +292,27 @@ namespace SaledServices
                     {
                         MessageBox.Show(ex.ToString());
                     }
+
+                    //
+                    cmd.CommandText = "select returnNum from receiveOrder where orderno = '" + orderno_txt
+                          + "' and custom_materialNo = '" + custommaterialNo + "'";
+
+                    int returnNum = -1;
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        returnNum = Int32.Parse(querySdr[0].ToString());
+                    }
+                    querySdr.Close();
+                    if (returnNum < 0)
+                    {
+                        MessageBox.Show("收货单里面有问题，请查看收货单！");                    
+                        conn.Close();
+                        return;
+                    }
+                    cmd.CommandText = "update receiveOrder set returnNum = '" + (returnNum + 1) + "'"
+                               + " where orderno = '" + orderno_txt + "' and custom_materialNo = '" + custommaterialNo + "'";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

@@ -622,7 +622,7 @@ namespace SaledServices
 
                     //检查所有要是使用的数据，如果超过所拥有的数量，则不能生产任何记录
 
-
+                    bool isUseMaterial = false;
                    
                     if (mPrepareUseDetail1!=null && mPrepareUseDetail1.Id != null)
                     {
@@ -659,13 +659,15 @@ namespace SaledServices
                            + mPrepareUseDetail1.thisUseNumber + "','"
                            + mPrepareUseDetail1.stock_place + "')";
                         cmd.ExecuteNonQuery();
+                        
 
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
-                           "'维修',','OK','" + DateTime.Now.ToString() + "','"
+                           "','维修','OK','" + DateTime.Now.ToString() + "','"
                            + mPrepareUseDetail1.stock_place + "','"
                            + mPrepareUseDetail1.thisUseNumber + "','"
-                           + mPrepareUseDetail1.material_mpn + "','','','','','','','','','','','','')";
+                           + mPrepareUseDetail1.material_mpn + "','','','','','','','','','','','','','" + repairer_txt + "')";
                         cmd.ExecuteNonQuery();
+                        isUseMaterial = true;
 
                         //使用完毕需要清空
                         mPrepareUseDetail1.Id = null;
@@ -706,13 +708,15 @@ namespace SaledServices
                            + mPrepareUseDetail2.thisUseNumber + "','"
                            + mPrepareUseDetail2.stock_place + "')";
                         cmd.ExecuteNonQuery();
+                        
 
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
-                         "'维修',','OK','" + DateTime.Now.ToString() + "','"
+                         "','维修','OK','" + DateTime.Now.ToString() + "','"
                          + mPrepareUseDetail2.stock_place + "','"
                          + mPrepareUseDetail2.thisUseNumber + "','"
-                         + mPrepareUseDetail2.material_mpn + "','','','','','','','','','','','','')";
+                         + mPrepareUseDetail2.material_mpn + "','','','','','','','','','','','','','" + repairer_txt + "')";
                         cmd.ExecuteNonQuery();
+                        isUseMaterial = true;
 
                         //使用完毕需要清空
                         mPrepareUseDetail2.Id = null;
@@ -757,11 +761,12 @@ namespace SaledServices
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
-                         "'维修',','OK','" + DateTime.Now.ToString() + "','"
+                         "','维修','OK','" + DateTime.Now.ToString() + "','"
                          + mPrepareUseDetail3.stock_place + "','"
                          + mPrepareUseDetail3.thisUseNumber + "','"
-                         + mPrepareUseDetail3.material_mpn + "','','','','','','','','','','','','')";
+                         + mPrepareUseDetail3.material_mpn + "','','','','','','','','','','','','','" + repairer_txt + "')";
                         cmd.ExecuteNonQuery();
+                        isUseMaterial = true;
 
                         //使用完毕需要清空
                         mPrepareUseDetail3.Id = null;
@@ -802,13 +807,15 @@ namespace SaledServices
                            + mPrepareUseDetail4.thisUseNumber + "','"
                            + mPrepareUseDetail4.stock_place + "')";
                         cmd.ExecuteNonQuery();
+                        
 
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
-                         "'维修',','OK','" + DateTime.Now.ToString() + "','"
+                         "','维修','OK','" + DateTime.Now.ToString() + "','"
                          + mPrepareUseDetail4.stock_place + "','"
                          + mPrepareUseDetail4.thisUseNumber + "','"
-                         + mPrepareUseDetail4.material_mpn + "','','','','','','','','','','','','')";
+                         + mPrepareUseDetail4.material_mpn + "','','','','','','','','','','','','','" + repairer_txt + "')";
                         cmd.ExecuteNonQuery();
+                        isUseMaterial = true;
 
                         //使用完毕需要清空
                         mPrepareUseDetail4.Id = null;
@@ -851,14 +858,22 @@ namespace SaledServices
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
-                         "'外观',','OK','" + DateTime.Now.ToString() + "','"
+                         "','维修','OK','" + DateTime.Now.ToString() + "','"
                          + mPrepareUseDetail5.stock_place + "','"
                          + mPrepareUseDetail5.thisUseNumber + "','"
-                         + mPrepareUseDetail5.material_mpn + "','','','','','','','','','','','','')";
+                         + mPrepareUseDetail5.material_mpn + "','','','','','','','','','','','','','" + repairer_txt + "')";
                         cmd.ExecuteNonQuery();
+                        isUseMaterial = true;
 
                         //使用完毕需要清空
                         mPrepareUseDetail5.Id = null;
+                    }
+
+                    if (isUseMaterial == false)
+                    {
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+                                               "','维修','NTF','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + repairer_txt + "')";
+                        cmd.ExecuteNonQuery();
                     }
 
                     cmd.CommandText = "INSERT INTO repair_record_table VALUES('"
@@ -1012,7 +1027,7 @@ namespace SaledServices
                 
                 cmd.CommandType = CommandType.Text;
 
-                string sqlStr = "select * from repair_record_table";
+                string sqlStr = "select  top 20 * from repair_record_table";
 
                 if (track_serial_noTextBox.Text.Trim() != "")
                 {
@@ -1025,6 +1040,8 @@ namespace SaledServices
                         sqlStr += " and track_serial_no like '%" + track_serial_noTextBox.Text.Trim() + "%'";
                     }
                 }
+
+                sqlStr += " order by Id desc";
 
                 cmd.CommandText = sqlStr;
 

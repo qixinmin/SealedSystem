@@ -1383,5 +1383,22 @@ namespace SaledServices
 
             allForm.Add(mbLifeRecord);
         }
+
+        private FaultMBUnRepairForm faultMBUnRepairForm;
+        private void mB未休出不良品入库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (faultMBUnRepairForm == null || faultMBUnRepairForm.IsDisposed)
+            {
+                faultMBUnRepairForm = new FaultMBUnRepairForm();
+                faultMBUnRepairForm.MdiParent = this;
+            }
+
+            faultMBUnRepairForm.WindowState = FormWindowState.Maximized;
+            faultMBUnRepairForm.BringToFront();
+            faultMBUnRepairForm.Show();
+
+            allForm.Add(faultMBUnRepairForm);
+
+        }
     }
 }

@@ -85,7 +85,7 @@ namespace SaledServices
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 
-                string sqlStr =  "select * from " + tableName;
+                string sqlStr =  "select top 20 * from " + tableName;
 
                 if (vendorTextBox.Text.Trim() != "")
                 {
@@ -122,6 +122,8 @@ namespace SaledServices
                         sqlStr += " and mpn like '%" + mpnTextBox.Text.Trim() + "%' ";
                     }
                 }
+
+                sqlStr += " order by Id desc";
 
                 mConn = new SqlConnection(Constlist.ConStr);
 

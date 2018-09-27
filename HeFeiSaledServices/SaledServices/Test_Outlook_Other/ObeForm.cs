@@ -141,7 +141,7 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                 "'OBE',','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','')";
+                 "','OBE','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = 'Obe', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
@@ -201,7 +201,7 @@ namespace SaledServices.Test_Outlook
                     }
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                 "'OBE',','FAIL','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','')";
+                 "','OBE','FAIL','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "

@@ -302,10 +302,10 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
-                             "'BGA',','OK','" + DateTime.Now.ToString() + "','"
+                             "','BGA','OK','" + DateTime.Now.ToString() + "','"
                              + BGA_place_txt + "','"
                              + "1" + "','"
-                             + this.newSntextBox.Text.Trim() + "','','','','','','','','','','','','')";
+                             + this.BGAPNtextBox.Text.Trim() + "','','','','','','','','','','','','','" + bgarepairer_txt + "')";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
@@ -383,7 +383,7 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select * from bga_repair_record_table";
+                cmd.CommandText = "select top 20 * from bga_repair_record_table" + " order by Id desc";;
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();

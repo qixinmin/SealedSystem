@@ -414,7 +414,7 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                    "'测试',','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','')";
+                    "','测试','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
@@ -459,7 +459,7 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                   "'测试',','FAIL','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','')";
+                   "','测试','FAIL','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
                     cmd.ExecuteNonQuery();
                 }
                 else
