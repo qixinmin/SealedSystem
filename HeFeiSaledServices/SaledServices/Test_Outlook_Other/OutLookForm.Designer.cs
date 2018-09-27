@@ -108,7 +108,7 @@
             this.tableLayoutPanel1.Controls.Add(this.mylar5numtextBox, 3, 6);
             this.tableLayoutPanel1.Controls.Add(this.button5, 4, 5);
             this.tableLayoutPanel1.Controls.Add(this.button6, 4, 6);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 7;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));

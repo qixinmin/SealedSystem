@@ -533,10 +533,10 @@
     <Compile Include="Store\FRU_OutSheetForm.Designer.cs">
       <DependentUpon>FRU_OutSheetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Store\MB_InSheetForm.cs">
+    <Compile Include="Test_Outlook_Other\MB_InSheetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Store\MB_InSheetForm.Designer.cs">
+    <Compile Include="Test_Outlook_Other\MB_InSheetForm.Designer.cs">
       <DependentUpon>MB_InSheetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Store\MB_OutSheetForm.cs">
@@ -845,7 +845,7 @@
     <EmbeddedResource Include="Store\FRU_OutSheetForm.resx">
       <DependentUpon>FRU_OutSheetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Store\MB_InSheetForm.resx">
+    <EmbeddedResource Include="Test_Outlook_Other\MB_InSheetForm.resx">
       <DependentUpon>MB_InSheetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\MB_OutSheetForm.resx">

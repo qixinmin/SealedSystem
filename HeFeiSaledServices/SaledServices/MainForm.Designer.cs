@@ -118,6 +118,8 @@
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传出货海关信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.包装操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -856,11 +858,27 @@
             // 
             // 包装ToolStripMenuItem
             // 
+            this.包装ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.包装操作ToolStripMenuItem,
+            this.预领料申请ToolStripMenuItem1});
             this.包装ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.包装ToolStripMenuItem.Name = "包装ToolStripMenuItem";
             this.包装ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.包装ToolStripMenuItem.Text = "包装";
-            this.包装ToolStripMenuItem.Click += new System.EventHandler(this.包装ToolStripMenuItem_Click);
+            // 
+            // 包装操作ToolStripMenuItem
+            // 
+            this.包装操作ToolStripMenuItem.Name = "包装操作ToolStripMenuItem";
+            this.包装操作ToolStripMenuItem.Size = new System.Drawing.Size(184, 32);
+            this.包装操作ToolStripMenuItem.Text = "包装操作";
+            this.包装操作ToolStripMenuItem.Click += new System.EventHandler(this.包装操作ToolStripMenuItem_Click);
+            // 
+            // 预领料申请ToolStripMenuItem1
+            // 
+            this.预领料申请ToolStripMenuItem1.Name = "预领料申请ToolStripMenuItem1";
+            this.预领料申请ToolStripMenuItem1.Size = new System.Drawing.Size(184, 32);
+            this.预领料申请ToolStripMenuItem1.Text = "预领料申请";
+            this.预领料申请ToolStripMenuItem1.Click += new System.EventHandler(this.预领料申请ToolStripMenuItem1_Click);
             // 
             // MainForm
             // 
@@ -976,6 +994,8 @@
         private System.Windows.Forms.ToolStripMenuItem cID信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 主板生命周期ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mB未休出不良品入库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 包装操作ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 预领料申请ToolStripMenuItem1;
     }
 }
 

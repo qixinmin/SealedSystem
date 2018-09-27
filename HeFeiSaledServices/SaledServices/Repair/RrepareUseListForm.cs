@@ -187,6 +187,10 @@ namespace SaledServices.Repair
             {
                 ((Test_Outlook.OutLookForm)mParentForm).setPrepareUseDetail(idTextBox.Text, mb_brieftextBox.Text, material_mpntextBox.Text, notgood_placetextBox.Text, this.thisNumbertextBox.Text, totalUseNumber, fromIndex);
             }
+            else if (mParentForm is Test_Outlook.PackageForm)
+            {
+                ((Test_Outlook.PackageForm)mParentForm).setPrepareUseDetail(idTextBox.Text, mb_brieftextBox.Text, material_mpntextBox.Text, notgood_placetextBox.Text, this.thisNumbertextBox.Text, totalUseNumber, fromIndex);
+            }
             
             this.Close();
         }

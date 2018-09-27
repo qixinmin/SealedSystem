@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SaledServices.Repair;
 
 namespace SaledServices.Test_Outlook
 {
     public partial class PackageForm : Form
     {
+        private PrepareUseDetail mPrepareUseDetail1 = null;
+        private PrepareUseDetail mPrepareUseDetail2 = null;
+        private PrepareUseDetail mPrepareUseDetail3 = null;
+
         private String tableName = "Packagetable";
         public PackageForm()
         {
@@ -115,6 +120,64 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    //检查物料是不是今天是不是已经输入进去了，如果有，同一天同一个板子不允许有同样的物料进去
+                    if (mPrepareUseDetail1 != null && mPrepareUseDetail1.material_mpn != "")
+                    {
+                        cmd.CommandText = "select Id from fru_smt_used_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim()
+                            + "' and material_mpn='" + mPrepareUseDetail1.material_mpn + "' and input_date between '" + DateTime.Now.ToString("yyyy/MM/dd") + "' and '" + DateTime.Now.ToString("yyyy/MM/dd") + "'";
+                        SqlDataReader querySdr1 = cmd.ExecuteReader();
+                        string exist1 = "";
+                        while (querySdr1.Read())
+                        {
+                            exist1 = querySdr1[0].ToString();
+                        }
+                        querySdr1.Close();
+                        if (exist1 != "")
+                        {
+                            MessageBox.Show("1此物料" + mPrepareUseDetail1.material_mpn + "对应本板子" + this.tracker_bar_textBox.Text.Trim() + "已经在今天使用过了！");
+                            conn.Close();
+                            return;
+                        }
+                    }
+
+                    if (mPrepareUseDetail2 != null && mPrepareUseDetail2.material_mpn != "")
+                    {
+                        cmd.CommandText = "select Id from fru_smt_used_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim()
+                            + "' and material_mpn='" + mPrepareUseDetail2.material_mpn + "' and input_date between '" + DateTime.Now.ToString("yyyy/MM/dd") + "' and '" + DateTime.Now.ToString("yyyy/MM/dd") + "'";
+                        SqlDataReader querySdr1 = cmd.ExecuteReader();
+                        string exist1 = "";
+                        while (querySdr1.Read())
+                        {
+                            exist1 = querySdr1[0].ToString();
+                        }
+                        querySdr1.Close();
+                        if (exist1 != "")
+                        {
+                            MessageBox.Show("2此物料" + mPrepareUseDetail2.material_mpn + "对应本板子" + this.tracker_bar_textBox.Text.Trim() + "已经在今天使用过了！");
+                            conn.Close();
+                            return;
+                        }
+                    }
+
+                    if (mPrepareUseDetail3 != null && mPrepareUseDetail3.material_mpn != "")
+                    {
+                        cmd.CommandText = "select Id from fru_smt_used_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim()
+                            + "' and material_mpn='" + mPrepareUseDetail3.material_mpn + "' and input_date between '" + DateTime.Now.ToString("yyyy/MM/dd") + "' and '" + DateTime.Now.ToString("yyyy/MM/dd") + "'";
+                        SqlDataReader querySdr1 = cmd.ExecuteReader();
+                        string exist1 = "";
+                        while (querySdr1.Read())
+                        {
+                            exist1 = querySdr1[0].ToString();
+                        }
+                        querySdr1.Close();
+                        if (exist1 != "")
+                        {
+                            MessageBox.Show("3此物料" + mPrepareUseDetail3.material_mpn + "对应本板子" + this.tracker_bar_textBox.Text.Trim() + "已经在今天使用过了！");
+                            conn.Close();
+                            return;
+                        }
+                    }
+
                     //外观做完自动出良品库，同时更新良品库的数量
                     cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
@@ -147,6 +210,102 @@ namespace SaledServices.Test_Outlook
                         this.tracker_bar_textBox.Text = "";
                         conn.Close();
                         return;
+                    }
+
+                    bool isUsedMaterial = false;
+
+                    if (mPrepareUseDetail1 != null && mPrepareUseDetail1.Id != null && mPrepareUseDetail1.material_mpn != "")
+                    {
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + this.testerTextBox.Text.Trim() + "','"
+                           + DateTime.Now.ToString("yyyy/MM/dd") + "','"
+                           + this.tracker_bar_textBox.Text.Trim() + "','"
+                           + mPrepareUseDetail1.material_mpn + "','"
+                           + mPrepareUseDetail1.thisUseNumber + "','"
+                           + mPrepareUseDetail1.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                             "','Package','OK','" + DateTime.Now.ToString() + "','"
+                             + mPrepareUseDetail1.stock_place + "','"
+                             + mPrepareUseDetail1.thisUseNumber + "','"
+                             + mPrepareUseDetail1.material_mpn + "','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
+                        isUsedMaterial = true;
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail1.totalUseNumber + "' "
+                                  + "where Id = '" + mPrepareUseDetail1.Id + "'";
+                        cmd.ExecuteNonQuery();
+
+                        //使用完毕需要清空
+                        mPrepareUseDetail1.Id = null;
+                    }
+
+                    if (mPrepareUseDetail2 != null && mPrepareUseDetail2.Id != null)
+                    {
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + this.testerTextBox.Text.Trim() + "','"
+                           + DateTime.Now.ToString("yyyy/MM/dd") + "','"
+                           + this.tracker_bar_textBox.Text.Trim() + "','"
+                           + mPrepareUseDetail2.material_mpn + "','"
+                           + mPrepareUseDetail2.thisUseNumber + "','"
+                           + mPrepareUseDetail2.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                             "','Package','OK','" + DateTime.Now.ToString() + "','"
+                             + mPrepareUseDetail2.stock_place + "','"
+                             + mPrepareUseDetail2.thisUseNumber + "','"
+                             + mPrepareUseDetail2.material_mpn + "','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
+                        isUsedMaterial = true;
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail2.totalUseNumber + "' "
+                                  + "where Id = '" + mPrepareUseDetail2.Id + "'";
+                        cmd.ExecuteNonQuery();
+
+                        //使用完毕需要清空
+                        mPrepareUseDetail2.Id = null;
+                    }
+
+                    if (mPrepareUseDetail3 != null && mPrepareUseDetail3.Id != null)
+                    {
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + this.testerTextBox.Text.Trim() + "','"
+                           + DateTime.Now.ToString("yyyy/MM/dd") + "','"
+                           + this.tracker_bar_textBox.Text.Trim() + "','"
+                           + mPrepareUseDetail3.material_mpn + "','"
+                           + mPrepareUseDetail3.thisUseNumber + "','"
+                           + mPrepareUseDetail3.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                             "','Package','OK','" + DateTime.Now.ToString() + "','"
+                             + mPrepareUseDetail3.stock_place + "','"
+                             + mPrepareUseDetail3.thisUseNumber + "','"
+                             + mPrepareUseDetail3.material_mpn + "','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
+                        isUsedMaterial = true;
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail3.totalUseNumber + "' "
+                                  + "where Id = '" + mPrepareUseDetail3.Id + "'";
+                        cmd.ExecuteNonQuery();
+
+                        //使用完毕需要清空
+                        mPrepareUseDetail3.Id = null;
+                    }
+
+                    if (isUsedMaterial == false)
+                    {
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                             "','Package','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
                     }
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
@@ -220,6 +379,111 @@ namespace SaledServices.Test_Outlook
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private bool checkRepeat(string str1, string str2, string str3)
+        {
+            if (str1 != "" && (str1 == str2 || str1 == str3 ))
+            {
+                return true;
+            }
+
+            if (str2 != "" && (str2 == str3 ))
+            {
+                return true;
+            }
+            
+            return false;
+        }
+
+        public void setPrepareUseDetail(string id, string mb_brief, string material_mpn, string stock_place, string thisUseNumber, string totalUseNumber, int index)
+        {
+            switch (index)
+            {
+                case 1:
+                    mPrepareUseDetail1 = new PrepareUseDetail();
+                    mPrepareUseDetail1.Id = id;
+                    mPrepareUseDetail1.mb_brief = mb_brief;
+                    mPrepareUseDetail1.material_mpn = material_mpn;
+                    mPrepareUseDetail1.stock_place = stock_place;
+                    mPrepareUseDetail1.thisUseNumber = thisUseNumber;
+                    mPrepareUseDetail1.totalUseNumber = totalUseNumber;
+                    this.innerboxtextBox.Text = material_mpn;
+                    this.innerboxnumtextBox.Text = thisUseNumber;
+                    if (checkRepeat(this.innerboxtextBox.Text, this.paomiantextBox.Text, this.outboxtextBox.Text))
+                    {
+                        MessageBox.Show("输入的料号有重复，请检查！！");
+                        mPrepareUseDetail1 = null;
+                        this.innerboxtextBox.Text = "";
+                        this.innerboxnumtextBox.Text = "";
+                        return;
+                    }
+
+                    break;
+                case 2:
+                    mPrepareUseDetail2 = new PrepareUseDetail();
+                    mPrepareUseDetail2.Id = id;
+                    mPrepareUseDetail2.mb_brief = mb_brief;
+                    mPrepareUseDetail2.material_mpn = material_mpn;
+                    mPrepareUseDetail2.stock_place = stock_place;
+                    mPrepareUseDetail2.thisUseNumber = thisUseNumber;
+                    mPrepareUseDetail2.totalUseNumber = totalUseNumber;
+                    this.paomiantextBox.Text = material_mpn;
+                    this.paomiannumtextBox.Text = thisUseNumber;
+                   if (checkRepeat(this.innerboxtextBox.Text, this.paomiantextBox.Text, this.outboxtextBox.Text))
+                    {
+                        MessageBox.Show("输入的料号有重复，请检查！！");
+                        mPrepareUseDetail2 = null;
+                        this.paomiantextBox.Text = "";
+                        this.paomiannumtextBox.Text = "";
+                        return;
+                    }
+
+                    break;
+                case 3:
+                    mPrepareUseDetail3 = new PrepareUseDetail();
+                    mPrepareUseDetail3.Id = id;
+                    mPrepareUseDetail3.mb_brief = mb_brief;
+                    mPrepareUseDetail3.material_mpn = material_mpn;
+                    mPrepareUseDetail3.stock_place = stock_place;
+                    mPrepareUseDetail3.thisUseNumber = thisUseNumber;
+                    mPrepareUseDetail3.totalUseNumber = totalUseNumber;
+                    this.outboxtextBox.Text = material_mpn;
+                    this.outboxNumtextBox.Text = thisUseNumber;
+                    if (checkRepeat(this.innerboxtextBox.Text, this.paomiantextBox.Text, this.outboxtextBox.Text))
+                    {
+                        MessageBox.Show("输入的料号有重复，请检查！！");
+                        mPrepareUseDetail3 = null;
+                        this.outboxtextBox.Text = "";
+                        this.outboxNumtextBox.Text = "";
+                        return;
+                    }
+                    break;             
+            }
+        }        
+
+        private void chooseInnerbox_Click(object sender, EventArgs e)
+        {
+            RrepareUseListForm prepareUseList = new RrepareUseListForm(this);
+            prepareUseList.MdiParent = Program.parentForm;
+            prepareUseList.fromIndex = 1;
+            prepareUseList.Show();
+        }
+
+        private void choosepaomian_Click(object sender, EventArgs e)
+        {
+            RrepareUseListForm prepareUseList = new RrepareUseListForm(this);
+            prepareUseList.MdiParent = Program.parentForm;
+            prepareUseList.fromIndex = 2;
+            prepareUseList.Show();
+        }
+
+        private void chooseoutbox_Click(object sender, EventArgs e)
+        {
+            RrepareUseListForm prepareUseList = new RrepareUseListForm(this);
+            prepareUseList.MdiParent = Program.parentForm;
+            prepareUseList.fromIndex = 3;
+            prepareUseList.Show();
         }      
     }
 }

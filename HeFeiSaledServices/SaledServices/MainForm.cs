@@ -1092,20 +1092,20 @@ namespace SaledServices
             库房领料申请ToolStripMenuItem_Click(null, null);
         }
 
-        private PackageForm packageform;       
+       // private PackageForm packageform;       
         private void 包装ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (packageform == null || packageform.IsDisposed)
-            {
-                packageform = new PackageForm();
-                packageform.MdiParent = this;
-            }
+            //if (packageform == null || packageform.IsDisposed)
+            //{
+            //    packageform = new PackageForm();
+            //    packageform.MdiParent = this;
+            //}
 
-            //packageform.WindowState = FormWindowState.Maximized;
-            packageform.BringToFront();
-            packageform.Show();
+            ////packageform.WindowState = FormWindowState.Maximized;
+            //packageform.BringToFront();
+            //packageform.Show();
 
-            allForm.Add(packageform);
+            //allForm.Add(packageform);
         }
 
         private StoreHouseInnerNGForm shifng;
@@ -1399,6 +1399,27 @@ namespace SaledServices
 
             allForm.Add(faultMBUnRepairForm);
 
+        }
+
+        private PackageForm packageform;  
+        private void 包装操作ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (packageform == null || packageform.IsDisposed)
+            {
+                packageform = new PackageForm();
+                packageform.MdiParent = this;
+            }
+
+            //packageform.WindowState = FormWindowState.Maximized;
+            packageform.BringToFront();
+            packageform.Show();
+
+            allForm.Add(packageform);
+        }
+
+        private void 预领料申请ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            库房领料申请ToolStripMenuItem_Click(null, null);
         }
     }
 }
