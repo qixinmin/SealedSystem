@@ -1255,12 +1255,21 @@ namespace SaledServices
                 }
                 else  if (this.custom_orderComboBox.Text.Trim().StartsWith("RMEA"))
                 {
-                    if (this.flexidTextBox.Text.Trim().Length != 6 || this.flexidTextBox.Text.Trim().Length != 7)
+                    if (this.flexidTextBox.Text.Trim().Length == 6)
+                    {
+                    }
+                    else if(this.flexidTextBox.Text.Trim().Length == 7)
+                    {
+                    }
+                    else
                     {
                         MessageBox.Show("欧洲的FlexId不是6或7位!");
+                        this.add.Enabled = false;
                         return;
                     }
                 }
+
+                this.add.Enabled = true;
 
                 try
                 {

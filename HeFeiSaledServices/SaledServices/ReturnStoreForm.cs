@@ -267,12 +267,13 @@ namespace SaledServices
                     cmd.CommandType = CommandType.Text;
 
                     cmd.CommandText = "select storehouse from receiveOrder where vendor='" + vendorStr
-                    + "' and product ='" + productStr + "' and _status = 'close'"; 
+                    + "' and product ='" + productStr + "' and _status = 'close' and orderno ='" + this.ordernoTextBox.Text.Trim() + "'"; 
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
-                        this.storehouseTextBox.Text = querySdr[0].ToString();                      
+                        this.storehouseTextBox.Text = querySdr[0].ToString();
+                        break;
                     }
                     querySdr.Close();
 
