@@ -295,6 +295,12 @@
     <Compile Include="Export\CIDExport.Designer.cs">
       <DependentUpon>CIDExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\ReturnOrderExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\ReturnOrderExport.designer.cs">
+      <DependentUpon>ReturnOrderExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="LCDDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -727,6 +733,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\CIDExport.resx">
       <DependentUpon>CIDExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\ReturnOrderExport.resx">
+      <DependentUpon>ReturnOrderExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LCDDisplay.resx">
       <DependentUpon>LCDDisplay.cs</DependentUpon>

@@ -120,6 +120,7 @@
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.还货表信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -729,7 +730,8 @@
             this.库存消耗查询ToolStripMenuItem,
             this.flexidToolStripMenuItem,
             this.cID信息导出ToolStripMenuItem,
-            this.主板生命周期ToolStripMenuItem});
+            this.主板生命周期ToolStripMenuItem,
+            this.还货表信息导出ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -738,63 +740,63 @@
             // 报表1ToolStripMenuItem
             // 
             this.报表1ToolStripMenuItem.Name = "报表1ToolStripMenuItem";
-            this.报表1ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.报表1ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.报表1ToolStripMenuItem.Text = "RMA欠货表";
             this.报表1ToolStripMenuItem.Click += new System.EventHandler(this.报表1ToolStripMenuItem_Click);
             // 
             // 数据库导出ToolStripMenuItem
             // 
             this.数据库导出ToolStripMenuItem.Name = "数据库导出ToolStripMenuItem";
-            this.数据库导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.数据库导出ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.数据库导出ToolStripMenuItem.Text = "数据库导出";
             this.数据库导出ToolStripMenuItem.Click += new System.EventHandler(this.数据库导出ToolStripMenuItem_Click);
             // 
             // 收货信息导出ToolStripMenuItem
             // 
             this.收货信息导出ToolStripMenuItem.Name = "收货信息导出ToolStripMenuItem";
-            this.收货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.收货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.收货信息导出ToolStripMenuItem.Text = "收货信息导出";
             this.收货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.收货信息导出ToolStripMenuItem_Click);
             // 
             // 导出维修记录ToolStripMenuItem
             // 
             this.导出维修记录ToolStripMenuItem.Name = "导出维修记录ToolStripMenuItem";
-            this.导出维修记录ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.导出维修记录ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.导出维修记录ToolStripMenuItem.Text = "维修记录导出";
             this.导出维修记录ToolStripMenuItem.Click += new System.EventHandler(this.导出维修记录ToolStripMenuItem_Click);
             // 
             // dPK信息导出ToolStripMenuItem
             // 
             this.dPK信息导出ToolStripMenuItem.Name = "dPK信息导出ToolStripMenuItem";
-            this.dPK信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.dPK信息导出ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.dPK信息导出ToolStripMenuItem.Text = "DPK信息导出";
             this.dPK信息导出ToolStripMenuItem.Click += new System.EventHandler(this.dPK信息导出ToolStripMenuItem_Click);
             // 
             // 库存消耗查询ToolStripMenuItem
             // 
             this.库存消耗查询ToolStripMenuItem.Name = "库存消耗查询ToolStripMenuItem";
-            this.库存消耗查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.库存消耗查询ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.库存消耗查询ToolStripMenuItem.Text = "库存消耗查询";
             this.库存消耗查询ToolStripMenuItem.Click += new System.EventHandler(this.库存消耗查询ToolStripMenuItem_Click);
             // 
             // flexidToolStripMenuItem
             // 
             this.flexidToolStripMenuItem.Name = "flexidToolStripMenuItem";
-            this.flexidToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.flexidToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.flexidToolStripMenuItem.Text = "FlexId表信息";
             this.flexidToolStripMenuItem.Click += new System.EventHandler(this.flexidToolStripMenuItem_Click);
             // 
             // cID信息导出ToolStripMenuItem
             // 
             this.cID信息导出ToolStripMenuItem.Name = "cID信息导出ToolStripMenuItem";
-            this.cID信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.cID信息导出ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.cID信息导出ToolStripMenuItem.Text = "CID信息导出";
             this.cID信息导出ToolStripMenuItem.Click += new System.EventHandler(this.cID信息导出ToolStripMenuItem_Click);
             // 
             // 主板生命周期ToolStripMenuItem
             // 
             this.主板生命周期ToolStripMenuItem.Name = "主板生命周期ToolStripMenuItem";
-            this.主板生命周期ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.主板生命周期ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.主板生命周期ToolStripMenuItem.Text = "主板流水";
             this.主板生命周期ToolStripMenuItem.Click += new System.EventHandler(this.主板生命周期ToolStripMenuItem_Click);
             // 
@@ -879,6 +881,13 @@
             this.预领料申请ToolStripMenuItem1.Size = new System.Drawing.Size(184, 32);
             this.预领料申请ToolStripMenuItem1.Text = "预领料申请";
             this.预领料申请ToolStripMenuItem1.Click += new System.EventHandler(this.预领料申请ToolStripMenuItem1_Click);
+            // 
+            // 还货表信息导出ToolStripMenuItem
+            // 
+            this.还货表信息导出ToolStripMenuItem.Name = "还货表信息导出ToolStripMenuItem";
+            this.还货表信息导出ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.还货表信息导出ToolStripMenuItem.Text = "还货表信息导出";
+            this.还货表信息导出ToolStripMenuItem.Click += new System.EventHandler(this.还货表信息导出ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -996,6 +1005,7 @@
         private System.Windows.Forms.ToolStripMenuItem mB未休出不良品入库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 包装操作ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 预领料申请ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 还货表信息导出ToolStripMenuItem;
     }
 }
 

@@ -1421,5 +1421,21 @@ namespace SaledServices
         {
             库房领料申请ToolStripMenuItem_Click(null, null);
         }
+
+        private ReturnOrderExport reorexport;
+        private void 还货表信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {            
+            if (reorexport == null || reorexport.IsDisposed)
+            {
+                reorexport = new ReturnOrderExport();
+                reorexport.MdiParent = this;
+            }
+
+            // reorexport.WindowState = FormWindowState.Maximized;
+            reorexport.BringToFront();
+            reorexport.Show();
+
+            allForm.Add(reorexport);
+        }
     }
 }
