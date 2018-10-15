@@ -110,6 +110,7 @@
             this.flexidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cID信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.主板生命周期ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.还货表信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.期初库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实盘库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,7 +121,6 @@
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.还货表信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -800,6 +800,13 @@
             this.主板生命周期ToolStripMenuItem.Text = "主板流水";
             this.主板生命周期ToolStripMenuItem.Click += new System.EventHandler(this.主板生命周期ToolStripMenuItem_Click);
             // 
+            // 还货表信息导出ToolStripMenuItem
+            // 
+            this.还货表信息导出ToolStripMenuItem.Name = "还货表信息导出ToolStripMenuItem";
+            this.还货表信息导出ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.还货表信息导出ToolStripMenuItem.Text = "还货表信息导出";
+            this.还货表信息导出ToolStripMenuItem.Click += new System.EventHandler(this.还货表信息导出ToolStripMenuItem_Click);
+            // 
             // 海关ToolStripMenuItem
             // 
             this.海关ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -881,13 +888,6 @@
             this.预领料申请ToolStripMenuItem1.Size = new System.Drawing.Size(184, 32);
             this.预领料申请ToolStripMenuItem1.Text = "预领料申请";
             this.预领料申请ToolStripMenuItem1.Click += new System.EventHandler(this.预领料申请ToolStripMenuItem1_Click);
-            // 
-            // 还货表信息导出ToolStripMenuItem
-            // 
-            this.还货表信息导出ToolStripMenuItem.Name = "还货表信息导出ToolStripMenuItem";
-            this.还货表信息导出ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
-            this.还货表信息导出ToolStripMenuItem.Text = "还货表信息导出";
-            this.还货表信息导出ToolStripMenuItem.Click += new System.EventHandler(this.还货表信息导出ToolStripMenuItem_Click);
             // 
             // MainForm
             // 

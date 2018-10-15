@@ -77,7 +77,7 @@ namespace SaledServices.Export
                 //
                 foreach (ReturnOrderStruct stockcheck in receiveOrderList)
                 {
-                    cmd.CommandText = "select flexid from flexid_8s_mpn_table where _8sCode ='" + stockcheck.custom_serial_no + "'";
+                    cmd.CommandText = "select flex_id from flexidRecord where track_serial_no ='" + stockcheck.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
