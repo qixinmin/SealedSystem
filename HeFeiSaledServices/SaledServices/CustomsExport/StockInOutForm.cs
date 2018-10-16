@@ -884,9 +884,16 @@ namespace SaledServices.CustomsExport
                         string currentDeclear = "";
                         string nowMatrialNo = querySdr[1].ToString();
 
-                        if (checkMpnfruOrSmt[nowMatrialNo].Trim().ToUpper() == "FRU")
+                        try
                         {
-                            continue;//FRU 材料不上報
+                            if (checkMpnfruOrSmt[nowMatrialNo].Trim().ToUpper() == "FRU")
+                            {
+                                continue;//FRU 材料不上報
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString()+nowMatrialNo);
                         }
 
                         if (_71bomDic.ContainsKey(nowMatrialNo))

@@ -43,7 +43,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tracker_bar_textBox, 1, 0);
@@ -74,7 +74,7 @@
             this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tracker_bar_textBox.Location = new System.Drawing.Point(136, 3);
             this.tracker_bar_textBox.Name = "tracker_bar_textBox";
-            this.tracker_bar_textBox.Size = new System.Drawing.Size(306, 21);
+            this.tracker_bar_textBox.Size = new System.Drawing.Size(305, 21);
             this.tracker_bar_textBox.TabIndex = 0;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
             // 
@@ -100,7 +100,7 @@
             // modify
             // 
             this.modify.Font = new System.Drawing.Font("宋体", 15F);
-            this.modify.Location = new System.Drawing.Point(450, 98);
+            this.modify.Location = new System.Drawing.Point(449, 98);
             this.modify.Margin = new System.Windows.Forms.Padding(5);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(142, 55);
@@ -114,7 +114,7 @@
             this.stationComboBox.FormattingEnabled = true;
             this.stationComboBox.Items.AddRange(new object[] {
             "Package"});
-            this.stationComboBox.Location = new System.Drawing.Point(448, 3);
+            this.stationComboBox.Location = new System.Drawing.Point(447, 3);
             this.stationComboBox.Name = "stationComboBox";
             this.stationComboBox.Size = new System.Drawing.Size(164, 20);
             this.stationComboBox.Sorted = true;
