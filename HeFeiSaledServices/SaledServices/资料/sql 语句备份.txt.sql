@@ -868,7 +868,7 @@ custom_res_type NVARCHAR(128),/*--客责类别*/
 customResponsibility NVARCHAR(128) NOT NULL,/*客责描述*/
 short_cut NVARCHAR(128) NOT NULL, /*短路电压*/
 inputuser NVARCHAR(128),/*录入人*/
-inputdate NVARCHAR(128)/*录入日期*/
+inputdate date/*录入日期*/
 )
 
 /*收货单*/
