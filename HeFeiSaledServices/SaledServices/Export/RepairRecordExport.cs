@@ -73,6 +73,14 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
+                    cmd.CommandText = "select custom_fault from DeliveredTable where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        repairRecord.custom_fault= querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
                     cmd.CommandText = "select _action,repair_result,repair_date,fault_describe,software_update from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     repairRecord.subRecords = new List<SubRepairRecord>();
@@ -162,6 +170,7 @@ namespace SaledServices.Export
             titleList.Add("客户序号");
             titleList.Add("厂商序号");
             titleList.Add("MPN");
+            titleList.Add("客户不良现象");
             titleList.Add("维修人");
             titleList.Add("维修次数");
 
@@ -209,6 +218,7 @@ namespace SaledServices.Export
                 ct1.Add(repaircheck.custom_serial_no);
                 ct1.Add(repaircheck.vendor_serail_no);
                 ct1.Add(repaircheck.mpn);
+                ct1.Add(repaircheck.custom_fault);
                 ct1.Add(repaircheck.repairer);
                 ct1.Add(repaircheck.repair_Num);
 
@@ -295,6 +305,7 @@ namespace SaledServices.Export
         public string vendor_serail_no;
         public string mpn;
         public string repairer;
+        public string custom_fault;
        
         public string repair_Num;//维修次数
 
