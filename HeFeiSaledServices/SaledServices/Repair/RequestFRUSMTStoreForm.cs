@@ -47,6 +47,20 @@ namespace SaledServices.Store
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    //首先查询是否包含未用完的料号，条件状态close 并且usedNumber 小于realnumber
+                    cmd.CommandText = "select Id from request_fru_smt_to_store_table where  _status ='close' and usedNumber < realNumber and material_mpn='" + this.materialMpnTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+
+                    if(querySdr.HasRows)
+                    {
+                        MessageBox.Show("你已经有了此料号的材料，不能再申请");
+                        querySdr.Close();
+                        conn.Close();
+                        return;
+                    }
+                    querySdr.Close();
                     cmd.CommandText = "INSERT INTO request_fru_smt_to_store_table VALUES('"
                         + this.mb_brieftextBox.Text.Trim() + "','"
                         + this.not_good_placeTextBox.Text.Trim() + "','"
@@ -61,7 +75,7 @@ namespace SaledServices.Store
                         + "" + "','"
                         + "" + "','"
                         + "" + "')";
-                    cmd.CommandType = CommandType.Text;
+                   
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -107,6 +121,7 @@ namespace SaledServices.Store
                     cmd.CommandType = CommandType.Text;
 
                     List<useClass> list = new List<useClass>();
+                    List<useClass> reallist = new List<useClass>();
                     if (this.mb_brieftextBox.Text != "")
                     {
                         cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe from " + Constlist.table_name_LCFC_MBBOM + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
@@ -191,16 +206,17 @@ namespace SaledServices.Store
                     {
                         foreach (useClass temp in list)
                         {
-                            cmd.CommandText = "select number from store_house where mpn ='" + temp.materialName + "'";
+                            cmd.CommandText = "select number from store_house where mpn ='" + temp.materialName + "' and number >0";
                             SqlDataReader querySdr = cmd.ExecuteReader();
                             while (querySdr.Read())
                             {
                                 temp.storeNum = querySdr[0].ToString();
+                                reallist.Add(temp);
                             }
                             querySdr.Close();
                         }
 
-                        dataGridView.DataSource = list;
+                        dataGridView.DataSource = reallist;
                     }
                     //else
                     //{
