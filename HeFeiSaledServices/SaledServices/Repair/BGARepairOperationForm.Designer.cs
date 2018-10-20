@@ -763,6 +763,7 @@
             this.modify.TabIndex = 1;
             this.modify.Text = "修改";
             this.modify.UseVisualStyleBackColor = true;
+            this.modify.Click += new System.EventHandler(this.modify_Click);
             // 
             // delete
             // 
