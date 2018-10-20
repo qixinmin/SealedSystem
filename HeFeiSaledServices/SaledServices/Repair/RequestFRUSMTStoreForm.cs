@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SaledServices.Repair;
+using SaledServices.User;
 
 namespace SaledServices.Store
 {
@@ -50,7 +51,7 @@ namespace SaledServices.Store
                     cmd.CommandType = CommandType.Text;
 
                     //首先查询是否包含未用完的料号，条件状态close 并且usedNumber 小于realnumber
-                    cmd.CommandText = "select Id from request_fru_smt_to_store_table where  _status ='close' and usedNumber < realNumber and material_mpn='" + this.materialMpnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select Id from request_fru_smt_to_store_table where requester='" + UserSelfForm.username+ "' and _status ='close' and usedNumber < realNumber and material_mpn='" + this.materialMpnTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
 
                     if(querySdr.HasRows)

@@ -775,6 +775,7 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MaterialConsumeExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.FlexIdExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.CIDExport.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ReturnOrderExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.LCDDisplay.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.RepairOperationForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnStoreCustomRespForm.resources
@@ -842,4 +843,3 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ReturnOrderExport.resources
