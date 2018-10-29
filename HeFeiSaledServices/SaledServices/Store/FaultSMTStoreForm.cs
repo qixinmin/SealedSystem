@@ -45,10 +45,21 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    cmd.CommandText = "select Id from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    if(querySdr.HasRows == false)
+                    {
+                        MessageBox.Show("此料号之前没有来过，请确认料号是否正确");
+                        querySdr.Close();
+                        conn.Close();
+                        return;
+                    }
+                    querySdr.Close();
+
                     //不良品库, 需要更新库房对应储位的数量 减去 本次出库的数量
                     //根据mpn查对应的查询
                     cmd.CommandText = "select house,place,Id,number from store_house_ng where mpn='" + this.mpnTextBox.Text.Trim() + "'";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     string house = "", place = "", Id = "", number = "0";
                     while (querySdr.Read())
                     {

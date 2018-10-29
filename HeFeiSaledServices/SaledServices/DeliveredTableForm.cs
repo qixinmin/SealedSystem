@@ -482,7 +482,7 @@ namespace SaledServices
                         if (overdays >= 0)
                         {
                             this.guaranteeComboBox.Text = "保外";
-                            this.guaranteeComboBox.Enabled = false;
+                            //this.guaranteeComboBox.Enabled = false;
                             this.customResponsibilityComboBox.Text = "过保";
                            // this.customResponsibilityComboBox.Enabled = false;
                             MessageBox.Show((overdays) + " 天超过， 已经过保!");

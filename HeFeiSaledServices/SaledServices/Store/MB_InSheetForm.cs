@@ -87,6 +87,12 @@ namespace SaledServices
                 return;
             }
 
+            if (this.mb_brieftextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("MB简称为空，请检查！");
+                return;
+            }
+
             if (chooseStock.house == "" || chooseStock.house == null)
             {
                 MessageBox.Show("请选择库位为空，而不要手动输入，请检查！");
