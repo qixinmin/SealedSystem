@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -740,8 +740,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1346,6 +1346,7 @@
             // 
             // material_mpnComboBox1
             // 
+            this.material_mpnComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.material_mpnComboBox1.FormattingEnabled = true;
             this.material_mpnComboBox1.Location = new System.Drawing.Point(363, 5);
             this.material_mpnComboBox1.Name = "material_mpnComboBox1";
@@ -1355,6 +1356,7 @@
             // 
             // material_mpnComboBox2
             // 
+            this.material_mpnComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.material_mpnComboBox2.FormattingEnabled = true;
             this.material_mpnComboBox2.Location = new System.Drawing.Point(363, 38);
             this.material_mpnComboBox2.Name = "material_mpnComboBox2";
@@ -1364,6 +1366,7 @@
             // 
             // material_mpnComboBox3
             // 
+            this.material_mpnComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.material_mpnComboBox3.FormattingEnabled = true;
             this.material_mpnComboBox3.Location = new System.Drawing.Point(363, 71);
             this.material_mpnComboBox3.Name = "material_mpnComboBox3";
@@ -1373,6 +1376,7 @@
             // 
             // material_mpnComboBox4
             // 
+            this.material_mpnComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.material_mpnComboBox4.FormattingEnabled = true;
             this.material_mpnComboBox4.Location = new System.Drawing.Point(363, 104);
             this.material_mpnComboBox4.Name = "material_mpnComboBox4";
@@ -1382,6 +1386,7 @@
             // 
             // material_mpnComboBox5
             // 
+            this.material_mpnComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.material_mpnComboBox5.FormattingEnabled = true;
             this.material_mpnComboBox5.Location = new System.Drawing.Point(363, 137);
             this.material_mpnComboBox5.Name = "material_mpnComboBox5";

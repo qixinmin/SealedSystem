@@ -138,7 +138,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 33);
+            this.label3.Location = new System.Drawing.Point(5, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
@@ -147,7 +147,7 @@
             // realNumbertextBox
             // 
             this.realNumbertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.realNumbertextBox.Location = new System.Drawing.Point(97, 36);
+            this.realNumbertextBox.Location = new System.Drawing.Point(97, 37);
             this.realNumbertextBox.Name = "realNumbertextBox";
             this.realNumbertextBox.ReadOnly = true;
             this.realNumbertextBox.Size = new System.Drawing.Size(122, 21);
@@ -156,7 +156,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(227, 64);
+            this.label4.Location = new System.Drawing.Point(227, 66);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 2;
@@ -165,7 +165,7 @@
             // thisNumbertextBox
             // 
             this.thisNumbertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.thisNumbertextBox.Location = new System.Drawing.Point(339, 67);
+            this.thisNumbertextBox.Location = new System.Drawing.Point(339, 69);
             this.thisNumbertextBox.Name = "thisNumbertextBox";
             this.thisNumbertextBox.Size = new System.Drawing.Size(104, 21);
             this.thisNumbertextBox.TabIndex = 3;
@@ -175,7 +175,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 64);
+            this.label5.Location = new System.Drawing.Point(5, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 2;
@@ -184,7 +184,7 @@
             // notgood_placetextBox
             // 
             this.notgood_placetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.notgood_placetextBox.Location = new System.Drawing.Point(97, 67);
+            this.notgood_placetextBox.Location = new System.Drawing.Point(97, 69);
             this.notgood_placetextBox.Name = "notgood_placetextBox";
             this.notgood_placetextBox.ReadOnly = true;
             this.notgood_placetextBox.Size = new System.Drawing.Size(122, 21);
@@ -193,7 +193,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(227, 33);
+            this.label6.Location = new System.Drawing.Point(227, 34);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 12);
             this.label6.TabIndex = 2;
@@ -202,7 +202,7 @@
             // usedNumbertextBox
             // 
             this.usedNumbertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usedNumbertextBox.Location = new System.Drawing.Point(339, 36);
+            this.usedNumbertextBox.Location = new System.Drawing.Point(339, 37);
             this.usedNumbertextBox.Name = "usedNumbertextBox";
             this.usedNumbertextBox.ReadOnly = true;
             this.usedNumbertextBox.Size = new System.Drawing.Size(104, 21);
@@ -211,7 +211,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(451, 64);
+            this.label7.Location = new System.Drawing.Point(451, 66);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 12);
             this.label7.TabIndex = 2;
@@ -220,7 +220,7 @@
             // idTextBox
             // 
             this.idTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.idTextBox.Location = new System.Drawing.Point(563, 67);
+            this.idTextBox.Location = new System.Drawing.Point(563, 69);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(106, 21);
@@ -375,6 +375,7 @@
             this.Name = "RrepareUseListForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "预领料列表";
+            this.Load += new System.EventHandler(this.RrepareUseListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

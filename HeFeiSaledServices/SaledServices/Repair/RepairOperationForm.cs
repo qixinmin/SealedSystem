@@ -1349,6 +1349,10 @@ namespace SaledServices
             this.material_mpnComboBox1.Text = "";
             this.material_71pntextBox1.Text = "";
             this.useNum1.Text = "";
+            if (mPrepareUseDetail1 != null)
+            {
+                mPrepareUseDetail1.Id = null;
+            }
         }
 
         private void clear2_Click(object sender, EventArgs e)
@@ -1357,6 +1361,10 @@ namespace SaledServices
             this.material_mpnComboBox2.Text = "";
             this.material_71pntextBox2.Text = "";
             this.useNum2.Text = "";
+            if (mPrepareUseDetail2 != null)
+            {
+                mPrepareUseDetail2.Id = null;
+            }
         }
 
         private void clear3_Click(object sender, EventArgs e)
@@ -1365,6 +1373,10 @@ namespace SaledServices
             this.material_mpnComboBox3.Text = "";
             this.material_71pntextBox3.Text = "";
             this.useNum3.Text = "";
+            if (mPrepareUseDetail3 != null)
+            {
+                mPrepareUseDetail3.Id = null;
+            }
         }
 
         private void clear4_Click(object sender, EventArgs e)
@@ -1373,6 +1385,10 @@ namespace SaledServices
             this.material_mpnComboBox4.Text = "";
             this.material_71pntextBox4.Text = "";
             this.useNum4.Text = "";
+            if (mPrepareUseDetail4 != null)
+            {
+                mPrepareUseDetail4.Id = null;
+            }
         }
 
         private void clear5_Click(object sender, EventArgs e)
@@ -1381,6 +1397,10 @@ namespace SaledServices
             this.material_mpnComboBox5.Text = "";
             this.material_71pntextBox5.Text = "";
             this.useNum5.Text = "";
+            if (mPrepareUseDetail5 != null)
+            {
+                mPrepareUseDetail5.Id = null;
+            }
         }
     }
 }
