@@ -121,6 +121,7 @@
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.主板流水导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -731,6 +732,7 @@
             this.flexidToolStripMenuItem,
             this.cID信息导出ToolStripMenuItem,
             this.主板生命周期ToolStripMenuItem,
+            this.主板流水导出ToolStripMenuItem,
             this.还货表信息导出ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
@@ -889,6 +891,13 @@
             this.预领料申请ToolStripMenuItem1.Text = "预领料申请";
             this.预领料申请ToolStripMenuItem1.Click += new System.EventHandler(this.预领料申请ToolStripMenuItem1_Click);
             // 
+            // 主板流水导出ToolStripMenuItem
+            // 
+            this.主板流水导出ToolStripMenuItem.Name = "主板流水导出ToolStripMenuItem";
+            this.主板流水导出ToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.主板流水导出ToolStripMenuItem.Text = "主板流水导出";
+            this.主板流水导出ToolStripMenuItem.Click += new System.EventHandler(this.主板流水导出ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1006,6 +1015,7 @@
         private System.Windows.Forms.ToolStripMenuItem 包装操作ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 预领料申请ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 还货表信息导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 主板流水导出ToolStripMenuItem;
     }
 }
 

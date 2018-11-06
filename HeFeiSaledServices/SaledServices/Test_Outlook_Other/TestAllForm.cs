@@ -246,7 +246,7 @@ namespace SaledServices.Test_Outlook
                                         else
                                         {
                                             //更新烧录日期与custom_serial_no与使用状态
-                                            cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + "GETDATE()" + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
+                                            cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = GETDATE(),custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
                                             cmd.ExecuteNonQuery();
                                         }
                                     }
@@ -408,16 +408,14 @@ namespace SaledServices.Test_Outlook
                     
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
-                        + this.testerTextBox.Text.Trim() + "','"
-                        + "GETDATE()"
-                        + "')";
+                        + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                    "','测试','OK','" + "GETDATE()" + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
+                    "','测试','OK', GETDATE() ,'','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + "GETDATE()" + "' "
+                    cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = GETDATE()  "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }
@@ -454,12 +452,12 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + "GETDATE()" + "' "
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = GETDATE()  "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                   "','测试','FAIL','" + "GETDATE()" + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
+                   "','测试','FAIL', GETDATE() ,'','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -715,12 +713,10 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
-                        + this.testerTextBox.Text.Trim() + "','"
-                        + "GETDATE()"
-                        + "')";
+                        + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + "GETDATE()" + "' "
+                    cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = GETDATE()  "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

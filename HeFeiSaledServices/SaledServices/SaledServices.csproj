@@ -301,12 +301,19 @@
     <Compile Include="Export\ReturnOrderExport.designer.cs">
       <DependentUpon>ReturnOrderExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\MBLifeExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\MBLifeExport.Designer.cs">
+      <DependentUpon>MBLifeExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="LCDDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LCDDisplay.Designer.cs">
       <DependentUpon>LCDDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="MBLifeExport.cs" />
     <Compile Include="Repair\RepairOperationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -736,6 +743,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\ReturnOrderExport.resx">
       <DependentUpon>ReturnOrderExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\MBLifeExport.resx">
+      <DependentUpon>MBLifeExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LCDDisplay.resx">
       <DependentUpon>LCDDisplay.cs</DependentUpon>

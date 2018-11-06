@@ -153,13 +153,15 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
-                        + this.testerTextBox.Text.Trim() + "','"
-                        + "GETDATE()"
-                        + "')";
+                        + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Test2', updateDate = '" + "GETDATE()" + "' "
+                    cmd.CommandText = "update stationInformation set station = 'Test2', updateDate = GETDATE() "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                   "','测试2','OK',GETDATE(),'','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -196,7 +198,7 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + "GETDATE()" + "' "
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = GETDATE() "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

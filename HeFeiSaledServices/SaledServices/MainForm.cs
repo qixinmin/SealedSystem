@@ -1437,5 +1437,23 @@ namespace SaledServices
 
             allForm.Add(reorexport);
         }
+
+        private MBLifeExport mbLifeExport;
+        private void 主板流水导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            if (mbLifeExport == null || mbLifeExport.IsDisposed)
+            {
+                mbLifeExport = new MBLifeExport();
+                mbLifeExport.MdiParent = this;
+            }
+
+            mbLifeExport.WindowState = FormWindowState.Maximized;
+            mbLifeExport.BringToFront();
+            mbLifeExport.Show();
+
+            allForm.Add(mbLifeExport);
+        }
     }
 }
