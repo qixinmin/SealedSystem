@@ -42,10 +42,10 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
-                    if (Untils.isTimeError(testdatetextBox.Text.Trim()))
-                    {
-                        this.bomdownload.Enabled = false;
-                    }
+                    //if (Untils.isTimeError(testdatetextBox.Text.Trim()))
+                    //{
+                    //    this.bomdownload.Enabled = false;
+                    //}
 
                     //先删除已经存在的三个文件,后面再生成
                     Untils.deleteFile("D:\\fru\\", "BOM.bat");
@@ -248,7 +248,7 @@ namespace SaledServices.Test_Outlook
                                         else
                                         {
                                             //更新烧录日期与custom_serial_no,与使用状态
-                                            cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd") + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
+                                            cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + "GETDATE()" + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
                                             cmd.ExecuteNonQuery();
                                         }
                                     }
@@ -375,7 +375,7 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
                         + this.testerTextBox.Text.Trim() + "','"
-                        + this.testdatetextBox.Text.Trim()
+                        + "GETDATE()"
                         + "')";
 
                     cmd.ExecuteNonQuery();
@@ -627,11 +627,11 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
                         + this.testerTextBox.Text.Trim() + "','"
-                        + this.testdatetextBox.Text.Trim()
+                        + "GETDATE()"
                         + "')";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Test1', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = 'Test1', updateDate = '" + "GETDATE()" + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

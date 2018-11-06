@@ -34,10 +34,10 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
-                    if (Untils.isTimeError(testdatetextBox.Text.Trim()))
-                    {
-                        this.confirmbutton.Enabled = false;
-                    }
+                    //if (Untils.isTimeError(testdatetextBox.Text.Trim()))
+                    //{
+                    //    this.confirmbutton.Enabled = false;
+                    //}
 
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                     mConn.Open();
@@ -154,11 +154,11 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
                         + this.testerTextBox.Text.Trim() + "','"
-                        + this.testdatetextBox.Text.Trim()
+                        + "GETDATE()"
                         + "')";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Test2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = 'Test2', updateDate = '" + "GETDATE()" + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }
@@ -196,7 +196,7 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + "GETDATE()" + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

@@ -26,6 +26,7 @@ namespace SaledServices
                 this.modify.Visible = false;
                 this.delete.Visible = false;
             }
+            this.add.Enabled = false;
         }
 
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -50,9 +51,24 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select custommaterialNo, source_brief,custom_order,order_receive_date,custom_serial_no,vendor_serail_no, mb_make_date,custom_fault from DeliveredTable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select Id from Packagetable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
+                   if(querySdr.HasRows)
+                    {
+                        querySdr.Close();
+                        this.track_serial_noTextBox.Focus();
+                        this.track_serial_noTextBox.SelectAll();
+                        MessageBox.Show("追踪条码的已经在包装站别了，不能入CID！");
+                        error = true;
+                        mConn.Close();
+                        return;
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "select custommaterialNo, source_brief,custom_order,order_receive_date,custom_serial_no,vendor_serail_no, mb_make_date,custom_fault from DeliveredTable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
                     string customMaterialNo = "";
                     string sourceBrief = "", customOrder = "", order_receive_date = "", custom_serial_no = "", vendor_serial_no = "", mb_make_date = "", custom_fault = "";
                     while (querySdr.Read())
@@ -116,8 +132,11 @@ namespace SaledServices
                         this.track_serial_noTextBox.SelectAll();
                         MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
                         error = true;
+                        mConn.Close();
+                        return;
                     }
                     mConn.Close();
+                    this.add.Enabled = true;
                 }
                 catch (Exception ex)
                 {

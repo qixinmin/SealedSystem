@@ -34,6 +34,7 @@
             this.dateTimePickerend = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             this.exportxmlbutton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label4
@@ -87,11 +88,21 @@
             this.exportxmlbutton.UseVisualStyleBackColor = true;
             this.exportxmlbutton.Click += new System.EventHandler(this.exportxmlbutton_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(28, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(143, 12);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "时间按照使用DPK时间导出";
+            // 
             // DPKExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 365);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -114,5 +125,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerend;
         private System.Windows.Forms.DateTimePicker dateTimePickerstart;
         private System.Windows.Forms.Button exportxmlbutton;
+        private System.Windows.Forms.Label label3;
     }
 }

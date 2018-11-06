@@ -28,6 +28,7 @@ namespace SaledServices
             }
 
             track_serial_noTextBox.Focus();
+            this.add.Enabled = false;
         }
 
         private void loadAdditionInfomation()
@@ -83,8 +84,24 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select Id from Packagetable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+
                     SqlDataReader querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        querySdr.Close();
+                        this.track_serial_noTextBox.Focus();
+                        this.track_serial_noTextBox.SelectAll();
+                        MessageBox.Show("追踪条码的已经在包装站别了，不能入CID！");
+                        error = true;
+                        mConn.Close();
+                        return;
+                    }
+                    querySdr.Close();
+
+
+                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
                     string cidExist = "";
                     while (querySdr.Read())
                     {
@@ -129,8 +146,11 @@ namespace SaledServices
                         this.track_serial_noTextBox.SelectAll();
                         MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
                         error = true;
+                        mConn.Close();
+                        return;
                     }
                     mConn.Close();
+                    this.add.Enabled = true;
                 }
                 catch (Exception ex)
                 {

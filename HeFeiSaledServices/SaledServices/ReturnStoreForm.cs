@@ -807,6 +807,16 @@ namespace SaledServices
                             return;
                         }
                     }
+
+                    cmd.CommandText = "select flex_id from flexidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();                   
+                    while (querySdr.Read())
+                    {
+                        flexidcomboBox.Text = querySdr[0].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+                  
                    
                     cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where track_serial_no = '"
                         + this.track_serial_noTextBox.Text + "'";

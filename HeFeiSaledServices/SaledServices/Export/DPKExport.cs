@@ -42,7 +42,7 @@ namespace SaledServices.Export
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select dpk_type,KEYPN,KEYID,KEYSERIAL,_status,burn_date,custom_serial_no from DPK_table where upload_date between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "select dpk_type,KEYPN,KEYID,KEYSERIAL,_status,burn_date,custom_serial_no from DPK_table where burn_date between '" + startTime + "' and '" + endTime + "'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -99,7 +99,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.KEYID);
                 ct1.Add(stockcheck.KEYSERIAL);
                 ct1.Add(stockcheck._status);
-                ct1.Add(stockcheck.burn_date);
+                ct1.Add(stockcheck.burn_date != null ? stockcheck.burn_date.Replace("0:00:00", "").Trim() : "");
                 ct1.Add(stockcheck.custom_serial_no);
 
                 ctest1.contentArray = ct1;
