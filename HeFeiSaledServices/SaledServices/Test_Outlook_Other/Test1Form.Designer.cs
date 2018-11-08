@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.39394F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
             this.tableLayoutPanel1.Controls.Add(this.button5, 6, 2);
             this.tableLayoutPanel1.Controls.Add(this.bomdownload, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -92,7 +92,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(622, 163);
+            this.button5.Location = new System.Drawing.Point(620, 163);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(107, 34);
             this.button5.TabIndex = 2;
@@ -102,7 +102,7 @@
             // 
             // bomdownload
             // 
-            this.bomdownload.Location = new System.Drawing.Point(622, 83);
+            this.bomdownload.Location = new System.Drawing.Point(620, 83);
             this.bomdownload.Name = "bomdownload";
             this.bomdownload.Size = new System.Drawing.Size(107, 46);
             this.bomdownload.TabIndex = 3;
@@ -124,14 +124,14 @@
             this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tracker_bar_textBox.Location = new System.Drawing.Point(64, 3);
             this.tracker_bar_textBox.Name = "tracker_bar_textBox";
-            this.tracker_bar_textBox.Size = new System.Drawing.Size(179, 21);
+            this.tracker_bar_textBox.Size = new System.Drawing.Size(178, 21);
             this.tracker_bar_textBox.TabIndex = 1;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(249, 0);
+            this.label2.Location = new System.Drawing.Point(248, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
@@ -140,7 +140,7 @@
             // testerTextBox
             // 
             this.testerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testerTextBox.Location = new System.Drawing.Point(312, 3);
+            this.testerTextBox.Location = new System.Drawing.Point(311, 3);
             this.testerTextBox.Name = "testerTextBox";
             this.testerTextBox.ReadOnly = true;
             this.testerTextBox.Size = new System.Drawing.Size(97, 21);
@@ -149,7 +149,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(415, 0);
+            this.label3.Location = new System.Drawing.Point(414, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 24);
             this.label3.TabIndex = 2;
@@ -158,10 +158,10 @@
             // testdatetextBox
             // 
             this.testdatetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testdatetextBox.Location = new System.Drawing.Point(471, 3);
+            this.testdatetextBox.Location = new System.Drawing.Point(470, 3);
             this.testdatetextBox.Name = "testdatetextBox";
             this.testdatetextBox.ReadOnly = true;
-            this.testdatetextBox.Size = new System.Drawing.Size(145, 21);
+            this.testdatetextBox.Size = new System.Drawing.Size(144, 21);
             this.testdatetextBox.TabIndex = 1;
             // 
             // label4
@@ -179,13 +179,13 @@
             this.cpuTypetextBox.Location = new System.Drawing.Point(64, 83);
             this.cpuTypetextBox.Name = "cpuTypetextBox";
             this.cpuTypetextBox.ReadOnly = true;
-            this.cpuTypetextBox.Size = new System.Drawing.Size(179, 21);
+            this.cpuTypetextBox.Size = new System.Drawing.Size(178, 21);
             this.cpuTypetextBox.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(249, 80);
+            this.label5.Location = new System.Drawing.Point(248, 80);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 2;
@@ -194,7 +194,7 @@
             // cpuFreqtextBox
             // 
             this.cpuFreqtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cpuFreqtextBox.Location = new System.Drawing.Point(312, 83);
+            this.cpuFreqtextBox.Location = new System.Drawing.Point(311, 83);
             this.cpuFreqtextBox.Name = "cpuFreqtextBox";
             this.cpuFreqtextBox.ReadOnly = true;
             this.cpuFreqtextBox.Size = new System.Drawing.Size(97, 21);
@@ -215,13 +215,13 @@
             this.keyidtextBox.Location = new System.Drawing.Point(64, 163);
             this.keyidtextBox.Name = "keyidtextBox";
             this.keyidtextBox.ReadOnly = true;
-            this.keyidtextBox.Size = new System.Drawing.Size(179, 21);
+            this.keyidtextBox.Size = new System.Drawing.Size(178, 21);
             this.keyidtextBox.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(249, 160);
+            this.label7.Location = new System.Drawing.Point(248, 160);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 24);
             this.label7.TabIndex = 2;
@@ -230,7 +230,7 @@
             // KEYSERIALtextBox
             // 
             this.KEYSERIALtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KEYSERIALtextBox.Location = new System.Drawing.Point(312, 163);
+            this.KEYSERIALtextBox.Location = new System.Drawing.Point(311, 163);
             this.KEYSERIALtextBox.Name = "KEYSERIALtextBox";
             this.KEYSERIALtextBox.ReadOnly = true;
             this.KEYSERIALtextBox.Size = new System.Drawing.Size(97, 21);
@@ -240,9 +240,9 @@
             // 
             this.panel1.Controls.Add(this.buffertest);
             this.panel1.Controls.Add(this.isburn);
-            this.panel1.Location = new System.Drawing.Point(471, 83);
+            this.panel1.Location = new System.Drawing.Point(470, 83);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(145, 46);
+            this.panel1.Size = new System.Drawing.Size(144, 46);
             this.panel1.TabIndex = 14;
             // 
             // buffertest

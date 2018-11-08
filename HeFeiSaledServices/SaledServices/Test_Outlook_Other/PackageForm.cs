@@ -313,11 +313,7 @@ namespace SaledServices.Test_Outlook
                         + this.testerTextBox.Text.Trim() + "','"
                         + this.testdatetextBox.Text.Trim()
                         + "')";
-                    cmd.ExecuteNonQuery();
-
-                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                 "','Package','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();              
 
                     cmd.CommandText = "update stationInformation set station = 'Package', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
