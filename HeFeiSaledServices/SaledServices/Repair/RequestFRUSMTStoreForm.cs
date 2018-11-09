@@ -53,7 +53,6 @@ namespace SaledServices.Store
                     //首先查询是否包含未用完的料号，条件状态close 并且usedNumber 小于realnumber
                     cmd.CommandText = "select Id from request_fru_smt_to_store_table where requester='" + UserSelfForm.username+ "' and _status ='close' and usedNumber < realNumber and material_mpn='" + this.materialMpnTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-
                     if(querySdr.HasRows)
                     {
                         MessageBox.Show("你已经有了此料号的材料，不能再申请");
@@ -62,6 +61,19 @@ namespace SaledServices.Store
                         return;
                     }
                     querySdr.Close();
+
+                    cmd.CommandText = "select Id from request_fru_smt_to_store_table where requester='" + UserSelfForm.username + "' and _status ='request' and material_mpn='" + this.materialMpnTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        MessageBox.Show("你已经申请了此料号的材料，不能再申请");
+                        querySdr.Close();
+                        conn.Close();
+                        return;
+                    }
+                    querySdr.Close();
+
+
                     cmd.CommandText = "INSERT INTO request_fru_smt_to_store_table VALUES('"
                         + this.mb_brieftextBox.Text.Trim() + "','"
                         + this.not_good_placeTextBox.Text.Trim() + "','"
