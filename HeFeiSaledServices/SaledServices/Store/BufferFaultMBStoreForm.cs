@@ -158,6 +158,18 @@ namespace SaledServices
             string input_date_txt = this.input_datetextBox.Text.Trim();
             string vendormaterialNo = this.vendormaterialNoTextBox.Text.Trim();
 
+            if(track_serial_no_txt == "" ||mpn_txt == "")
+            {
+                MessageBox.Show("输入的内容为空，请检查！");               
+                return;
+            }
+
+            if (chooseStock.house == "" || chooseStock.place == "")
+            {
+                MessageBox.Show("输入的库房为空，请检查！");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);

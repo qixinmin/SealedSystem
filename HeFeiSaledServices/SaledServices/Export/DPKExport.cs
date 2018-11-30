@@ -42,7 +42,7 @@ namespace SaledServices.Export
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select dpk_type,KEYPN,KEYID,KEYSERIAL,_status,burn_date,custom_serial_no from DPK_table where burn_date between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "select dpk_type,KEYPN,KEYID,KEYSERIAL,_status,burn_date,custom_serial_no from DPK_table where burn_date between '" + startTime + "' and '" + endTime + "' or burn_date='1900-01-01'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {

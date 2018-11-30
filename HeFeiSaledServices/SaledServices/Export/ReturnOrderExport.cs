@@ -85,6 +85,15 @@ namespace SaledServices.Export
                         break;
                     }
                     querySdr.Close();
+
+                    cmd.CommandText = "select mb_brief from MBMaterialCompare where custommaterialNo ='" + stockcheck.custommaterialNo + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        stockcheck.mb_brief = querySdr[0].ToString();
+                        break;
+                    }
+                    querySdr.Close();
                 }
 
                 mConn.Close();
@@ -119,6 +128,7 @@ namespace SaledServices.Export
             titleList.Add("状态");
             titleList.Add("联想维修站编号");
             titleList.Add("联想维修单编号");
+            titleList.Add("机型");
 
             foreach (ReturnOrderStruct stockcheck in StockCheckList)
             {
@@ -139,13 +149,16 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.flexid);
                 ct1.Add(stockcheck.vendor_serail_no);                
                 ct1.Add(stockcheck.vendormaterialNo);           
-                ct1.Add(stockcheck._status);           
-                ct1.Add(stockcheck.custom_res_type);           
-                ct1.Add(stockcheck.response_describe);           
-                ct1.Add(stockcheck.tat);           
-                ct1.Add(stockcheck.inputuser);           
+                ct1.Add(stockcheck._status);
                 ct1.Add(stockcheck.lenovo_maintenance_no);                   
                 ct1.Add(stockcheck.lenovo_repair_no);
+                ct1.Add(stockcheck.mb_brief);
+                //ct1.Add(stockcheck.custom_res_type);
+                //ct1.Add(stockcheck.response_describe);
+                //ct1.Add(stockcheck.tat);           
+                //ct1.Add(stockcheck.inputuser);           
+                //ct1.Add(stockcheck.lenovo_maintenance_no);                   
+                //ct1.Add(stockcheck.lenovo_repair_no);
 
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
@@ -180,5 +193,7 @@ namespace SaledServices.Export
         public string inputuser;
         public string lenovo_maintenance_no;
         public string lenovo_repair_no;
+
+        public string mb_brief;
     }
 }
