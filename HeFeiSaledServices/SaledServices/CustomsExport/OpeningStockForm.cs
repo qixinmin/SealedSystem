@@ -186,7 +186,7 @@ namespace SaledServices.CustomsExport
                 }
                 querySdr.Close();
 
-                cmd.CommandText = "select mpn, number,house,place from store_house where mpn !='' and number !='0'";
+                cmd.CommandText = "select mpn, number,house,place from store_house where mpn !='' and number!='0'";
                 querySdr = cmd.ExecuteReader();                
                 while (querySdr.Read())
                 {
@@ -237,7 +237,44 @@ namespace SaledServices.CustomsExport
                     {
                         stockcheck.describe = _71bomDescribeDic[stockcheck.material_no];
                     }
-                    if (stockcheck.num != "0")
+                    //if (stockcheck.num != "0")
+                    //{
+                    //    StockCheckList.Add(stockcheck);
+                    //}
+                }
+                querySdr.Close();
+
+                //单独读取为了生存excel文件
+                cmd.CommandText = "select mpn, number,house,place from store_house where mpn !=''";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    string currentDeclear = "";
+                    bool isMB = false;
+                    if (_71bomDic.ContainsKey(querySdr[0].ToString()))
+                    {
+                        currentDeclear = _71bomDic[querySdr[0].ToString()];
+                    }
+                    else if (currentDeclear == "")
+                    {
+                        currentDeclear = querySdr[0].ToString();//buffer主板直接用71料号存储的                       
+                        if (currentDeclear.Length == 10 && currentDeclear.StartsWith("000"))
+                        {
+                            currentDeclear = currentDeclear.Substring(3);
+                            isMB = true;
+                        }
+                    }
+
+                    StockCheck stockcheck = new StockCheck();
+                    stockcheck.material_no = isMB ? currentDeclear : querySdr[0].ToString();
+                    stockcheck.num = querySdr[1].ToString();
+                    stockcheck.house = querySdr[2].ToString();
+                    stockcheck.place = querySdr[3].ToString();
+                    if (_71bomDescribeDic.ContainsKey(stockcheck.material_no))
+                    {
+                        stockcheck.describe = _71bomDescribeDic[stockcheck.material_no];
+                    }
+                  //  if (stockcheck.num != "0")是否为零都要导出
                     {
                         StockCheckList.Add(stockcheck);
                     }

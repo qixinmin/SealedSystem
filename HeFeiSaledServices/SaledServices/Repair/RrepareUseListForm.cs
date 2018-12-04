@@ -84,14 +84,18 @@ namespace SaledServices.Repair
 
             try
             {
-                int usedNum = Int32.Parse(dataGridView1.SelectedCells[6].Value.ToString());
-                this.usedNumbertextBox.Text = usedNum+"";      
+                int usedNum = Int32.Parse(dataGridView1.SelectedCells[6].Value.ToString().Trim());
+                this.usedNumbertextBox.Text = usedNum+"";
+              //  this.choosebutton.Enabled = true;
             }
             catch (Exception ex)
             {
+               
+              //  this.choosebutton.Enabled = false;
                 this.usedNumbertextBox.Text = "0";
-            }
-                  
+               // MessageBox.Show("出现严重问题，请联系管理员，不要在进行操作了!!!!!");
+               // MessageBox.Show("请确认使用过的数量 是不是 正确的，不对请联系管理员! 如果正确请继续！");
+            }                  
         }
 
         private string totalUseNumber ="";
@@ -161,6 +165,13 @@ namespace SaledServices.Repair
                 MessageBox.Show("请选择一行做为使用！");
                 return;
             }
+
+            //if (this.usedNumbertextBox.Text.Trim() == "-1")
+            //{
+            //    MessageBox.Show("请联系管理员，有问题！");
+            //    return;
+            //}
+
             if (this.thisNumbertextBox.Text == "")
             {
                 MessageBox.Show("请输入使用数量！");
