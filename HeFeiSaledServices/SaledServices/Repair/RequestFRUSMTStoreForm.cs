@@ -84,7 +84,7 @@ namespace SaledServices.Store
                         + this.requesterTextBox.Text.Trim() + "','"
                         + DateTime.Now.ToString("yyyy/MM/dd") + "','"
                         + status + "','"
-                        + "" + "','"
+                        + "0" + "','"
                         + "" + "','"
                         + "" + "','"
                         + "" + "')";
