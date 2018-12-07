@@ -175,8 +175,6 @@ namespace SaledServices
                // return;
             }
 
-
-
             app = new Microsoft.Office.Interop.Excel.Application();
             app.DisplayAlerts = false;
             wbs = app.Workbooks;
@@ -659,13 +657,35 @@ namespace SaledServices
                 {
                     dateIndex = 6;
                 }
-                                
 
                 if (conn.State == ConnectionState.Open)
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
+
+                    //先做重复性判断，如果有重复，则报错，不让导入
+                    if (this.stock_in_sheetradioButton.Checked)
+                    {
+                        List<string> mpnlist = new List<string>();
+                        for (int i = 2; i <= rowLength; i++)
+                        {
+                            string orderno = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString().Trim();
+                            string mpn = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 6]).Value2.ToString().Trim();
+                            if (mpnlist.Contains(orderno+mpn))
+                            {
+                                conn.Close();
+                                conn.Dispose();
+                                MessageBox.Show("导入的有重复性料号，请处理，否在不能导入");
+                                return;
+                            }
+                            else
+                            {
+                                mpnlist.Add(orderno+mpn);
+                            }
+                        }
+                    }
+                    //end重复性判断
 
                     transaction = conn.BeginTransaction();
                     cmd.Transaction = transaction;  
