@@ -686,12 +686,12 @@ namespace SaledServices
                        DateTime.Now.ToString("yyyy/MM/dd") + "')";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "INSERT INTO wait_repair_out_house_table VALUES('" +
-                       this.track_serial_noTextBox.Text.Trim() + "','" +
-                       this.custommaterialNoTextBox.Text.Trim() + "','" +
-                       "1" + "','" +
-                       DateTime.Now.ToString("yyyy/MM/dd") + "')";
-                    cmd.ExecuteNonQuery();
+                    //cmd.CommandText = "INSERT INTO wait_repair_out_house_table VALUES('" +
+                    //   this.track_serial_noTextBox.Text.Trim() + "','" +
+                    //   this.custommaterialNoTextBox.Text.Trim() + "','" +
+                    //   "1" + "','" +
+                    //   DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                    //cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "select Id,leftNumber from wait_repair_left_house_table where custom_materialNo='" + this.custommaterialNoTextBox.Text + "'";
                     querySdr = cmd.ExecuteReader();
@@ -709,12 +709,12 @@ namespace SaledServices
                     {
                         cmd.CommandText = "INSERT INTO wait_repair_left_house_table VALUES('"
                         + this.custommaterialNoTextBox.Text + "','"
-                        + "0" + "')";
+                        + "1" + "')";
                         cmd.ExecuteNonQuery();
                     }
                     else
                     {
-                        cmd.CommandText = "update wait_repair_left_house_table set leftNumber = '0'"
+                        cmd.CommandText = "update wait_repair_left_house_table set leftNumber = '"+(Int16.Parse(left_number+1))+"'"
                                 + "where custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
                         cmd.ExecuteNonQuery();
                     }

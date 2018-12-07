@@ -1441,8 +1441,6 @@ namespace SaledServices
         private MBLifeExport mbLifeExport;
         private void 主板流水导出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
             if (mbLifeExport == null || mbLifeExport.IsDisposed)
             {
                 mbLifeExport = new MBLifeExport();
@@ -1454,6 +1452,22 @@ namespace SaledServices
             mbLifeExport.Show();
 
             allForm.Add(mbLifeExport);
+        }
+
+        private OutWaitRepairByHand outWaitRepairByHand;
+        private void 手动出待维修库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (outWaitRepairByHand == null || outWaitRepairByHand.IsDisposed)
+            {
+                outWaitRepairByHand = new OutWaitRepairByHand();
+                outWaitRepairByHand.MdiParent = this;
+            }
+
+            outWaitRepairByHand.WindowState = FormWindowState.Maximized;
+            outWaitRepairByHand.BringToFront();
+            outWaitRepairByHand.Show();
+
+            allForm.Add(outWaitRepairByHand);
         }
     }
 }

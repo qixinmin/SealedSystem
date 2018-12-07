@@ -328,8 +328,51 @@ namespace SaledServices.CustomsExport
                     }
 
                     //2 待维修出库信息，复用上面的信息
+                    //读待出库信息
+                    TrackNoCustomRelationList.Clear();
+                    cmd.CommandText = "select track_serial_no,custom_materialNo,input_date from wait_repair_out_house_table where input_date between '" + startTime + "' and '" + endTime + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        TrackNoCustomRelation TrackNoCustomRelationTemp = new TrackNoCustomRelation();
+                        TrackNoCustomRelationTemp.trackno = querySdr[0].ToString();
+                        string temp = querySdr[1].ToString();
+                        if (temp.Length == 10 && temp.StartsWith("000"))
+                        {
+                            temp = temp.Substring(3);
+                        }
+                        TrackNoCustomRelationTemp.custom_materialNo = temp;//正常使用客户料号
+                        TrackNoCustomRelationTemp.date = querySdr[2].ToString();
+
+                        TrackNoCustomRelationList.Add(TrackNoCustomRelationTemp);
+                    }
+                    querySdr.Close();
                     if (TrackNoCustomRelationList.Count > 0)
                     {
+                        foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
+                        {
+                            cmd.CommandText = "select custom_order from DeliveredTable where track_serial_no ='" + trackTemp.trackno + "'";
+                            querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                trackTemp.orderno = querySdr[0].ToString();
+                            }
+                            querySdr.Close();
+                        }
+
+                        foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
+                        {
+                            cmd.CommandText = "select declare_unit,declare_number,custom_request_number from receiveOrder where orderno ='" + trackTemp.orderno + "'";
+                            querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                trackTemp.declare_unit = querySdr[0].ToString();
+                                trackTemp.declare_number = querySdr[1].ToString();
+                                trackTemp.custom_request_number = querySdr[2].ToString();
+                            }
+                            querySdr.Close();
+                        }
+                    
                         //信息完全,生成信息
                         foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
                         {

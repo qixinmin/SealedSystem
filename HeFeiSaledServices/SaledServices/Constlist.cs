@@ -190,6 +190,10 @@ namespace SaledServices
 
     public class Untils
     {
+        public static string modifyDataFormat(string date)
+        {
+            return (date != null && date != "") ? date.Substring(0, date.IndexOf(" ")).Trim() : "";
+        }
 
         public static bool isTimeError(string nowDate)
         {

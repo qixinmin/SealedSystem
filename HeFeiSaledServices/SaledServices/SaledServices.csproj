@@ -221,6 +221,12 @@
     <Compile Include="additionForm\MaterialNameForm.Designer.cs">
       <DependentUpon>MaterialNameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="additionForm\OutWaitRepairByHand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\OutWaitRepairByHand.Designer.cs">
+      <DependentUpon>OutWaitRepairByHand.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\RepairFaultTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -498,6 +504,11 @@
     <Compile Include="ReturnStoreForm.Designer.cs">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaledServiceDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaledServiceDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Store\CheckRequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -704,6 +715,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\MaterialNameForm.resx">
       <DependentUpon>MaterialNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\OutWaitRepairByHand.resx">
+      <DependentUpon>OutWaitRepairByHand.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
@@ -992,6 +1006,17 @@
     <Content Include="wheat_128px_1169807_easyicon.net.ico" />
     <Content Include="资料\2.ico" />
     <Content Include="资料\海关信息.txt" />
+    <None Include="SaledServiceDataSet.xsc">
+      <DependentUpon>SaledServiceDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SaledServiceDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SaledServiceDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SaledServiceDataSet.xss">
+      <DependentUpon>SaledServiceDataSet.xsd</DependentUpon>
+    </None>
     <None Include="资料\sql 语句备份.txt.sql" />
   </ItemGroup>
   <ItemGroup />

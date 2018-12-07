@@ -22,5 +22,16 @@ namespace SaledServices.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=SaledService;Persist Security Info=True;Use" +
+            "r ID=admin;Password=admin")]
+        public string SaledServiceConnectionString {
+            get {
+                return ((string)(this["SaledServiceConnectionString"]));
+            }
+        }
     }
 }

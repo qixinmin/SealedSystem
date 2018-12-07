@@ -844,3 +844,4 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.mbLifeExport.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.OutWaitRepairByHand.resources
