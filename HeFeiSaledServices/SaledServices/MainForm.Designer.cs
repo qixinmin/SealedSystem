@@ -48,6 +48,7 @@
             this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lCD显示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.最近一个月内容汇总ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.手动出待维修库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -122,7 +123,6 @@
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.手动出待维修库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -301,6 +301,13 @@
             this.最近一个月内容汇总ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.最近一个月内容汇总ToolStripMenuItem.Text = "最近一个月内容汇总";
             this.最近一个月内容汇总ToolStripMenuItem.Click += new System.EventHandler(this.最近一个月内容汇总ToolStripMenuItem_Click);
+            // 
+            // 手动出待维修库ToolStripMenuItem
+            // 
+            this.手动出待维修库ToolStripMenuItem.Name = "手动出待维修库ToolStripMenuItem";
+            this.手动出待维修库ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.手动出待维修库ToolStripMenuItem.Text = "手动出待维修库";
+            this.手动出待维修库ToolStripMenuItem.Click += new System.EventHandler(this.手动出待维修库ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -900,13 +907,6 @@
             this.预领料申请ToolStripMenuItem1.Text = "预领料申请";
             this.预领料申请ToolStripMenuItem1.Click += new System.EventHandler(this.预领料申请ToolStripMenuItem1_Click);
             // 
-            // 手动出待维修库ToolStripMenuItem
-            // 
-            this.手动出待维修库ToolStripMenuItem.Name = "手动出待维修库ToolStripMenuItem";
-            this.手动出待维修库ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.手动出待维修库ToolStripMenuItem.Text = "手动出待维修库";
-            this.手动出待维修库ToolStripMenuItem.Click += new System.EventHandler(this.手动出待维修库ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -919,7 +919,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "合肥进销存系统1203-";
+            this.Text = "合肥进销存系统1212-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

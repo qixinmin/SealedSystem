@@ -64,6 +64,8 @@ namespace SaledServices
             int columnLength = ws.UsedRange.Columns.Count;
 
             List<ReportCustomInfo> reportList = new List<ReportCustomInfo>();
+
+            List<string> tracknoList = new List<string>();
             try
             {
                 //读取数据到数据结构中
@@ -72,6 +74,17 @@ namespace SaledServices
                     ReportCustomInfo info = new ReportCustomInfo();
 
                     info.track_no = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString();
+
+                    if (tracknoList.Contains(info.track_no) == false)
+                    {
+                        tracknoList.Add(info.track_no);
+                    }
+                    else
+                    {
+                        MessageBox.Show("此序列号" + info.track_no + "重复,请检查！");
+                        return;
+                    }
+
                     info.material_no = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 2]).Value2.ToString();
                     info.declear_number = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 3]).Value2.ToString();
 

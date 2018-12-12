@@ -292,16 +292,23 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
-            if (custom_res_typecomboBox.Text == "")
+            if (custom_res_typecomboBox.Text.Trim() == "")
             {
                 MessageBox.Show("客责类别的内容为空，请检查！");
                 this.custom_res_typecomboBox.Focus();
                 return;
             }
-            if (customResponsibilityrichTextBox.Text == "")
+            if (customResponsibilityrichTextBox.Text.Trim() == "")
             {
                 MessageBox.Show("客责描述的内容为空，请检查！");
                 this.customResponsibilityrichTextBox.Focus();
+                return;
+            }
+
+            if (custom_matertial_notextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("客户料号为空，请回车！");
+                this.custom_matertial_notextBox.Focus();
                 return;
             }
 
