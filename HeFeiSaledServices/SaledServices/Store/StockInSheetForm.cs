@@ -123,6 +123,18 @@ namespace SaledServices
                     }
                 }
 
+                if (this.buy_order_serial_noTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where buy_order_serial_no like '%" + buy_order_serial_noTextBox.Text.Trim() + "%' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and buy_order_serial_no like '%" + buy_order_serial_noTextBox.Text.Trim() + "%' ";
+                    }
+                }
+
                 sqlStr += " order by Id desc";
 
                 mConn = new SqlConnection(Constlist.ConStr);

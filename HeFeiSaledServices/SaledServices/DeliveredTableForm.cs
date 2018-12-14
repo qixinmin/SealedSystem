@@ -714,7 +714,7 @@ namespace SaledServices
                     }
                     else
                     {
-                        cmd.CommandText = "update wait_repair_left_house_table set leftNumber = '"+(Int16.Parse(left_number+1))+"'"
+                        cmd.CommandText = "update wait_repair_left_house_table set leftNumber = '"+(Int16.Parse(left_number)+1)+"'"
                                 + "where custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
                         cmd.ExecuteNonQuery();
                     }

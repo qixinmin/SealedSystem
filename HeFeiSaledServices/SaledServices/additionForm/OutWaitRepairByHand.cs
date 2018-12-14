@@ -225,6 +225,10 @@ namespace SaledServices.additionForm
                 }            
             
                 conn.Close();
+                this.ordernotextBox.Text = "";
+                this.materialnotextBox.Text = "";
+                this.tracknotextBox.Text = "";
+                button3_Click(null, null);
                 MessageBox.Show("出待维修库成功！");
             }
             catch (Exception ex)
@@ -309,6 +313,10 @@ namespace SaledServices.additionForm
                 }
 
                 conn.Close();
+                this.ordernotextBox.Text = "";
+                this.materialnotextBox.Text = "";
+                this.tracknotextBox.Text = "";
+                button3_Click(null, null);
                 MessageBox.Show("出待维修库成功！");
             }
             catch (Exception ex)
