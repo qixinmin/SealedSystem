@@ -678,53 +678,110 @@ namespace SaledServices
                                 + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
-                    //为了海关的信息，需要记录板子的出入 待维修库 信息，先记录入库信息，然后记录出库信息，剩餘的數量一直是0
-                    cmd.CommandText = "INSERT INTO wait_repair_in_house_table VALUES('" +
-                       this.track_serial_noTextBox.Text.Trim() + "','" +
-                       this.custommaterialNoTextBox.Text.Trim() + "','" +
-                       "1" + "','" +
-                       DateTime.Now.ToString("yyyy/MM/dd") + "')";
-                    cmd.ExecuteNonQuery();
-
-                    //cmd.CommandText = "INSERT INTO wait_repair_out_house_table VALUES('" +
-                    //   this.track_serial_noTextBox.Text.Trim() + "','" +
-                    //   this.custommaterialNoTextBox.Text.Trim() + "','" +
-                    //   "1" + "','" +
-                    //   DateTime.Now.ToString("yyyy/MM/dd") + "')";
-                    //cmd.ExecuteNonQuery();
-
-                    cmd.CommandText = "select Id,leftNumber from wait_repair_left_house_table where custom_materialNo='" + this.custommaterialNoTextBox.Text + "'";
-                    querySdr = cmd.ExecuteReader();
-                    string exist = "";
-                    string left_number = "";
-                    while (querySdr.Read())
+                    bool isAutoChuku = false;//这个标准为是否手动出库的标志，以后编译之前可以修改一下
+                    if (isAutoChuku)
                     {
-                        exist = querySdr[0].ToString();
-                        left_number = querySdr[1].ToString();
-                        break;
-                    }
-                    querySdr.Close();
-
-                    if (exist == "")
-                    {
-                        cmd.CommandText = "INSERT INTO wait_repair_left_house_table VALUES('"
-                        + this.custommaterialNoTextBox.Text + "','"
-                        + "1" + "')";
+                        //注意：备份自动出库的代码
+                        //为了海关的信息，需要记录板子的出入 待维修库 信息，先记录入库信息，然后记录出库信息，剩餘的數量一直是0
+                        cmd.CommandText = "INSERT INTO wait_repair_in_house_table VALUES('" +
+                           this.track_serial_noTextBox.Text.Trim() + "','" +
+                           this.custommaterialNoTextBox.Text.Trim() + "','" +
+                           "1" + "','" +
+                           DateTime.Now.ToString("yyyy/MM/dd") + "')";
                         cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "INSERT INTO wait_repair_out_house_table VALUES('" +
+                           this.track_serial_noTextBox.Text.Trim() + "','" +
+                           this.custommaterialNoTextBox.Text.Trim() + "','" +
+                           "1" + "','" +
+                           DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "select Id,leftNumber from wait_repair_left_house_table where custom_materialNo='" + this.custommaterialNoTextBox.Text + "'";
+                        querySdr = cmd.ExecuteReader();
+                        string exist = "";
+                        string left_number = "";
+                        while (querySdr.Read())
+                        {
+                            exist = querySdr[0].ToString();
+                            left_number = querySdr[1].ToString();
+                            break;
+                        }
+                        querySdr.Close();
+
+                        if (exist == "")
+                        {
+                            cmd.CommandText = "INSERT INTO wait_repair_left_house_table VALUES('"
+                            + this.custommaterialNoTextBox.Text + "','"
+                            + "0" + "')";
+                            cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            cmd.CommandText = "update wait_repair_left_house_table set leftNumber = '0'"
+                                    + "where custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                            cmd.ExecuteNonQuery();
+                        }
+                        querySdr.Close();
+
+                        //记录站别信息
+                        cmd.CommandText = "INSERT INTO stationInformation VALUES('"
+                            + this.track_serial_noTextBox.Text.Trim() + "','收货','"
+                            + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                        cmd.ExecuteNonQuery();
+                        //end 备份代码
                     }
                     else
                     {
-                        cmd.CommandText = "update wait_repair_left_house_table set leftNumber = '"+(Int16.Parse(left_number)+1)+"'"
-                                + "where custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                        //下面的代码是手动出库
+                        //为了海关的信息，需要记录板子的出入 待维修库 信息，先记录入库信息，然后记录出库信息，剩餘的數量一直是0
+                        cmd.CommandText = "INSERT INTO wait_repair_in_house_table VALUES('" +
+                           this.track_serial_noTextBox.Text.Trim() + "','" +
+                           this.custommaterialNoTextBox.Text.Trim() + "','" +
+                           "1" + "','" +
+                           DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                        cmd.ExecuteNonQuery();
+
+                        //cmd.CommandText = "INSERT INTO wait_repair_out_house_table VALUES('" +
+                        //   this.track_serial_noTextBox.Text.Trim() + "','" +
+                        //   this.custommaterialNoTextBox.Text.Trim() + "','" +
+                        //   "1" + "','" +
+                        //   DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                        //cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "select Id,leftNumber from wait_repair_left_house_table where custom_materialNo='" + this.custommaterialNoTextBox.Text + "'";
+                        querySdr = cmd.ExecuteReader();
+                        string exist = "";
+                        string left_number = "";
+                        while (querySdr.Read())
+                        {
+                            exist = querySdr[0].ToString();
+                            left_number = querySdr[1].ToString();
+                            break;
+                        }
+                        querySdr.Close();
+
+                        if (exist == "")
+                        {
+                            cmd.CommandText = "INSERT INTO wait_repair_left_house_table VALUES('"
+                            + this.custommaterialNoTextBox.Text + "','"
+                            + "1" + "')";
+                            cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            cmd.CommandText = "update wait_repair_left_house_table set leftNumber = '" + (Int16.Parse(left_number) + 1) + "'"
+                                    + "where custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                            cmd.ExecuteNonQuery();
+                        }
+                        querySdr.Close();
+
+                        //记录站别信息
+                        cmd.CommandText = "INSERT INTO stationInformation VALUES('"
+                            + this.track_serial_noTextBox.Text.Trim() + "','收货','"
+                            + DateTime.Now.ToString("yyyy/MM/dd") + "')";
                         cmd.ExecuteNonQuery();
                     }
-                    querySdr.Close();
-
-                    //记录站别信息
-                    cmd.CommandText = "INSERT INTO stationInformation VALUES('"
-                        + this.track_serial_noTextBox.Text.Trim() + "','收货','"
-                        + DateTime.Now.ToString("yyyy/MM/dd") + "')";
-                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
