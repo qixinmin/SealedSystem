@@ -151,8 +151,16 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select Id,mpn,in_number,input_date,declare_unit,declare_number from  " + tableName;
                 cmd.CommandType = CommandType.Text;
+
+                string sql = "select Id,mpn,in_number,input_date,declare_unit,declare_number from  " + tableName;
+
+                if (this.mpnTextBox.Text.Trim() != "")
+                {
+                     sql += " where mpn like '%"+this.mpnTextBox.Text.Trim()+"%'";
+                }
+                cmd.CommandText = sql;
+                
 
                 sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
@@ -303,6 +311,171 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
              }
-        }        
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<mb_smt_bga_ng_out_house> receiveOrderList = new List<mb_smt_bga_ng_out_house>();
+            List<mb_smt_bga_ng_out_houseSum> bagWaitSumList = new List<mb_smt_bga_ng_out_houseSum>();
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "SELECT  [mpn],[in_number],[input_date],[declare_unit],[declare_number] FROM [SaledService].[dbo].[mb_smt_bga_ng_out_house_table]";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    mb_smt_bga_ng_out_house temp = new mb_smt_bga_ng_out_house();
+                    temp.mpn = querySdr[0].ToString();
+                    temp.in_number = querySdr[1].ToString();
+                    temp.input_date = querySdr[2].ToString();
+                    temp.declare_unit = querySdr[3].ToString();
+                    temp.declare_number = querySdr[4].ToString();
+
+                    receiveOrderList.Add(temp);
+
+                    //下面是统计信息
+                    if (bagWaitSumList.Count == 0)
+                    {
+                        if (temp.mpn != null && temp.mpn.Trim() != "")
+                        {
+                            mb_smt_bga_ng_out_houseSum newTemp = new mb_smt_bga_ng_out_houseSum();
+                            newTemp.mpn = temp.mpn;
+                            newTemp.outnumber = temp.in_number;
+                            bagWaitSumList.Add(newTemp);
+                        }
+                    }
+                    else
+                    {
+                        bool exist = false;
+                        foreach (mb_smt_bga_ng_out_houseSum oldrecord in bagWaitSumList)
+                        {
+                            if (oldrecord.equals(temp.mpn))
+                            {
+                                oldrecord.outnumber = Int16.Parse(oldrecord.outnumber) + Int16.Parse(temp.in_number) + "";
+                                exist = true;
+                                break;
+                            }
+                        }
+
+                        if (exist == false)
+                        {
+                            if (temp.mpn != null && temp.mpn.Trim() != "")
+                            {
+                                mb_smt_bga_ng_out_houseSum newTemp = new mb_smt_bga_ng_out_houseSum();
+                                newTemp.mpn = temp.mpn;
+                                newTemp.outnumber = temp.in_number;
+                                bagWaitSumList.Add(newTemp);
+                            }
+                        }
+                    }
+                }
+                querySdr.Close();
+
+                foreach (mb_smt_bga_ng_out_houseSum temp in bagWaitSumList)
+                {
+                    cmd.CommandText = "select number from " + ng_tablename + " where mpn like '%" + temp.mpn + "%'";
+                    querySdr = cmd.ExecuteReader();
+                 
+                    while (querySdr.Read())
+                    {
+                        temp.leftnumber = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                }
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            generateExcelToCheck(receiveOrderList, bagWaitSumList);
+        }
+
+
+        public void generateExcelToCheck(List<mb_smt_bga_ng_out_house> StockCheckList, List<mb_smt_bga_ng_out_houseSum> bagWaitSumList)
+        {
+            List<allContent> allcontentList = new List<allContent>();
+
+            allContent firstsheet = new allContent();
+            firstsheet.sheetName = "不良品出库信息";
+            firstsheet.titleList = new List<string>();
+            firstsheet.contentList = new List<object>();
+
+            firstsheet.titleList.Add("MPN");
+            firstsheet.titleList.Add("出库数量");
+            firstsheet.titleList.Add("输入日期");
+            firstsheet.titleList.Add("单位");
+            firstsheet.titleList.Add("报关单号");
+
+            foreach (mb_smt_bga_ng_out_house stockcheck in StockCheckList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.mpn);
+                ct1.Add(stockcheck.in_number);
+                ct1.Add(Untils.modifyDataFormat(stockcheck.input_date));
+                ct1.Add(stockcheck.declare_unit);
+                ct1.Add(stockcheck.declare_number);
+
+                ctest1.contentArray = ct1;
+                firstsheet.contentList.Add(ctest1);
+            }
+
+            allcontentList.Add(firstsheet);
+
+            allContent secondsheet = new allContent();
+            secondsheet.sheetName = "统计信息";
+            secondsheet.titleList = new List<string>();
+            secondsheet.contentList = new List<object>();
+
+            secondsheet.titleList.Add("mpn");
+            secondsheet.titleList.Add("出库总数");
+            secondsheet.titleList.Add("剩余数量");
+
+            foreach (mb_smt_bga_ng_out_houseSum stockcheck in bagWaitSumList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.mpn);
+                ct1.Add(stockcheck.outnumber);
+                ct1.Add(stockcheck.leftnumber);
+
+                ctest1.contentArray = ct1;
+                secondsheet.contentList.Add(ctest1);
+            }
+
+            allcontentList.Add(secondsheet);
+
+            Untils.createMulitSheetsUsingNPOI("D:\\不良品报关出库信息" + DateTime.Now.ToString("yyyy-MM-dd").Replace('/', '-') + ".xls", allcontentList);
+        }
+    }
+
+    public class mb_smt_bga_ng_out_house
+    {
+        public string mpn;
+        public string in_number;
+        public string input_date;
+        public string declare_unit;
+        public string declare_number;
+    }
+
+    public class mb_smt_bga_ng_out_houseSum
+    {
+        public string mpn;
+        public string outnumber;
+        public string leftnumber;
+
+        public bool equals(string mpn)
+        {
+            return (this.mpn == mpn);
+        }
     }
 }

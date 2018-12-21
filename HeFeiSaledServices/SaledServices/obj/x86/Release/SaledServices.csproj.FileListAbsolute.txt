@@ -845,3 +845,8 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.mbLifeExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.OutWaitRepairByHand.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.dll
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OOXML.dll
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OpenXml4Net.dll
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OpenXmlFormats.dll

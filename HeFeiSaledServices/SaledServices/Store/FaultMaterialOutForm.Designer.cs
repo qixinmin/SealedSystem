@@ -51,6 +51,7 @@
             this.currentNumbertextBox = new System.Windows.Forms.TextBox();
             this.ngHouseComboBox = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -302,11 +303,22 @@
             this.label10.TabIndex = 9;
             this.label10.Text = "库房类型";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(676, 80);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(238, 65);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "導出到Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FaultMaterialOutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1185, 749);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.ngHouseComboBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.unitComboBox);
@@ -366,5 +378,6 @@
         private System.Windows.Forms.TextBox currentNumbertextBox;
         private System.Windows.Forms.ComboBox ngHouseComboBox;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Data.SqlClient;
 using System.Data;
+using NPOI.HSSF.UserModel;
 
 namespace SaledServices
 {
@@ -183,6 +184,13 @@ namespace SaledServices
         }
     }
 
+    public class allContent
+    {
+        public string sheetName;
+        public List<string> titleList;//= new List<string>();
+        public List<Object> contentList;// = new List<object>();
+    }
+
     public class ExportExcelContent
     {
         public List<string> contentArray;       
@@ -245,6 +253,59 @@ namespace SaledServices
                 ExportExcelContent temp = (ExportExcelContent)content;
                 xSheet.Cells[column][row] = temp.contentArray[column - 1];
             }
+        }
+
+        public static void createMulitSheetsUsingNPOI(string filepathname, List<allContent> allcontentList)
+        {
+          //  string path = "D:\\导出文件汇总\\";
+            //if (Directory.Exists(path) == false)
+            //{
+            //    Directory.CreateDirectory(path);
+            //}
+           // filepathname = path + filepathname;
+
+            HSSFWorkbook hssfworkbook = new HSSFWorkbook();
+            //内容表格
+            foreach (allContent temp in allcontentList)
+            {
+                if (temp.contentList.Count <= 0)
+                {
+                    continue;
+                }
+                HSSFSheet sheet = (HSSFSheet)hssfworkbook.CreateSheet(temp.sheetName);
+                int row = temp.contentList.Count + 1;
+                int column = ((ExportExcelContent)(temp.contentList[0])).contentArray.Count;
+
+                for (int ri = 0; ri < row; ri++)
+                {
+                    sheet.CreateRow(ri);
+                }
+                for (int ri = 0; ri < row; ri++)
+                {
+                    for (int ci = 0; ci < column; ci++)
+                    {
+                        if (ri == 0)
+                        {
+                            sheet.GetRow(ri).CreateCell(ci).SetCellValue(temp.titleList[ci]);
+                        }
+                        else
+                        {
+                            string content = ((ExportExcelContent)(temp.contentList[ri - 1])).contentArray[ci];
+                            sheet.GetRow(ri).CreateCell(ci).SetCellValue(content);
+                        }
+                    }
+                }
+                for (int ci = 0; ci < column; ci++)
+                {
+                    sheet.AutoSizeColumn(ci);
+                }
+            }
+
+            FileStream file = new FileStream(filepathname, FileMode.Create);
+
+            hssfworkbook.Write(file);
+            file.Close();
+            MessageBox.Show(filepathname + "导出成功");
         }
 
         //title list的长度要保证与内容contentArray的长度一致
