@@ -27,6 +27,11 @@ namespace SaledServices
             {
                 this.modify.Visible = false;
                 this.delete.Visible = false;
+                this.numbertextBox.ReadOnly = true;
+            }
+            else
+            {
+                this.numbertextBox.ReadOnly = false;
             }
         }
         private void ngHouseComboBox_SelectedValueChanged(object sender, EventArgs e)
