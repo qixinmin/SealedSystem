@@ -1059,6 +1059,20 @@ namespace SaledServices
                     this.track_serial_noTextBox.Focus();
                     return;
                 }
+
+                if (this.custom_orderComboBox.Text.Trim() == ""
+                        || this.track_serial_noTextBox.Text.Trim().StartsWith(this.custom_orderComboBox.Text.Trim()) == false)
+                {
+                    MessageBox.Show("跟踪条码没有以订单号开头！");
+                    this.track_serial_noTextBox.Text = "";
+                    this.track_serial_noTextBox.Focus();
+                    this.add.Enabled = false;
+                    return;
+                }
+                else
+                {
+                    this.add.Enabled = true;
+                }
                 //检查跟踪条码是否在系统中存在过，否则报错
                 string vendor = "";
                 try
