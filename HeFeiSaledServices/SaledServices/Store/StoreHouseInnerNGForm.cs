@@ -223,6 +223,10 @@ namespace SaledServices
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
+
+            this.placeTextBox.Text = "";
+            this.mpntextBox.Text = "";
+            this.numbertextBox.Text = "";
         }
 
         private void delete_Click(object sender, EventArgs e)

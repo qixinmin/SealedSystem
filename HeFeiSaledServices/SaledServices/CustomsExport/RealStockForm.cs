@@ -145,7 +145,7 @@ namespace SaledServices.CustomsExport
                     init1.whs_code = "";
                     init1.location_code = "";
                     init1.note = "";
-                    storeAmountList.Add(init1);
+                  //  storeAmountList.Add(init1);
                 }
 
                 //2 读取库房信息,良品

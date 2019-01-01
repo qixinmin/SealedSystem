@@ -158,7 +158,7 @@ namespace SaledServices.CustomsExport
                     init1.whs_code = "";
                     init1.location_code = "";
                     init1.note = "";
-                    storeInitList.Add(init1);
+                   // storeInitList.Add(init1);//在待维修库里面存在  
 
                     StockCheck stockcheck = new StockCheck();
                     stockcheck.material_no = temp;
@@ -168,7 +168,7 @@ namespace SaledServices.CustomsExport
                     stockcheck.describe = "维修中主板";
                     if (stockcheck.num != "0")
                     {
-                        StockCheckList.Add(stockcheck);
+                        //  StockCheckList.Add(stockcheck);//在待维修库里面存在  
                     }
                 }
 
@@ -385,7 +385,7 @@ namespace SaledServices.CustomsExport
                     {
                         stockcheck.describe = _71bomDescribeDic[stockcheck.material_no];
                     }
-                    stockcheck.material_no += "_1";//区分良品与不良品信息
+                    //stockcheck.material_no += "_1";//区分良品与不良品信息
                     if (stockcheck.num != "0")
                     {
                         StockCheckList.Add(stockcheck);
@@ -717,7 +717,7 @@ namespace SaledServices.CustomsExport
                     init1.whs_code = "";
                     init1.location_code = "";
                     init1.note = "";
-                    storeInitList.Add(init1);
+                  //  storeInitList.Add(init1);
                 }
 
                 //2 读取良品库房信息
