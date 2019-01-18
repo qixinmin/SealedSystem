@@ -206,31 +206,39 @@ namespace SaledServices
 
         private void delete_Click(object sender, EventArgs e)
         {
-            try
+            DialogResult dr = MessageBox.Show("你确定删除吗？", "确认对话框", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
             {
-                SqlConnection conn = new SqlConnection(Constlist.ConStr);
-                conn.Open();
-
-                if (conn.State == ConnectionState.Open)
+                //点确定的代码
+                try
                 {
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "Delete from " + tableName + " where id = " + dataGridView1.SelectedCells[0].Value.ToString();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.ExecuteNonQuery();
-                }
-                else
-                {
-                    MessageBox.Show("SaledService is not opened");
-                }
+                    SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                    conn.Open();
 
-                conn.Close();
-                MessageBox.Show("删除完毕!");
-                query_Click(null, null);
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandText = "Delete from " + tableName + " where id = " + dataGridView1.SelectedCells[0].Value.ToString();
+                        cmd.CommandType = CommandType.Text;
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        MessageBox.Show("SaledService is not opened");
+                    }
+
+                    conn.Close();
+                    MessageBox.Show("删除完毕!");
+                    query_Click(null, null);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+            else
+            { //点取消的代码 
             }
         }
 

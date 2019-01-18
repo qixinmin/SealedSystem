@@ -95,6 +95,12 @@ namespace SaledServices
                 return;
             }
 
+            if (this.bga_brieftextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("BGA简述为空，请检查！");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);

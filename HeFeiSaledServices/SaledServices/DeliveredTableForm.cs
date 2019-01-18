@@ -350,7 +350,7 @@ namespace SaledServices
                     }
                 }
                 
-                if (this.productTextBox.Text != "TBG" && this.productTextBox.Text !="DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                if (this.productTextBox.Text != "TBG" && this.productTextBox.Text !="DT" && this.productTextBox.Text!="LBG")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
                 {
                     //需要去掉前面的非0字段
                     string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
@@ -678,7 +678,7 @@ namespace SaledServices
                                 + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
-                    bool isAutoChuku = false;//这个标准为是否手动出库的标志，以后编译之前可以修改一下
+                    bool isAutoChuku = true;//这个标准为是否手动出库的标志，以后编译之前可以修改一下
                     if (isAutoChuku)
                     {
                         //注意：备份自动出库的代码

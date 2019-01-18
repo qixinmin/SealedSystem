@@ -304,6 +304,7 @@
             this.pricePerTextBox.Location = new System.Drawing.Point(514, 182);
             this.pricePerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.pricePerTextBox.Name = "pricePerTextBox";
+            this.pricePerTextBox.PasswordChar = '*';
             this.pricePerTextBox.ReadOnly = true;
             this.pricePerTextBox.Size = new System.Drawing.Size(158, 26);
             this.pricePerTextBox.TabIndex = 5;
