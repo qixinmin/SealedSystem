@@ -418,6 +418,18 @@ namespace SaledServices
             }
             try
             {
+
+                this.mpnTextBox.Text = "";
+                this.bgadescribeTextBox.Text = "";
+                this.currentStockNumbertextBox.Text = "";
+                this.stock_placetextBox.Text = "";
+                this.stock_out_numTextBox.Text = "";
+                this.isDeclareTextBox.Text = "";
+                this.notetextBox.Text = "";
+                this.notgoodplacetextBox.Text = "";
+
+                queryvendorproduct();
+
                 this.dataGridView2.DataSource = null;
                 dataGridView2.Columns.Clear();
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -426,7 +438,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
 
-                string sql = "select mpn,stock_place,input_number,vendor,bga_describe,isdeclare from bga_in_stock where bga_describe='" + this.bga_brieftextBox.Text + "'";
+                string sql = "select distinct mpn,stock_place,vendor,bga_describe,isdeclare from bga_in_stock where bga_describe='" + this.bga_brieftextBox.Text + "'";
                 
                 if (this.vendorcomboBox.Text != "")
                 {
@@ -449,7 +461,7 @@ namespace SaledServices
                 dataGridView2.RowHeadersVisible = false;
                 mConn.Close();
 
-                string[] hTxt = { "MPN", "库位", "已有数量", "厂商","描述","是否申报" };
+                string[] hTxt = { "MPN", "库位", "厂商","描述","是否申报" };
                 for (int i = 0; i < hTxt.Length; i++)
                 {
                     dataGridView2.Columns[i].HeaderText = hTxt[i];
@@ -496,49 +508,56 @@ namespace SaledServices
             }
         }
 
+        private void queryvendorproduct()
+        {
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select distinct vendor from bga_in_stock where bga_describe like '%" + this.bga_brieftextBox.Text + "%'";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                this.vendorcomboBox.Items.Clear();
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.vendorcomboBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
+                cmd.CommandText = "select distinct product from bga_in_stock where  bga_describe like '%" + this.bga_brieftextBox.Text + "%'";
+                querySdr = cmd.ExecuteReader();
+                this.productcomboBox.Items.Clear();
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.productcomboBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void bga_brieftextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                try
-                {
-                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                    mConn.Open();
-
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = mConn;
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = "select distinct vendor from bga_in_stock where bga_describe like '%"+this.bga_brieftextBox.Text+"%'";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
-                    {
-                        string temp = querySdr[0].ToString();
-                        if (temp != "")
-                        {
-                            this.vendorcomboBox.Items.Add(temp);
-                        }
-                    }
-                    querySdr.Close();
-
-                    cmd.CommandText = "select distinct product from bga_in_stock where  bga_describe like '%" + this.bga_brieftextBox.Text + "%'";
-                    querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
-                    {
-                        string temp = querySdr[0].ToString();
-                        if (temp != "")
-                        {
-                            this.productcomboBox.Items.Add(temp);
-                        }
-                    }
-                    querySdr.Close();
-
-                    mConn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
+                queryvendorproduct();
             }
         }
 
