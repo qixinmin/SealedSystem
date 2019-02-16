@@ -875,7 +875,8 @@ namespace SaledServices
                                 this.track_serial_noTextBox.Focus();
                                 this.track_serial_noTextBox.SelectAll();
 
-                                this.custom_serial_noTextBox.Text = "";                                
+                                this.custom_serial_noTextBox.Text = "";
+                                this.returnStore.Enabled = false;
                                 return;
                             }
                         }                          

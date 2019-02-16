@@ -209,6 +209,7 @@ namespace SaledServices
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
+            MessageBox.Show("修改成功!");
         }
 
         private void delete_Click(object sender, EventArgs e)

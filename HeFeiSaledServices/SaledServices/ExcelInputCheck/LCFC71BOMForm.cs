@@ -160,6 +160,14 @@ namespace SaledServices
                 }
 
                 conn.Close();
+                MessageBox.Show("删除成功");
+                this.idTextBox.Text = "";
+                this.priceTextBox.Text = "";
+                this.material_vendor_pnTextBox.Text = "";
+                this.material_mpnTextBox.Text = "";
+                this.descriptionTextBox.Text = "";
+                this.mb_briefTextBox.Text = "";
+                this.datetextBox.Text = "";
             }
             catch (Exception ex)
             {
