@@ -39,6 +39,11 @@ namespace SaledServices
         {
             try
             {
+                if (this.stock_out_numTextBox.Text.Trim() == ""){
+                    MessageBox.Show("出库数量为空，请上报，不要擅自处理！");
+                    return;
+                }
+
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
                

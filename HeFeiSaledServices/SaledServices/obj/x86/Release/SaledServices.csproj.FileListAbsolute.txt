@@ -850,4 +850,3 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.dll
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OOXML.dll
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OpenXml4Net.dll
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OpenXmlFormats.dll
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
