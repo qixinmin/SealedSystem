@@ -185,7 +185,25 @@ namespace SaledServices.Repair
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("本次使用的數量 輸入框 輸入了非法字符，請檢查");
+                    MessageBox.Show("本次使用的數量 輸入框 輸入了非法字符，请检查");
+                    return;
+                }
+            }
+
+            if (totalUseNumber == "")
+            {
+                MessageBox.Show("总共使用数量为空！");
+                return;
+            }
+            else
+            {
+                try
+                {
+                    Int32.Parse(totalUseNumber);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("总共使用数量 含非法字符，请检查");
                     return;
                 }
             }
