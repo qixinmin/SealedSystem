@@ -98,7 +98,7 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select BGAPN,bgatype,bga_brief,BGA_place from bga_repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and newSn !=''";
+                    cmd.CommandText = "select BGAPN,bgatype,bga_brief,BGA_place,newSn from bga_repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and newSn !=''";
                     querySdr = cmd.ExecuteReader();
                     repairRecord.bgaRecords = new List<BgaRecord>();
                     while (querySdr.Read())
@@ -109,6 +109,7 @@ namespace SaledServices.Export
                         sub.bgatype = querySdr[1].ToString();
                         sub.bgabrief = querySdr[2].ToString();
                         sub.bga_place = querySdr[3].ToString();
+                        sub.newsn = querySdr[4].ToString();
 
                         repairRecord.bgaRecords.Add(sub);
                     }
@@ -195,6 +196,7 @@ namespace SaledServices.Export
                 titleList.Add("BGA 位置" + i);
                 titleList.Add("BGA_mbfa1" + i);
                 titleList.Add("BGAShortCut" + i);
+                titleList.Add("BGA SN" + i);
             }
 
             for (int i = 1; i <= smtLength; i++)
@@ -252,9 +254,11 @@ namespace SaledServices.Export
                         ct1.Add(repaircheck.bgaRecords[i].bga_place);
                         ct1.Add(repaircheck.bgaRecords[i].bgambfa1);
                         ct1.Add(repaircheck.bgaRecords[i].bgashort_cut);
+                        ct1.Add(repaircheck.bgaRecords[i].newsn);
                     }
                     else
                     {
+                        ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
@@ -332,6 +336,7 @@ namespace SaledServices.Export
        public string bgambfa1;
        public string bgashort_cut;
        public string bga_place;
+       public string newsn;
    }
 
    public class SmtRecort

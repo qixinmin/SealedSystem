@@ -254,6 +254,12 @@
     <Compile Include="additionForm\MBLifeRecord.Designer.cs">
       <DependentUpon>MBLifeRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="additionForm\UnlockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\UnlockForm.Designer.cs">
+      <DependentUpon>UnlockForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -739,6 +745,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\MBLifeRecord.resx">
       <DependentUpon>MBLifeRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\UnlockForm.resx">
+      <DependentUpon>UnlockForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChartForm.resx">
       <DependentUpon>ChartForm.cs</DependentUpon>

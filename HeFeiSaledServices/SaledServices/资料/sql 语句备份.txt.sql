@@ -37,6 +37,17 @@ mpn NVARCHAR(128) NOT NULL,/*板子料号*/
 _8sCode NVARCHAR(128), /*8s*/
 )
 
+/*增加对三次退回的8S进行锁定，系统提示此主板报废并记录*/
+CREATE TABLE return_modify_more_than_three(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+_8sCode NVARCHAR(128), /*8s*/
+isLock NVARCHAR(128), /*默认false*/
+input_date date, /*输入日期*/
+unlcok_date date, /*解锁日期，为true时此日期不为空*/
+)
+
 
 /*不良品MB/SMT/BGA出库记录*/
 /*把fru的材料也放進去了，但是默認現在不報關出去，因爲要交稅，在上報的時候過濾一下*/

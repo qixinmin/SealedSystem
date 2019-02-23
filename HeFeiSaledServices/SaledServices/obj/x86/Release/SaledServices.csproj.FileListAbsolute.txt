@@ -759,10 +759,16 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\Files\syncTi
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe.config
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.pdb
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.dll
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OOXML.dll
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OpenXml4Net.dll
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OpenXmlFormats.dll
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.CIDInputForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.DatabaseForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.FilesUpdateForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.MaterialNameForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.OutWaitRepairByHand.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.RepairFaultTypeForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.MBLifeRecord.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ChartForm.resources
@@ -776,6 +782,7 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.FlexIdExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.CIDExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ReturnOrderExport.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MBLifeExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.LCDDisplay.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.RepairOperationForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnStoreCustomRespForm.resources
@@ -843,10 +850,4 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.mbLifeExport.resources
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.OutWaitRepairByHand.resources
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\ICSharpCode.SharpZipLib.dll
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.dll
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OOXML.dll
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OpenXml4Net.dll
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OpenXmlFormats.dll
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.UnlockForm.resources

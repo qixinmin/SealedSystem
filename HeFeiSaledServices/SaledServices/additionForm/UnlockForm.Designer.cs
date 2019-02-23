@@ -1,6 +1,6 @@
 ﻿namespace SaledServices.Test_Outlook
 {
-    partial class Test2Form
+    partial class UnlockForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.testdatetextBox = new System.Windows.Forms.TextBox();
             this.confirmbutton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +55,6 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.testdatetextBox, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 5, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -90,7 +88,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
-            this.label2.Text = "测试人";
+            this.label2.Text = "解锁人";
             // 
             // testerTextBox
             // 
@@ -108,7 +106,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
-            this.label3.Text = "测试时间";
+            this.label3.Text = "解锁时间";
             // 
             // testdatetextBox
             // 
@@ -125,29 +123,19 @@
             this.confirmbutton.Name = "confirmbutton";
             this.confirmbutton.Size = new System.Drawing.Size(72, 23);
             this.confirmbutton.TabIndex = 1;
-            this.confirmbutton.Text = "确认OK";
+            this.confirmbutton.Text = "解锁";
             this.confirmbutton.UseVisualStyleBackColor = true;
             this.confirmbutton.Click += new System.EventHandler(this.confirmbutton_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(546, 165);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "确认Fail";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Test2Form
+            // UnlockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 431);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Test2Form";
+            this.Name = "UnlockForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Test2界面";
+            this.Text = "解锁界面";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -164,6 +152,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox testdatetextBox;
         private System.Windows.Forms.Button confirmbutton;
-        private System.Windows.Forms.Button button1;
     }
 }

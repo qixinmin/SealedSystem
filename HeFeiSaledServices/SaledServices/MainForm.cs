@@ -901,12 +901,12 @@ namespace SaledServices
             allForm.Add(test1form);
         }
 
-        private Test_Outlook.Test2Form test2form;
+        private Test_Outlook.UnlockForm test2form;
         private void 测试2ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (test2form == null || test2form.IsDisposed)
             {
-                test2form = new Test_Outlook.Test2Form();
+                test2form = new Test_Outlook.UnlockForm();
                 test2form.MdiParent = this;
             }
 
@@ -1468,6 +1468,22 @@ namespace SaledServices
             outWaitRepairByHand.Show();
 
             allForm.Add(outWaitRepairByHand);
+        }
+
+        private UnlockForm unlockForm;
+        private void 解锁板子ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (unlockForm == null || unlockForm.IsDisposed)
+            {
+                unlockForm = new UnlockForm();
+                unlockForm.MdiParent = this;
+            }
+
+           // unlockForm.WindowState = FormWindowState.Maximized;
+            unlockForm.BringToFront();
+            unlockForm.Show();
+
+            allForm.Add(unlockForm);
         }
     }
 }

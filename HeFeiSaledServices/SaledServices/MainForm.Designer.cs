@@ -123,6 +123,7 @@
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.解锁板子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -314,7 +315,8 @@
             this.receiveReturnStoreMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.收货ToolStripMenuItem,
             this.returnStoreMenuItem,
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.解锁板子ToolStripMenuItem});
             this.receiveReturnStoreMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.receiveReturnStoreMenuItem.Name = "receiveReturnStoreMenuItem";
             this.receiveReturnStoreMenuItem.Size = new System.Drawing.Size(84, 31);
@@ -907,6 +909,13 @@
             this.预领料申请ToolStripMenuItem1.Text = "预领料申请";
             this.预领料申请ToolStripMenuItem1.Click += new System.EventHandler(this.预领料申请ToolStripMenuItem1_Click);
             // 
+            // 解锁板子ToolStripMenuItem
+            // 
+            this.解锁板子ToolStripMenuItem.Name = "解锁板子ToolStripMenuItem";
+            this.解锁板子ToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.解锁板子ToolStripMenuItem.Text = "解锁板子";
+            this.解锁板子ToolStripMenuItem.Click += new System.EventHandler(this.解锁板子ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1026,6 +1035,7 @@
         private System.Windows.Forms.ToolStripMenuItem 还货表信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 主板流水导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 手动出待维修库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 解锁板子ToolStripMenuItem;
     }
 }
 
