@@ -20,6 +20,7 @@ namespace SaledServices
         private String tableName = "DeliveredTable";
 
         private bool isComeMoreThanThree=false;
+        private bool isNeedAnalysis = false;
 
         public DeliveredTableForm()
         {
@@ -443,6 +444,19 @@ namespace SaledServices
                     }
                     //end
 
+                    //查询需要分析表格中是否包含需要分析的8s码
+                    cmd.CommandText = "select _8sCode from to_analysis_8s_table where _8sCode = '" + this.custom_serial_noTextBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        isNeedAnalysis = true;//并在插入数据的时候插入记录
+                        MessageBox.Show("此主板需要分析，已经锁定！");
+                    }
+                    else
+                    {
+                        isNeedAnalysis = false;
+                    }
+                    //end
 
                     cmd.CommandText = "select mpn from flexid_8s_mpn_table where _8sCode = '" + this.custom_serial_noTextBox.Text.Trim() + "' and orderno='" + this.custom_orderComboBox.Text.Trim() + "'";
 
@@ -685,6 +699,21 @@ namespace SaledServices
                            DateTime.Now.ToString("yyyy/MM/dd")+
                            "','')";
                         cmd.ExecuteNonQuery();
+                        isComeMoreThanThree = false;
+                    }
+
+                    //对需要分析的8s的板子需要锁定
+                    if (isNeedAnalysis)
+                    {
+                        cmd.CommandText = "INSERT INTO need_to_analysis_8s VALUES('" +
+                           this.track_serial_noTextBox.Text.Trim() + "','" +
+                           this.custom_orderComboBox.Text.Trim() + "','" +
+                           this.custom_serial_noTextBox.Text.Trim() + "','" +
+                           "true" + "','" +
+                           DateTime.Now.ToString("yyyy/MM/dd") +
+                           "','')";
+                        cmd.ExecuteNonQuery();
+                        isNeedAnalysis = false;
                     }
 
                     //除正常插入数据外，还需要把收还货表格的数量修改 TODO...

@@ -72,14 +72,39 @@ namespace SaledServices.Test_Outlook
                     }
                     querySdr.Close();
 
-                    if (islock == "")
+                    if (islock == "")//先检查是否 三次返回锁定，然后检查是否需要分析锁定
                     {
-                        MessageBox.Show("板子不存在站别，不需要解锁");
-                        mConn.Close();
-                        this.tracker_bar_textBox.Focus();
-                        this.tracker_bar_textBox.SelectAll();
-                        this.confirmbutton.Enabled = false;
-                        return;
+                        cmd.CommandText = "select isLock from need_to_analysis_8s where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        string isAnalysisLock = "";
+                        while (querySdr.Read())
+                        {
+                            isAnalysisLock = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        if (isAnalysisLock == "")
+                        {
+                            MessageBox.Show("板子不存在，不需要解锁");
+                            mConn.Close();
+                            this.tracker_bar_textBox.Focus();
+                            this.tracker_bar_textBox.SelectAll();
+                            this.confirmbutton.Enabled = false;
+                            return;
+                        }
+                        else if (isAnalysisLock == "false")
+                        {
+                            MessageBox.Show("板子已经解锁，不需要解锁啦");
+                            mConn.Close();
+                            this.tracker_bar_textBox.Focus();
+                            this.tracker_bar_textBox.SelectAll();
+                            this.confirmbutton.Enabled = false;
+                            return;
+                        }
+                        else if (isAnalysisLock == "true")
+                        {
+                            this.confirmbutton.Enabled = true;
+                        }
                     }
                     else if (islock == "false")
                     {
@@ -127,6 +152,10 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "update return_modify_more_than_three set isLock = 'false', unlcok_date = GETDATE() "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "update need_to_analysis_8s set isLock = 'false', unlcok_date = GETDATE() "
+                             + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
