@@ -105,6 +105,7 @@ namespace SaledServices
                 case MenuType.Recieve_Return:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.receiveReturnStoreMenuItem,
+                    this.eCOToolStripMenuItem,
                    });
                     break;
                 case MenuType.TestALL:
@@ -152,7 +153,8 @@ namespace SaledServices
                     this.FunctionMenuItem,           
                     this.additionMenuItem,
                     this.报表ToolStripMenuItem,
-                    this.海关ToolStripMenuItem
+                    this.海关ToolStripMenuItem,
+                    this.eCOToolStripMenuItem,
                     });
                     break;
                 case MenuType.Package:
@@ -540,12 +542,12 @@ namespace SaledServices
             allForm.Add(compalf);
         }
 
-        private LCFC71BOMForm lcfc71bomf;
+        private EcoForm lcfc71bomf;
         private void lCFC71BOM表查看ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lcfc71bomf == null || lcfc71bomf.IsDisposed)
             {
-                lcfc71bomf = new LCFC71BOMForm();
+                lcfc71bomf = new EcoForm();
                 lcfc71bomf.MdiParent = this;
             }
 
@@ -1484,6 +1486,21 @@ namespace SaledServices
             unlockForm.Show();
 
             allForm.Add(unlockForm);
+        }
+        private EcoForm ecoForm;
+        private void eCOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ecoForm == null || ecoForm.IsDisposed)
+            {
+                ecoForm = new EcoForm();
+                ecoForm.MdiParent = this;
+            }
+
+            ecoForm.WindowState = FormWindowState.Maximized;
+            ecoForm.BringToFront();
+            ecoForm.Show();
+
+            allForm.Add(ecoForm);
         }
     }
 }

@@ -754,9 +754,9 @@ F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MaterialConsumeExport.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.FlexIdExport.resources
 F:\github\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.LCDDisplay.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe.config
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\Files\FileInput.xml
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\Files\syncTime.bat
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe.config
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.exe
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\SaledServices.pdb
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\ICSharpCode.SharpZipLib.dll
@@ -771,8 +771,10 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.OutWaitRepairByHand.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.RepairFaultTypeForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.MBLifeRecord.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.UnlockForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ChartForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnCustomInfoImportForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.EcoForm.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ExportDatabaseToExcel.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ReceiveOrderExport.resources
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.RepairRecordExport.resources
@@ -850,4 +852,3 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledSer
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.UnlockForm.resources

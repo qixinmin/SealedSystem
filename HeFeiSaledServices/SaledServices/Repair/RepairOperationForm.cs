@@ -121,7 +121,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    if(stationInfo == "维修" || stationInfo == "收货")                   
+                    if(stationInfo == "维修" || stationInfo =="ECO"/* || stationInfo == "收货"*/)                   
                     {
                         this.add.Enabled = true;                       
                     }
@@ -133,8 +133,8 @@ namespace SaledServices
                         return;
                     }
 
-                    //查询是不是从待维修库出来的，如果不是，则不能进行下面的内容
-                    cmd.CommandText = "select Id from wait_repair_out_house_table where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    //查询是不是从待维修库出来的，如果不是，则不能进行下面的内容,//此步骤移到ECO站别了
+                   /* cmd.CommandText = "select Id from wait_repair_out_house_table where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows == false)
                     {
@@ -148,7 +148,7 @@ namespace SaledServices
                     {
                         this.add.Enabled = true;
                     }
-                    querySdr.Close();                   
+                    querySdr.Close();     */              
                     //end
 
                     cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";

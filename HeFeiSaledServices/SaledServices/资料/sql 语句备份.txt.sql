@@ -37,6 +37,18 @@ mpn NVARCHAR(128) NOT NULL,/*板子料号*/
 _8sCode NVARCHAR(128), /*8s*/
 )
 
+/*ECO站别信息*/
+CREATE TABLE eco_table(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+mpn NVARCHAR(128) NOT NULL,/*mpn*/
+custommaterialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+curent_version NVARCHAR(128), /*现在版本*/
+new_version NVARCHAR(128), /*新的版本*/
+inputer NVARCHAR(128) NOT NULL, /*维修人*/
+input_date date, /*修复日期*/
+)
+
 /*记录要分析的8s码，以便拦截*/
 CREATE TABLE to_analysis_8s_table(
 Id INT PRIMARY KEY IDENTITY, 
