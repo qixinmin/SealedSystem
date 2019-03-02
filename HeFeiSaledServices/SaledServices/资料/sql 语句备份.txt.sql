@@ -37,6 +37,19 @@ mpn NVARCHAR(128) NOT NULL,/*板子料号*/
 _8sCode NVARCHAR(128), /*8s*/
 )
 
+/*增加Server的材料收料信息，录入原材料厂商，生产日期，生产批次*/
+CREATE TABLE server_material_more_information(
+Id INT PRIMARY KEY IDENTITY, 
+buy_order_serial_no NVARCHAR(128), /*购买订单编号*/
+material_type NVARCHAR(128) ,/*材料类型,BGA/FRU/SMT*/
+mpn NVARCHAR(128),/*mpn*/
+material_vendor NVARCHAR(128),/*原材料厂商*/
+product_date date,/*生产日期*/
+pici NVARCHAR(128),/*生产批次*/
+inputer NVARCHAR(128) NOT NULL, /*维修人*/
+input_date date, /*修复日期*/
+)
+
 /*ECO站别信息*/
 CREATE TABLE eco_table(
 Id INT PRIMARY KEY IDENTITY, 

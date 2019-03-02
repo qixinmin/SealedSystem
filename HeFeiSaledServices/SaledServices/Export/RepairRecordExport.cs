@@ -98,7 +98,7 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select BGAPN,bgatype,bga_brief,BGA_place,newSn from bga_repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and newSn !=''";
+                    cmd.CommandText = "select BGAPN,bgatype,bga_brief,BGA_place,newSn,product from bga_repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and newSn !=''";
                     querySdr = cmd.ExecuteReader();
                     repairRecord.bgaRecords = new List<BgaRecord>();
                     while (querySdr.Read())
@@ -110,6 +110,7 @@ namespace SaledServices.Export
                         sub.bgabrief = querySdr[2].ToString();
                         sub.bga_place = querySdr[3].ToString();
                         sub.newsn = querySdr[4].ToString();
+                        sub.product_type = querySdr[5].ToString();
 
                         repairRecord.bgaRecords.Add(sub);
                     }
@@ -144,6 +145,41 @@ namespace SaledServices.Export
                             break;
                         }
                         querySdr.Close();
+
+                        if (bgarecord.product_type.ToUpper() == "SERVER")//将来需要改进
+                        {
+                            cmd.CommandText = "select material_vendor,product_date,pici from server_material_more_information where mpn ='" + bgarecord.bgampn + "'";
+                            querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                bgarecord.material_vendor = querySdr[0].ToString();
+                                bgarecord.product_date = querySdr[1].ToString();
+                                bgarecord.pici = querySdr[2].ToString();
+                                break;
+                            }
+                            querySdr.Close();
+                        }
+                    }
+                }
+
+
+                foreach (RepairRecordStruct repairRecord in receiveOrderList)
+                {
+                    foreach (SmtRecort smtrecord in repairRecord.smtRecords)
+                    {
+                        //if (smtrecord.product_type.ToUpper() == "SERVER")//将来需要改进
+                        {
+                            cmd.CommandText = "select material_vendor,product_date,pici from server_material_more_information where mpn ='" + smtrecord.smtMpn + "'";
+                            querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                smtrecord.material_vendor = querySdr[0].ToString();
+                                smtrecord.product_date = querySdr[1].ToString();
+                                smtrecord.pici = querySdr[2].ToString();
+                                break;
+                            }
+                            querySdr.Close();
+                        }
                     }
                 }
 
@@ -197,6 +233,10 @@ namespace SaledServices.Export
                 titleList.Add("BGA_mbfa1" + i);
                 titleList.Add("BGAShortCut" + i);
                 titleList.Add("BGA SN" + i);
+
+                titleList.Add("原材料厂商" + i);
+                titleList.Add("材料生产日期" + i);
+                titleList.Add("生产批次" + i);
             }
 
             for (int i = 1; i <= smtLength; i++)
@@ -204,6 +244,10 @@ namespace SaledServices.Export
                 titleList.Add("SMT MPN" + i);
                 titleList.Add("SMT位置" + i);
                 titleList.Add("SMT数量" + i);
+
+                titleList.Add("原材料厂商" + i);
+                titleList.Add("材料生产日期" + i);
+                titleList.Add("生产批次" + i);
             }
 
 
@@ -255,6 +299,10 @@ namespace SaledServices.Export
                         ct1.Add(repaircheck.bgaRecords[i].bgambfa1);
                         ct1.Add(repaircheck.bgaRecords[i].bgashort_cut);
                         ct1.Add(repaircheck.bgaRecords[i].newsn);
+
+                        ct1.Add(repaircheck.bgaRecords[i].material_vendor);
+                        ct1.Add(repaircheck.bgaRecords[i].product_date);
+                        ct1.Add(repaircheck.bgaRecords[i].pici);
                     }
                     else
                     {
@@ -262,6 +310,10 @@ namespace SaledServices.Export
                         ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
+                        ct1.Add("");
+                        ct1.Add("");
+                        ct1.Add("");
+
                         ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
@@ -275,9 +327,17 @@ namespace SaledServices.Export
                         ct1.Add(repaircheck.smtRecords[i].smtMpn);
                         ct1.Add(repaircheck.smtRecords[i].smtplace);
                         ct1.Add(repaircheck.smtRecords[i].smtNum);
+
+                        ct1.Add(repaircheck.smtRecords[i].material_vendor);
+                        ct1.Add(repaircheck.smtRecords[i].product_date);
+                        ct1.Add(repaircheck.smtRecords[i].pici);
                     }
                     else
                     {
+                        ct1.Add("");
+                        ct1.Add("");
+                        ct1.Add("");
+
                         ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
@@ -337,6 +397,11 @@ namespace SaledServices.Export
        public string bgashort_cut;
        public string bga_place;
        public string newsn;
+
+       public string product_type;//材料类别，判断是否为server
+       public string material_vendor;// NVARCHAR(128),/*原材料厂商*/
+       public string product_date;// date,/*生产日期*/
+       public string pici;// NVARCHAR(128),/*生产批次*/
    }
 
    public class SmtRecort
@@ -344,5 +409,10 @@ namespace SaledServices.Export
        public string smtMpn;
        public string smtplace;
        public string smtNum;
+
+       public string product_type;//材料类别，判断是否为server
+       public string material_vendor;// NVARCHAR(128),/*原材料厂商*/
+       public string product_date;// date,/*生产日期*/
+       public string pici;// NVARCHAR(128),/*生产批次*/
    }
 }

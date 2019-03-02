@@ -80,6 +80,12 @@
             this.bgaSnTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.orderNumberTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.materialVendorTextBox = new System.Windows.Forms.TextBox();
+            this.piciTextBox = new System.Windows.Forms.TextBox();
+            this.materialMakeDate = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
@@ -387,6 +393,12 @@
             this.tableLayoutPanel3.Controls.Add(this.bgaSnTextBox, 5, 4);
             this.tableLayoutPanel3.Controls.Add(this.label5, 2, 3);
             this.tableLayoutPanel3.Controls.Add(this.orderNumberTextBox, 3, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 2, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label23, 4, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label24, 6, 5);
+            this.tableLayoutPanel3.Controls.Add(this.materialVendorTextBox, 3, 5);
+            this.tableLayoutPanel3.Controls.Add(this.piciTextBox, 5, 5);
+            this.tableLayoutPanel3.Controls.Add(this.materialMakeDate, 7, 5);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -691,6 +703,60 @@
             this.orderNumberTextBox.Size = new System.Drawing.Size(158, 26);
             this.orderNumberTextBox.TabIndex = 5;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(345, 214);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(88, 16);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "原材料厂商";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(683, 214);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(72, 16);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "生产批次";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(1021, 214);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(72, 16);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "生产日期";
+            // 
+            // materialVendorTextBox
+            // 
+            this.materialVendorTextBox.Location = new System.Drawing.Point(514, 218);
+            this.materialVendorTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.materialVendorTextBox.Name = "materialVendorTextBox";
+            this.materialVendorTextBox.Size = new System.Drawing.Size(158, 26);
+            this.materialVendorTextBox.TabIndex = 28;
+            // 
+            // piciTextBox
+            // 
+            this.piciTextBox.Location = new System.Drawing.Point(852, 218);
+            this.piciTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.piciTextBox.Name = "piciTextBox";
+            this.piciTextBox.Size = new System.Drawing.Size(158, 26);
+            this.piciTextBox.TabIndex = 29;
+            // 
+            // materialMakeDate
+            // 
+            this.materialMakeDate.Location = new System.Drawing.Point(1189, 217);
+            this.materialMakeDate.Name = "materialMakeDate";
+            this.materialMakeDate.Size = new System.Drawing.Size(160, 26);
+            this.materialMakeDate.TabIndex = 30;
+            this.materialMakeDate.Value = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
@@ -843,5 +909,11 @@
         private System.Windows.Forms.TextBox bgaSnTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox orderNumberTextBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox materialVendorTextBox;
+        private System.Windows.Forms.TextBox piciTextBox;
+        private System.Windows.Forms.DateTimePicker materialMakeDate;
     }
 }

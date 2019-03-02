@@ -101,6 +101,18 @@ namespace SaledServices
                 return;
             }
 
+            string material_type_const = "SERVER";
+            if (this.productTextBox.Text.Trim().ToUpper().Equals(material_type_const))
+            {
+                if (this.materialVendorTextBox.Text.Trim() == ""
+                    || this.piciTextBox.Text.Trim() == ""
+                    || (this.materialMakeDate.Value.Date.ToString("yyyy-MM-dd") == "1970-01-01"))
+                {
+                    MessageBox.Show("原材料厂商，生产日期，生产批次不能为空！");
+                    return;
+                }
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -200,6 +212,22 @@ namespace SaledServices
 
                     //清除历史缓存，保证下次选择是新的
                     chooseStock.house = "";
+
+                    //添加到server材料的详细信息表格
+                    if (this.productTextBox.Text.Trim().ToUpper().Equals(material_type_const))
+                    {
+                        cmd.CommandText = "INSERT INTO server_material_more_information VALUES('" +
+                           this.buy_order_serial_noComboBox.Text.Trim() + "','" +
+                           this.material_typeTextBox.Text.Trim() + "','" +
+                           this.mpnTextBox.Text.Trim() + "','" +
+                           this.materialVendorTextBox.Text.Trim() + "','" +
+                           this.materialMakeDate.Value.Date.ToString("yyyy-MM-dd") + "','" +
+                           this.piciTextBox.Text.Trim() + "','" +
+                           this.inputerTextBox.Text.Trim() + "','" +
+                           DateTime.Now.ToString("yyyy/MM/dd") + "')";
+
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 else
                 {
