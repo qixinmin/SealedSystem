@@ -429,7 +429,7 @@ namespace SaledServices
                         if (Int32.Parse(hasnumber) >= 2)
                         {
                             isComeMoreThanThree = true;//并在插入数据的时候插入记录
-                            MessageBox.Show("此主板已经来第三次，主板锁定报废！");
+                            MessageBox.Show("提示：此主板已经来第三次，主板锁定报废！");
                         }
                         else
                         {
@@ -450,7 +450,7 @@ namespace SaledServices
                     if (querySdr.HasRows)
                     {
                         isNeedAnalysis = true;//并在插入数据的时候插入记录
-                        MessageBox.Show("此主板需要分析，已经锁定！");
+                        MessageBox.Show("提示：此主板需要分析，已经锁定！");
                     }
                     else
                     {
@@ -688,32 +688,54 @@ namespace SaledServices
                         "')";
                     cmd.ExecuteNonQuery();
 
-                    //插入来过三次的维修报废锁定记录
-                    if (isComeMoreThanThree)
+                    //事先判断是否已经被锁
+                    if (isComeMoreThanThree || isNeedAnalysis)
                     {
-                        cmd.CommandText = "INSERT INTO return_modify_more_than_three VALUES('" +
-                           this.track_serial_noTextBox.Text.Trim() + "','" +
-                           this.custom_orderComboBox.Text.Trim() + "','" +
-                           this.custom_serial_noTextBox.Text.Trim() + "','" +
-                           "true" + "','" +
-                           DateTime.Now.ToString("yyyy/MM/dd")+
-                           "','')";
-                        cmd.ExecuteNonQuery();
-                        isComeMoreThanThree = false;
-                    }
+                        cmd.CommandText = "select isLock from need_to_lock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        string islock = "";
+                        while (querySdr.Read())
+                        {
+                            islock = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
 
-                    //对需要分析的8s的板子需要锁定
-                    if (isNeedAnalysis)
-                    {
-                        cmd.CommandText = "INSERT INTO need_to_analysis_8s VALUES('" +
-                           this.track_serial_noTextBox.Text.Trim() + "','" +
-                           this.custom_orderComboBox.Text.Trim() + "','" +
-                           this.custom_serial_noTextBox.Text.Trim() + "','" +
-                           "true" + "','" +
-                           DateTime.Now.ToString("yyyy/MM/dd") +
-                           "','')";
-                        cmd.ExecuteNonQuery();
-                        isNeedAnalysis = false;
+                        if (islock != "")
+                        {
+                            MessageBox.Show("板子已经在锁定表中，请检查");
+                        }
+                        else
+                        {
+                            //插入来过三次的维修报废锁定记录
+                            if (isComeMoreThanThree)
+                            {
+                                cmd.CommandText = "INSERT INTO need_to_lock VALUES('" +
+                                    "modify_more_than_three" + "','" +
+                                this.track_serial_noTextBox.Text.Trim() + "','" +
+                                this.custom_orderComboBox.Text.Trim() + "','" +
+                                this.custom_serial_noTextBox.Text.Trim() + "','" +
+                                "true" + "','" +
+                                DateTime.Now.ToString("yyyy/MM/dd") +
+                                "','')";
+                                cmd.ExecuteNonQuery();
+                                isComeMoreThanThree = false;
+                            }
+
+                            //对需要分析的8s的板子需要锁定
+                            if (isNeedAnalysis)
+                            {
+                                cmd.CommandText = "INSERT INTO need_to_lock VALUES('" +
+                                    "analysis_8s" + "','" +
+                                this.track_serial_noTextBox.Text.Trim() + "','" +
+                                this.custom_orderComboBox.Text.Trim() + "','" +
+                                this.custom_serial_noTextBox.Text.Trim() + "','" +
+                                "true" + "','" +
+                                DateTime.Now.ToString("yyyy/MM/dd") +
+                                "','')";
+                                cmd.ExecuteNonQuery();
+                                isNeedAnalysis = false;
+                            }
+                        }
                     }
 
                     //除正常插入数据外，还需要把收还货表格的数量修改 TODO...

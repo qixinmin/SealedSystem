@@ -87,7 +87,7 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select _8sCode from need_to_analysis_8s where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and isLock='true'";
+                    cmd.CommandText = "select _8sCode from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and isLock='true'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
                     {
@@ -98,19 +98,6 @@ namespace SaledServices
                         return;
                     }
                     querySdr.Close();
-
-                    cmd.CommandText = "select _8sCode from return_modify_more_than_three where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and isLock='true'";
-                    querySdr = cmd.ExecuteReader();
-                    if (querySdr.HasRows)
-                    {
-                        MessageBox.Show("此序列号返回三次时已经锁定，不能走下面的流程！");
-                        querySdr.Close();
-                        mConn.Close();
-                        this.add.Enabled = false;
-                        return;
-                    }
-                    querySdr.Close();
-
 
                     cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();

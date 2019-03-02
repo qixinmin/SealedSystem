@@ -70,9 +70,12 @@ inputer NVARCHAR(128),
 input_date date, /*输入日期*/
 )
 
-/*增加对需要分析的8S进行锁定，系统提示此主板需要分析*/
-CREATE TABLE need_to_analysis_8s(
+/*1 增加对需要分析的8S进行锁定，系统提示此主板需要分析*/
+/*2 增加对三次退回的8S进行锁定，系统提示此主板报废并记录*/
+/*3 二次NTF在包装站锁定,只要之前的记录不论顺序，只要有ntf2次就锁住*/
+CREATE TABLE need_to_lock(
 Id INT PRIMARY KEY IDENTITY, 
+locktype NVARCHAR(128),/*analysis_8s,modify_more_than_three, ntf_twice*/
 track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
 orderno NVARCHAR(128) NOT NULL, /*订单编号*/
 _8sCode NVARCHAR(128), /*8s*/
@@ -80,19 +83,17 @@ isLock NVARCHAR(128), /*默认false*/
 input_date date, /*输入日期*/
 unlcok_date date, /*解锁日期，为true时此日期不为空*/
 )
-
 
 /*增加对三次退回的8S进行锁定，系统提示此主板报废并记录*/
-CREATE TABLE return_modify_more_than_three(
-Id INT PRIMARY KEY IDENTITY, 
-track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
-orderno NVARCHAR(128) NOT NULL, /*订单编号*/
-_8sCode NVARCHAR(128), /*8s*/
-isLock NVARCHAR(128), /*默认false*/
-input_date date, /*输入日期*/
-unlcok_date date, /*解锁日期，为true时此日期不为空*/
-)
-
+--CREATE TABLE return_modify_more_than_three(
+--Id INT PRIMARY KEY IDENTITY, 
+--track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+--orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+--_8sCode NVARCHAR(128), /*8s*/
+--isLock NVARCHAR(128), /*默认false*/
+--input_date date, /*输入日期*/
+--unlcok_date date, /*解锁日期，为true时此日期不为空*/
+--)
 
 /*不良品MB/SMT/BGA出库记录*/
 /*把fru的材料也放進去了，但是默認現在不報關出去，因爲要交稅，在上報的時候過濾一下*/

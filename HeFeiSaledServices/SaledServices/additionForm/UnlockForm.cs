@@ -12,7 +12,7 @@ namespace SaledServices.Test_Outlook
 {
     public partial class UnlockForm : Form
     {
-        private String tableName = "return_modify_more_than_three";
+        private String tableName = "need_to_lock";
         public UnlockForm()
         {
             InitializeComponent();
@@ -63,7 +63,7 @@ namespace SaledServices.Test_Outlook
 
                     this.confirmbutton.Enabled = true;
 
-                    cmd.CommandText = "select isLock from return_modify_more_than_three where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select isLock from need_to_lock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
                     string islock = "";
                     while (querySdr.Read())
@@ -74,37 +74,12 @@ namespace SaledServices.Test_Outlook
 
                     if (islock == "")//先检查是否 三次返回锁定，然后检查是否需要分析锁定
                     {
-                        cmd.CommandText = "select isLock from need_to_analysis_8s where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-                        querySdr = cmd.ExecuteReader();
-                        string isAnalysisLock = "";
-                        while (querySdr.Read())
-                        {
-                            isAnalysisLock = querySdr[0].ToString();
-                        }
-                        querySdr.Close();
-
-                        if (isAnalysisLock == "")
-                        {
-                            MessageBox.Show("板子不存在，不需要解锁");
-                            mConn.Close();
-                            this.tracker_bar_textBox.Focus();
-                            this.tracker_bar_textBox.SelectAll();
-                            this.confirmbutton.Enabled = false;
-                            return;
-                        }
-                        else if (isAnalysisLock == "false")
-                        {
-                            MessageBox.Show("板子已经解锁，不需要解锁啦");
-                            mConn.Close();
-                            this.tracker_bar_textBox.Focus();
-                            this.tracker_bar_textBox.SelectAll();
-                            this.confirmbutton.Enabled = false;
-                            return;
-                        }
-                        else if (isAnalysisLock == "true")
-                        {
-                            this.confirmbutton.Enabled = true;
-                        }
+                        MessageBox.Show("板子不存在，不需要解锁");
+                        mConn.Close();
+                        this.tracker_bar_textBox.Focus();
+                        this.tracker_bar_textBox.SelectAll();
+                        this.confirmbutton.Enabled = false;
+                        return;
                     }
                     else if (islock == "false")
                     {
@@ -150,11 +125,7 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "update return_modify_more_than_three set isLock = 'false', unlcok_date = GETDATE() "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
-                    cmd.ExecuteNonQuery();
-
-                    cmd.CommandText = "update need_to_analysis_8s set isLock = 'false', unlcok_date = GETDATE() "
+                    cmd.CommandText = "update need_to_lock set isLock = 'false', unlcok_date = GETDATE() "
                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
