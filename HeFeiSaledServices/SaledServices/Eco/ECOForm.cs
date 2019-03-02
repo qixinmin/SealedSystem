@@ -339,14 +339,15 @@ namespace SaledServices
 
         private void linkLabel1_Click(object sender, EventArgs e)
         {
+            string path = @"D:\ECO操作书\X260_Rework Instruction.doc"; //测试一个word文档
             try
             {
-                string path = @"D:\ECO操作书\系统待改.docx"; //测试一个word文档
                 System.Diagnostics.Process.Start(path); //打开此文件。
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("请检查路径" + path);
+               // MessageBox.Show(ex.ToString());
             }
         }
     }
