@@ -142,6 +142,7 @@ namespace SaledServices
 
         private void modify_Click(object sender, EventArgs e)
         {
+           
             //DataTable dt = ds.Tables[tableName];
             //sda.FillSchema(dt, SchemaType.Mapped);
             //DataRow dr = dt.Rows.Find(this.newVersionTextBox.Text.Trim());          
@@ -333,6 +334,19 @@ namespace SaledServices
                 {
                     MessageBox.Show(ex.ToString());
                 }  
+            }
+        }
+
+        private void linkLabel1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string path = @"D:\ECO操作书\系统待改.docx"; //测试一个word文档
+                System.Diagnostics.Process.Start(path); //打开此文件。
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
     }
