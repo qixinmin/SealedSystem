@@ -276,6 +276,23 @@ namespace SaledServices
                     }
                     else
                     {
+                        cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_no.Text.Trim() + "' and  custom_res_type like '%不可修%'";
+                        querySdr = cmd.ExecuteReader();
+                        string cidExist = "";
+                        while (querySdr.Read())
+                        {
+                            cidExist = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        if (cidExist != "")
+                        {
+                            MessageBox.Show("此序列号已经在CID不可修中，不能走下面的流程！");
+                            mConn.Close();
+                            this.add.Enabled = false;
+                            return;
+                        }
+
                         MessageBox.Show("此序列号的站别已经在:" + stationInfo + "，不能走下面的流程！");
                         mConn.Close();
                         this.add.Enabled = false;
@@ -299,22 +316,6 @@ namespace SaledServices
                     }
                     querySdr.Close();
                     //end
-
-                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_no.Text.Trim() + "'";
-                    querySdr = cmd.ExecuteReader();
-                    string cidExist = "";
-                    while (querySdr.Read())
-                    {
-                        cidExist = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-
-                    if (cidExist != "")
-                    {
-                        MessageBox.Show("此序列号已经在CID中，不能走下面的流程！");
-                        mConn.Close();
-                        return;
-                    }
 
                     cmd.CommandText = "select custommaterialNo, mpn from DeliveredTable where track_serial_no='" + this.track_serial_no.Text.Trim() + "'";
 
