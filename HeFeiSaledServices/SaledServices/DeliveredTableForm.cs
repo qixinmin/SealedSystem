@@ -691,7 +691,7 @@ namespace SaledServices
                     //事先判断是否已经被锁
                     if (isComeMoreThanThree || isNeedAnalysis)
                     {
-                        cmd.CommandText = "select isLock from need_to_lock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.CommandText = "select isLock from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                         querySdr = cmd.ExecuteReader();
                         string islock = "";
                         while (querySdr.Read())
