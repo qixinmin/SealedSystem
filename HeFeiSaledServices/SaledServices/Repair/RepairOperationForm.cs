@@ -1431,5 +1431,91 @@ namespace SaledServices
                 mPrepareUseDetail5.Id = null;
             }
         }
+
+        private void track_serial_noTextBox_TextChanged(object sender, EventArgs e)
+        {
+             //this.track_serial_noTextBox.Text = "";
+                this.vendorTextBox.Text = "";
+                this.producttextBox.Text = "";
+                this.sourcetextBox.Text = "";
+                this.ordernotextBox.Text = "";
+                this.receivedatetextBox.Text = "";
+                this.mb_describetextBox.Text = "";
+                this.mb_brieftextBox.Text = "";
+                this.custom_serial_notextBox.Text = "";
+                this.vendor_serail_notextBox.Text = "";
+                this.mpntextBox.Text = "";
+                this.mb_make_dateTextBox.Text = "";
+                this.customFaulttextBox.Text = "";
+                this.fault_describetextBox.Text = "";
+                this.mbfa1richTextBox.Text = "";
+                uncheckShortCut();
+                this.software_updatecomboBox.Text = "";
+
+                not_good_placetextBox1.Text = "";
+                material_mpnComboBox1.Items.Clear();
+                material_71pntextBox1.Text = "";
+                useNum1.Text = "";
+                not_good_placetextBox2.Text = "";
+                material_mpnComboBox2.Items.Clear();
+                material_71pntextBox2.Text = "";
+                useNum2.Text = "";
+                not_good_placetextBox3.Text = "";
+                material_mpnComboBox3.Items.Clear();
+                material_71pntextBox3.Text = "";
+                useNum3.Text = "";
+                not_good_placetextBox4.Text = "";
+                material_mpnComboBox4.Items.Clear();
+                material_71pntextBox4.Text = "";
+                useNum4.Text = "";
+                not_good_placetextBox5.Text = "";
+                material_mpnComboBox5.Items.Clear();
+                material_71pntextBox5.Text = "";
+                useNum5.Text = "";
+                this.material_typetextBox.Text = "";
+                this.fault_typecomboBox.Text = "";
+                this.actioncomboBox.Text = "";
+               
+                this.ECOtextBox.Text = "";
+                this.repair_resultcomboBox.Text = "";
+                this.repair_datetextBox.Text = "";
+
+               // if (isNTF)//非NTF复位
+                {
+                    this.software_updatecomboBox.Enabled = true;
+                    tableLayoutPanel5.Enabled = true;
+                    this.fault_typecomboBox.Enabled = true;
+                    this.actioncomboBox.Enabled = true;
+                    this.mbfa1richTextBox.Enabled = true;
+                    this.fault_describetextBox.Enabled = true;
+
+                    this.checkBox1.Enabled = true;
+                    this.checkBox2.Enabled = true;
+                    this.checkBox3.Enabled = true;
+                    this.checkBox4.Enabled = true;
+                    this.checkBox5.Enabled = true;
+                    this.checkBox6.Enabled = true;
+                    this.checkBox7.Enabled = true;
+                    this.checkBox8.Enabled = true;
+                    this.checkBox9.Enabled = true;
+                    this.checkBox10.Enabled = true;
+                    this.checkBox11.Enabled = true;
+                    this.checkBox12.Enabled = true;
+                    this.checkBox13.Enabled = true;
+                    this.checkBox14.Enabled = true;
+                    this.checkBox15.Enabled = true;
+                    this.checkBox16.Enabled = true;
+                    this.checkBox17.Enabled = true;
+                    this.checkBox18.Enabled = true;
+                    this.checkBox19.Enabled = true;
+                    this.checkBox20.Enabled = true;
+                    this.checkBox21.Enabled = true;
+                    this.textBox1.Enabled = true;
+                }
+
+                this.track_serial_noTextBox.Focus();
+                query_Click(null, null);
+            }
+        
     }
 }

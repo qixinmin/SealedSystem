@@ -456,6 +456,7 @@ namespace SaledServices
                     {
                         isNeedAnalysis = false;
                     }
+                    querySdr.Close();
                     //end
 
                     cmd.CommandText = "select mpn from flexid_8s_mpn_table where _8sCode = '" + this.custom_serial_noTextBox.Text.Trim() + "' and orderno='" + this.custom_orderComboBox.Text.Trim() + "'";
@@ -493,9 +494,14 @@ namespace SaledServices
                     querySdr.Close();
                     if (latestDate != "")
                     {
-                       if( LCDDisplay.diffDays(this.order_receive_dateTextBox.Text.Trim(),latestDate) <=90)
+                       int diffDays = LCDDisplay.diffDays(latestDate, this.order_receive_dateTextBox.Text.Trim());
+                       if(diffDays  <=90)
                        {
                            this.source_briefComboBox.Text = "DOA";
+                       }
+                       else if (diffDays <= 90)
+                       {
+                           this.source_briefComboBox.Text = "RR";
                        }
                     }
                     
