@@ -81,17 +81,43 @@ namespace SaledServices.Export
                     querySdr.Close();
                 }
 
+                //材料消耗信息需要增加一列数据---某段时间内出库数据
                 foreach (MaterialConsumeStruct stockcheck in receiveOrderList)
                 {
-                    cmd.CommandText = "select house, place,number  from store_house where mpn='" + stockcheck.mpn + "'";
+                    cmd.CommandText = "select mpn, count(*) from fru_smt_out_stock where input_date between '" + startTime + "' and '" + endTime + "' and mpn='"+stockcheck.mpn+"' group by mpn";
                     querySdr = cmd.ExecuteReader();
+                    string number = "";
                     while (querySdr.Read())
                     {
-                        stockcheck.stock_place = querySdr[0].ToString() + "," + querySdr[1].ToString();
-                        stockcheck.left_number = querySdr[2].ToString();
+                        number = querySdr[1].ToString();
                     }
                     querySdr.Close();
+                    if (number == "")
+                    {
+                        cmd.CommandText = "select mpn, count(*) from bga_out_stock where input_date between '" + startTime + "' and '" + endTime + "' and mpn='" + stockcheck.mpn + "' group by mpn";
+                        querySdr = cmd.ExecuteReader();
+                        number = "";
+                        while (querySdr.Read())
+                        {
+                            number = querySdr[1].ToString();
+                        }
+                        querySdr.Close();
+                    }
+
+                    stockcheck.stock_out_number = number;
                 }
+
+                //foreach (MaterialConsumeStruct stockcheck in receiveOrderList)
+                //{
+                //    cmd.CommandText = "select house, place,number  from store_house where mpn='" + stockcheck.mpn + "'";
+                //    querySdr = cmd.ExecuteReader();
+                //    while (querySdr.Read())
+                //    {
+                //        stockcheck.stock_place = querySdr[0].ToString() + "," + querySdr[1].ToString();
+                //        stockcheck.left_number = querySdr[2].ToString();
+                //    }
+                //    querySdr.Close();
+                //}
 
                 foreach (MaterialConsumeStruct stockcheck in receiveOrderList)
                 {
@@ -123,6 +149,7 @@ namespace SaledServices.Export
             titleList.Add("MPN");
             titleList.Add("描述");
             titleList.Add("存储位置");
+            titleList.Add("此段时间出库数量");
             titleList.Add("消耗数量");
             titleList.Add("当前库存数量");
 
@@ -133,6 +160,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.mpn);
                 ct1.Add(stockcheck.brief);
                 ct1.Add(stockcheck.stock_place);
+                ct1.Add(stockcheck.stock_out_number);
                 ct1.Add(stockcheck.out_number);
                 ct1.Add(stockcheck.left_number);
 
@@ -148,7 +176,8 @@ namespace SaledServices.Export
     {      
         public string mpn;
         public string brief;
-        public string stock_place; 
+        public string stock_place;
+        public string stock_out_number;
         public string out_number;        
         public string left_number;
     }

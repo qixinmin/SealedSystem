@@ -788,9 +788,11 @@ namespace SaledServices
                         if (station != "Package")
                         {
                             MessageBox.Show("板子没有经过Package站别");
+                            this.returnStore.Enabled = false;
                             mConn.Close();                           
                             return;
                         }
+                        this.returnStore.Enabled = true;
 
                         string currentUsedTable = "Packagetable";
                         cmd.CommandText = "select track_serial_no from "+currentUsedTable+" where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";

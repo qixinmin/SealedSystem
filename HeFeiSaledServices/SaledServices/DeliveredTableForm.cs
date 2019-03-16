@@ -408,6 +408,7 @@ namespace SaledServices
                         MessageBox.Show("客户序号：" + this.custom_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
                         this.custom_serial_noTextBox.Focus();
                         this.custom_serial_noTextBox.SelectAll();
+                        mConn.Close();
                         return;
                     }
 
@@ -446,9 +447,14 @@ namespace SaledServices
                     querySdr.Close();
                     if (latestDate != "")
                     {
-                       if( LCDDisplay.diffDays(this.order_receive_dateTextBox.Text.Trim(),latestDate) <=90)
+                       int diffDays = LCDDisplay.diffDays(latestDate, this.order_receive_dateTextBox.Text.Trim());
+                       if(diffDays  <=90)
                        {
                            this.source_briefComboBox.Text = "DOA";
+                       }
+                       else if (diffDays <= 90)
+                       {
+                           this.source_briefComboBox.Text = "RR";
                        }
                     }
 
