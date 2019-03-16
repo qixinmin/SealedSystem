@@ -80,7 +80,17 @@ namespace SaledServices
             {
                 //第二次数据库备份
                 new DatabaseForm().button1_Click(null, null);
-            } 
+            }
+
+            if (e.SignalTime.DayOfWeek == DayOfWeek.Sunday)
+            {
+                //每个周末备份一下库存
+                OpeningStockForm export = new OpeningStockForm();
+                export.exportxmlbutton_Click(null, null);
+                export.Close();
+            }
+            
+
         }
 
         public void clearAllMenu()

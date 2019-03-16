@@ -21,19 +21,19 @@ namespace SaledServices.CustomsExport
             InitializeComponent();
         }
 
-        private void exportxmlbutton_Click(object sender, EventArgs e)
+        public void exportxmlbutton_Click(object sender, EventArgs e)
         {
-            DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd"));
-            DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy/MM/dd"));   
+            //DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd"));
+            //DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy/MM/dd"));   
 
-            if (DateTime.Compare(time1,time2)>0) //判断日期大小
-            {
-                MessageBox.Show("开始日期大于结束");
-                return;
-            }
+            //if (DateTime.Compare(time1,time2)>0) //判断日期大小
+            //{
+            //    MessageBox.Show("开始日期大于结束");
+            //    return;
+            //}
 
-            string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd");
-            string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd");
+            //string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd");
+            //string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd");
 
             OpeningStockClass openingstock = new OpeningStockClass();
             List<StoreInit> storeInitList = new List<StoreInit>();
@@ -528,7 +528,7 @@ namespace SaledServices.CustomsExport
                 contentList.Add(ctest1);
             }
 
-            Untils.createExcel("D:\\期初盘点表格.xlsx", titleList, contentList);
+            Untils.createExcel("D:\\期初盘点表格" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx", titleList, contentList);
         }
 
        
