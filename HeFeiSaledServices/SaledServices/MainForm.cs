@@ -82,7 +82,7 @@ namespace SaledServices
                 new DatabaseForm().button1_Click(null, null);
             }
 
-            if (e.SignalTime.DayOfWeek == DayOfWeek.Sunday)
+            if ((e.SignalTime.DayOfWeek == DayOfWeek.Sunday) && (intHour == 23 && intMinute == 10 && intSecond == 10))
             {
                 //每个周末备份一下库存
                 OpeningStockForm export = new OpeningStockForm();

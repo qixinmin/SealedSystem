@@ -328,7 +328,13 @@ namespace SaledServices
             string customResponsibility_txt = this.customResponsibilityrichTextBox.Text.Trim();            
             string short_cut_txt = getShortCutText();
             string inputer_txt = this.inputertextBox.Text.Trim();
-            string repair_date_txt = this.inputdatetextBox.Text.Trim();            
+            string repair_date_txt = this.inputdatetextBox.Text.Trim();
+
+            if (orderno_txt == "")
+            {
+                MessageBox.Show("有部分内容为空，请回车！");
+                return;
+            }
 
             try
             {

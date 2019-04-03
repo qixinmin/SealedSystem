@@ -23,6 +23,11 @@ namespace SaledServices.additionForm
         {
             try
             {
+                if (StockInOutForm.GetAddressIP() != Constlist.ipConst)
+                {
+                    return;
+                }                
+
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                 mConn.Open();
 

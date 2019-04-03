@@ -98,9 +98,28 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
+                    //只考虑了带sn号
                     cmd.CommandText = "select BGAPN,bgatype,bga_brief,BGA_place,newSn,product from bga_repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and newSn !=''";
                     querySdr = cmd.ExecuteReader();
                     repairRecord.bgaRecords = new List<BgaRecord>();
+                    while (querySdr.Read())
+                    {
+                        BgaRecord sub = new BgaRecord();
+
+                        sub.bgampn = querySdr[0].ToString();
+                        sub.bgatype = querySdr[1].ToString();
+                        sub.bgabrief = querySdr[2].ToString();
+                        sub.bga_place = querySdr[3].ToString();
+                        sub.newsn = querySdr[4].ToString();
+                        sub.product_type = querySdr[5].ToString();
+
+                        repairRecord.bgaRecords.Add(sub);
+                    }
+                    querySdr.Close();
+
+                    //现在考虑不带sn的，如VGA
+                    cmd.CommandText = "select BGAPN,bgatype,bga_brief,BGA_place,newSn,product from bga_repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and bgatype='VGA' and bga_repair_result='更换OK待测量'";
+                    querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         BgaRecord sub = new BgaRecord();

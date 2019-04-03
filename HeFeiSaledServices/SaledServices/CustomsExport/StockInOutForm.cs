@@ -181,8 +181,25 @@ namespace SaledServices.CustomsExport
                     }
                 }
                 querySdr.Close();
-                //查询物料对照表
 
+                //查询有没有空值
+                cmd.CommandText = "select distinct material_mpn,material_vendor_pn from LCFC71BOM_table where material_vendor_pn is null";
+                querySdr = cmd.ExecuteReader();
+                if(querySdr.HasRows)
+                {
+                    showMessage("用71Bom生成XML文件有误，有空值，请检查！", isAuto, true);
+                    querySdr.Close();
+                    if (isAuto == false)
+                    {
+                        MessageBox.Show("用71Bom生成XML文件有误，有空值，请检查");
+                    }
+                    return;
+                    //
+                }
+                querySdr.Close();
+
+
+                //查询物料对照表
                 cmd.CommandText = "select distinct custommaterialNo,vendormaterialNo from MBMaterialCompare";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
