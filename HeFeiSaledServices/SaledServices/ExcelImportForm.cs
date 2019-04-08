@@ -528,6 +528,58 @@ namespace SaledServices
             DataSet ds = new DataSet();
             try
             {
+                try
+                {
+                    //这是check数据为不为空
+                    app = new Microsoft.Office.Interop.Excel.Application();
+                    app.DisplayAlerts = false;
+                    wbs = app.Workbooks;
+                    wb = wbs.Add(filePath.Text);
+
+                    wb = wbs.Open(filePath.Text, 0, false, 5, string.Empty, string.Empty,
+                        false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows,
+                        string.Empty, true, false, 0, true, 1, 0);
+
+                    Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
+                    int rowLength = ws.UsedRange.Rows.Count;
+                    int columnLength = ws.UsedRange.Columns.Count;
+
+                    for (int i = 2; i <= rowLength; i++)
+                    {                        
+                        for (int j = 1; j <= columnLength; j++)
+                        {                           
+                            //有可能有空值
+                            string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
+
+                            if (temp == null || temp.Trim() == "")
+                            {
+                                MessageBox.Show("第"+i+"行有空值");
+                                wb.Close();
+                                wbs.Close();
+                                app.Quit();
+                                return;
+                            }                            
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                 //   MessageBox.Show(ex.ToString());
+                    wb.Close();
+                    wbs.Close();
+                    app.Quit();
+                    return;
+                }
+                finally
+                {
+                    wb.Close();
+                    wbs.Close();
+                    app.Quit();
+                }
+
+
+                //下面是插入数据
+
                 //获取全部数据
                 string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
                 OleDbConnection conn = new OleDbConnection(strConn);

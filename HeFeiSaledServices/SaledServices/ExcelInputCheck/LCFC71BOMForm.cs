@@ -127,16 +127,24 @@ namespace SaledServices
         {
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
-            DataRow dr = dt.Rows.Find(this.idTextBox.Text.Trim());          
-            dr["material_describe"] = this.priceTextBox.Text.Trim();
-            dr["MPN"] = this.material_vendor_pnTextBox.Text.Trim();
+            DataRow dr = dt.Rows.Find(this.idTextBox.Text.Trim());
+            dr["price"] = this.priceTextBox.Text.Trim();
+            dr["material_vendor_pn"] = this.material_vendor_pnTextBox.Text.Trim();
             dr["material_mpn"] = this.material_mpnTextBox.Text.Trim();
-            dr["material_box_place"] = this.descriptionTextBox.Text.Trim();
+            dr["_description"] = this.descriptionTextBox.Text.Trim();
             dr["mb_brief"] = this.mb_briefTextBox.Text.Trim();
             dr["_date"] = this.datetextBox.Text.Trim();
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
+            query_Click(null, null);
+            this.priceTextBox.Text="";
+            this.material_vendor_pnTextBox.Text="";
+            this.material_mpnTextBox.Text="";
+            this.descriptionTextBox.Text="";
+            this.mb_briefTextBox.Text="";
+            this.datetextBox.Text="";
+            this.idTextBox.Text = "";
         }
 
         private void delete_Click(object sender, EventArgs e)
