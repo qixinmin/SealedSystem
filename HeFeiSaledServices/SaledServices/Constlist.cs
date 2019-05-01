@@ -215,7 +215,7 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select top 1 receivedate from receiveOrder order by receivedate desc ";
+                cmd.CommandText = "select getdate() ";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
@@ -229,9 +229,9 @@ namespace SaledServices
 
                 mConn.Close();
 
-                DateTime timeOld = Convert.ToDateTime(oldTime);
+                DateTime timeOld = Convert.ToDateTime(Convert.ToDateTime(oldTime).ToString("yyyy/MM/dd"));
 
-                if (DateTime.Compare(timeStart, timeOld) < 0) //判断日期大小
+                if (DateTime.Compare(timeStart, timeOld) != 0) //判断日期大小
                 {
                     MessageBox.Show("当前日期不对，请检查");
                     return true;

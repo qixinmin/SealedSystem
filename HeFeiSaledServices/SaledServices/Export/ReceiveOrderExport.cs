@@ -42,7 +42,7 @@ namespace SaledServices.Export
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select custom_order,track_serial_no,custommaterialNo,custom_serial_no,dpk_status,mac,mpn,mb_describe,source_brief,order_receive_date from DeliveredTable where order_receive_date between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "select custom_order,track_serial_no,custommaterialNo,custom_serial_no,dpk_status,mac,mpn,mb_describe,source_brief,order_receive_date,lenovo_custom_service_no,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where order_receive_date between '" + startTime + "' and '" + endTime + "'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -57,6 +57,10 @@ namespace SaledServices.Export
                     temp.mbdescribe = querySdr[7].ToString();
                     temp.source_brief = querySdr[8].ToString();
                     temp.order_receive_date = querySdr[9].ToString();
+
+                    temp.lenovo_custom_service_no = querySdr[10].ToString();
+                    temp.lenovo_maintenance_no = querySdr[11].ToString();
+                    temp.lenovo_repair_no = querySdr[12].ToString();
 
                     receiveOrderList.Add(temp);                  
                 }
@@ -100,6 +104,10 @@ namespace SaledServices.Export
             titleList.Add("来源");
             titleList.Add("收货时间");
 
+            titleList.Add("lenovo_custom_service_no");
+            titleList.Add("lenovo_maintenance_no");
+            titleList.Add("lenovo_repair_no");
+
             foreach (ReceiveOrderStruct stockcheck in StockCheckList)
             {
                 ExportExcelContent ctest1 = new ExportExcelContent();
@@ -115,6 +123,10 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.mbdescribe);
                 ct1.Add(stockcheck.source_brief);
                 ct1.Add(stockcheck.order_receive_date);
+
+                ct1.Add(stockcheck.lenovo_custom_service_no);
+                ct1.Add(stockcheck.lenovo_maintenance_no);
+                ct1.Add(stockcheck.lenovo_repair_no);
 
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
@@ -137,5 +149,9 @@ namespace SaledServices.Export
         public string mbdescribe;
         public string source_brief;
         public string order_receive_date;
+
+        public string lenovo_custom_service_no;
+        public string lenovo_maintenance_no;
+        public string lenovo_repair_no;
     }
 }

@@ -544,6 +544,8 @@ namespace SaledServices
                     int rowLength = ws.UsedRange.Rows.Count;
                     int columnLength = ws.UsedRange.Columns.Count;
 
+                    MessageBox.Show("请检查 总行数 是不是有 " + rowLength + " 行， 请注意空白行");
+
                     for (int i = 2; i <= rowLength; i++)
                     {                        
                         for (int j = 1; j <= columnLength; j++)
@@ -561,10 +563,70 @@ namespace SaledServices
                             }                            
                         }
                     }
+
+
+                    SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                    conn.Open();
+                    try
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            SqlCommand cmd = new SqlCommand();
+                            cmd.Connection = conn;
+                            cmd.CommandType = CommandType.Text;
+                            for (int i = 2; i <= rowLength; i++)
+                            {
+                                string s = "INSERT INTO " + tableName + " VALUES('";
+                                for (int j = 1; j <= columnLength; j++)
+                                {
+                                    try
+                                    {
+                                        //有可能有空值
+                                        string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
+
+                                        if (j == 1)//时间所在的列，从1开始，没有是-1
+                                        {
+                                            DateTime strDate = DateTime.FromOADate(double.Parse(temp));
+                                            s += strDate.ToString("yyyy/MM/dd");
+                                        }
+                                        else
+                                        {
+                                            s += temp;
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        s += " ";
+                                    }
+
+                                    if (j != columnLength)
+                                    {
+                                        s += "','";
+                                    }
+                                    else
+                                    {
+                                        s += "')";
+                                    }
+
+                                    // Console.WriteLine(s);
+                                }
+                                cmd.CommandText = s;
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+
+                    conn.Close();
+
+                    MessageBox.Show("导入完成");
                 }
                 catch (Exception ex)
                 {
-                 //   MessageBox.Show(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                     wb.Close();
                     wbs.Close();
                     app.Quit();
@@ -580,37 +642,37 @@ namespace SaledServices
 
                 //下面是插入数据
 
-                //获取全部数据
-                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
-                OleDbConnection conn = new OleDbConnection(strConn);
-                conn.Open();
-                string strExcel = "";
-                OleDbDataAdapter myCommand = null;
-                strExcel = string.Format("select * from [{0}$]", sheetName);
-                myCommand = new OleDbDataAdapter(strExcel, strConn);
-                myCommand.Fill(ds, sheetName);
+                ////获取全部数据
+                //string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
+                //OleDbConnection conn = new OleDbConnection(strConn);
+                //conn.Open();
+                //string strExcel = "";
+                //OleDbDataAdapter myCommand = null;
+                //strExcel = string.Format("select * from [{0}$]", sheetName);
+                //myCommand = new OleDbDataAdapter(strExcel, strConn);
+                //myCommand.Fill(ds, sheetName);
                
-                //用bcp导入数据
-                using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
-                {
-                   // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
-                    bcp.BatchSize = 1000;//每次传输的行数
-                    bcp.NotifyAfter = 1000;//进度提示的行数
-                    bcp.DestinationTableName = tableName;//目标表
+                ////用bcp导入数据
+                //using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
+                //{
+                //   // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
+                //    bcp.BatchSize = 1000;//每次传输的行数
+                //    bcp.NotifyAfter = 1000;//进度提示的行数
+                //    bcp.DestinationTableName = tableName;//目标表
 
-                    bcp.ColumnMappings.Add("日期", "_date");
-                    bcp.ColumnMappings.Add("MB简称", "mb_brief");
-                    bcp.ColumnMappings.Add("材料厂商PN","material_vendor_pn");
-                    bcp.ColumnMappings.Add("材料MPN", "material_mpn");
-                    bcp.ColumnMappings.Add("Description", "_description");
-                    bcp.ColumnMappings.Add("2017 Q4 final price","price");
+                //    bcp.ColumnMappings.Add("日期", "_date");
+                //    bcp.ColumnMappings.Add("MB简称", "mb_brief");
+                //    bcp.ColumnMappings.Add("材料厂商PN","material_vendor_pn");
+                //    bcp.ColumnMappings.Add("材料MPN", "material_mpn");
+                //    bcp.ColumnMappings.Add("Description", "_description");
+                //    bcp.ColumnMappings.Add("2017 Q4 final price","price");
 
-                    bcp.WriteToServer(ds.Tables[0]);
-                    bcp.Close();
+                //    bcp.WriteToServer(ds.Tables[0]);
+                //    bcp.Close();
 
-                    conn.Close();
-                    MessageBox.Show("导入完成");
-                }
+                //    conn.Close();
+                //    MessageBox.Show("导入完成");
+                //}
             }
             catch (Exception ex)
             {

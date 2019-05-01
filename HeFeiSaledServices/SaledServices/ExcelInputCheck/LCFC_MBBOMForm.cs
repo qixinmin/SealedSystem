@@ -72,6 +72,28 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+            clearTexts();
+        }
+
+        private void clearTexts()
+        {
+            this.datetextBox.Text= "";
+            this.vendorTextBox.Text = "";
+            this.productTextBox.Text = "";
+            this.mb_briefTextBox.Text = "";
+            this.mpnTextBox.Text = "";
+            this.material_mpnTextBox.Text = "";
+            this.material_box_placeTextBox.Text = "";
+            this.material_describeTextBox.Text = "";
+            this.material_numTextBox.Text = "";
+            this.L1TextBox.Text = "";
+            this.L2TextBox.Text = "";
+            this.L8TextBox.Text = "";
+            this.L4TextBox.Text = "";
+            this.L5TextBox.Text = "";
+            this.L6TextBox.Text = "";
+            this.L7TextBox.Text = "";
+            this.L8TextBox.Text = "";
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -133,6 +155,8 @@ namespace SaledServices
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
                 dataGridView1.Columns[i].Name = hTxt[i];
             }
+
+            clearTexts();
         }
 
         private void modify_Click(object sender, EventArgs e)
@@ -161,6 +185,8 @@ namespace SaledServices
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
+
+            clearTexts();
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -189,6 +215,8 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+
+            clearTexts();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -59,6 +59,12 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
+                    if (Untils.isTimeError(DateTime.Now.ToString("yyyy/MM/dd")))
+                    {
+                        mConn.Close();
+                        return;
+                    }
+
                     cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();

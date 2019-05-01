@@ -281,7 +281,6 @@
             this.track_serial_noTextBox.Name = "track_serial_noTextBox";
             this.track_serial_noTextBox.Size = new System.Drawing.Size(203, 26);
             this.track_serial_noTextBox.TabIndex = 1;
-            this.track_serial_noTextBox.TextChanged += new System.EventHandler(this.track_serial_noTextBox_TextChanged);
             this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
             // 
             // label5
