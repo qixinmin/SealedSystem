@@ -521,10 +521,10 @@ namespace SaledServices
             }
             try
             {
-                //事前检查
-                if (this.custommaterialNoTextBox.Text.Trim().Substring(3) != this.inputCustommaterialNoTextBox.Text.Trim())
+                //事前检查，现在要考虑7位与10位的问题，要兼容
+                if (!this.custommaterialNoTextBox.Text.Trim().EndsWith(this.inputCustommaterialNoTextBox.Text.Trim()))
                 {
-                    MessageBox.Show("输入的客户料号与选择的客户料号没有关联，请检查");
+                    MessageBox.Show("输入的客户料号与选择的客户料号没有关联，请检查，并注意大小写");
                     return;
                 }
 
@@ -1415,15 +1415,15 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                if (this.custommaterialNoTextBox.Text.Trim().Length != 0)
+                if (this.custommaterialNoTextBox.Text.Trim().Length == 0)
                 {
                     MessageBox.Show("请先选择客户料号!");
                     return;
                 }
 
-                if(this.custommaterialNoTextBox.Text.Trim().EndsWith(this.inputCustommaterialNoTextBox.Text.Trim()) == false)
+                if (this.custommaterialNoTextBox.Text.Trim().EndsWith(this.inputCustommaterialNoTextBox.Text.Trim()) == false)
                 {
-                    MessageBox.Show("输入的客户料号与选择的客户料号没有关联，请检查");
+                    MessageBox.Show("输入的客户料号与选择的客户料号没有关联，请检查，并注意大小写");
                     return;
                 }              
 

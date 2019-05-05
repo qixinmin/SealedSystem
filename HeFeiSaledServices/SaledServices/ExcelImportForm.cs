@@ -541,13 +541,14 @@ namespace SaledServices
                         string.Empty, true, false, 0, true, 1, 0);
 
                     Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
-                    int rowLength = ws.UsedRange.Rows.Count;
-                    int columnLength = ws.UsedRange.Columns.Count;
+                    int rowLength = ws.UsedRange.Rows.Count;//可以通过判断是否用空值来来决定到底有多少row与column
+                    int columnLength = ws.UsedRange.Columns.Count;//
 
                     MessageBox.Show("请检查 总行数 是不是有 " + rowLength + " 行， 请注意空白行");
 
+                    int realrow = 0, realcolumn = 0;
                     for (int i = 2; i <= rowLength; i++)
-                    {                        
+                    {   
                         for (int j = 1; j <= columnLength; j++)
                         {                           
                             //有可能有空值
