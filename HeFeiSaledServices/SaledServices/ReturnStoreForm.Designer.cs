@@ -92,6 +92,8 @@
             this.lenovo_repair_noTextBox = new System.Windows.Forms.TextBox();
             this.print = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label25 = new System.Windows.Forms.Label();
+            this.input8sTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToReturn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReturnedDetail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -580,7 +582,6 @@
             this.tableLayoutPanel3.Controls.Add(this.custommaterialNoTextBox, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.label13, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.statusComboBox, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label19, 2, 8);
             this.tableLayoutPanel3.Controls.Add(this.inputUserTextBox, 3, 8);
             this.tableLayoutPanel3.Controls.Add(this.label18, 2, 7);
             this.tableLayoutPanel3.Controls.Add(this.idTextBox, 3, 7);
@@ -613,6 +614,9 @@
             this.tableLayoutPanel3.Controls.Add(this.label11, 0, 7);
             this.tableLayoutPanel3.Controls.Add(this.label24, 0, 6);
             this.tableLayoutPanel3.Controls.Add(this.flexidcomboBox, 1, 6);
+            this.tableLayoutPanel3.Controls.Add(this.label19, 2, 8);
+            this.tableLayoutPanel3.Controls.Add(this.label25, 2, 10);
+            this.tableLayoutPanel3.Controls.Add(this.input8sTextBox, 3, 10);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -851,6 +855,23 @@
             this.print.UseVisualStyleBackColor = true;
             this.print.Click += new System.EventHandler(this.print_Click);
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(273, 443);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(88, 16);
+            this.label25.TabIndex = 22;
+            this.label25.Text = "输入8s条码";
+            // 
+            // input8sTextBox
+            // 
+            this.input8sTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.input8sTextBox.Location = new System.Drawing.Point(379, 446);
+            this.input8sTextBox.Name = "input8sTextBox";
+            this.input8sTextBox.Size = new System.Drawing.Size(263, 26);
+            this.input8sTextBox.TabIndex = 23;
+            // 
             // ReturnStoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -942,5 +963,7 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox flexidcomboBox;
         private System.Windows.Forms.Button print;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox input8sTextBox;
     }
 }

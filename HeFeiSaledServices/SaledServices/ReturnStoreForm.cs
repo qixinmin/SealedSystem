@@ -380,9 +380,16 @@ namespace SaledServices
                 MessageBox.Show("输入的内容为空, 请检查！");
                 return;                
             }
-            if (this.flexidcomboBox.Text == "")
+            if (this.flexidcomboBox.Text.Trim() == "")
             {
                 MessageBox.Show("FlexId的内容为空, 请检查！");
+                return;
+            }
+
+            if (this.input8sTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("输入的8s内容为空, 请检查！");
+                this.input8sTextBox.Focus();
                 return;
             }
 
@@ -392,6 +399,12 @@ namespace SaledServices
                 this.track_serial_noTextBox.Text = "";
                 this.track_serial_noTextBox.Focus();
                 this.custom_serial_noTextBox.Text = "";
+                return;
+            }
+
+            if (this.input8sTextBox.Text.Trim() != this.custom_serial_noTextBox.Text.Trim())
+            {
+                MessageBox.Show("收货的8s与输入的8s不一致，请检查！");
                 return;
             }
 
