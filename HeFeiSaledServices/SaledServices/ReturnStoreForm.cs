@@ -629,6 +629,7 @@ namespace SaledServices
             tatTextBox.Text = "";
 
             this.flexidcomboBox.Text = "";
+            this.input8sTextBox.Text = "";
         }
 
 
@@ -915,8 +916,8 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
 
-                this.custom_serial_noTextBox.Focus();
-                this.custom_serial_noTextBox.SelectAll();
+                this.input8sTextBox.Focus();
+                this.input8sTextBox.SelectAll();
             }
         }
 
@@ -1045,6 +1046,15 @@ namespace SaledServices
             }
 
             PrintUtils.printCustomMaterialNo(ordernoTextBox.Text, vendormaterialNo, custommaterialNoTextBox.Text.Substring(3), flexidcomboBox.Text, custom_serial_noTextBox.Text);        
+        }
+
+        private void input8sTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.custom_serial_noTextBox.Focus();
+                this.custom_serial_noTextBox.SelectAll();
+            }
         }
     }
 }
