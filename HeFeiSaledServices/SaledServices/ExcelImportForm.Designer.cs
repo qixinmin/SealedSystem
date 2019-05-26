@@ -34,6 +34,7 @@
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.test = new System.Windows.Forms.RadioButton();
+            this.analysis8scode = new System.Windows.Forms.RadioButton();
             this.userInputRadioButton = new System.Windows.Forms.RadioButton();
             this.storeInfoImportradioButton = new System.Windows.Forms.RadioButton();
             this.stock_in_sheetradioButton = new System.Windows.Forms.RadioButton();
@@ -41,9 +42,9 @@
             this.DPKradioButton = new System.Windows.Forms.RadioButton();
             this.LCFC71BOMRadioButton = new System.Windows.Forms.RadioButton();
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
+            this.flexid8scheck = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
-            this.flexid8scheck = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +82,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.test);
+            this.panel1.Controls.Add(this.analysis8scode);
             this.panel1.Controls.Add(this.userInputRadioButton);
             this.panel1.Controls.Add(this.storeInfoImportradioButton);
             this.panel1.Controls.Add(this.stock_in_sheetradioButton);
@@ -108,10 +110,20 @@
             this.test.UseVisualStyleBackColor = true;
             this.test.Visible = false;
             // 
+            // analysis8scode
+            // 
+            this.analysis8scode.AutoSize = true;
+            this.analysis8scode.Location = new System.Drawing.Point(22, 324);
+            this.analysis8scode.Name = "analysis8scode";
+            this.analysis8scode.Size = new System.Drawing.Size(127, 24);
+            this.analysis8scode.TabIndex = 4;
+            this.analysis8scode.Text = "分析8S导入";
+            this.analysis8scode.UseVisualStyleBackColor = true;
+            // 
             // userInputRadioButton
             // 
             this.userInputRadioButton.AutoSize = true;
-            this.userInputRadioButton.Location = new System.Drawing.Point(22, 397);
+            this.userInputRadioButton.Location = new System.Drawing.Point(22, 401);
             this.userInputRadioButton.Name = "userInputRadioButton";
             this.userInputRadioButton.Size = new System.Drawing.Size(147, 24);
             this.userInputRadioButton.TabIndex = 4;
@@ -121,7 +133,7 @@
             // storeInfoImportradioButton
             // 
             this.storeInfoImportradioButton.AutoSize = true;
-            this.storeInfoImportradioButton.Location = new System.Drawing.Point(22, 347);
+            this.storeInfoImportradioButton.Location = new System.Drawing.Point(22, 359);
             this.storeInfoImportradioButton.Name = "storeInfoImportradioButton";
             this.storeInfoImportradioButton.Size = new System.Drawing.Size(147, 24);
             this.storeInfoImportradioButton.TabIndex = 4;
@@ -131,7 +143,7 @@
             // stock_in_sheetradioButton
             // 
             this.stock_in_sheetradioButton.AutoSize = true;
-            this.stock_in_sheetradioButton.Location = new System.Drawing.Point(22, 307);
+            this.stock_in_sheetradioButton.Location = new System.Drawing.Point(22, 289);
             this.stock_in_sheetradioButton.Name = "stock_in_sheetradioButton";
             this.stock_in_sheetradioButton.Size = new System.Drawing.Size(127, 24);
             this.stock_in_sheetradioButton.TabIndex = 4;
@@ -141,7 +153,7 @@
             // faultTableRadioButton
             // 
             this.faultTableRadioButton.AutoSize = true;
-            this.faultTableRadioButton.Location = new System.Drawing.Point(22, 265);
+            this.faultTableRadioButton.Location = new System.Drawing.Point(22, 256);
             this.faultTableRadioButton.Name = "faultTableRadioButton";
             this.faultTableRadioButton.Size = new System.Drawing.Size(127, 24);
             this.faultTableRadioButton.TabIndex = 4;
@@ -171,12 +183,23 @@
             // LCFC_MBBOMradioButton
             // 
             this.LCFC_MBBOMradioButton.AutoSize = true;
-            this.LCFC_MBBOMradioButton.Location = new System.Drawing.Point(22, 141);
+            this.LCFC_MBBOMradioButton.Location = new System.Drawing.Point(22, 132);
             this.LCFC_MBBOMradioButton.Name = "LCFC_MBBOMradioButton";
             this.LCFC_MBBOMradioButton.Size = new System.Drawing.Size(257, 24);
             this.LCFC_MBBOMradioButton.TabIndex = 2;
             this.LCFC_MBBOMradioButton.Text = "LCFC_MBBOM&&COMPAL_MBBOM";
             this.LCFC_MBBOMradioButton.UseVisualStyleBackColor = true;
+            // 
+            // flexid8scheck
+            // 
+            this.flexid8scheck.AutoSize = true;
+            this.flexid8scheck.Location = new System.Drawing.Point(22, 82);
+            this.flexid8scheck.Margin = new System.Windows.Forms.Padding(5);
+            this.flexid8scheck.Name = "flexid8scheck";
+            this.flexid8scheck.Size = new System.Drawing.Size(167, 24);
+            this.flexid8scheck.TabIndex = 1;
+            this.flexid8scheck.Text = "FlexId8S对照表";
+            this.flexid8scheck.UseVisualStyleBackColor = true;
             // 
             // receiveOrder
             // 
@@ -187,6 +210,7 @@
             this.receiveOrder.Name = "receiveOrder";
             this.receiveOrder.Size = new System.Drawing.Size(87, 24);
             this.receiveOrder.TabIndex = 1;
+            this.receiveOrder.TabStop = true;
             this.receiveOrder.Text = "收货单";
             this.receiveOrder.UseVisualStyleBackColor = true;
             // 
@@ -200,17 +224,6 @@
             this.mbmaterial.TabIndex = 0;
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
-            // 
-            // flexid8scheck
-            // 
-            this.flexid8scheck.AutoSize = true;
-            this.flexid8scheck.Location = new System.Drawing.Point(22, 101);
-            this.flexid8scheck.Margin = new System.Windows.Forms.Padding(5);
-            this.flexid8scheck.Name = "flexid8scheck";
-            this.flexid8scheck.Size = new System.Drawing.Size(167, 24);
-            this.flexid8scheck.TabIndex = 1;
-            this.flexid8scheck.Text = "FlexId8S对照表";
-            this.flexid8scheck.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -251,5 +264,6 @@
         private System.Windows.Forms.RadioButton userInputRadioButton;
         private System.Windows.Forms.RadioButton test;
         private System.Windows.Forms.RadioButton flexid8scheck;
+        private System.Windows.Forms.RadioButton analysis8scode;
     }
 }

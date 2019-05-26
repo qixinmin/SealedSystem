@@ -37,6 +37,63 @@ mpn NVARCHAR(128) NOT NULL,/*板子料号*/
 _8sCode NVARCHAR(128), /*8s*/
 )
 
+/*增加Server的材料收料信息，录入原材料厂商，生产日期，生产批次*/
+CREATE TABLE server_material_more_information(
+Id INT PRIMARY KEY IDENTITY, 
+buy_order_serial_no NVARCHAR(128), /*购买订单编号*/
+material_type NVARCHAR(128) ,/*材料类型,BGA/FRU/SMT*/
+mpn NVARCHAR(128),/*mpn*/
+material_vendor NVARCHAR(128),/*原材料厂商*/
+product_date date,/*生产日期*/
+pici NVARCHAR(128),/*生产批次*/
+inputer NVARCHAR(128) NOT NULL, /*维修人*/
+input_date date, /*修复日期*/
+)
+
+/*ECO站别信息*/
+CREATE TABLE eco_table(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+mpn NVARCHAR(128) NOT NULL,/*mpn*/
+custommaterialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+curent_version NVARCHAR(128), /*现在版本*/
+new_version NVARCHAR(128), /*新的版本*/
+inputer NVARCHAR(128) NOT NULL, /*维修人*/
+input_date date, /*修复日期*/
+)
+
+/*记录要分析的8s码，以便拦截*/
+CREATE TABLE to_analysis_8s_table(
+Id INT PRIMARY KEY IDENTITY, 
+_8sCode NVARCHAR(128), /*8s*/
+inputer NVARCHAR(128),
+input_date date, /*输入日期*/
+)
+
+/*1 增加对需要分析的8S进行锁定，系统提示此主板需要分析*/
+/*2 增加对三次退回的8S进行锁定，系统提示此主板报废并记录*/
+/*3 二次NTF在包装站锁定,只要之前的记录不论顺序，只要有ntf2次就锁住*/
+CREATE TABLE need_to_lock(
+Id INT PRIMARY KEY IDENTITY, 
+locktype NVARCHAR(128),/*analysis_8s,modify_more_than_three, ntf_twice*/
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+_8sCode NVARCHAR(128), /*8s*/
+isLock NVARCHAR(128), /*默认false*/
+input_date date, /*输入日期*/
+unlcok_date date, /*解锁日期，为true时此日期不为空*/
+)
+
+/*增加对三次退回的8S进行锁定，系统提示此主板报废并记录*/
+--CREATE TABLE return_modify_more_than_three(
+--Id INT PRIMARY KEY IDENTITY, 
+--track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+--orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+--_8sCode NVARCHAR(128), /*8s*/
+--isLock NVARCHAR(128), /*默认false*/
+--input_date date, /*输入日期*/
+--unlcok_date date, /*解锁日期，为true时此日期不为空*/
+--)
 
 /*不良品MB/SMT/BGA出库记录*/
 /*把fru的材料也放進去了，但是默認現在不報關出去，因爲要交稅，在上報的時候過濾一下*/
