@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -74,7 +74,6 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.inputUserTextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.replace_custom_materialNotextBox = new System.Windows.Forms.TextBox();
@@ -84,6 +83,9 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.flexidcomboBox = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.input8sTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label22 = new System.Windows.Forms.Label();
@@ -92,8 +94,6 @@
             this.lenovo_repair_noTextBox = new System.Windows.Forms.TextBox();
             this.print = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label25 = new System.Windows.Forms.Label();
-            this.input8sTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToReturn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReturnedDetail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -106,8 +106,8 @@
             // dataGridViewToReturn
             // 
             this.dataGridViewToReturn.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewToReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewToReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewToReturn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -438,8 +438,8 @@
             // dataGridViewReturnedDetail
             // 
             this.dataGridViewReturnedDetail.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewReturnedDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewReturnedDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewReturnedDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewReturnedDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReturnedDetail.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -660,17 +660,6 @@
             this.statusComboBox.TabIndex = 2;
             this.statusComboBox.SelectedValueChanged += new System.EventHandler(this.statusComboBox_SelectedValueChanged);
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("宋体", 15F);
-            this.label19.Location = new System.Drawing.Point(274, 355);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(69, 20);
-            this.label19.TabIndex = 13;
-            this.label19.Text = "还货人";
-            // 
             // inputUserTextBox
             // 
             this.inputUserTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -767,6 +756,35 @@
             this.flexidcomboBox.TabIndex = 5;
             this.flexidcomboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_res_typeComboBox_KeyPress);
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("宋体", 15F);
+            this.label19.Location = new System.Drawing.Point(274, 355);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 20);
+            this.label19.TabIndex = 13;
+            this.label19.Text = "还货人";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(273, 443);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(88, 16);
+            this.label25.TabIndex = 22;
+            this.label25.Text = "输入8s条码";
+            // 
+            // input8sTextBox
+            // 
+            this.input8sTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.input8sTextBox.Location = new System.Drawing.Point(379, 446);
+            this.input8sTextBox.Name = "input8sTextBox";
+            this.input8sTextBox.Size = new System.Drawing.Size(263, 26);
+            this.input8sTextBox.TabIndex = 23;
+            this.input8sTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.input8sTextBox_KeyPress);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
@@ -854,23 +872,6 @@
             this.print.Text = "打印";
             this.print.UseVisualStyleBackColor = true;
             this.print.Click += new System.EventHandler(this.print_Click);
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(273, 443);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(88, 16);
-            this.label25.TabIndex = 22;
-            this.label25.Text = "输入8s条码";
-            // 
-            // input8sTextBox
-            // 
-            this.input8sTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.input8sTextBox.Location = new System.Drawing.Point(379, 446);
-            this.input8sTextBox.Name = "input8sTextBox";
-            this.input8sTextBox.Size = new System.Drawing.Size(263, 26);
-            this.input8sTextBox.TabIndex = 23;
             // 
             // ReturnStoreForm
             // 
