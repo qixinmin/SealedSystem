@@ -500,6 +500,14 @@ tester NVARCHAR(128) NOT NULL,
 test_date date
 )
 
+/*TakePhototable*/
+CREATE TABLE TakePhototable(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL,
+tester NVARCHAR(128) NOT NULL,
+test_date date
+)
+
 /*Running*/
 CREATE TABLE Runningtable(
 Id INT PRIMARY KEY IDENTITY, 
