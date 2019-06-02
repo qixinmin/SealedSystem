@@ -162,7 +162,8 @@ namespace SaledServices
                     this.FunctionMenuItem,           
                     this.additionMenuItem,
                     this.报表ToolStripMenuItem,
-                    this.海关ToolStripMenuItem
+                    this.海关ToolStripMenuItem,
+                    this.拍照ToolStripMenuItem,
                     });
                     break;
                 case MenuType.Package:
@@ -1478,6 +1479,22 @@ namespace SaledServices
             outWaitRepairByHand.Show();
 
             allForm.Add(outWaitRepairByHand);
+        }
+
+        private Test_Outlook.TakePhotoForm takePhotoForm;
+        private void 拍照ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (takePhotoForm == null || takePhotoForm.IsDisposed)
+            {
+                takePhotoForm = new Test_Outlook.TakePhotoForm();
+                takePhotoForm.MdiParent = this;
+            }
+
+            //obeform.WindowState = FormWindowState.Maximized;
+            takePhotoForm.BringToFront();
+            takePhotoForm.Show();
+
+            allForm.Add(takePhotoForm);
         }
     }
 }

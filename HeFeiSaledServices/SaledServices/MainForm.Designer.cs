@@ -123,6 +123,7 @@
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,11 +146,12 @@
             this.additionMenuItem,
             this.报表ToolStripMenuItem,
             this.海关ToolStripMenuItem,
-            this.包装ToolStripMenuItem});
+            this.包装ToolStripMenuItem,
+            this.拍照ToolStripMenuItem});
             this.AllMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.AllMenuStrip.Name = "AllMenuStrip";
             this.AllMenuStrip.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.AllMenuStrip.Size = new System.Drawing.Size(1317, 37);
+            this.AllMenuStrip.Size = new System.Drawing.Size(1390, 37);
             this.AllMenuStrip.TabIndex = 4;
             this.AllMenuStrip.Text = "AllMenu";
             // 
@@ -907,11 +909,19 @@
             this.预领料申请ToolStripMenuItem1.Text = "预领料申请";
             this.预领料申请ToolStripMenuItem1.Click += new System.EventHandler(this.预领料申请ToolStripMenuItem1_Click);
             // 
+            // 拍照ToolStripMenuItem
+            // 
+            this.拍照ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.拍照ToolStripMenuItem.Name = "拍照ToolStripMenuItem";
+            this.拍照ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
+            this.拍照ToolStripMenuItem.Text = "拍照";
+            this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1317, 686);
+            this.ClientSize = new System.Drawing.Size(1390, 686);
             this.Controls.Add(this.AllMenuStrip);
             this.Font = new System.Drawing.Font("宋体", 12F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1026,6 +1036,7 @@
         private System.Windows.Forms.ToolStripMenuItem 还货表信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 主板流水导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 手动出待维修库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 拍照ToolStripMenuItem;
     }
 }
 

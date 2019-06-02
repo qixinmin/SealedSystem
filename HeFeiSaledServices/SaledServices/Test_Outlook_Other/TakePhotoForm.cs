@@ -56,38 +56,21 @@ namespace SaledServices.Test_Outlook
                         station = querySdr[0].ToString();
                     }
                     querySdr.Close();
-                    if (station != "外观")
+                    if (station != "外观" || station != "Obe")
                     {
-                        //cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-
-                        //querySdr = cmd.ExecuteReader();
-                        //string customMaterialNo = "";
-
-                        //while (querySdr.Read())
-                        //{
-                        //    customMaterialNo = querySdr[0].ToString();
-                        //}
-                        //querySdr.Close();
-
-                        //if (customMaterialNo != "")
-                        {
-                            MessageBox.Show("板子还没有经过外观站别, 现在在"+station);
+                        MessageBox.Show("板子还没有经过外观站别, 现在在: ["+station+"]");
                             
-                            this.confirmbutton.Enabled = false;
-                            this.button1.Enabled = false;
-                        }
-                        //else
-                        //{
-                        //    this.tracker_bar_textBox.Focus();
-                        //    this.tracker_bar_textBox.SelectAll();
-                        //    MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
-                        //}
+                        this.confirmbutton.Enabled = false;
+                        this.button1.Enabled = false;                        
                     }
                     else 
                     {
-                       // MessageBox.Show("板子已经经过站别" + station);
-                        this.confirmbutton.Enabled = true;
-                        this.button1.Enabled = true;
+                        //需要添加判断本地文件的逻辑，看图片是否存在，如果不存在，则不能通过 TODO ？？ 提示重新拍照
+                        if (false)
+                        {
+                            this.confirmbutton.Enabled = true;
+                            this.button1.Enabled = true;
+                        }
                     }
                     mConn.Close();
                 }
@@ -141,10 +124,10 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                 "','OBE','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
+                 "','TakePhoto','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Obe', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = 'TakePhoto', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }
@@ -154,7 +137,7 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
-                MessageBox.Show("插入OBE数据OK");
+                MessageBox.Show("插入拍照数据OK");
                 this.confirmbutton.Enabled = false;
                 this.button1.Enabled = false;
             }
@@ -166,60 +149,60 @@ namespace SaledServices.Test_Outlook
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.tracker_bar_textBox.Text.Trim() == "")
-            {
-                MessageBox.Show("追踪条码的内容为空，请检查！");
-                return;
-            }
+            //if (this.tracker_bar_textBox.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("追踪条码的内容为空，请检查！");
+            //    return;
+            //}
 
-            try
-            {
-                SqlConnection conn = new SqlConnection(Constlist.ConStr);
-                conn.Open();
+            //try
+            //{
+            //    SqlConnection conn = new SqlConnection(Constlist.ConStr);
+            //    conn.Open();
 
-                if (conn.State == ConnectionState.Open)
-                {
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = conn;
-                    cmd.CommandType = CommandType.Text;
+            //    if (conn.State == ConnectionState.Open)
+            //    {
+            //        SqlCommand cmd = new SqlCommand();
+            //        cmd.Connection = conn;
+            //        cmd.CommandType = CommandType.Text;
 
-                    //防止重复入库
-                    cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                    string Id = "";
-                    while (querySdr.Read())
-                    {
-                        Id = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-                    if (Id != "")
-                    {
-                        MessageBox.Show("此序列号已经存在！");
-                        this.tracker_bar_textBox.Text = "";
-                        conn.Close();
-                        return;
-                    }
+            //        //防止重复入库
+            //        cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+            //        SqlDataReader querySdr = cmd.ExecuteReader();
+            //        string Id = "";
+            //        while (querySdr.Read())
+            //        {
+            //            Id = querySdr[0].ToString();
+            //        }
+            //        querySdr.Close();
+            //        if (Id != "")
+            //        {
+            //            MessageBox.Show("此序列号已经存在！");
+            //            this.tracker_bar_textBox.Text = "";
+            //            conn.Close();
+            //            return;
+            //        }
 
-                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                 "','OBE','FAIL','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
-                    cmd.ExecuteNonQuery();
+            //        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+            //     "','TakePhoto','FAIL','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + this.testerTextBox.Text.Trim() + "')";
+            //        cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
-                    cmd.ExecuteNonQuery();
-                }
-                else
-                {
-                    MessageBox.Show("SaledService is not opened");
-                }
+            //        cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+            //                  + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+            //        cmd.ExecuteNonQuery();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("SaledService is not opened");
+            //    }
 
-                conn.Close();
-                MessageBox.Show("插入OBE Fail数据, 現在需要把板子給維修人員");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            //    conn.Close();
+            //    MessageBox.Show("插入拍照 Fail数据, 現在需要把板子給維修人員");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
         }
     }
 }

@@ -99,6 +99,22 @@ namespace SaledServices.Test_Outlook
                         conn.Close();
                         return;
                     }
+
+                    string track_serial_no = "";
+                    string currentUsedTable = "Packagetable";
+                    cmd.CommandText = "select track_serial_no from " + currentUsedTable + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        track_serial_no = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if (track_serial_no == "")
+                    {
+                        MessageBox.Show("此单在Package站別沒有操作信息，是不是沒有操作过Package界面？");
+                        conn.Close();
+                        return;
+                    }
                     
                     querySdr.Close();
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +

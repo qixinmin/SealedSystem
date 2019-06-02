@@ -818,7 +818,7 @@ namespace SaledServices
                         querySdr.Close();
                         if (track_serial_no == "")
                         {
-                            MessageBox.Show("此单没有经过Package站别！");
+                            MessageBox.Show("此单在Package站別沒有操作信息，是不是沒有操作过Package界面？");
                             mConn.Close();
                             return;
                         }
