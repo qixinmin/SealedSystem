@@ -254,7 +254,9 @@
     <Compile Include="additionForm\MBLifeRecord.Designer.cs">
       <DependentUpon>MBLifeRecord.cs</DependentUpon>
     </Compile>
-    <Compile Include="additionForm\UnlockForm.cs" />
+    <Compile Include="additionForm\UnlockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="additionForm\UnlockForm.designer.cs">
       <DependentUpon>UnlockForm.cs</DependentUpon>
     </Compile>
@@ -272,7 +274,9 @@
       <DependentUpon>ReturnCustomInfoImportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomsExport\GenerateWorkOrderHead.cs" />
-    <Compile Include="Eco\ECOForm.cs" />
+    <Compile Include="Eco\ECOForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Eco\ECOForm.Designer.cs">
       <DependentUpon>ECOForm.cs</DependentUpon>
     </Compile>

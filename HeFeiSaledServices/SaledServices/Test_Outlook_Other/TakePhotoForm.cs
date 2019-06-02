@@ -56,7 +56,7 @@ namespace SaledServices.Test_Outlook
                         station = querySdr[0].ToString();
                     }
                     querySdr.Close();
-                    if (station != "外观" || station != "Obe")
+                    if (station != "外观")
                     {
                         MessageBox.Show("板子还没有经过外观站别, 现在在: ["+station+"]");
                             

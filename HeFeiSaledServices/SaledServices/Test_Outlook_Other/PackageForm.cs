@@ -62,7 +62,7 @@ namespace SaledServices.Test_Outlook
                     }
                     querySdr.Close();
 
-                    if (station == "TakePhoto")//station == "外观" || station == "Obe"
+                    if (station == "TakePhoto" || station == "Obe")//station == "外观" || station == "Obe"
                     {
                         cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
