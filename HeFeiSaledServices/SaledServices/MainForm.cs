@@ -109,12 +109,14 @@ namespace SaledServices
                     break;
                 case MenuType.Repair:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                    this.维修ToolStripMenuItem
+                    this.维修ToolStripMenuItem,
+                    this.eCOToolStripMenuItem,
                     });
                     break;
                 case MenuType.Recieve_Return:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.receiveReturnStoreMenuItem,
+                    this.eCOToolStripMenuItem,
                    });
                     break;
                 case MenuType.TestALL:
@@ -163,6 +165,7 @@ namespace SaledServices
                     this.additionMenuItem,
                     this.报表ToolStripMenuItem,
                     this.海关ToolStripMenuItem,
+					 this.eCOToolStripMenuItem,
                     this.拍照ToolStripMenuItem,
                     });
                     break;
@@ -1479,6 +1482,36 @@ namespace SaledServices
             outWaitRepairByHand.Show();
 
             allForm.Add(outWaitRepairByHand);
+        }
+		   private UnlockForm unlockForm;
+        private void 解锁板子ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (unlockForm == null || unlockForm.IsDisposed)
+            {
+                unlockForm = new UnlockForm();
+                unlockForm.MdiParent = this;
+            }
+
+           // unlockForm.WindowState = FormWindowState.Maximized;
+            unlockForm.BringToFront();
+            unlockForm.Show();
+
+            allForm.Add(unlockForm);
+        }
+        private EcoForm ecoForm;
+        private void eCOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ecoForm == null || ecoForm.IsDisposed)
+            {
+                ecoForm = new EcoForm();
+                ecoForm.MdiParent = this;
+            }
+
+            ecoForm.WindowState = FormWindowState.Maximized;
+            ecoForm.BringToFront();
+            ecoForm.Show();
+
+            allForm.Add(ecoForm);
         }
 
         private Test_Outlook.TakePhotoForm takePhotoForm;

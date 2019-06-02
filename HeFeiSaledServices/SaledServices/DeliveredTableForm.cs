@@ -19,6 +19,9 @@ namespace SaledServices
         private SqlDataAdapter sda;
         private String tableName = "DeliveredTable";
 
+        private bool isComeMoreThanThree=false;
+        private bool isNeedAnalysis = false;
+
         public DeliveredTableForm()
         {
             InitializeComponent();
@@ -412,6 +415,50 @@ namespace SaledServices
                         return;
                     }
 
+                    //查询整个表格中是否有来过超过2次以上的记录，否则判成报废
+                    cmd.CommandText = "select COUNT(*) as a from  " + this.tableName + "  where custom_serial_no = '" + this.custom_serial_noTextBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string hasnumber = "0";
+                    while (querySdr.Read())
+                    {
+                        hasnumber = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    try
+                    {
+                        if (Int32.Parse(hasnumber) >= 2)
+                        {
+                            isComeMoreThanThree = true;//并在插入数据的时候插入记录
+                            MessageBox.Show("提示：此主板已经来第三次，主板锁定报废！");
+                        }
+                        else
+                        {
+                            isComeMoreThanThree = false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        mConn.Close();
+                        return;
+                    }
+                    //end
+
+                    //查询需要分析表格中是否包含需要分析的8s码
+                    cmd.CommandText = "select _8sCode from to_analysis_8s_table where _8sCode = '" + this.custom_serial_noTextBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        isNeedAnalysis = true;//并在插入数据的时候插入记录
+                        MessageBox.Show("提示：此主板需要分析，已经锁定！");
+                    }
+                    else
+                    {
+                        isNeedAnalysis = false;
+                    }
+                    querySdr.Close();
+                    //end
+
                     cmd.CommandText = "select mpn from flexid_8s_mpn_table where _8sCode = '" + this.custom_serial_noTextBox.Text.Trim() + "' and orderno='" + this.custom_orderComboBox.Text.Trim() + "'";
 
                     querySdr = cmd.ExecuteReader();
@@ -647,6 +694,56 @@ namespace SaledServices
                         "" +//status
                         "')";
                     cmd.ExecuteNonQuery();
+
+                    //事先判断是否已经被锁
+                    if (isComeMoreThanThree || isNeedAnalysis)
+                    {
+                        cmd.CommandText = "select isLock from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        string islock = "";
+                        while (querySdr.Read())
+                        {
+                            islock = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        if (islock != "")
+                        {
+                            MessageBox.Show("板子已经在锁定表中，请检查");
+                        }
+                        else
+                        {
+                            //插入来过三次的维修报废锁定记录
+                            if (isComeMoreThanThree)
+                            {
+                                cmd.CommandText = "INSERT INTO need_to_lock VALUES('" +
+                                    "modify_more_than_three" + "','" +
+                                this.track_serial_noTextBox.Text.Trim() + "','" +
+                                this.custom_orderComboBox.Text.Trim() + "','" +
+                                this.custom_serial_noTextBox.Text.Trim() + "','" +
+                                "true" + "','" +
+                                DateTime.Now.ToString("yyyy/MM/dd") +
+                                "','')";
+                                cmd.ExecuteNonQuery();
+                                isComeMoreThanThree = false;
+                            }
+
+                            //对需要分析的8s的板子需要锁定
+                            if (isNeedAnalysis)
+                            {
+                                cmd.CommandText = "INSERT INTO need_to_lock VALUES('" +
+                                    "analysis_8s" + "','" +
+                                this.track_serial_noTextBox.Text.Trim() + "','" +
+                                this.custom_orderComboBox.Text.Trim() + "','" +
+                                this.custom_serial_noTextBox.Text.Trim() + "','" +
+                                "true" + "','" +
+                                DateTime.Now.ToString("yyyy/MM/dd") +
+                                "','')";
+                                cmd.ExecuteNonQuery();
+                                isNeedAnalysis = false;
+                            }
+                        }
+                    }
 
                     //除正常插入数据外，还需要把收还货表格的数量修改 TODO...
                     //1. 修改收还货表格的收货数量， 判断，小于 等于，大于的情况

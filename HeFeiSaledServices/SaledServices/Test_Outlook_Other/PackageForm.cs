@@ -179,12 +179,14 @@ namespace SaledServices.Test_Outlook
                     }
 
                     //外观做完自动出良品库，同时更新良品库的数量
-                    cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select custommaterialNo,custom_order,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string customMaterialNo = "";
+                    string customMaterialNo = "",custom_order="",custom_serial_no="";
                     while (querySdr.Read())
                     {
                         customMaterialNo = querySdr[0].ToString();
+                        custom_order = querySdr[1].ToString();
+                        custom_serial_no = querySdr[2].ToString();
                     }
                     querySdr.Close();
 
@@ -361,6 +363,33 @@ namespace SaledServices.Test_Outlook
                         }
                     }
                     querySdr.Close();
+
+                    //查询是否有2此NTF，如果有进入锁定表格
+                    cmd.CommandText = "select _action,repair_result,repair_date,fault_describe,software_update from repair_record_table where track_serial_no ='" + tracker_bar_textBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    int ntfcount = 0;
+                    while (querySdr.Read())
+                    {
+                        if( querySdr[0].ToString().Trim().ToUpper() == "NTF")
+                        {
+                            ntfcount++;
+                        }
+                    }
+                    querySdr.Close();
+
+                    if (ntfcount >= 2)
+                    {
+                        cmd.CommandText = "INSERT INTO need_to_lock VALUES('" +
+                                    "ntf_twice" + "','" +
+                                this.tracker_bar_textBox.Text.Trim() + "','" +
+                                custom_order.Trim() + "','" +
+                                custom_serial_no.Trim() + "','" +
+                                "true" + "','" +
+                                DateTime.Now.ToString("yyyy/MM/dd") +
+                                "','')";
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("提示：因为有2次NTF，已经锁定，继续后续操作");
+                    }
                 }
                 else
                 {

@@ -731,6 +731,19 @@ namespace SaledServices
                         return;
                     }
 
+                    cmd.CommandText = "select _8sCode from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and isLock='true'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        MessageBox.Show("此序列号已经锁定，不能走下面的流程！");
+                        querySdr.Close();
+                        mConn.Close();
+                        this.returnStore.Enabled = false;
+                        return;
+                    }
+                    this.returnStore.Enabled = true;
+                    querySdr.Close();
+
                     cmd.CommandText = "select custom_order from flexidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     querySdr = cmd.ExecuteReader();
                     string customOrder = "";

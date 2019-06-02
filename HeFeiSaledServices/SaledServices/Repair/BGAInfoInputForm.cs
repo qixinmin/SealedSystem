@@ -49,9 +49,20 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
+                    cmd.CommandText = "select _8sCode from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and isLock='true'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        MessageBox.Show("此序列号需要分析但是已经锁定，不能走下面的流程！");
+                        querySdr.Close();
+                        mConn.Close();
+                        this.add.Enabled = false;
+                        return;
+                    }
+                    querySdr.Close();
 
                     cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     string cidExist = "";
                     while (querySdr.Read())
                     {
@@ -62,7 +73,29 @@ namespace SaledServices
                     if (cidExist != "")
                     {
                         MessageBox.Show("此序列号已经在CID中，不能走下面的流程！");
+                        this.add.Enabled = false;
                         mConn.Close();
+                        return;
+                    }
+
+                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string stationInfo = "";
+                    while (querySdr.Read())
+                    {
+                        stationInfo = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (stationInfo == "维修" || stationInfo == "ECO" || stationInfo == "BGA"/* || stationInfo == "收货"*/)
+                    {
+                        this.add.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("此序列号的站别已经在:【" + stationInfo + "】，不能走下面的流程！");
+                        mConn.Close();
+                        this.add.Enabled = false;
                         return;
                     }
 

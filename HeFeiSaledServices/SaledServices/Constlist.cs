@@ -126,6 +126,9 @@ namespace SaledServices
 
         public static string table_flexId8s = "flexid对照表";
         public static string table_name_flexId8s = "flexid_8s_mpn_table";
+
+        public static string table_8scodes = "8s表格";
+        public static string table_to_analysis_8s_sheet = "to_analysis_8s_table";
     }
 
     public class PrintUtils
