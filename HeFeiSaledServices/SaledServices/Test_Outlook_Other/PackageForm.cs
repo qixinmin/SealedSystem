@@ -77,9 +77,42 @@ namespace SaledServices.Test_Outlook
 
                         if (customMaterialNo != "")
                         {
-                            this.testerTextBox.Text = LoginForm.currentUser;
-                            this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
-                            this.confirmbutton.Enabled = true;
+
+                            //如果在表中有抽检则需查询obe站别是否ok，否则不能走包装站别，有一个问题，如果第一次fail，第二次可以不走obe，如何判断？
+                            cmd.CommandText = "select ischeck from decideOBEchecktable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                            querySdr = cmd.ExecuteReader();
+                            string ischeck = "";
+
+                            while (querySdr.Read())
+                            {
+                                ischeck = querySdr[0].ToString();
+                            }
+                            querySdr.Close();
+                            if (ischeck == "True")
+                            {
+                                cmd.CommandText = "select checkresult from ObeStationtable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                                querySdr = cmd.ExecuteReader();
+                                string checkresult = "";
+
+                                while (querySdr.Read())
+                                {
+                                    checkresult = querySdr[0].ToString();
+                                }
+                                querySdr.Close();
+                                if (checkresult != "" && checkresult != "P")
+                                {
+                                    MessageBox.Show("追踪条码的内容在OBE站别中，没有检查结果！");
+                                    this.confirmbutton.Enabled = false;
+                                }
+                            }
+                            else
+                            {
+                                this.testerTextBox.Text = LoginForm.currentUser;
+                                this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                this.confirmbutton.Enabled = true;
+                            }
                         }
                         else
                         {

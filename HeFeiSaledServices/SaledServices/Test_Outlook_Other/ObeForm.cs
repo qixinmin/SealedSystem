@@ -172,6 +172,12 @@ namespace SaledServices.Test_Outlook
                 return;
             }
 
+            if (this.failtextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("失败的原因为空，请检查！");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -215,6 +221,7 @@ namespace SaledServices.Test_Outlook
 
                 conn.Close();
                 MessageBox.Show("插入OBE Fail数据, 現在需要把板子給維修人員");
+                this.failtextBox.Text = "";
             }
             catch (Exception ex)
             {
