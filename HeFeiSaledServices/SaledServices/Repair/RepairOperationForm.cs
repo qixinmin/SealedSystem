@@ -686,7 +686,7 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + mPrepareUseDetail1.material_mpn + "','"
                            + mPrepareUseDetail1.thisUseNumber + "','"
-                           + mPrepareUseDetail1.stock_place + "')";
+                           + not_good_placetextBox1.Text.Trim() + "')";
                         cmd.ExecuteNonQuery();
                         
 
@@ -735,7 +735,7 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + mPrepareUseDetail2.material_mpn + "','"
                            + mPrepareUseDetail2.thisUseNumber + "','"
-                           + mPrepareUseDetail2.stock_place + "')";
+                           + not_good_placetextBox2.Text.Trim() + "')";
                         cmd.ExecuteNonQuery();
                         
 
@@ -786,7 +786,7 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + mPrepareUseDetail3.material_mpn + "','"
                            + mPrepareUseDetail3.thisUseNumber + "','"
-                           + mPrepareUseDetail3.stock_place + "')";
+                           + not_good_placetextBox3.Text.Trim() + "')";
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
@@ -834,7 +834,7 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + mPrepareUseDetail4.material_mpn + "','"
                            + mPrepareUseDetail4.thisUseNumber + "','"
-                           + mPrepareUseDetail4.stock_place + "')";
+                           + not_good_placetextBox4.Text.Trim() + "')";
                         cmd.ExecuteNonQuery();
                         
 
@@ -883,7 +883,7 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + mPrepareUseDetail5.material_mpn + "','"
                            + mPrepareUseDetail5.thisUseNumber + "','"
-                           + mPrepareUseDetail5.stock_place + "')";
+                           + not_good_placetextBox5.Text.Trim() + "')";
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
