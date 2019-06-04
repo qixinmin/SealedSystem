@@ -34,9 +34,9 @@
             this.testerTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.testdatetextBox = new System.Windows.Forms.TextBox();
+            this.tracker_bar_textBox = new System.Windows.Forms.TextBox();
             this.confirmbutton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.tracker_bar_textBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.failtextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -115,6 +115,15 @@
             this.testdatetextBox.Size = new System.Drawing.Size(108, 21);
             this.testdatetextBox.TabIndex = 1;
             // 
+            // tracker_bar_textBox
+            // 
+            this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tracker_bar_textBox.Location = new System.Drawing.Point(67, 4);
+            this.tracker_bar_textBox.Name = "tracker_bar_textBox";
+            this.tracker_bar_textBox.Size = new System.Drawing.Size(191, 21);
+            this.tracker_bar_textBox.TabIndex = 0;
+            this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
+            // 
             // confirmbutton
             // 
             this.confirmbutton.Enabled = false;
@@ -137,15 +146,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // tracker_bar_textBox
-            // 
-            this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tracker_bar_textBox.Location = new System.Drawing.Point(67, 4);
-            this.tracker_bar_textBox.Name = "tracker_bar_textBox";
-            this.tracker_bar_textBox.Size = new System.Drawing.Size(191, 21);
-            this.tracker_bar_textBox.TabIndex = 0;
-            this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -162,7 +162,6 @@
             this.failtextBox.Name = "failtextBox";
             this.failtextBox.Size = new System.Drawing.Size(108, 21);
             this.failtextBox.TabIndex = 4;
-            this.failtextBox.Text = "数据库表格待修改？";
             // 
             // ObeForm
             // 

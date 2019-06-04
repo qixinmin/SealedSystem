@@ -58,16 +58,7 @@ namespace SaledServices.Test_Outlook
                     querySdr.Close();
                     if (station != "TakePhoto")
                     {
-                        //cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-
-                        //querySdr = cmd.ExecuteReader();
-                        //string customMaterialNo = "";
-
-                        //while (querySdr.Read())
-                        //{
-                        //    customMaterialNo = querySdr[0].ToString();
-                        //}
-                        //querySdr.Close();
+                       
 
                         //if (customMaterialNo != "")
                         {
@@ -76,6 +67,7 @@ namespace SaledServices.Test_Outlook
                             this.confirmbutton.Enabled = false;
                             this.button1.Enabled = false;
                         }
+
                         //else
                         //{
                         //    this.tracker_bar_textBox.Focus();
@@ -84,10 +76,30 @@ namespace SaledServices.Test_Outlook
                         //}
                     }
                     else 
-                    {
-                       // MessageBox.Show("板子已经经过站别" + station);
-                        this.confirmbutton.Enabled = true;
-                        this.button1.Enabled = true;
+                    { 
+                        //判断是否必须走obe站别
+                        cmd.CommandText = "select Id from decideOBEchecktable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                        querySdr = cmd.ExecuteReader();
+                        string obecheckexist = "";
+                        while (querySdr.Read())
+                        {
+                            obecheckexist = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        if (obecheckexist == "")
+                        {
+                            MessageBox.Show("此板子不是必须过obe站别");
+
+                            this.confirmbutton.Enabled = false;
+                            this.button1.Enabled = false;
+                        }
+                        else
+                        {
+                            this.confirmbutton.Enabled = true;
+                            this.button1.Enabled = true;
+                        }
                     }
                     mConn.Close();
                 }
@@ -146,6 +158,29 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "update stationInformation set station = 'Obe', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "select orderno,custom_materialNo from decideOBEchecktable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string orderno = "", custom_materialNo="";
+                    while (querySdr.Read())
+                    {
+                        orderno = querySdr[0].ToString();
+                        custom_materialNo = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
+
+                    //插入obe站别信息
+                    cmd.CommandText = "INSERT INTO ObeStationtable VALUES('"
+                       + this.tracker_bar_textBox.Text.Trim() + "','"
+                       + orderno + "','"
+                       + custom_materialNo + "','"
+                       + "P','"// checkresult P- Pass
+                       + "','"//failreason empty
+                       + this.testerTextBox.Text.Trim() + "','"
+                       + this.testdatetextBox.Text.Trim()
+                       + "')";
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -212,6 +247,30 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
+
+                    cmd.CommandText = "select orderno,custom_materialNo from decideOBEchecktable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    string orderno = "", custom_materialNo = "";
+                    while (querySdr.Read())
+                    {
+                        orderno = querySdr[0].ToString();
+                        custom_materialNo = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
+
+                    //插入obe站别信息
+                    cmd.CommandText = "INSERT INTO ObeStationtable VALUES('"
+                       + this.tracker_bar_textBox.Text.Trim() + "','"
+                       + orderno + "','"
+                       + custom_materialNo + "','"
+                       + "F','"// checkresult F fail
+                       + this.failtextBox.Text.Trim() +"','"//failreason non empty
+                       + this.testerTextBox.Text.Trim() + "','"
+                       + this.testdatetextBox.Text.Trim()
+                       + "')";
                     cmd.ExecuteNonQuery();
                 }
                 else
