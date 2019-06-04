@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace SaledServices.Test_Outlook
 {
@@ -66,11 +67,45 @@ namespace SaledServices.Test_Outlook
                     }
                     else 
                     {
-                        //需要添加判断本地文件的逻辑，看图片是否存在，如果不存在，则不能通过 TODO ？？ 提示重新拍照
-                        if (false)
+                        //检查抽查比例是否存在
+                        cmd.CommandText = "select custom_order,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        string customorder = "", custom_serial_no = "";
+                        while (querySdr.Read())
+                        {
+                            customorder = querySdr[0].ToString();
+                            custom_serial_no = querySdr[1].ToString();
+                        }
+                        querySdr.Close();
+
+                        cmd.CommandText = "select top 1 orderno from obe_checkrate_table where orderno='" + customorder + "'";
+                        cmd.CommandType = CommandType.Text;
+
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows == false)
+                        {
+                            querySdr.Close();
+                            mConn.Close();
+                            MessageBox.Show("订单号" + customorder + "没有设置抽查比例！");
+                            return;
+                        }
+                        querySdr.Close();
+
+                        //需要添加判断本地文件的逻辑，看图片是否存在，如果不存在，则不能通过
+                        string path = "D:\\CSD\\" + DateTime.Now.ToString("yyyy-MM-dd")+"\\";
+                        string filepath1 = path + custom_serial_no + "-1.jpg";
+                        string filepath2 = path + custom_serial_no + "-2.jpg";
+                        bool file1 = File.Exists(filepath1);
+                        bool file2 = File.Exists(filepath2);
+
+                        if (file1 && file2)
                         {
                             this.confirmbutton.Enabled = true;
                             this.button1.Enabled = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show(filepath1  +", 或"+filepath2+"不存在，请检查！");
                         }
                     }
                     mConn.Close();
