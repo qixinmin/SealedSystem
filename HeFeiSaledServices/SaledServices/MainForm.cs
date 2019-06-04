@@ -1529,5 +1529,21 @@ namespace SaledServices
 
             allForm.Add(takePhotoForm);
         }
+
+        private ObeRateForm obeRateForm;
+        private void oBEToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (obeRateForm == null || obeRateForm.IsDisposed)
+            {
+                obeRateForm = new ObeRateForm();
+                obeRateForm.MdiParent = this;
+            }
+
+            //obeform.WindowState = FormWindowState.Maximized;
+            obeRateForm.BringToFront();
+            obeRateForm.Show();
+
+            allForm.Add(obeRateForm);
+        }
     }
 }

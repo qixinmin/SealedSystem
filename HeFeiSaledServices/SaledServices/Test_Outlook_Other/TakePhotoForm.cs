@@ -101,6 +101,8 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    //是否加入判断说如果订单不支持抽查，则无需设置obe检查的步骤？？？ TODO
+
                     //开始计算决定是否走obe站别，规则如下：根据跟踪条码查到对应的订单号，从订单号可以在receiveorder中查找这个订单有多少量，然后根据比率（有默认值）来抽检
                     //如果在表中有抽检则需查询obe站别是否ok，否则不能走包装站别，有一个问题，如果第一次fail，第二次可以不走obe，如何判断？
                     cmd.CommandText = "select custom_order,custom_materialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
@@ -177,8 +179,6 @@ namespace SaledServices.Test_Outlook
                           + this.testdatetextBox.Text.Trim()
                           + "')";
                         cmd.ExecuteNonQuery();
-
-
                     }
                     catch (Exception ex)
                     {

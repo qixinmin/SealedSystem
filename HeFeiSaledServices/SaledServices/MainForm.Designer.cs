@@ -124,8 +124,9 @@
             this.包装ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.包装操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-			 this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oBEToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,7 +150,7 @@
             this.报表ToolStripMenuItem,
             this.海关ToolStripMenuItem,
             this.包装ToolStripMenuItem,
-			this.eCOToolStripMenuItem,
+            this.eCOToolStripMenuItem,
             this.拍照ToolStripMenuItem});
             this.AllMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.AllMenuStrip.Name = "AllMenuStrip";
@@ -208,7 +209,8 @@
             this.数据库备份ToolStripMenuItem,
             this.lCD显示ToolStripMenuItem,
             this.最近一个月内容汇总ToolStripMenuItem,
-            this.手动出待维修库ToolStripMenuItem});
+            this.手动出待维修库ToolStripMenuItem,
+            this.oBEToolStripMenuItem1});
             this.FunctionMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -919,7 +921,7 @@
             this.预领料申请ToolStripMenuItem1.Size = new System.Drawing.Size(184, 32);
             this.预领料申请ToolStripMenuItem1.Text = "预领料申请";
             this.预领料申请ToolStripMenuItem1.Click += new System.EventHandler(this.预领料申请ToolStripMenuItem1_Click);
-			  // 
+            // 
             // eCOToolStripMenuItem
             // 
             this.eCOToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
@@ -936,6 +938,13 @@
             this.拍照ToolStripMenuItem.Text = "拍照";
             this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
             // 
+            // oBEToolStripMenuItem1
+            // 
+            this.oBEToolStripMenuItem1.Name = "oBEToolStripMenuItem1";
+            this.oBEToolStripMenuItem1.Size = new System.Drawing.Size(264, 32);
+            this.oBEToolStripMenuItem1.Text = "OBE  抽查比例";
+            this.oBEToolStripMenuItem1.Click += new System.EventHandler(this.oBEToolStripMenuItem1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -948,7 +957,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "合肥进销存系统0525-";
+            this.Text = "合肥进销存系统0525";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1058,6 +1067,7 @@
 private System.Windows.Forms.ToolStripMenuItem 解锁板子ToolStripMenuItem;
 private System.Windows.Forms.ToolStripMenuItem eCOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 拍照ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oBEToolStripMenuItem1;
     }
 }
 

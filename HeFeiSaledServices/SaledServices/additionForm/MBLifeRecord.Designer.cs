@@ -69,7 +69,7 @@
             // 
             // trackNoTextBox
             // 
-            this.trackNoTextBox.Location = new System.Drawing.Point(149, 6);
+            this.trackNoTextBox.Location = new System.Drawing.Point(148, 6);
             this.trackNoTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.trackNoTextBox.Name = "trackNoTextBox";
             this.trackNoTextBox.Size = new System.Drawing.Size(269, 30);
@@ -77,7 +77,7 @@
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(541, 6);
+            this.query.Location = new System.Drawing.Point(537, 6);
             this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(162, 28);
@@ -107,7 +107,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.77596F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.22404F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 384F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 388F));
             this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.trackNoTextBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
@@ -135,7 +135,7 @@
             // 
             // textBox8s
             // 
-            this.textBox8s.Location = new System.Drawing.Point(149, 45);
+            this.textBox8s.Location = new System.Drawing.Point(148, 45);
             this.textBox8s.Margin = new System.Windows.Forms.Padding(5);
             this.textBox8s.Name = "textBox8s";
             this.textBox8s.Size = new System.Drawing.Size(269, 30);
@@ -143,7 +143,7 @@
             // 
             // query8s
             // 
-            this.query8s.Location = new System.Drawing.Point(541, 45);
+            this.query8s.Location = new System.Drawing.Point(537, 45);
             this.query8s.Margin = new System.Windows.Forms.Padding(5);
             this.query8s.Name = "query8s";
             this.query8s.Size = new System.Drawing.Size(162, 29);
