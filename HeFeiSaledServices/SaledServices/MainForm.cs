@@ -104,13 +104,15 @@ namespace SaledServices
             {
                 case MenuType.Bga_Repair:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
-                    this.bGA维修ToolStripMenuItem
+                    this.bGA维修ToolStripMenuItem,
+                    this.报表ToolStripMenuItem,
                     });
                     break;
                 case MenuType.Repair:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
                     this.维修ToolStripMenuItem,
                     this.eCOToolStripMenuItem,
+                    this.报表ToolStripMenuItem,
                     });
                     break;
                 case MenuType.Recieve_Return:
@@ -122,16 +124,19 @@ namespace SaledServices
                 case MenuType.TestALL:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.测试ToolStripMenuItem,
+                    this.报表ToolStripMenuItem,
                    });
                     break;
                 case MenuType.Test1:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.测试1ToolStripMenuItem1,
+                    this.报表ToolStripMenuItem,
                    });
                     break;
                 case MenuType.Test2:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.测试2ToolStripMenuItem1,
+                    this.报表ToolStripMenuItem,
                    });
                     break;
                 case MenuType.Running:
@@ -142,6 +147,7 @@ namespace SaledServices
                 case MenuType.Outlook:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.外观ToolStripMenuItem,
+                    this.报表ToolStripMenuItem,
                    });
                     break;
                 case MenuType.Obe:
@@ -172,6 +178,7 @@ namespace SaledServices
                 case MenuType.Package:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.包装ToolStripMenuItem,
+                    this.报表ToolStripMenuItem,
                    });
                     break;
             }
@@ -1544,6 +1551,16 @@ namespace SaledServices
             obeRateForm.Show();
 
             allForm.Add(obeRateForm);
+        }
+
+        private void 主板流水ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            主板生命周期ToolStripMenuItem_Click(null, null);
+        }
+
+        private void 主板流水ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            主板生命周期ToolStripMenuItem_Click(null, null);
         }
     }
 }

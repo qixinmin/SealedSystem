@@ -479,8 +479,8 @@ namespace SaledServices
                         //return;
                     }
 
-                    //根据历史出库的8s记录查找是否在90天内同一个板子再次维修
-                    cmd.CommandText = "select R.input_date,D.custom_serial_no from DeliveredTable as D inner join repaired_out_house_excel_table as R on D.track_serial_no = R.track_serial_no order by R.input_date DESC";
+                    //根据历史出库的8s记录查找是否在120天内同一个板子再次维修
+                    cmd.CommandText = "select D.custom_order,D.custom_serial_no from DeliveredTable as D inner join repaired_out_house_excel_table as R on D.track_serial_no = R.track_serial_no order by R.input_date DESC";
                     querySdr = cmd.ExecuteReader();
                     string latestDate = "";
                     while (querySdr.Read())
@@ -494,12 +494,13 @@ namespace SaledServices
                     querySdr.Close();
                     if (latestDate != "")
                     {
-                       int diffDays = LCDDisplay.diffDays(latestDate, this.order_receive_dateTextBox.Text.Trim());
-                       if(diffDays  <=90)
+                       string cutDate = latestDate.Substring(4, 6);
+                       int diffDays = LCDDisplay.diffDays(cutDate, this.order_receive_dateTextBox.Text.Trim());
+                       if(diffDays  <=120)
                        {
                            this.source_briefComboBox.Text = "DOA";
                        }
-                       else if (diffDays <= 90)
+                       else if (diffDays <= 120)
                        {
                            this.source_briefComboBox.Text = "RR";
                        }
@@ -1148,7 +1149,7 @@ namespace SaledServices
             this.lenovo_repair_noTextBox.Text = dataGridView1.SelectedCells[26].Value.ToString();
             this.whole_machine_noTextBox.Text = dataGridView1.SelectedCells[27].Value.ToString();
 
-            this.inputUserTextBox.Text = dataGridView1.SelectedCells[28].Value.ToString(); 
+            this.inputUserTextBox.Text = dataGridView1.SelectedCells[28].Value.ToString();
         }
         
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)

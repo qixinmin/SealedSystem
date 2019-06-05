@@ -49,6 +49,7 @@
             this.lCD显示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.最近一个月内容汇总ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.手动出待维修库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oBEToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,8 +61,10 @@
             this.库房领料申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.站别检查ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.主板流水ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.主板流水ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试12ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别检查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,7 +129,6 @@
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oBEToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -316,6 +318,13 @@
             this.手动出待维修库ToolStripMenuItem.Text = "手动出待维修库";
             this.手动出待维修库ToolStripMenuItem.Click += new System.EventHandler(this.手动出待维修库ToolStripMenuItem_Click);
             // 
+            // oBEToolStripMenuItem1
+            // 
+            this.oBEToolStripMenuItem1.Name = "oBEToolStripMenuItem1";
+            this.oBEToolStripMenuItem1.Size = new System.Drawing.Size(264, 32);
+            this.oBEToolStripMenuItem1.Text = "OBE  抽查比例";
+            this.oBEToolStripMenuItem1.Click += new System.EventHandler(this.oBEToolStripMenuItem1_Click);
+            // 
             // receiveReturnStoreMenuItem
             // 
             this.receiveReturnStoreMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -364,7 +373,8 @@
             this.bGAToolStripMenuItem,
             this.库房领料申请ToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.站别检查ToolStripMenuItem1});
+            this.站别检查ToolStripMenuItem1,
+            this.主板流水ToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -406,10 +416,18 @@
             this.站别检查ToolStripMenuItem1.Text = "站别检查";
             this.站别检查ToolStripMenuItem1.Click += new System.EventHandler(this.站别检查ToolStripMenuItem1_Click);
             // 
+            // 主板流水ToolStripMenuItem
+            // 
+            this.主板流水ToolStripMenuItem.Name = "主板流水ToolStripMenuItem";
+            this.主板流水ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.主板流水ToolStripMenuItem.Text = "主板流水";
+            this.主板流水ToolStripMenuItem.Click += new System.EventHandler(this.主板流水ToolStripMenuItem_Click);
+            // 
             // bGA维修ToolStripMenuItem
             // 
             this.bGA维修ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bGA维修界面ToolStripMenuItem});
+            this.bGA维修界面ToolStripMenuItem,
+            this.主板流水ToolStripMenuItem1});
             this.bGA维修ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.bGA维修ToolStripMenuItem.Name = "bGA维修ToolStripMenuItem";
             this.bGA维修ToolStripMenuItem.Size = new System.Drawing.Size(106, 31);
@@ -422,6 +440,13 @@
             this.bGA维修界面ToolStripMenuItem.Size = new System.Drawing.Size(206, 32);
             this.bGA维修界面ToolStripMenuItem.Text = "BGA维修界面";
             this.bGA维修界面ToolStripMenuItem.Click += new System.EventHandler(this.bGA维修界面ToolStripMenuItem_Click);
+            // 
+            // 主板流水ToolStripMenuItem1
+            // 
+            this.主板流水ToolStripMenuItem1.Name = "主板流水ToolStripMenuItem1";
+            this.主板流水ToolStripMenuItem1.Size = new System.Drawing.Size(206, 32);
+            this.主板流水ToolStripMenuItem1.Text = "主板流水";
+            this.主板流水ToolStripMenuItem1.Click += new System.EventHandler(this.主板流水ToolStripMenuItem1_Click);
             // 
             // 测试ToolStripMenuItem
             // 
@@ -938,13 +963,6 @@
             this.拍照ToolStripMenuItem.Text = "拍照";
             this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
             // 
-            // oBEToolStripMenuItem1
-            // 
-            this.oBEToolStripMenuItem1.Name = "oBEToolStripMenuItem1";
-            this.oBEToolStripMenuItem1.Size = new System.Drawing.Size(264, 32);
-            this.oBEToolStripMenuItem1.Text = "OBE  抽查比例";
-            this.oBEToolStripMenuItem1.Click += new System.EventHandler(this.oBEToolStripMenuItem1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -957,7 +975,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "合肥进销存系统0525";
+            this.Text = "合肥进销存系统0605-收货、维修、测试，外观";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1068,6 +1086,8 @@ private System.Windows.Forms.ToolStripMenuItem 解锁板子ToolStripMenuItem;
 private System.Windows.Forms.ToolStripMenuItem eCOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 拍照ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oBEToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 主板流水ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 主板流水ToolStripMenuItem1;
     }
 }
 
