@@ -493,9 +493,10 @@ namespace SaledServices
                     }
                     querySdr.Close();
                     if (latestDate != "")
-                    {
-                       string cutDate = latestDate.Substring(4, 6);
-                       int diffDays = LCDDisplay.diffDays(cutDate, this.order_receive_dateTextBox.Text.Trim());
+                    {  
+                       string cutDate = "20"+latestDate.Substring(4, 6);
+                       string cutDateFinal = cutDate.Substring(0, 4) + "-" + cutDate.Substring(4, 2) + "-" + cutDate.Substring(6, 2);
+                       int diffDays = LCDDisplay.diffDays(cutDateFinal, this.order_receive_dateTextBox.Text.Trim());
                        if(diffDays  <=120)
                        {
                            this.source_briefComboBox.Text = "DOA";
