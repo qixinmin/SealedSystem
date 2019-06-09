@@ -233,6 +233,7 @@ namespace SaledServices
                 }
             }
         }
+
         private bool checkRepeat(string str1, string str2, string str3, string str4, string str5)
         {
             if (str1 != "" && (str1 == str2 || str1 == str3 || str1 == str4 || str1 == str5))
@@ -257,6 +258,7 @@ namespace SaledServices
 
             return false;
         }
+
         private void not_good_placetextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -576,7 +578,6 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
-
             if (this.mb_brieftextBox.Text == "" || this.vendorTextBox.Text == "")
             {
                 MessageBox.Show("输入完跟踪条码需要回车！");
@@ -1516,6 +1517,16 @@ namespace SaledServices
                 this.track_serial_noTextBox.Focus();
                 query_Click(null, null);
             }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void modify_Click(object sender, EventArgs e)
+        {
+
+        }
         
     }
 }

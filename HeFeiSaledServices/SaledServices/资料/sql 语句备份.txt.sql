@@ -1,4 +1,18 @@
 
+
+/*需要创建一个表格，记录维修的每条使用记录 比如拆件等逻辑的补充，不能上报给海关*/
+CREATE TABLE fru_smt_used_record_other(
+Id INT PRIMARY KEY IDENTITY, 
+inputer  NVARCHAR(128),/*输入人*/
+input_date  date,/*日期*/
+track_serial_no NVARCHAR(128),/*跟踪条码*/
+
+material_mpn NVARCHAR(128), /*材料mpn*/
+thisNumber NVARCHAR(128), /*此次使用的数量*/
+stock_place NVARCHAR(128),/*库位*/
+note NVARCHAR(128),/*备用*/
+)
+
 /*
 订单的抽检比例，根据订单号来做区分，如果已经开始走obe则不能修改抽检比例，否在可以修改
 */

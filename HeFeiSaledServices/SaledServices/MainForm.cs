@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.IO;
 using SaledServices.Test_Outlook;
 using SaledServices.Export;
+using SaledServices.Repair;
 
 namespace SaledServices
 {
@@ -1561,6 +1562,22 @@ namespace SaledServices
         private void 主板流水ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             主板生命周期ToolStripMenuItem_Click(null, null);
+        }
+
+        private RepairOtherMaterialInputForm repairOtherMaterialInputForm;
+        private void 其他用料ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (repairOtherMaterialInputForm == null || repairOtherMaterialInputForm.IsDisposed)
+            {
+                repairOtherMaterialInputForm = new RepairOtherMaterialInputForm();
+                repairOtherMaterialInputForm.MdiParent = this;
+            }
+
+            //obeform.WindowState = FormWindowState.Maximized;
+            repairOtherMaterialInputForm.BringToFront();
+            repairOtherMaterialInputForm.Show();
+
+            allForm.Add(repairOtherMaterialInputForm);
         }
     }
 }

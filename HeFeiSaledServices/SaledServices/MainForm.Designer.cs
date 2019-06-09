@@ -129,6 +129,7 @@
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.其他用料ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -374,7 +375,8 @@
             this.库房领料申请ToolStripMenuItem,
             this.toolStripMenuItem2,
             this.站别检查ToolStripMenuItem1,
-            this.主板流水ToolStripMenuItem});
+            this.主板流水ToolStripMenuItem,
+            this.其他用料ToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -963,6 +965,13 @@
             this.拍照ToolStripMenuItem.Text = "拍照";
             this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
             // 
+            // 其他用料ToolStripMenuItem
+            // 
+            this.其他用料ToolStripMenuItem.Name = "其他用料ToolStripMenuItem";
+            this.其他用料ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.其他用料ToolStripMenuItem.Text = "其他用料";
+            this.其他用料ToolStripMenuItem.Click += new System.EventHandler(this.其他用料ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1088,6 +1097,7 @@ private System.Windows.Forms.ToolStripMenuItem eCOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oBEToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 主板流水ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 主板流水ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 其他用料ToolStripMenuItem;
     }
 }
 

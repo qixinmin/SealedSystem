@@ -525,6 +525,12 @@
     <Compile Include="additionForm\InputCIDShanghaiForm.Designer.cs">
       <DependentUpon>InputCIDShanghaiForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repair\RepairOtherMaterialInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\RepairOtherMaterialInputForm.Designer.cs">
+      <DependentUpon>RepairOtherMaterialInputForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repair\RrepareUseListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -895,6 +901,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\InputCIDShanghaiForm.resx">
       <DependentUpon>InputCIDShanghaiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\RepairOtherMaterialInputForm.resx">
+      <DependentUpon>RepairOtherMaterialInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RrepareUseListForm.resx">
       <DependentUpon>RrepareUseListForm.cs</DependentUpon>
