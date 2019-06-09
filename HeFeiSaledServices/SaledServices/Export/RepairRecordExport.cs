@@ -149,6 +149,22 @@ namespace SaledServices.Export
                         repairRecord.smtRecords.Add(sub);
                     }
                     querySdr.Close();
+
+                    //拆件的数据
+                    cmd.CommandText = "select material_mpn,thisNumber,stock_place from fru_smt_used_record_other where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    repairRecord.smtRecords = new List<SmtRecort>();
+                    while (querySdr.Read())
+                    {
+                        SmtRecort sub = new SmtRecort();
+
+                        sub.smtMpn = querySdr[0].ToString();
+                        sub.smtNum = querySdr[1].ToString();
+                        sub.smtplace = querySdr[2].ToString();
+
+                        repairRecord.smtRecords.Add(sub);
+                    }
+                    querySdr.Close();
                 }
                 //
                 foreach (RepairRecordStruct repairRecord in receiveOrderList)
@@ -368,6 +384,11 @@ namespace SaledServices.Export
             }
 
             Untils.createExcel("D:\\维修记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+        }
+
+        private void RepairRecordExport_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

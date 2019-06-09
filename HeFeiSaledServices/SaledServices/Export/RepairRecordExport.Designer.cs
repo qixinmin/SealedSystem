@@ -101,6 +101,7 @@
             this.Name = "RepairRecordExport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "维修信息导出";
+            this.Load += new System.EventHandler(this.RepairRecordExport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

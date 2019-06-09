@@ -62,6 +62,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.站别检查ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.主板流水ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.其他用料ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.主板流水ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,7 +130,6 @@
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.其他用料ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -424,6 +424,13 @@
             this.主板流水ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
             this.主板流水ToolStripMenuItem.Text = "主板流水";
             this.主板流水ToolStripMenuItem.Click += new System.EventHandler(this.主板流水ToolStripMenuItem_Click);
+            // 
+            // 其他用料ToolStripMenuItem
+            // 
+            this.其他用料ToolStripMenuItem.Name = "其他用料ToolStripMenuItem";
+            this.其他用料ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.其他用料ToolStripMenuItem.Text = "其他用料";
+            this.其他用料ToolStripMenuItem.Click += new System.EventHandler(this.其他用料ToolStripMenuItem_Click);
             // 
             // bGA维修ToolStripMenuItem
             // 
@@ -965,13 +972,6 @@
             this.拍照ToolStripMenuItem.Text = "拍照";
             this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
             // 
-            // 其他用料ToolStripMenuItem
-            // 
-            this.其他用料ToolStripMenuItem.Name = "其他用料ToolStripMenuItem";
-            this.其他用料ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
-            this.其他用料ToolStripMenuItem.Text = "其他用料";
-            this.其他用料ToolStripMenuItem.Click += new System.EventHandler(this.其他用料ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -984,7 +984,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "合肥进销存系统0605-收货、维修、测试，外观";
+            this.Text = "合肥进销存系统0609-拆件";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
