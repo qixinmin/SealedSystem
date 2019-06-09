@@ -5,6 +5,7 @@
 CREATE TABLE obe_checkrate_table(
 Id INT PRIMARY KEY IDENTITY, 
 orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+custom_materialNo NVARCHAR(128) NOT NULL,/*客户料号*/
 rate  NVARCHAR(128) NOT NULL, 
 inputer NVARCHAR(128) NOT NULL, /*输入人*/
 input_date date, /*日期*/

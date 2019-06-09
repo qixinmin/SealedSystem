@@ -48,6 +48,8 @@
             this.ordernoquerytextBox = new System.Windows.Forms.TextBox();
             this.button_queryorder = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.matertialNotextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewinsert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewquery)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +58,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 15F);
-            this.label1.Location = new System.Drawing.Point(376, 122);
+            this.label1.Location = new System.Drawing.Point(707, 123);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 20);
@@ -80,7 +82,7 @@
             // 
             // checkrateTextBox
             // 
-            this.checkrateTextBox.Location = new System.Drawing.Point(528, 119);
+            this.checkrateTextBox.Location = new System.Drawing.Point(859, 120);
             this.checkrateTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.checkrateTextBox.Name = "checkrateTextBox";
             this.checkrateTextBox.Size = new System.Drawing.Size(164, 30);
@@ -177,7 +179,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 15F);
-            this.label4.Location = new System.Drawing.Point(722, 61);
+            this.label4.Location = new System.Drawing.Point(711, 29);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 20);
@@ -186,7 +188,7 @@
             // 
             // inputertextBox
             // 
-            this.inputertextBox.Location = new System.Drawing.Point(870, 61);
+            this.inputertextBox.Location = new System.Drawing.Point(859, 29);
             this.inputertextBox.Margin = new System.Windows.Forms.Padding(5);
             this.inputertextBox.Name = "inputertextBox";
             this.inputertextBox.ReadOnly = true;
@@ -197,7 +199,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 15F);
-            this.label5.Location = new System.Drawing.Point(722, 112);
+            this.label5.Location = new System.Drawing.Point(711, 80);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 20);
@@ -206,7 +208,7 @@
             // 
             // inputdatetextBox
             // 
-            this.inputdatetextBox.Location = new System.Drawing.Point(870, 112);
+            this.inputdatetextBox.Location = new System.Drawing.Point(859, 80);
             this.inputdatetextBox.Margin = new System.Windows.Forms.Padding(5);
             this.inputdatetextBox.Name = "inputdatetextBox";
             this.inputdatetextBox.ReadOnly = true;
@@ -271,6 +273,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button_queryorder_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 15F);
+            this.label7.Location = new System.Drawing.Point(380, 136);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 20);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "料号";
+            // 
+            // matertialNotextBox
+            // 
+            this.matertialNotextBox.Location = new System.Drawing.Point(528, 126);
+            this.matertialNotextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.matertialNotextBox.Name = "matertialNotextBox";
+            this.matertialNotextBox.Size = new System.Drawing.Size(164, 30);
+            this.matertialNotextBox.TabIndex = 2;
+            // 
             // ObeRateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -289,11 +310,13 @@
             this.Controls.Add(this.button_queryorder);
             this.Controls.Add(this.add);
             this.Controls.Add(this.ordernoquerytextBox);
+            this.Controls.Add(this.matertialNotextBox);
             this.Controls.Add(this.ordernoTextBox);
             this.Controls.Add(this.checkrateTextBox);
             this.Controls.Add(this.dataGridViewquery);
             this.Controls.Add(this.dataGridViewinsert);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("宋体", 15F);
@@ -330,5 +353,7 @@
         private System.Windows.Forms.TextBox ordernoquerytextBox;
         private System.Windows.Forms.Button button_queryorder;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox matertialNotextBox;
     }
 }

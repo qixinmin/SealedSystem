@@ -48,7 +48,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 //加入条件判断，只显示未收完的货物
-                cmd.CommandText = "select orderno from receiveOrder where _status!='return'";
+                cmd.CommandText = "select orderno,custom_materialNo from receiveOrder where _status!='return'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
@@ -56,6 +56,7 @@ namespace SaledServices
                 {
                     ordernoinfo info = new ordernoinfo();
                     info.orderno = querySdr[0].ToString();
+                    info.custom_materialNo = querySdr[1].ToString();
                     modifiblelist.Add(info);
                     modifiblelistfinal.Add(info);
                 }
@@ -63,7 +64,7 @@ namespace SaledServices
 
                 foreach (ordernoinfo str in modifiblelist)
                 {
-                    cmd.CommandText = "select top 1 orderno from obe_checkrate_table where orderno='" + str.orderno + "'";
+                    cmd.CommandText = "select top 1 orderno,custom_materialNo from obe_checkrate_table where orderno='" + str.orderno + "'";
                     cmd.CommandType = CommandType.Text;
 
                     querySdr = cmd.ExecuteReader();
@@ -77,7 +78,7 @@ namespace SaledServices
                 dataGridViewquery.DataSource = modifiblelistfinal;
                 dataGridViewquery.RowHeadersVisible = false;
 
-                string[] hTxt = { "订单编号"  };
+                string[] hTxt = { "订单编号","料号"};
                 for (int i = 0; i < hTxt.Length; i++)
                 {
                     dataGridViewquery.Columns[i].HeaderText = hTxt[i];
@@ -100,11 +101,12 @@ namespace SaledServices
         public class ordernoinfo
         {
             public string orderno { set; get; }
+            public string custom_materialNo { set; get; }
         }
 
         private void add_Click(object sender, EventArgs e)
         {
-            if (this.ordernoTextBox.Text.Trim() == "" || this.checkrateTextBox.Text.Trim() == "")
+            if (this.ordernoTextBox.Text.Trim() == "" || this.checkrateTextBox.Text.Trim() == "" || this.matertialNotextBox.Text.Trim() == "")
             {
                 MessageBox.Show("要输入的内容不能为空!");
                 return;
@@ -144,6 +146,7 @@ namespace SaledServices
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" 
                         + this.ordernoTextBox.Text.Trim() + "','"
+                        + this.matertialNotextBox.Text.Trim() + "','"
                         + this.checkrateTextBox.Text.Trim() + "','"
                         + this.inputertextBox.Text.Trim() + "','"
                         + this.inputdatetextBox.Text.Trim() 
@@ -157,13 +160,25 @@ namespace SaledServices
                 }
 
                 conn.Close();
+
+                clear();
                 MessageBox.Show("新增成功！");
+
+
                 query_Click(null, null);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void clear()
+        {
+            this.numTextBox.Text = "";
+            this.ordernoTextBox.Text = "";
+            this.matertialNotextBox.Text = "";
+            this.checkrateTextBox.Text = "";
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -175,14 +190,33 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
 
-                if (this.ordernoTextBox.Text.Trim() != "")
+                string sqlStr = "select * from  " + tableName;
+
+                if (ordernoTextBox.Text.Trim() != "")
                 {
-                    cmd.CommandText = "select * from  " + tableName + " where orderno='"+this.ordernoTextBox.Text.Trim()+"'";
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where orderno= '" + ordernoTextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and orderno= '" + ordernoTextBox.Text.Trim() + "' ";
+                    }
                 }
-                else
+
+                if (this.matertialNotextBox.Text.Trim() != "")
                 {
-                    cmd.CommandText = "select * from  " + tableName;
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where custom_materialNo= '" + matertialNotextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and custom_materialNo= '" + matertialNotextBox.Text.Trim() + "' ";
+                    }
                 }
+                              
+                cmd.CommandText = sqlStr;
                 cmd.CommandType = CommandType.Text;
 
                 sda = new SqlDataAdapter();
@@ -197,20 +231,26 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "订单编号", "抽查比例", "输入人", "输入时间" };
+            string[] hTxt = { "ID", "订单编号", "料号", "抽查比例", "输入人", "输入时间" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridViewinsert.Columns[i].HeaderText = hTxt[i];
             }
             MessageBox.Show("查询完成！");
+            clear();
         }
 
         private void modify_Click(object sender, EventArgs e)
         {
+            if (this.numTextBox.Text.Trim() == "")
+            {
+                return;
+            }
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
             dr["orderno"] = this.ordernoTextBox.Text.Trim();
+            dr["custom_materialNo"] = this.matertialNotextBox.Text.Trim();
             dr["rate"] = this.checkrateTextBox.Text.Trim();
 
             dr["inputer"] = this.inputertextBox.Text.Trim();
@@ -220,6 +260,8 @@ namespace SaledServices
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
             MessageBox.Show("修改成功！");
+            clear();
+
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -243,6 +285,7 @@ namespace SaledServices
                 }
 
                 conn.Close();
+                clear();
                 MessageBox.Show("删除完毕!");
                 query_Click(null, null);
             }
@@ -261,7 +304,8 @@ namespace SaledServices
 
             this.numTextBox.Text = dataGridViewinsert.SelectedCells[0].Value.ToString();
             this.ordernoTextBox.Text = dataGridViewinsert.SelectedCells[1].Value.ToString();
-            this.checkrateTextBox.Text = dataGridViewinsert.SelectedCells[2].Value.ToString();            
+            this.matertialNotextBox.Text = dataGridViewinsert.SelectedCells[2].Value.ToString();
+            this.checkrateTextBox.Text = dataGridViewinsert.SelectedCells[3].Value.ToString();  
         }
 
         private void dataGridViewquery_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -272,6 +316,7 @@ namespace SaledServices
             }
 
             this.ordernoTextBox.Text = dataGridViewquery.SelectedCells[0].Value.ToString();
+            this.matertialNotextBox.Text = dataGridViewquery.SelectedCells[1].Value.ToString();
         }
 
         private void button_queryorder_Click(object sender, EventArgs e)
