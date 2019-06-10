@@ -1579,5 +1579,21 @@ namespace SaledServices
 
             allForm.Add(repairOtherMaterialInputForm);
         }
+
+        private ObeCheckExport obeCheckExport;
+        private void oBE抽检信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (obeCheckExport == null || obeCheckExport.IsDisposed)
+            {
+                obeCheckExport = new ObeCheckExport();
+                obeCheckExport.MdiParent = this;
+            }
+
+            //obeform.WindowState = FormWindowState.Maximized;
+            obeCheckExport.BringToFront();
+            obeCheckExport.Show();
+
+            allForm.Add(obeCheckExport);
+        }
     }
 }

@@ -346,6 +346,12 @@
     <Compile Include="Export\MBLifeExport.Designer.cs">
       <DependentUpon>MBLifeExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\ObeCheckExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\ObeCheckExport.Designer.cs">
+      <DependentUpon>ObeCheckExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="LCDDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -814,6 +820,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\MBLifeExport.resx">
       <DependentUpon>MBLifeExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\ObeCheckExport.resx">
+      <DependentUpon>ObeCheckExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LCDDisplay.resx">
       <DependentUpon>LCDDisplay.cs</DependentUpon>
