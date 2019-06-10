@@ -398,19 +398,25 @@ namespace SaledServices.Test_Outlook
                     querySdr.Close();
 
                     //查询是否有2此NTF，如果有进入锁定表格
-                    cmd.CommandText = "select _action,repair_result,repair_date,fault_describe,software_update from repair_record_table where track_serial_no ='" + tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select _action,orderno,repair_result,repair_date,fault_describe,software_update from repair_record_table where custom_serial_no ='" + custom_serial_no.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
                     int ntfcount = 0;
+                    List<string> orderlist = new List<string>();
                     while (querySdr.Read())
                     {
                         if( querySdr[0].ToString().Trim().ToUpper() == "NTF")
                         {
                             ntfcount++;
+
+                            if (!orderlist.Contains(querySdr[1].ToString().Trim()))
+                            {
+                                orderlist.Add(querySdr[1].ToString().Trim());
+                            }
                         }
                     }
                     querySdr.Close();
 
-                    if (ntfcount >= 2)
+                    if (ntfcount >= 2 && orderlist.Count >=2)
                     {
                         cmd.CommandText = "INSERT INTO need_to_lock VALUES('" +
                                     "ntf_twice" + "','" +
@@ -421,7 +427,7 @@ namespace SaledServices.Test_Outlook
                                 DateTime.Now.ToString("yyyy/MM/dd") +
                                 "','')";
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("提示：因为有2次NTF，已经锁定，继续后续操作");
+                        MessageBox.Show("提示：因为超过2个订单的记录有2次NTF，已经锁定，继续后续操作");
                     }
                 }
                 else
