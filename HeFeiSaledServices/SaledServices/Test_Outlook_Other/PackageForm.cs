@@ -101,10 +101,14 @@ namespace SaledServices.Test_Outlook
                                     checkresult = querySdr[0].ToString();
                                 }
                                 querySdr.Close();
-                                if (checkresult != "" && checkresult != "P")
+                                if (checkresult == "" || checkresult != "P")
                                 {
                                     MessageBox.Show("追踪条码的内容在OBE站别中，没有检查结果！");
                                     this.confirmbutton.Enabled = false;
+                                }
+                                else
+                                {
+                                    this.confirmbutton.Enabled = true;
                                 }
                             }
                             else
@@ -123,7 +127,7 @@ namespace SaledServices.Test_Outlook
                     }
                     else 
                     {
-                        MessageBox.Show("板子已经经过站别" + station);
+                        MessageBox.Show("板子已经经过站别=" + station);
                     }
                     mConn.Close();
                 }

@@ -668,6 +668,12 @@
     <Compile Include="Store\FaultMBUnRepairForm.Designer.cs">
       <DependentUpon>FaultMBUnRepairForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\LiangpinMaterialOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\LiangpinMaterialOutForm.Designer.cs">
+      <DependentUpon>LiangpinMaterialOutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test_Outlook_Other\ObeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -976,6 +982,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\FaultMBUnRepairForm.resx">
       <DependentUpon>FaultMBUnRepairForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\LiangpinMaterialOutForm.resx">
+      <DependentUpon>LiangpinMaterialOutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test_Outlook_Other\ObeForm.resx">
       <DependentUpon>ObeForm.cs</DependentUpon>

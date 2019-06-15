@@ -1595,5 +1595,21 @@ namespace SaledServices
 
             allForm.Add(obeCheckExport);
         }
+
+        private LiangpinMaterialOutForm liangpinMaterialOutForm;
+        private void 良品报关出库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (liangpinMaterialOutForm == null || liangpinMaterialOutForm.IsDisposed)
+            {
+                liangpinMaterialOutForm = new LiangpinMaterialOutForm();
+                liangpinMaterialOutForm.MdiParent = this;
+            }
+
+            //faultOutForm.WindowState = FormWindowState.Maximized;
+            liangpinMaterialOutForm.BringToFront();
+            liangpinMaterialOutForm.Show();
+
+            allForm.Add(liangpinMaterialOutForm);
+        }
     }
 }

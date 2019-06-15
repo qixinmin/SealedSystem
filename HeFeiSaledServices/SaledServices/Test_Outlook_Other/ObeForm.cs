@@ -62,7 +62,7 @@ namespace SaledServices.Test_Outlook
 
                         //if (customMaterialNo != "")
                         {
-                            MessageBox.Show("板子还没有经过外观站别, 现在在"+station);
+                            MessageBox.Show("板子还没有经过外观站别, 现在在="+station);
                             
                             this.confirmbutton.Enabled = false;
                             this.button1.Enabled = false;

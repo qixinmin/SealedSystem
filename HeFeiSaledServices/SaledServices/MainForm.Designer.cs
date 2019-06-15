@@ -118,6 +118,7 @@
             this.主板生命周期ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.主板流水导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.还货表信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oBE抽检信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.期初库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实盘库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,7 +131,7 @@
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oBE抽检信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.良品报关出库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -159,7 +160,7 @@
             this.AllMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.AllMenuStrip.Name = "AllMenuStrip";
             this.AllMenuStrip.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.AllMenuStrip.Size = new System.Drawing.Size(1390, 37);
+            this.AllMenuStrip.Size = new System.Drawing.Size(1442, 37);
             this.AllMenuStrip.TabIndex = 4;
             this.AllMenuStrip.Text = "AllMenu";
             // 
@@ -430,7 +431,7 @@
             // 
             this.其他用料ToolStripMenuItem.Name = "其他用料ToolStripMenuItem";
             this.其他用料ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
-            this.其他用料ToolStripMenuItem.Text = "其他用料";
+            this.其他用料ToolStripMenuItem.Text = "其他";
             this.其他用料ToolStripMenuItem.Click += new System.EventHandler(this.其他用料ToolStripMenuItem_Click);
             // 
             // bGA维修ToolStripMenuItem
@@ -488,6 +489,7 @@
             this.测试1ToolStripMenuItem1.Name = "测试1ToolStripMenuItem1";
             this.测试1ToolStripMenuItem1.Size = new System.Drawing.Size(76, 31);
             this.测试1ToolStripMenuItem1.Text = "测试1";
+            this.测试1ToolStripMenuItem1.Visible = false;
             this.测试1ToolStripMenuItem1.Click += new System.EventHandler(this.测试1ToolStripMenuItem1_Click);
             // 
             // 测试2ToolStripMenuItem1
@@ -496,6 +498,7 @@
             this.测试2ToolStripMenuItem1.Name = "测试2ToolStripMenuItem1";
             this.测试2ToolStripMenuItem1.Size = new System.Drawing.Size(76, 31);
             this.测试2ToolStripMenuItem1.Text = "测试2";
+            this.测试2ToolStripMenuItem1.Visible = false;
             this.测试2ToolStripMenuItem1.Click += new System.EventHandler(this.测试2ToolStripMenuItem1_Click);
             // 
             // runningToolStripMenuItem
@@ -556,7 +559,8 @@
             this.不良品出入库管理ToolStripMenuItem,
             this.mB未休出不良品入库ToolStripMenuItem,
             this.fRUSMT不良品出入库管理ToolStripMenuItem,
-            this.不良品出庫ToolStripMenuItem});
+            this.不良品出庫ToolStripMenuItem,
+            this.良品报关出库ToolStripMenuItem});
             this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.库存管理ToolStripMenuItem.Name = "库存管理ToolStripMenuItem";
             this.库存管理ToolStripMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -672,7 +676,7 @@
             // 
             this.不良品出庫ToolStripMenuItem.Name = "不良品出庫ToolStripMenuItem";
             this.不良品出庫ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
-            this.不良品出庫ToolStripMenuItem.Text = "不良品出库";
+            this.不良品出庫ToolStripMenuItem.Text = "不良品报关出库";
             this.不良品出庫ToolStripMenuItem.Click += new System.EventHandler(this.不良品出庫ToolStripMenuItem_Click);
             // 
             // additionMenuItem
@@ -876,6 +880,13 @@
             this.还货表信息导出ToolStripMenuItem.Text = "还货表信息导出";
             this.还货表信息导出ToolStripMenuItem.Click += new System.EventHandler(this.还货表信息导出ToolStripMenuItem_Click);
             // 
+            // oBE抽检信息导出ToolStripMenuItem
+            // 
+            this.oBE抽检信息导出ToolStripMenuItem.Name = "oBE抽检信息导出ToolStripMenuItem";
+            this.oBE抽检信息导出ToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
+            this.oBE抽检信息导出ToolStripMenuItem.Text = "OBE抽检信息导出";
+            this.oBE抽检信息导出ToolStripMenuItem.Click += new System.EventHandler(this.oBE抽检信息导出ToolStripMenuItem_Click);
+            // 
             // 海关ToolStripMenuItem
             // 
             this.海关ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -974,18 +985,18 @@
             this.拍照ToolStripMenuItem.Text = "拍照";
             this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
             // 
-            // oBE抽检信息导出ToolStripMenuItem
+            // 良品报关出库ToolStripMenuItem
             // 
-            this.oBE抽检信息导出ToolStripMenuItem.Name = "oBE抽检信息导出ToolStripMenuItem";
-            this.oBE抽检信息导出ToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
-            this.oBE抽检信息导出ToolStripMenuItem.Text = "OBE抽检信息导出";
-            this.oBE抽检信息导出ToolStripMenuItem.Click += new System.EventHandler(this.oBE抽检信息导出ToolStripMenuItem_Click);
+            this.良品报关出库ToolStripMenuItem.Name = "良品报关出库ToolStripMenuItem";
+            this.良品报关出库ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
+            this.良品报关出库ToolStripMenuItem.Text = "良品报关出库";
+            this.良品报关出库ToolStripMenuItem.Click += new System.EventHandler(this.良品报关出库ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1390, 686);
+            this.ClientSize = new System.Drawing.Size(1442, 680);
             this.Controls.Add(this.AllMenuStrip);
             this.Font = new System.Drawing.Font("宋体", 12F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -993,7 +1004,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "合肥进销存系统0610-包装错锁问题";
+            this.Text = "合肥进销存系统0611";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1108,6 +1119,7 @@ private System.Windows.Forms.ToolStripMenuItem eCOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 主板流水ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 其他用料ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oBE抽检信息导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 良品报关出库ToolStripMenuItem;
     }
 }
 

@@ -854,7 +854,7 @@
             this.ClientSize = new System.Drawing.Size(1264, 637);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RepairOtherMaterialInputForm";
-            this.Text = "维修其他用料输入";
+            this.Text = "维修其他输入";
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);

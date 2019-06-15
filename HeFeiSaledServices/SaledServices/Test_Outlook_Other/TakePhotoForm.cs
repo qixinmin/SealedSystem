@@ -187,6 +187,7 @@ namespace SaledServices.Test_Outlook
 
                         cmd.CommandText = "select top 1 rate from obe_checkrate_table where orderno='" + customorder + "' and custom_materialNo='" + custom_materialNo + "'";
                         cmd.CommandType = CommandType.Text;
+                        querySdr = cmd.ExecuteReader();
 
                         string rateStr = "";
                         while (querySdr.Read())
@@ -227,6 +228,11 @@ namespace SaledServices.Test_Outlook
                               + this.testdatetextBox.Text.Trim()
                               + "')";
                             cmd.ExecuteNonQuery();
+
+                            if (ischeck)
+                            {
+                                MessageBox.Show(this.tracker_bar_textBox.Text.Trim() +" 需要过OBE站别，请分类");
+                            }
                         }
                         catch (Exception ex)
                         {
