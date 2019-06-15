@@ -269,9 +269,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(226, 76);
             this.button1.TabIndex = 3;
-            this.button1.Text = "批量修改Obe抽检比例Todo";
+            this.button1.Text = "批量修改Obe抽检比例0.15";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button_queryorder_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 

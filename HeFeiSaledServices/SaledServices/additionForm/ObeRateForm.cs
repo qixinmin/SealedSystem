@@ -34,6 +34,9 @@ namespace SaledServices
             doqueryorderno();
         }
 
+        List<ordernoinfo> modifiblelist = new List<ordernoinfo>();
+        List<ordernoinfo> modifiblelistfinal = new List<ordernoinfo>();
+
         private void doqueryorderno()
         {
             try
@@ -42,8 +45,8 @@ namespace SaledServices
                 dataGridViewquery.Columns.Clear();
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                 mConn.Open();
-                List<ordernoinfo> modifiblelist = new List<ordernoinfo>();
-                List<ordernoinfo> modifiblelistfinal = new List<ordernoinfo>();
+                modifiblelist.Clear();
+                modifiblelistfinal.Clear();
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
@@ -132,7 +135,8 @@ namespace SaledServices
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
 
-                    cmd.CommandText = "select Id from  " + tableName + " where orderno='" + this.ordernoTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select Id from  " + tableName + " where orderno='" + this.ordernoTextBox.Text.Trim() + "' and custom_materialNo='" + this.matertialNotextBox.Text.Trim() + "'";
+                    cmd.CommandType = CommandType.Text;
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
@@ -140,9 +144,9 @@ namespace SaledServices
                         querySdr.Close();
                         conn.Close();
                         MessageBox.Show("表中已经有此订单号的数据，不能插入，可以查询！");
+                        return;
                     }
                     querySdr.Close();
-
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" 
                         + this.ordernoTextBox.Text.Trim() + "','"
@@ -151,7 +155,7 @@ namespace SaledServices
                         + this.inputertextBox.Text.Trim() + "','"
                         + this.inputdatetextBox.Text.Trim() 
                         + "')";
-                    cmd.CommandType = CommandType.Text;
+                    
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -246,6 +250,45 @@ namespace SaledServices
             {
                 return;
             }
+
+            //修改之前确认是否有记录插入，如果有 不能修改
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+
+                    cmd.CommandText = "select Id from  decideOBEchecktable where orderno='" + this.ordernoTextBox.Text.Trim() + "' and custom_materialNo='"+this.matertialNotextBox.Text.Trim()+"'";
+                    cmd.CommandType = CommandType.Text;
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        querySdr.Close();
+                        conn.Close();
+                        MessageBox.Show("表中已经有此订单号的数据，不能再次修改！");
+                        return;
+                    }
+                    querySdr.Close();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
@@ -325,6 +368,66 @@ namespace SaledServices
             this.checkrateTextBox.Text = "";
             this.ordernoTextBox.Text = "";
             doqueryorderno();
+        }
+
+        //批量修改
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    foreach (ordernoinfo str in modifiblelist)
+                    {
+                        cmd.CommandText = "select Id from  " + tableName + " where orderno='" + str.orderno + "' and custom_materialNo='" + str.custom_materialNo + "'";                    
+
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {
+                            querySdr.Close();
+                        }
+                        else
+                        {
+                            querySdr.Close();
+
+                            cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
+                                + str.orderno + "','"
+                                + str.custom_materialNo + "','"
+                                + "0.15" + "','"
+                                + this.inputertextBox.Text.Trim() + "','"
+                                + this.inputdatetextBox.Text.Trim()
+                                + "')";
+
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+
+                clear();
+                MessageBox.Show("新增成功！");
+
+                query_Click(null, null);
+                button_queryorder_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+
         }
     }
 }

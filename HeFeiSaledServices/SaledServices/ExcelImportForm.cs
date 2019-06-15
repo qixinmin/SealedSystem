@@ -373,6 +373,30 @@ namespace SaledServices
                                 storeHouse + "','0',"+"'"+declare_unit+"','"+declare_number+"','"+custom_request_number+"','0')";
 
                             insertCmd.ExecuteNonQuery();
+
+                            //插入obe抽查比例
+                            insertCmd.CommandText = "select Id from  obe_checkrate_table where orderno='" + order  +"' and custom_materialNo='" + customMaterialNo + "'";
+
+                            querySdr = insertCmd.ExecuteReader();
+                            if (querySdr.HasRows)
+                            {
+                                querySdr.Close();
+                            }
+                            else
+                            {
+                                querySdr.Close();
+
+                                insertCmd.CommandText = "INSERT INTO obe_checkrate_table VALUES('"
+                                    + order + "','"
+                                    + customMaterialNo + "','"
+                                    + "0.15" + "','"
+                                    + LoginForm.currentUser + "','"
+                                    + DateTime.Now.ToString("yyyy/MM/dd")
+                                    + "')";
+
+                                insertCmd.ExecuteNonQuery();
+                            }
+                            //end //插入obe抽查比例
                         }
                     }
 
