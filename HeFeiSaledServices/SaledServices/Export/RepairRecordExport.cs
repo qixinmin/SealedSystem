@@ -41,18 +41,74 @@ namespace SaledServices.Export
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
+                SqlDataReader querySdr = null;
 
-                cmd.CommandText = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
-                SqlDataReader querySdr = cmd.ExecuteReader();
-                while (querySdr.Read())
+
+                if (checkBoxtwo.Checked)//2返查询
                 {
-                    RepairRecordStruct temp = new RepairRecordStruct();
-                    temp.track_serial_no = querySdr[0].ToString();
-                    temp.repair_Num = querySdr[1].ToString();
+                    List<string> customserialnolist = new List<string>();
+                    cmd.CommandText = "SELECT custom_serial_no from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "' group by custom_serial_no having COUNT(custom_serial_no)>1";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        customserialnolist.Add(querySdr[0].ToString());
+                    }
+                    querySdr.Close();
 
-                    receiveOrderList.Add(temp);
+                    List<repairRecord> repairRecordList = new List<repairRecord>();
+                    foreach (string str in customserialnolist)
+                    {
+                        cmd.CommandText = "SELECT distinct track_serial_no,orderno, custom_serial_no from repair_record_table where custom_serial_no='" + str + "'";
+                        querySdr = cmd.ExecuteReader();
+                        int count = 0;
+                        while (querySdr.Read())
+                        {
+                            count++;
+                        }
+                        querySdr.Close();
+
+                        if (count > 1)
+                        {
+                            cmd.CommandText = "SELECT distinct track_serial_no,orderno, custom_serial_no from repair_record_table where custom_serial_no='" + str + "'";
+                            querySdr = cmd.ExecuteReader();
+
+                            while (querySdr.Read())
+                            {
+                                repairRecord temp = new repairRecord();
+                                temp.track_serial_no = querySdr[0].ToString();
+                                temp.orderno = querySdr[1].ToString();
+                                temp.custom_serial_no = querySdr[2].ToString();
+                                temp.count = count;
+                                repairRecordList.Add(temp);
+                            }
+                            querySdr.Close();
+                        }
+                    }
+
+                    foreach( repairRecord temp1 in repairRecordList)
+                    {
+                        RepairRecordStruct temp = new RepairRecordStruct();
+                        temp.track_serial_no = temp1.track_serial_no;
+                        temp.repair_Num = temp1.count+"";
+
+                        receiveOrderList.Add(temp);
+                    }
                 }
-                querySdr.Close();
+
+                else
+                {
+                    cmd.CommandText = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        RepairRecordStruct temp = new RepairRecordStruct();
+                        temp.track_serial_no = querySdr[0].ToString();
+                        temp.repair_Num = querySdr[1].ToString();
+
+                        receiveOrderList.Add(temp);
+                    }
+                    querySdr.Close();
+                }
 
                 foreach (RepairRecordStruct repairRecord in receiveOrderList)
                 {
@@ -383,13 +439,28 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Untils.createExcel("D:\\维修记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            if (checkBoxtwo.Checked)
+            {
+                Untils.createExcel("D:\\2返维修记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            }
+            else
+            {
+                Untils.createExcel("D:\\维修记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            }
         }
 
         private void RepairRecordExport_Load(object sender, EventArgs e)
         {
 
         }
+    }
+
+    public class repairRecord
+    {
+        public string track_serial_no;
+        public string orderno;
+        public string custom_serial_no;
+        public int count;
     }
 
     /**

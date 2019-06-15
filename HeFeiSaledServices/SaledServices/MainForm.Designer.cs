@@ -93,6 +93,7 @@
             this.mB未休出不良品入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fRUSMT不良品出入库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.不良品出庫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.良品报关出库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customFaultMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,7 +132,6 @@
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.良品报关出库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -679,6 +679,13 @@
             this.不良品出庫ToolStripMenuItem.Text = "不良品报关出库";
             this.不良品出庫ToolStripMenuItem.Click += new System.EventHandler(this.不良品出庫ToolStripMenuItem_Click);
             // 
+            // 良品报关出库ToolStripMenuItem
+            // 
+            this.良品报关出库ToolStripMenuItem.Name = "良品报关出库ToolStripMenuItem";
+            this.良品报关出库ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
+            this.良品报关出库ToolStripMenuItem.Text = "良品报关出库";
+            this.良品报关出库ToolStripMenuItem.Click += new System.EventHandler(this.良品报关出库ToolStripMenuItem_Click);
+            // 
             // additionMenuItem
             // 
             this.additionMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -985,13 +992,6 @@
             this.拍照ToolStripMenuItem.Text = "拍照";
             this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
             // 
-            // 良品报关出库ToolStripMenuItem
-            // 
-            this.良品报关出库ToolStripMenuItem.Name = "良品报关出库ToolStripMenuItem";
-            this.良品报关出库ToolStripMenuItem.Size = new System.Drawing.Size(315, 32);
-            this.良品报关出库ToolStripMenuItem.Text = "良品报关出库";
-            this.良品报关出库ToolStripMenuItem.Click += new System.EventHandler(this.良品报关出库ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1004,7 +1004,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "合肥进销存系统0611";
+            this.Text = "合肥进销存系统0615";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
