@@ -15,9 +15,9 @@ namespace SaledServices
         private SqlConnection mConn;
         private DataSet ds;
         private SqlDataAdapter sda;
-        private String tableName = "mb_smt_bga_ng_out_house_table";
+        private String tableName = "mb_smt_bga_out_house_table";
 
-        private string ng_tablename = "store_house_ng";
+        private string not_ng_tablename = "store_house";
 
         private ChooseStock chooseStock = new ChooseStock();
 
@@ -43,14 +43,14 @@ namespace SaledServices
             this.housetextBox.Text = "";
             this.placetextBox.Text = "";
             this.declare_numberTextBox.Text= "";
-            if (ngHouseComboBox.Text == "主要不良品库")
+            if (ngHouseComboBox.Text == "主要良品库")
             {
-                ng_tablename = "store_house_ng";
+                not_ng_tablename = "store_house";
             }
-            else//Buffer不良品库
-            {
-                ng_tablename = "store_house_ng_buffer_mb";
-            }
+            //else//Buffer不良品库
+            //{
+            //    not_ng_tablename = "store_house_ng_buffer_mb";
+            //}
 
             dataGridView1.DataSource = null;
             dataGridView1.Columns.Clear();           
@@ -84,7 +84,7 @@ namespace SaledServices
 
                     //不良品库, 需要更新库房对应储位的数量 减去 本次出库的数量
                     //根据mpn查对应的查询
-                    cmd.CommandText = "select house,place,Id,number from " + ng_tablename + " where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select house,place,Id,number from " + not_ng_tablename + " where mpn='" + this.mpnTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string house = "", place = "", Id = "", number = "0";
                     while (querySdr.Read())
@@ -105,11 +105,11 @@ namespace SaledServices
                         return;
                     }
 
-                    cmd.CommandText = "update " + ng_tablename + " set number = '" + (stockNumber - outNumber) + "', mpn='" + this.mpnTextBox.Text.Trim() + "'  where house='" + this.housetextBox.Text + "' and place='" + this.placetextBox.Text + "'";
+                    cmd.CommandText = "update " + not_ng_tablename + " set number = '" + (stockNumber - outNumber) + "', mpn='" + this.mpnTextBox.Text.Trim() + "'  where house='" + this.housetextBox.Text + "' and place='" + this.placetextBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
-                    //插入一条不良品出库记录
-                    cmd.CommandText = "INSERT INTO mb_smt_bga_ng_out_house_table VALUES('" +
+                    //插入一条良品出库记录
+                    cmd.CommandText = "INSERT INTO mb_smt_bga_out_house_table VALUES('" +
                         this.mpnTextBox.Text.Trim() + "','" +
                         this.numberTextBox.Text.Trim() + "','" +
                         DateTime.Now.ToString("yyyy/MM/dd") + "','" +
@@ -262,7 +262,7 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select house,place,Id,number from " + ng_tablename + " where mpn like '%" + this.mpnTextBox.Text.Trim() + "%'";
+                    cmd.CommandText = "select house,place,Id,number from " + not_ng_tablename + " where mpn like '%" + this.mpnTextBox.Text.Trim() + "%'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string house = "", place = "", Id = "", number = "";
 
@@ -315,8 +315,8 @@ namespace SaledServices
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<mb_smt_bga_ng_out_house> receiveOrderList = new List<mb_smt_bga_ng_out_house>();
-            List<mb_smt_bga_ng_out_houseSum> bagWaitSumList = new List<mb_smt_bga_ng_out_houseSum>();
+            List<mb_smt_bga_out_house> receiveOrderList = new List<mb_smt_bga_out_house>();
+            List<mb_smt_bga_out_houseSum> bagWaitSumList = new List<mb_smt_bga_out_houseSum>();
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -326,11 +326,11 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "SELECT  [mpn],[in_number],[input_date],[declare_unit],[declare_number] FROM [SaledService].[dbo].[mb_smt_bga_ng_out_house_table]";
+                cmd.CommandText = "SELECT  [mpn],[in_number],[input_date],[declare_unit],[declare_number] FROM [SaledService].[dbo].[mb_smt_bga_out_house_table]";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    mb_smt_bga_ng_out_house temp = new mb_smt_bga_ng_out_house();
+                    mb_smt_bga_out_house temp = new mb_smt_bga_out_house();
                     temp.mpn = querySdr[0].ToString();
                     temp.in_number = querySdr[1].ToString();
                     temp.input_date = querySdr[2].ToString();
@@ -344,7 +344,7 @@ namespace SaledServices
                     {
                         if (temp.mpn != null && temp.mpn.Trim() != "")
                         {
-                            mb_smt_bga_ng_out_houseSum newTemp = new mb_smt_bga_ng_out_houseSum();
+                            mb_smt_bga_out_houseSum newTemp = new mb_smt_bga_out_houseSum();
                             newTemp.mpn = temp.mpn;
                             newTemp.outnumber = temp.in_number;
                             bagWaitSumList.Add(newTemp);
@@ -353,7 +353,7 @@ namespace SaledServices
                     else
                     {
                         bool exist = false;
-                        foreach (mb_smt_bga_ng_out_houseSum oldrecord in bagWaitSumList)
+                        foreach (mb_smt_bga_out_houseSum oldrecord in bagWaitSumList)
                         {
                             if (oldrecord.equals(temp.mpn))
                             {
@@ -367,7 +367,7 @@ namespace SaledServices
                         {
                             if (temp.mpn != null && temp.mpn.Trim() != "")
                             {
-                                mb_smt_bga_ng_out_houseSum newTemp = new mb_smt_bga_ng_out_houseSum();
+                                mb_smt_bga_out_houseSum newTemp = new mb_smt_bga_out_houseSum();
                                 newTemp.mpn = temp.mpn;
                                 newTemp.outnumber = temp.in_number;
                                 bagWaitSumList.Add(newTemp);
@@ -377,9 +377,9 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
-                foreach (mb_smt_bga_ng_out_houseSum temp in bagWaitSumList)
+                foreach (mb_smt_bga_out_houseSum temp in bagWaitSumList)
                 {
-                    cmd.CommandText = "select number from " + ng_tablename + " where mpn like '%" + temp.mpn + "%'";
+                    cmd.CommandText = "select number from " + not_ng_tablename + " where mpn like '%" + temp.mpn + "%'";
                     querySdr = cmd.ExecuteReader();
                  
                     while (querySdr.Read())
@@ -400,7 +400,7 @@ namespace SaledServices
         }
 
 
-        public void generateExcelToCheck(List<mb_smt_bga_ng_out_house> StockCheckList, List<mb_smt_bga_ng_out_houseSum> bagWaitSumList)
+        public void generateExcelToCheck(List<mb_smt_bga_out_house> StockCheckList, List<mb_smt_bga_out_houseSum> bagWaitSumList)
         {
             List<allContent> allcontentList = new List<allContent>();
 
@@ -415,7 +415,7 @@ namespace SaledServices
             firstsheet.titleList.Add("单位");
             firstsheet.titleList.Add("报关单号");
 
-            foreach (mb_smt_bga_ng_out_house stockcheck in StockCheckList)
+            foreach (mb_smt_bga_out_house stockcheck in StockCheckList)
             {
                 ExportExcelContent ctest1 = new ExportExcelContent();
                 List<string> ct1 = new List<string>();
@@ -440,7 +440,7 @@ namespace SaledServices
             secondsheet.titleList.Add("出库总数");
             secondsheet.titleList.Add("剩余数量");
 
-            foreach (mb_smt_bga_ng_out_houseSum stockcheck in bagWaitSumList)
+            foreach (mb_smt_bga_out_houseSum stockcheck in bagWaitSumList)
             {
                 ExportExcelContent ctest1 = new ExportExcelContent();
                 List<string> ct1 = new List<string>();
@@ -454,11 +454,11 @@ namespace SaledServices
 
             allcontentList.Add(secondsheet);
 
-            Untils.createMulitSheetsUsingNPOI("D:\\不良品报关出库信息" + DateTime.Now.ToString("yyyy-MM-dd").Replace('/', '-') + ".xls", allcontentList);
+            Untils.createMulitSheetsUsingNPOI("D:\\良品报关出库信息" + DateTime.Now.ToString("yyyy-MM-dd").Replace('/', '-') + ".xls", allcontentList);
         }
     }
 
-    public class mb_smt_bga_ng_out_house_1
+    public class mb_smt_bga_out_house
     {
         public string mpn;
         public string in_number;
@@ -467,7 +467,7 @@ namespace SaledServices
         public string declare_number;
     }
 
-    public class mb_smt_bga_ng_out_houseSum_1
+    public class mb_smt_bga_out_houseSum
     {
         public string mpn;
         public string outnumber;

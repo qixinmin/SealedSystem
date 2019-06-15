@@ -151,6 +151,18 @@ unlcok_date date, /*解锁日期，为true时此日期不为空*/
 --unlcok_date date, /*解锁日期，为true时此日期不为空*/
 --)
 
+/*良品MB/SMT/BGA报关出库记录*/
+/*把fru的材料也放進去了，但是默認現在不報關出去，因爲要交稅，在上報的時候過濾一下*/
+CREATE TABLE mb_smt_bga_out_house_table(
+Id INT PRIMARY KEY IDENTITY, 
+mpn NVARCHAR(128) NOT NULL,/*料号*/
+in_number NVARCHAR(128), /*入库数量*/
+input_date date, /*输入日期*/
+declare_unit NVARCHAR(128), /*申报单位,需要转换*/
+declare_number NVARCHAR(128), /*报关单号*/
+custom_request_number NVARCHAR(128), /*申请单号*/
+)
+
 /*不良品MB/SMT/BGA出库记录*/
 /*把fru的材料也放進去了，但是默認現在不報關出去，因爲要交稅，在上報的時候過濾一下*/
 CREATE TABLE mb_smt_bga_ng_out_house_table(

@@ -284,8 +284,7 @@
             this.ngHouseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ngHouseComboBox.FormattingEnabled = true;
             this.ngHouseComboBox.Items.AddRange(new object[] {
-            "主要不良品库",
-            "Buffer不良品库"});
+            "主要良品库"});
             this.ngHouseComboBox.Location = new System.Drawing.Point(203, 27);
             this.ngHouseComboBox.Name = "ngHouseComboBox";
             this.ngHouseComboBox.Size = new System.Drawing.Size(164, 28);
@@ -313,7 +312,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // FaultMaterialOutForm
+            // LiangpinMaterialOutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -344,9 +343,9 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("宋体", 15F);
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "FaultMaterialOutForm";
+            this.Name = "LiangpinMaterialOutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "不良品出库";
+            this.Text = "良品报关出库(海关xml导出未做）";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
