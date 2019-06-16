@@ -311,6 +311,17 @@ namespace SaledServices
                     cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
+
+                    //记录BGA维修记录
+                    if (this.newSntextBox.Text != "")
+                    {
+                        cmd.CommandText = "INSERT INTO mb_repair_status_record VALUES('"
+                            + repairer_txt + "','"
+                            + DateTime.Now.ToString("yyyy/MM/dd") + "','"
+                            + this.track_serial_noTextBox.Text.Trim() + "','BGA','"
+                            + "" + "')";
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 else
                 {

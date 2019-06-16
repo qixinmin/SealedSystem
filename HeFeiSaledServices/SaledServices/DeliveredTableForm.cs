@@ -886,6 +886,17 @@ namespace SaledServices
                             + this.track_serial_noTextBox.Text.Trim() + "','收货','"
                             + DateTime.Now.ToString("yyyy/MM/dd") + "')";
                         cmd.ExecuteNonQuery();
+
+                        //记录RRR this.source_briefComboBox.Text = "RR";
+                        if (this.source_briefComboBox.Text.Trim() == "RR")
+                        {
+                            cmd.CommandText = "INSERT INTO mb_repair_status_record VALUES('"
+                                + this.inputUserTextBox.Text.Trim() + "','"
+                                + DateTime.Now.ToString("yyyy/MM/dd") + "','"
+                                + this.track_serial_noTextBox.Text.Trim() + "','RR','"
+                                +""   + "')";
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
                 else

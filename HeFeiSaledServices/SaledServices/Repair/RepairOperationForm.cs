@@ -943,6 +943,26 @@ namespace SaledServices
                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
+                    //记录维修记录
+                    if (repair_resultcomboBox.Text.Contains("NTF"))
+                    {
+                        cmd.CommandText = "INSERT INTO mb_repair_status_record VALUES('"
+                            + repairer_txt + "','"
+                            + DateTime.Now.ToString("yyyy/MM/dd") + "','"
+                            + this.track_serial_noTextBox.Text.Trim() + "','NTF','"
+                            + "" + "')";
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        cmd.CommandText = "INSERT INTO mb_repair_status_record VALUES('"
+                            + repairer_txt + "','"
+                            + DateTime.Now.ToString("yyyy/MM/dd") + "','"
+                            + this.track_serial_noTextBox.Text.Trim() + "','NOT_NTF','"
+                            + "" + "')";
+                        cmd.ExecuteNonQuery();
+                    }
+
                 }
                 else
                 {

@@ -64,7 +64,7 @@ namespace SaledServices.Test_Outlook
                     querySdr.Close();
 
                     //加入Running可以跳过的逻辑，这样经过测试也可以直接过去，running属于可跳过站别
-                    if (station != "外观" && station != "Running" && (station != "Test2" && station != "Test1&2"))//等于外观怕mylar一个页面的数据插入不够，此时不能拦截
+                    if (station != "外观" && station != "Running" /*&& (station != "Test2" && station != "Test1&2")*/)//等于外观怕mylar一个页面的数据插入不够，此时不能拦截
                     {
                         MessageBox.Show("板子已经经过站别【" + station+"】");
                         this.confirmbutton.Enabled = false;

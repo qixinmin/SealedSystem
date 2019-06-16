@@ -1,5 +1,15 @@
 
 
+/*需要创建一个表格，记录二返RR， NTF， BGA维修记录*/
+CREATE TABLE mb_repair_status_record(
+Id INT PRIMARY KEY IDENTITY, 
+inputer  NVARCHAR(128),/*输入人*/
+input_date  date,/*日期*/
+track_serial_no NVARCHAR(128),/*跟踪条码*/
+feature NVARCHAR(128), /*RR, NTF, BGA*/
+note NVARCHAR(128),/*备用*/
+)
+
 /*需要创建一个表格，记录维修的每条使用记录 比如拆件等逻辑的补充，不能上报给海关*/
 CREATE TABLE fru_smt_used_record_other(
 Id INT PRIMARY KEY IDENTITY, 
