@@ -35,6 +35,7 @@
             this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             this.exportxmlbutton = new System.Windows.Forms.Button();
             this.checkBoxtwo = new System.Windows.Forms.CheckBox();
+            this.checkBox_other_materials = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label4
@@ -98,11 +99,22 @@
             this.checkBoxtwo.Text = "2返记录";
             this.checkBoxtwo.UseVisualStyleBackColor = true;
             // 
+            // checkBox_other_materials
+            // 
+            this.checkBox_other_materials.AutoSize = true;
+            this.checkBox_other_materials.Location = new System.Drawing.Point(331, 126);
+            this.checkBox_other_materials.Name = "checkBox_other_materials";
+            this.checkBox_other_materials.Size = new System.Drawing.Size(72, 16);
+            this.checkBox_other_materials.TabIndex = 21;
+            this.checkBox_other_materials.Text = "其他用料";
+            this.checkBox_other_materials.UseVisualStyleBackColor = true;
+            // 
             // RepairRecordExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 365);
+            this.Controls.Add(this.checkBox_other_materials);
             this.Controls.Add(this.checkBoxtwo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -128,5 +140,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerstart;
         private System.Windows.Forms.Button exportxmlbutton;
         private System.Windows.Forms.CheckBox checkBoxtwo;
+        private System.Windows.Forms.CheckBox checkBox_other_materials;
     }
 }

@@ -68,6 +68,18 @@ namespace SaledServices.Export
                 }
                 querySdr.Close();
 
+                //加入VGA
+                cmd.CommandText = "select BGAPN, count(*) from bga_repair_record_table where bga_repair_date between '" + startTime + "' and '" + endTime + "' and bgatype='VGA' and bga_repair_result='更换OK待测量'";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    MaterialConsumeStruct temp = new MaterialConsumeStruct();
+                    temp.mpn = querySdr[0].ToString();
+                    temp.out_number = querySdr[1].ToString();
+                    receiveOrderList.Add(temp);
+                }
+                querySdr.Close();
+
 
                 foreach (MaterialConsumeStruct stockcheck in receiveOrderList)
                 {

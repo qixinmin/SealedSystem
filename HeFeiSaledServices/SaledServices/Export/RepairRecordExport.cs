@@ -206,21 +206,24 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    //拆件的数据
-                    cmd.CommandText = "select material_mpn,thisNumber,stock_place from fru_smt_used_record_other where track_serial_no ='" + repairRecord.track_serial_no + "'";
-                    querySdr = cmd.ExecuteReader();
-                    repairRecord.smtRecords = new List<SmtRecort>();
-                    while (querySdr.Read())
+                    if (checkBox_other_materials.Checked)
                     {
-                        SmtRecort sub = new SmtRecort();
+                        //拆件的数据
+                        cmd.CommandText = "select material_mpn,thisNumber,stock_place from fru_smt_used_record_other where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                        querySdr = cmd.ExecuteReader();
+                        repairRecord.smtRecords = new List<SmtRecort>();
+                        while (querySdr.Read())
+                        {
+                            SmtRecort sub = new SmtRecort();
 
-                        sub.smtMpn = querySdr[0].ToString();
-                        sub.smtNum = querySdr[1].ToString();
-                        sub.smtplace = querySdr[2].ToString();
+                            sub.smtMpn = querySdr[0].ToString();
+                            sub.smtNum = querySdr[1].ToString();
+                            sub.smtplace = querySdr[2].ToString();
 
-                        repairRecord.smtRecords.Add(sub);
+                            repairRecord.smtRecords.Add(sub);
+                        }
+                        querySdr.Close();
                     }
-                    querySdr.Close();
                 }
                 //
                 foreach (RepairRecordStruct repairRecord in receiveOrderList)
@@ -442,6 +445,9 @@ namespace SaledServices.Export
             if (checkBoxtwo.Checked)
             {
                 Untils.createExcel("D:\\2返维修记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            }else if (checkBox_other_materials.Checked)
+            {
+                Untils.createExcel("D:\\含其他材料维修记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
             }
             else
             {
