@@ -444,7 +444,7 @@ namespace SaledServices.Test_Outlook
                     else//如果上面找到记录，则下面就不用再找一遍了，否在判断NTF
                     {
                         //NTF比较特殊， 可能有多条NTF记录，所以只查询NOT_NTF,只有有就认为不是NTF
-                        cmd.CommandText = "select Id from mb_repair_status_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' where feature ='NOT_NTF'";
+                        cmd.CommandText = "select Id from mb_repair_status_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' and feature ='NOT_NTF'";
                         querySdr = cmd.ExecuteReader();
                         exist = "";
                         while (querySdr.Read())

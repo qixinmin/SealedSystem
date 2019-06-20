@@ -93,9 +93,9 @@ namespace SaledServices.Test_Outlook
                         querySdr.Close();
 
                         //需要添加判断本地文件的逻辑，看图片是否存在，如果不存在，则不能通过
-                        string path = "D:\\CSD\\" + DateTime.Now.ToString("yyyy-MM-dd")+"\\";
-                        string filepath1 = path + custom_serial_no + "-1.jpg";
-                        string filepath2 = path + custom_serial_no + "-2.jpg";
+                        string path = "D:\\CSD\\";// +DateTime.Now.ToString("yyyy-MM-dd") + "\\";
+                        string filepath1 = path + custom_serial_no + "_000.jpg";
+                        string filepath2 = path + custom_serial_no + "_001.jpg";
                         bool file1 = File.Exists(filepath1);
                         bool file2 = File.Exists(filepath2);
 
