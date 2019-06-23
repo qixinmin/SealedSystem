@@ -1000,7 +1000,7 @@ namespace SaledServices
         }
 
         private void print_Click(object sender, EventArgs e)
-        {          
+        {
             if (this.custommaterialNoTextBox.Text == "")
             {
                 MessageBox.Show("客户料号为空!");
@@ -1018,7 +1018,7 @@ namespace SaledServices
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = "select vendormaterialNo from MBMaterialCompare where custommaterialNo = '" + this.custommaterialNoTextBox.Text + "'";
-                SqlDataReader querySdr = cmd.ExecuteReader();               
+                SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
                     vendormaterialNo = querySdr[0].ToString();
@@ -1045,7 +1045,14 @@ namespace SaledServices
                 return;
             }
 
-            PrintUtils.printCustomMaterialNo(ordernoTextBox.Text, vendormaterialNo, custommaterialNoTextBox.Text.Substring(3), flexidcomboBox.Text, custom_serial_noTextBox.Text);        
+            if (this.storehouseTextBox.Text.ToUpper().StartsWith("CN"))
+            {
+                PrintUtils.printCustomMaterialNoChina(ordernoTextBox.Text, custommaterialNoTextBox.Text.Substring(3), custom_serial_noTextBox.Text);
+            }
+            else
+            {
+                PrintUtils.printCustomMaterialNo(ordernoTextBox.Text, vendormaterialNo, custommaterialNoTextBox.Text.Substring(3), flexidcomboBox.Text, custom_serial_noTextBox.Text);
+            }
         }
 
         private void input8sTextBox_KeyPress(object sender, KeyPressEventArgs e)

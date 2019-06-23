@@ -427,7 +427,7 @@ namespace SaledServices.Test_Outlook
 
 
                     //需要加入RR，NTF(NOT_NTF)， BGA维修记录， 不稳定的为四个小时，否则一个小时
-                    cmd.CommandText = "select Id from mb_repair_status_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' where feature ='RR' or feature='BGA'";
+                    cmd.CommandText = "select Id from mb_repair_status_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' and feature ='RR' or feature='BGA'";
                     querySdr = cmd.ExecuteReader();
                     string exist = "";
                     while (querySdr.Read())

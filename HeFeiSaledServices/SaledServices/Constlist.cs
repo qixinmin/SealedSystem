@@ -160,6 +160,21 @@ namespace SaledServices
             }
         }
 
+        public static void printCustomMaterialNoChina(string rma, string customMaterial, string _8sCode)
+        {
+            if (labApp == null)
+            {
+                InitCodesoftForReturn();
+            }
+
+            doc.Variables.FormVariables.Item("RMA").Value = rma;
+            doc.Variables.FormVariables.Item("LPN").Value = customMaterial;
+            doc.Variables.FormVariables.Item("SNN").Value = _8sCode;
+
+            doc.PrintDocument(); //打印一次
+            doc.FormFeed(); //结束打印
+        }
+
         public static void  printCustomMaterialNo(string rma, string _71material, string customMaterial, string flxid, string _8sCode)
         {
             if (labApp == null)
