@@ -706,6 +706,102 @@ namespace SaledServices.CustomsExport
                         }
                     }
 
+                    //6.1 2019-06-26新加内容，良品報關出庫,=> mb/smt/bga良品库出库信息, 現在加入fru材料，需要判斷fru材料，不上報
+                    MaterialCustomRelationList.Clear();
+                    TrackNoCustomRelationList.Clear();
+                    cmd.CommandText = "select Id,mpn,in_number,declare_unit,declare_number,custom_request_number,input_date from mb_smt_bga_out_house_table where input_date between '" + startTime + "' and '" + endTime + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        MaterialCustomRelation MaterialCustomRelationTemp = new MaterialCustomRelation();
+                        MaterialCustomRelationTemp.id = querySdr[0].ToString();
+
+                        string currentDeclear = "";
+                        string nowMatrialNo = querySdr[1].ToString();
+
+                        if (checkMpnfruOrSmt[nowMatrialNo].Trim().ToUpper() == "FRU")
+                        {
+                            continue;//FRU 材料不上報                            
+                        }
+
+                        if (_71bomDic.ContainsKey(nowMatrialNo))
+                        {
+                            currentDeclear = _71bomDic[nowMatrialNo];//良品的料号要加
+                        }
+                        else if (materialbomDic.ContainsKey(nowMatrialNo))//主板只查询物料对照表
+                        {
+                            currentDeclear = materialbomDic[nowMatrialNo];
+
+                            string temp = currentDeclear;
+                            if (temp.Length == 10 && temp.StartsWith("000"))
+                            {
+                                temp = temp.Substring(3);
+                            }
+
+                            currentDeclear = temp;
+                        }
+                        else
+                        {
+
+                            showMessage("mb/smt/bga良品库出库物料" + nowMatrialNo + "对应找不到71料号！", isAuto, true);
+                            isHasError = true;
+                            querySdr.Close();
+                            mConn.Close();
+                            return;
+                        }
+
+                        MaterialCustomRelationTemp.mpn = currentDeclear;//因为报关原因，需要改成71料号（联想料号）
+                        MaterialCustomRelationTemp.num = querySdr[2].ToString();
+                        MaterialCustomRelationTemp.declare_unit = querySdr[3].ToString();
+                        MaterialCustomRelationTemp.declare_number = querySdr[4].ToString();
+                        MaterialCustomRelationTemp.custom_request_number = querySdr[5].ToString();
+                        MaterialCustomRelationTemp.date = querySdr[6].ToString();
+
+                        MaterialCustomRelationList.Add(MaterialCustomRelationTemp);
+                    }
+                    querySdr.Close();
+                    if (MaterialCustomRelationList.Count > 0)
+                    {
+                        //信息完全,生成信息
+                        foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
+                        {
+                            StoreTrans init1 = new StoreTrans();
+                            init1.ems_no = ems_no;
+                            init1.io_no = materialTemp.id;
+
+                            cmd.CommandText = "select Id from MBMaterialCompare where custommaterialNo='" + materialTemp.mpn + "'";
+                            querySdr = cmd.ExecuteReader();
+                            string Id = "";
+                            while (querySdr.Read())
+                            {
+                                Id = querySdr[0].ToString();
+                            }
+                            //if (Id != "")//查到板子的信息
+                            //{
+                            //    init1.goods_nature = "E";
+                            //}
+                            //else
+                            {
+                                init1.goods_nature = "I";//良品報關出庫全部是料件I
+                            }
+                            querySdr.Close();
+
+                            init1.io_date = Untils.getCustomDate(materialTemp.date);
+                            init1.cop_g_no = materialTemp.mpn;//因为报关原因，需要改成71料号（联想料号）->上面已经修改
+                            init1.qty = "-" + materialTemp.num;
+                            init1.unit = Untils.getCustomCode(materialTemp.declare_unit);
+                            init1.type = "E0002";
+                            init1.chk_code = "";
+                            init1.entry_id = materialTemp.declare_number;
+                            init1.gatejob_no = "";
+                            init1.whs_code = "";
+                            init1.location_code = "";
+                            init1.note = "";
+
+                            storeTransList.Add(init1);
+                        }
+                    }
+
                     //7 SMT/FRU 入库 信息,todo 牵扯到区内流程的材料，只有申请单号，没有报关单好，todo, 也有报关单号的
                     MaterialCustomRelationList.Clear();
                     cmd.CommandText = "select Id,buy_order_serial_no,mpn,stock_in_num,input_date from fru_smt_in_stock where input_date between '" + startTime + "' and '" + endTime + "'  and isdeclare='是'";

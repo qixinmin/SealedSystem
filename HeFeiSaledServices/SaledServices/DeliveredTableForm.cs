@@ -1396,11 +1396,11 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                if (this.custom_faultComboBox.Text != "" && Regex.IsMatch(this.custom_faultComboBox.Text, @"^[+-]?\d*[.]?\d*$"))
+                if (this.custom_faultComboBox.Text != "" /*&& Regex.IsMatch(this.custom_faultComboBox.Text, @"^[+-]?\d*[.]?\d*$")*/)
                 {
                     try
                     {
-                        this.custom_faultComboBox.Text = myDictionary[this.custom_faultComboBox.Text.Trim()];
+                        this.custom_faultComboBox.Text = myDictionary[this.custom_faultComboBox.Text.Trim().ToUpper()];
                     }
                     catch (Exception ex)
                     {

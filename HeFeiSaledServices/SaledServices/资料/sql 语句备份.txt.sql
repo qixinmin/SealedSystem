@@ -1058,4 +1058,13 @@ book_number NVARCHAR(128), /*账册编号*/
 electronic_number NVARCHAR(128), /*电子账册号*/
 )
 
+/*合肥海关信息20190624修改账册号*/
+CREATE TABLE company_fixed_table_new(
+Id INT PRIMARY KEY IDENTITY, 
+indentifier NVARCHAR(128) NOT NULL, /*企业编号*/
+book_number NVARCHAR(128), /*账册编号*/
+electronic_number NVARCHAR(128), /*电子账册号*/
+)
+
+
 /*SELECT NAME FROM SYSOBJECTS WHERE TYPE='U'SELECT * FROM INFORMATION_SCHEMA.TABLES  列出所有表格*/
