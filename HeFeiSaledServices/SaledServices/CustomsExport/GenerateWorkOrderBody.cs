@@ -25,13 +25,16 @@ namespace SaledServices.CustomsExport
         string endTime;
         //string today = DateTime.Now.ToString("yyyy/MM/dd");
 
-        public GenerateWorkOrderBody(string tradeCode, string emsNo, DateTime currentday)
+        StockInOutForm stockInOutForm;
+
+        public GenerateWorkOrderBody(string tradeCode, string emsNo, DateTime currentday,StockInOutForm stockInOutForm)
         {
             this.trade_code = tradeCode;
             this.ems_no = emsNo;
             this.startTime = currentday.ToString("yyyy/MM/dd");
             this.endTime = currentday.ToString("yyyy/MM/dd");
             seq_no = currentday.ToString("yyyyMMdd") + "4003" + "1";
+            this.stockInOutForm = stockInOutForm;
         }
 
         public void addWorkOrderList(List<TrackNoCustomRelation> TrackNoCustomRelationList, ref Dictionary<string, string> _71bomDic)
@@ -187,7 +190,14 @@ namespace SaledServices.CustomsExport
             {
                 if (workOrderList.Count > 0)
                 {
-                    Untils.createWorkListBodyXML(workListBody, "D:\\MOV\\WO_ITEM" + seq_no + ".xml");
+                    string fileName = seq_no;
+
+                    if (stockInOutForm.newBankNo.Checked)
+                    {
+                        fileName = seq_no + "_新账册号";
+                    }
+
+                    Untils.createWorkListBodyXML(workListBody, "D:\\MOV\\WO_ITEM" + fileName + ".xml");
                     StockInOutForm.showMessage(startTime + "工单表体信息产生成功！", isAuto);
                 }
                 else

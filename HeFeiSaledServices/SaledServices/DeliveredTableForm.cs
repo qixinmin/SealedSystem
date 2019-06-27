@@ -1168,7 +1168,7 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                if (this.track_serial_noTextBox.Text == "" || this.track_serial_noTextBox.Text.Length != 15)
+                if (this.track_serial_noTextBox.Text == "")
                 {
                     MessageBox.Show("检查内容是否为空或长度不对！");
                     this.track_serial_noTextBox.Text = "";

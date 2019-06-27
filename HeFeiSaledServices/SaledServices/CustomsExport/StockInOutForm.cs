@@ -271,8 +271,21 @@ namespace SaledServices.CustomsExport
                     }
                     querySdr.Close();
 
-                    generateWorkOrderHead = new GenerateWorkOrderHead(trade_code, ems_no, dt);
-                    generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no, dt);
+                    if (newBankNo.Checked)
+                    {
+                        cmd.CommandText = "select indentifier, book_number from company_fixed_table_new";
+                        querySdr = cmd.ExecuteReader();
+
+                        while (querySdr.Read())
+                        {
+                            trade_code = querySdr[0].ToString();
+                            ems_no = querySdr[1].ToString();
+                        }
+                        querySdr.Close();
+                    }
+
+                    generateWorkOrderHead = new GenerateWorkOrderHead(trade_code, ems_no, dt, this);
+                    generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no, dt, this);
 
                     //板子入库信息,过滤条件是今天DateTime.Now.ToString("yyyy/MM/dd")
 
@@ -719,10 +732,10 @@ namespace SaledServices.CustomsExport
                         string currentDeclear = "";
                         string nowMatrialNo = querySdr[1].ToString();
 
-                        if (checkMpnfruOrSmt[nowMatrialNo].Trim().ToUpper() == "FRU")
-                        {
-                            continue;//FRU 材料不上報                            
-                        }
+                        //if (checkMpnfruOrSmt[nowMatrialNo].Trim().ToUpper() == "FRU")
+                        //{
+                        //    continue;//FRU 材料不上報  ==》      良品要上報                    
+                        //}
 
                         if (_71bomDic.ContainsKey(nowMatrialNo))
                         {
@@ -1433,7 +1446,14 @@ namespace SaledServices.CustomsExport
                 {
                     if (storeTransList.Count > 0)//没有数据就不产生文件
                     {
-                        Untils.createStockInOutXML(stockinout, "D:\\MOV\\WO_HCHX" + seq_no + ".xml");
+                        string fileName = seq_no;
+
+                        if (newBankNo.Checked)
+                        {
+                            fileName = seq_no + "_新账册号";
+                        }
+
+                        Untils.createStockInOutXML(stockinout, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
                         showMessage(dt.ToString("yyyyMMdd") + "海关出入库信息产生成功！", isAuto);
                     }
                     else
@@ -1441,6 +1461,7 @@ namespace SaledServices.CustomsExport
                         showMessage(dt.ToString("yyyyMMdd") + "没有出入库信息！", isAuto);
                     }
 
+                    //
                     if (generateWorkOrderHead != null)
                     {
                         generateWorkOrderHead.doGenerate(isAuto);

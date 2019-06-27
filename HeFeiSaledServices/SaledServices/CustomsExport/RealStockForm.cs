@@ -87,6 +87,19 @@ namespace SaledServices.CustomsExport
                 }
                 querySdr.Close();
 
+                if (newBankNo.Checked)
+                {
+                    cmd.CommandText = "select indentifier, book_number from company_fixed_table_new";
+                    querySdr = cmd.ExecuteReader();
+
+                    while (querySdr.Read())
+                    {
+                        trade_code = querySdr[0].ToString();
+                        ems_no = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
+                }
+
                 Dictionary<string, int> receiveOrderDic = new Dictionary<string, int>();
                 //1 从收货表中查询信息
                 cmd.CommandText = "select custom_materialNo, receivedNum,returnNum,cid_number from receiveOrder where _status !='return'";
@@ -355,7 +368,14 @@ namespace SaledServices.CustomsExport
             realstock.storeAmountList = storeAmountList;
             if(storeAmountList.Count>0)
             {
-                Untils.createRealStockXML(realstock, "D:\\STORE_AMOUNT"+seq_no+".xml");
+                string fileName = seq_no;
+
+                if (newBankNo.Checked)
+                {
+                    fileName = seq_no + "_新账册号";
+                }
+
+                Untils.createRealStockXML(realstock, "D:\\STORE_AMOUNT" + fileName + ".xml");
                 MessageBox.Show("海关实盘库存信息产生成功！");
             }
             else

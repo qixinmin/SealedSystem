@@ -345,7 +345,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "LiangpinMaterialOutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "良品报关出库(海关xml导出未做）";
+            this.Text = "良品报关出库";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

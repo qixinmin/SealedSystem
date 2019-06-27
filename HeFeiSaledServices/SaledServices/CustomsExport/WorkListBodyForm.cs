@@ -40,7 +40,7 @@ namespace SaledServices.CustomsExport
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select indentifier, book_number from company_fixed_table";
+                cmd.CommandText = "select indentifier, book_number from company_fixed_table_new";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {

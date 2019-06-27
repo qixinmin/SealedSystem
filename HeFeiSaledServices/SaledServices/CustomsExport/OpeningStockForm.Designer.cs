@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.uploadExcelButton = new System.Windows.Forms.Button();
+            this.newBankNo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // exportxmlbutton
@@ -113,11 +114,22 @@
             this.uploadExcelButton.UseVisualStyleBackColor = true;
             this.uploadExcelButton.Click += new System.EventHandler(this.uploadExcelButton_Click);
             // 
+            // newBankNo
+            // 
+            this.newBankNo.AutoSize = true;
+            this.newBankNo.Location = new System.Drawing.Point(519, 100);
+            this.newBankNo.Name = "newBankNo";
+            this.newBankNo.Size = new System.Drawing.Size(72, 16);
+            this.newBankNo.TabIndex = 15;
+            this.newBankNo.Text = "新账册号";
+            this.newBankNo.UseVisualStyleBackColor = true;
+            // 
             // OpeningStockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 500);
+            this.Controls.Add(this.newBankNo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -144,5 +156,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button uploadExcelButton;
+        private System.Windows.Forms.CheckBox newBankNo;
     }
 }

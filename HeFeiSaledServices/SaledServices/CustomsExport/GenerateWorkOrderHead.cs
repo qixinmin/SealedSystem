@@ -22,12 +22,14 @@ namespace SaledServices.CustomsExport
         string status = "A";
 
         DateTime currentDay;
-        public GenerateWorkOrderHead(string tradeCode, string emsNo,DateTime currentday)
+        StockInOutForm stockInOutForm;
+        public GenerateWorkOrderHead(string tradeCode, string emsNo,DateTime currentday, StockInOutForm stockInOutForm)
         {
             this.trade_code = tradeCode;
             this.ems_no = emsNo;
             currentDay = currentday;
             seq_no = currentday.ToString("yyyyMMdd") + "4002" + "1";
+            this.stockInOutForm = stockInOutForm;
         }
 
         public void addWorkListHeads(List<TrackNoCustomRelation> TrackNoCustomRelationList, bool isGood,ref Dictionary<string, string> materialbomDic)
@@ -92,7 +94,14 @@ namespace SaledServices.CustomsExport
             {
                 if (workOrderHeadList.Count > 0)
                 {
-                    Untils.createWorkListHeadXML(workListHead, "D:\\MOV\\WO_HEAD" + seq_no + ".xml");
+                    string fileName = seq_no;
+
+                    if (stockInOutForm.newBankNo.Checked)
+                    {
+                        fileName = seq_no + "_新账册号";
+                    }
+
+                    Untils.createWorkListHeadXML(workListHead, "D:\\MOV\\WO_HEAD" + fileName + ".xml");
                     StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "工单表头信息产生成功！", isAuto);
                 }
                 else
