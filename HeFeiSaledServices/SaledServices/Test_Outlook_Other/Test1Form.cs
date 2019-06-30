@@ -655,5 +655,101 @@ namespace SaledServices.Test_Outlook
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bool status = false;
+            string filepath = "";
+
+            string myIPaddress = "\\\\192.168.1.1\\Users\\test\\";// +Environment.MachineName + "\\E$";
+            string[] folders = Directory.GetDirectories(myIPaddress);
+            foreach (string file in folders)
+            {
+               MessageBox.Show(Path.GetFileName(file));
+               
+            }
+
+
+           // //连接共享文件夹
+           // //status = connectState(@"\\dechang.kin.net", @"kin\wanghaidong", "123456");
+           // //直接用IP也可以
+           // status = connectState(@"\\192.168.1.1", @"MWB", "61624626a");
+           // //本机
+           //// status = connectState(@"\\puter.kin.net", @"kin\wanghaidong", "123456");
+           // if (status)
+           // {
+           //     //共享文件夹的目录
+           //     //DirectoryInfo theFolder = new DirectoryInfo(@"dechang.kin.net\kin");
+           //     //相对共享文件夹的路径，这个路径一般都是映射
+           //     filepath = @"I:\kin\";
+           //     //本机
+           //     filepath = @"H:\";
+           //     //获取保存文件的路径
+           //     string filename = filepath;// theFolder.ToString() + fielpath;
+           //     //执行方法，把本地D盘的1文件复制到服务器上，并命名2
+           //     //Transport(@"D:\1.txt", filename, "2.txt");
+           //     //打开路径（文件夹）
+           //     System.Diagnostics.Process.Start(filepath);
+           // }
+           // else
+           // {
+           //     MessageBox.Show("未能连接！");
+           // }
+        }
+
+             public static bool connectState(string path)
+        {
+            return connectState(path, "", "");
+        }
+        /// <summary>
+        /// 连接远程共享文件夹
+        /// </summary>
+        /// <param name="path">远程共享文件夹的路径</param>
+        /// <param name="userName">用户名</param>
+        /// <param name="passWord">密码</param>
+        /// <returns></returns>
+        public static bool connectState(string path, string userName, string passWord)
+        {
+            bool Flag = false;
+            Process proc = new Process();
+            try
+            {
+                proc.StartInfo.FileName = "cmd.exe";
+                proc.StartInfo.UseShellExecute = false;
+                proc.StartInfo.RedirectStandardInput = true;
+                proc.StartInfo.RedirectStandardOutput = true;
+                proc.StartInfo.RedirectStandardError = true;
+                proc.StartInfo.CreateNoWindow = true;
+                proc.Start();
+                string dosLine = "net use " + path + " " + passWord + " /user:" + userName;
+                proc.StandardInput.WriteLine(dosLine);
+                proc.StandardInput.WriteLine("exit");
+                while (!proc.HasExited)
+                {
+                    proc.WaitForExit(1000);
+                }
+                string errormsg = proc.StandardError.ReadToEnd();
+                proc.StandardError.Close();
+                if (string.IsNullOrEmpty(errormsg))
+                {
+                    Flag = true;
+                }
+                else
+                {
+                    throw new Exception(errormsg);
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                proc.Close();
+                proc.Dispose();
+            }
+            return Flag;
+        }
+
     }
 }

@@ -1611,5 +1611,21 @@ namespace SaledServices
 
             allForm.Add(liangpinMaterialOutForm);
         }
+
+        private ModifyErrorTrackNoForm modifyErrorTrackNoForm;
+        private void 修改收错的板子ToolStripMenuItem_Click(object sender, EventArgs e)
+        {   
+            if (liangpinMaterialOutForm == null || liangpinMaterialOutForm.IsDisposed)
+            {
+                modifyErrorTrackNoForm = new ModifyErrorTrackNoForm();
+                modifyErrorTrackNoForm.MdiParent = this;
+            }
+
+            //faultOutForm.WindowState = FormWindowState.Maximized;
+            modifyErrorTrackNoForm.BringToFront();
+            modifyErrorTrackNoForm.Show();
+
+            allForm.Add(modifyErrorTrackNoForm);
+        }
     }
 }

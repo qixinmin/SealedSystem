@@ -266,6 +266,12 @@
     <Compile Include="additionForm\ObeRateForm.Designer.cs">
       <DependentUpon>ObeRateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="additionForm\ModifyErrorTrackNoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\ModifyErrorTrackNoForm.Designer.cs">
+      <DependentUpon>ModifyErrorTrackNoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -787,6 +793,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\ObeRateForm.resx">
       <DependentUpon>ObeRateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\ModifyErrorTrackNoForm.resx">
+      <DependentUpon>ModifyErrorTrackNoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChartForm.resx">
       <DependentUpon>ChartForm.cs</DependentUpon>

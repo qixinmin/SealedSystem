@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace SaledServices.Test_Outlook
 {
@@ -29,6 +30,89 @@ namespace SaledServices.Test_Outlook
                 {
                     this.tracker_bar_textBox.Focus();
                     MessageBox.Show("追踪条码的内容为空，请检查！");
+                    return;
+                }
+
+                //根据服务器要判断内容是否存在即可，找到要移动走，现在并发欠考虑
+                string trackno = this.tracker_bar_textBox.Text.Trim();
+                //根据网络状态查询状态
+                string serverIPaddress = "\\\\192.168.1.1\\test\\";// +Environment.MachineName + "\\E$";
+                string _3dmark = serverIPaddress + "3DMARKLOG\\";
+                string Burninlog = serverIPaddress + "Burninlog\\";
+                string LSC20LOG = serverIPaddress + "LSC20LOG\\";
+                string LSC60LOG = serverIPaddress + "LSC60LOG\\";
+
+                string _3dmarkbackup = serverIPaddress + "backup\\3DMARKLOG\\";
+                string Burninlogbackup = serverIPaddress + "backup\\Burninlog\\";
+                string LSC20LOGbackup = serverIPaddress + "backup\\LSC20LOG\\";
+                string LSC60LOGbackup = serverIPaddress + "backup\\LSC60LOG\\";
+
+                bool _3dmarkerExist = false, burnExist = false, lscExist = false;
+                string[] folders3dmark = Directory.GetFiles(_3dmark);
+                foreach (string file in folders3dmark)
+                {
+                    string filename = Path.GetFileName(file);
+                    if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                    {
+                        _3dmarkerExist = true;
+                        //move to backup
+                        FileInfo myfile = new FileInfo(file);//移动
+                        myfile.MoveTo(_3dmarkbackup+filename);
+                        break;
+                    }
+                }
+
+                string[] foldersburn = Directory.GetFiles(Burninlog);
+                foreach (string file in foldersburn)
+                {   
+                    string filename = Path.GetFileName(file);
+                    if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                    {
+                        burnExist = true;
+                        //move to backup
+                        FileInfo myfile = new FileInfo(file);//移动
+                        myfile.MoveTo(_3dmarkbackup + filename);
+                        break;
+                    }
+                }
+
+                string[] foldersLSC20 = Directory.GetFiles(LSC20LOG);
+                foreach (string file in foldersLSC20)
+                {
+                    string filename = Path.GetFileName(file);
+                    if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                    {
+                        lscExist = true;
+                        //move to backup
+                        FileInfo myfile = new FileInfo(file);//移动
+                        myfile.MoveTo(_3dmarkbackup + filename);
+                        break;
+                    }
+                }
+
+                string[] foldersLSC60 = Directory.GetFiles(LSC60LOG);
+                foreach (string file in foldersLSC60)
+                {
+                    string filename = Path.GetFileName(file);
+                    if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                    {
+                        lscExist = true;
+                        //move to backup
+                        FileInfo myfile = new FileInfo(file);//移动
+                        myfile.MoveTo(_3dmarkbackup + filename);
+                        break;
+                    }
+                }
+
+                if (_3dmarkerExist == false && burnExist == false)
+                {
+                    MessageBox.Show("_3dmarker 与Burning都不存在，请检查！");
+                    return;
+                }
+
+                if (lscExist == false)
+                {
+                    MessageBox.Show("LSC内容为空，请检查！");
                     return;
                 }
 
@@ -135,6 +219,8 @@ namespace SaledServices.Test_Outlook
 
             try
             {
+
+
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
 

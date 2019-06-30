@@ -132,6 +132,7 @@
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改收错的板子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,7 +216,8 @@
             this.lCD显示ToolStripMenuItem,
             this.最近一个月内容汇总ToolStripMenuItem,
             this.手动出待维修库ToolStripMenuItem,
-            this.oBEToolStripMenuItem1});
+            this.oBEToolStripMenuItem1,
+            this.修改收错的板子ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -489,7 +491,6 @@
             this.测试1ToolStripMenuItem1.Name = "测试1ToolStripMenuItem1";
             this.测试1ToolStripMenuItem1.Size = new System.Drawing.Size(76, 31);
             this.测试1ToolStripMenuItem1.Text = "测试1";
-            this.测试1ToolStripMenuItem1.Visible = false;
             this.测试1ToolStripMenuItem1.Click += new System.EventHandler(this.测试1ToolStripMenuItem1_Click);
             // 
             // 测试2ToolStripMenuItem1
@@ -992,6 +993,13 @@
             this.拍照ToolStripMenuItem.Text = "拍照";
             this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
             // 
+            // 修改收错的板子ToolStripMenuItem
+            // 
+            this.修改收错的板子ToolStripMenuItem.Name = "修改收错的板子ToolStripMenuItem";
+            this.修改收错的板子ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.修改收错的板子ToolStripMenuItem.Text = "修改收错的板子";
+            this.修改收错的板子ToolStripMenuItem.Click += new System.EventHandler(this.修改收错的板子ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1004,7 +1012,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "合肥进销存系统0627";
+            this.Text = "合肥进销存系统0630";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1120,6 +1128,7 @@ private System.Windows.Forms.ToolStripMenuItem eCOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 其他用料ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oBE抽检信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 良品报关出库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 修改收错的板子ToolStripMenuItem;
     }
 }
 

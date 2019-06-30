@@ -482,19 +482,29 @@ namespace SaledServices
                     //根据历史出库的8s记录查找是否在120天内同一个板子再次维修
                     cmd.CommandText = "select D.custom_order,D.custom_serial_no from DeliveredTable as D inner join repaired_out_house_excel_table as R on D.track_serial_no = R.track_serial_no order by R.input_date DESC";
                     querySdr = cmd.ExecuteReader();
-                    string latestDate = "";
+                    string latestDate = "", custom_order="";
                     while (querySdr.Read())
                     {
                         if (querySdr[1].ToString() == this.custom_serial_noTextBox.Text.Trim())
                         {
-                            latestDate = querySdr[0].ToString();
+                            custom_order = latestDate = querySdr[0].ToString();
                             break;
                         }
                     }
                     querySdr.Close();
                     if (latestDate != "")
-                    {  
-                       string cutDate = "20"+latestDate.Substring(4, 6);
+                    {
+                       
+                        string cutDate = "";// "20" + latestDate.Substring(4, 6);
+                        if (custom_order.ToUpper().StartsWith("REP0001R02120"))
+                        {//REP0001R021201906250001
+                            cutDate = latestDate.Substring(11, 8);
+                        }
+                        else
+                        {
+                            cutDate = "20" + latestDate.Substring(4, 6);
+                        }
+
                        string cutDateFinal = cutDate.Substring(0, 4) + "-" + cutDate.Substring(4, 2) + "-" + cutDate.Substring(6, 2);
                        int diffDays = LCDDisplay.diffDays(cutDateFinal, this.order_receive_dateTextBox.Text.Trim());
                        if(diffDays  <=120)
@@ -568,6 +578,18 @@ namespace SaledServices
                 MessageBox.Show("需要输入的内容为空，请检查！");
                 return;
             }
+            Regex regNum = new Regex("^[0-9]");
+            if (regNum.IsMatch(this.track_serial_noTextBox.Text.Trim()))
+            {
+                MessageBox.Show("跟踪条码已数字开头，请检查！");
+                return;
+            }
+            //if (!this.track_serial_noTextBox.Text.Trim().StartsWith("R"))
+            //{
+            //    MessageBox.Show("跟踪条码不是以R开头，请检查！");
+            //    return;
+            //}
+
             try
             {
                 //事前检查，现在要考虑7位与10位的问题，要兼容
