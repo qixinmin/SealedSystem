@@ -133,6 +133,7 @@
             this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改收错的板子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sI交税报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -805,7 +806,8 @@
             this.主板生命周期ToolStripMenuItem,
             this.主板流水导出ToolStripMenuItem,
             this.还货表信息导出ToolStripMenuItem,
-            this.oBE抽检信息导出ToolStripMenuItem});
+            this.oBE抽检信息导出ToolStripMenuItem,
+            this.sI交税报表ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -1000,6 +1002,13 @@
             this.修改收错的板子ToolStripMenuItem.Text = "修改收错的板子";
             this.修改收错的板子ToolStripMenuItem.Click += new System.EventHandler(this.修改收错的板子ToolStripMenuItem_Click);
             // 
+            // sI交税报表ToolStripMenuItem
+            // 
+            this.sI交税报表ToolStripMenuItem.Name = "sI交税报表ToolStripMenuItem";
+            this.sI交税报表ToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
+            this.sI交税报表ToolStripMenuItem.Text = "SI交税报表";
+            this.sI交税报表ToolStripMenuItem.Click += new System.EventHandler(this.sI交税报表ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1129,6 +1138,7 @@ private System.Windows.Forms.ToolStripMenuItem eCOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oBE抽检信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 良品报关出库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改收错的板子ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sI交税报表ToolStripMenuItem;
     }
 }
 

@@ -358,6 +358,12 @@
     <Compile Include="Export\ObeCheckExport.Designer.cs">
       <DependentUpon>ObeCheckExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\SITaxExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\SITaxExport.Designer.cs">
+      <DependentUpon>SITaxExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="LCDDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -838,6 +844,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\ObeCheckExport.resx">
       <DependentUpon>ObeCheckExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\SITaxExport.resx">
+      <DependentUpon>SITaxExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LCDDisplay.resx">
       <DependentUpon>LCDDisplay.cs</DependentUpon>

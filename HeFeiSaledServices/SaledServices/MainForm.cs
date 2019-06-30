@@ -1627,5 +1627,22 @@ namespace SaledServices
 
             allForm.Add(modifyErrorTrackNoForm);
         }
+
+        private SITaxExport sITaxExport;
+        private void sI交税报表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (sITaxExport == null || sITaxExport.IsDisposed)
+            {
+                sITaxExport = new SITaxExport();
+                sITaxExport.MdiParent = this;
+            }
+
+            //faultOutForm.WindowState = FormWindowState.Maximized;
+            sITaxExport.BringToFront();
+            sITaxExport.Show();
+
+            allForm.Add(sITaxExport);
+        }
     }
 }
