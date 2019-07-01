@@ -255,13 +255,27 @@ namespace SaledServices.Export
 
                         foreach (SIBgaRecord bgarecord in repairRecord.bgaRecords)
                         {
-                            totalMoney += Double.Parse(bgarecord.totalMoney);
+                            try
+                            {
+                                totalMoney += Double.Parse(bgarecord.totalMoney);
+                            }
+                            catch (Exception ex)
+                            {
+                                totalMoney += 0;
+                            }
                         }
 
 
                         foreach (SISmtRecort smtrecord in repairRecord.smtRecords)
                         {
-                            totalMoney += Double.Parse(smtrecord.totalMoney);
+                            try
+                            {
+                                totalMoney += Double.Parse(smtrecord.totalMoney);
+                            }
+                            catch (Exception ex)
+                            {
+                                totalMoney += 0;
+                            }
                         }
 
                         repairRecord.totalMoney = totalMoney+"";

@@ -852,7 +852,7 @@ namespace SaledServices.CustomsExport
                     {
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
-                            cmd.CommandText = "select declare_unit,declare_number,custom_request_number from stock_in_sheet where buy_order_serial_no ='" + materialTemp.buy_order_serial_no + "' and isdeclare='是'";
+                            cmd.CommandText = "select declare_unit,declare_number,custom_request_number from stock_in_sheet where buy_order_serial_no ='" + materialTemp.buy_order_serial_no + "' and vendormaterialNo='" + materialTemp.mpn + "' and isdeclare='是'";
                             querySdr = cmd.ExecuteReader();
                             while (querySdr.Read())
                             {

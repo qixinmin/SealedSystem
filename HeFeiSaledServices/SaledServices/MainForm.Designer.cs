@@ -50,6 +50,7 @@
             this.最近一个月内容汇总ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.手动出待维修库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oBEToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改收错的板子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,6 +121,7 @@
             this.主板流水导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.还货表信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oBE抽检信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sI交税报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.期初库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实盘库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,8 +134,6 @@
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改收错的板子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sI交税报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -331,6 +331,13 @@
             this.oBEToolStripMenuItem1.Text = "OBE  抽查比例";
             this.oBEToolStripMenuItem1.Click += new System.EventHandler(this.oBEToolStripMenuItem1_Click);
             // 
+            // 修改收错的板子ToolStripMenuItem
+            // 
+            this.修改收错的板子ToolStripMenuItem.Name = "修改收错的板子ToolStripMenuItem";
+            this.修改收错的板子ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.修改收错的板子ToolStripMenuItem.Text = "修改收错的板子";
+            this.修改收错的板子ToolStripMenuItem.Click += new System.EventHandler(this.修改收错的板子ToolStripMenuItem_Click);
+            // 
             // receiveReturnStoreMenuItem
             // 
             this.receiveReturnStoreMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -492,6 +499,7 @@
             this.测试1ToolStripMenuItem1.Name = "测试1ToolStripMenuItem1";
             this.测试1ToolStripMenuItem1.Size = new System.Drawing.Size(76, 31);
             this.测试1ToolStripMenuItem1.Text = "测试1";
+            this.测试1ToolStripMenuItem1.Visible = false;
             this.测试1ToolStripMenuItem1.Click += new System.EventHandler(this.测试1ToolStripMenuItem1_Click);
             // 
             // 测试2ToolStripMenuItem1
@@ -897,6 +905,13 @@
             this.oBE抽检信息导出ToolStripMenuItem.Text = "OBE抽检信息导出";
             this.oBE抽检信息导出ToolStripMenuItem.Click += new System.EventHandler(this.oBE抽检信息导出ToolStripMenuItem_Click);
             // 
+            // sI交税报表ToolStripMenuItem
+            // 
+            this.sI交税报表ToolStripMenuItem.Name = "sI交税报表ToolStripMenuItem";
+            this.sI交税报表ToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
+            this.sI交税报表ToolStripMenuItem.Text = "SI交税报表";
+            this.sI交税报表ToolStripMenuItem.Click += new System.EventHandler(this.sI交税报表ToolStripMenuItem_Click);
+            // 
             // 海关ToolStripMenuItem
             // 
             this.海关ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -995,20 +1010,6 @@
             this.拍照ToolStripMenuItem.Text = "拍照";
             this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
             // 
-            // 修改收错的板子ToolStripMenuItem
-            // 
-            this.修改收错的板子ToolStripMenuItem.Name = "修改收错的板子ToolStripMenuItem";
-            this.修改收错的板子ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.修改收错的板子ToolStripMenuItem.Text = "修改收错的板子";
-            this.修改收错的板子ToolStripMenuItem.Click += new System.EventHandler(this.修改收错的板子ToolStripMenuItem_Click);
-            // 
-            // sI交税报表ToolStripMenuItem
-            // 
-            this.sI交税报表ToolStripMenuItem.Name = "sI交税报表ToolStripMenuItem";
-            this.sI交税报表ToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
-            this.sI交税报表ToolStripMenuItem.Text = "SI交税报表";
-            this.sI交税报表ToolStripMenuItem.Click += new System.EventHandler(this.sI交税报表ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1021,7 +1022,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "合肥进销存系统0630";
+            this.Text = "合肥进销存系统0701";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
