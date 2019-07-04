@@ -22,6 +22,92 @@ namespace SaledServices.Test_Outlook
             this.tracker_bar_textBox.Focus();
         }
 
+        private bool isCheckFromServer()
+        { //根据服务器要判断内容是否存在即可，找到要移动走，现在并发欠考虑
+            string trackno = this.tracker_bar_textBox.Text.Trim();
+            //根据网络状态查询状态
+            string serverIPaddress = "\\\\192.168.1.1\\test\\";// +Environment.MachineName + "\\E$";
+            string _3dmark = serverIPaddress + "3DMARKLOG\\";
+            string Burninlog = serverIPaddress + "Burninlog\\";
+            string LSC20LOG = serverIPaddress + "LSC20LOG\\";
+            string LSC60LOG = serverIPaddress + "LSC60LOG\\";
+
+            string _3dmarkbackup = serverIPaddress + "backup\\3DMARKLOG\\";
+            string Burninlogbackup = serverIPaddress + "backup\\Burninlog\\";
+            string LSC20LOGbackup = serverIPaddress + "backup\\LSC20LOG\\";
+            string LSC60LOGbackup = serverIPaddress + "backup\\LSC60LOG\\";
+
+            bool _3dmarkerExist = false, burnExist = false, lscExist = false;
+            string[] folders3dmark = Directory.GetFiles(_3dmark);
+            foreach (string file in folders3dmark)
+            {
+                string filename = Path.GetFileName(file);
+                if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                {
+                    _3dmarkerExist = true;
+                    //move to backup
+                    FileInfo myfile = new FileInfo(file);//移动
+                    myfile.MoveTo(_3dmarkbackup + filename);
+                    break;
+                }
+            }
+
+            string[] foldersburn = Directory.GetFiles(Burninlog);
+            foreach (string file in foldersburn)
+            {
+                string filename = Path.GetFileName(file);
+                if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                {
+                    burnExist = true;
+                    //move to backup
+                    FileInfo myfile = new FileInfo(file);//移动
+                    myfile.MoveTo(_3dmarkbackup + filename);
+                    break;
+                }
+            }
+
+            string[] foldersLSC20 = Directory.GetFiles(LSC20LOG);
+            foreach (string file in foldersLSC20)
+            {
+                string filename = Path.GetFileName(file);
+                if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                {
+                    lscExist = true;
+                    //move to backup
+                    FileInfo myfile = new FileInfo(file);//移动
+                    myfile.MoveTo(_3dmarkbackup + filename);
+                    break;
+                }
+            }
+
+            string[] foldersLSC60 = Directory.GetFiles(LSC60LOG);
+            foreach (string file in foldersLSC60)
+            {
+                string filename = Path.GetFileName(file);
+                if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                {
+                    lscExist = true;
+                    //move to backup
+                    FileInfo myfile = new FileInfo(file);//移动
+                    myfile.MoveTo(_3dmarkbackup + filename);
+                    break;
+                }
+            }
+
+            if (_3dmarkerExist == false && burnExist == false)
+            {
+                MessageBox.Show("_3dmarker 与Burning都不存在，请检查！");
+                return false;
+            }
+
+            if (lscExist == false)
+            {
+                MessageBox.Show("LSC内容为空，请检查！");
+                return false;
+            }
+            return true;
+        }
+
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -33,88 +119,7 @@ namespace SaledServices.Test_Outlook
                     return;
                 }
 
-                //根据服务器要判断内容是否存在即可，找到要移动走，现在并发欠考虑
-                string trackno = this.tracker_bar_textBox.Text.Trim();
-                //根据网络状态查询状态
-                string serverIPaddress = "\\\\192.168.1.1\\test\\";// +Environment.MachineName + "\\E$";
-                string _3dmark = serverIPaddress + "3DMARKLOG\\";
-                string Burninlog = serverIPaddress + "Burninlog\\";
-                string LSC20LOG = serverIPaddress + "LSC20LOG\\";
-                string LSC60LOG = serverIPaddress + "LSC60LOG\\";
-
-                string _3dmarkbackup = serverIPaddress + "backup\\3DMARKLOG\\";
-                string Burninlogbackup = serverIPaddress + "backup\\Burninlog\\";
-                string LSC20LOGbackup = serverIPaddress + "backup\\LSC20LOG\\";
-                string LSC60LOGbackup = serverIPaddress + "backup\\LSC60LOG\\";
-
-                bool _3dmarkerExist = false, burnExist = false, lscExist = false;
-                string[] folders3dmark = Directory.GetFiles(_3dmark);
-                foreach (string file in folders3dmark)
-                {
-                    string filename = Path.GetFileName(file);
-                    if (filename.Contains(trackno) && filename.Contains("_PASS"))
-                    {
-                        _3dmarkerExist = true;
-                        //move to backup
-                        FileInfo myfile = new FileInfo(file);//移动
-                        myfile.MoveTo(_3dmarkbackup+filename);
-                        break;
-                    }
-                }
-
-                string[] foldersburn = Directory.GetFiles(Burninlog);
-                foreach (string file in foldersburn)
-                {   
-                    string filename = Path.GetFileName(file);
-                    if (filename.Contains(trackno) && filename.Contains("_PASS"))
-                    {
-                        burnExist = true;
-                        //move to backup
-                        FileInfo myfile = new FileInfo(file);//移动
-                        myfile.MoveTo(_3dmarkbackup + filename);
-                        break;
-                    }
-                }
-
-                string[] foldersLSC20 = Directory.GetFiles(LSC20LOG);
-                foreach (string file in foldersLSC20)
-                {
-                    string filename = Path.GetFileName(file);
-                    if (filename.Contains(trackno) && filename.Contains("_PASS"))
-                    {
-                        lscExist = true;
-                        //move to backup
-                        FileInfo myfile = new FileInfo(file);//移动
-                        myfile.MoveTo(_3dmarkbackup + filename);
-                        break;
-                    }
-                }
-
-                string[] foldersLSC60 = Directory.GetFiles(LSC60LOG);
-                foreach (string file in foldersLSC60)
-                {
-                    string filename = Path.GetFileName(file);
-                    if (filename.Contains(trackno) && filename.Contains("_PASS"))
-                    {
-                        lscExist = true;
-                        //move to backup
-                        FileInfo myfile = new FileInfo(file);//移动
-                        myfile.MoveTo(_3dmarkbackup + filename);
-                        break;
-                    }
-                }
-
-                if (_3dmarkerExist == false && burnExist == false)
-                {
-                    MessageBox.Show("_3dmarker 与Burning都不存在，请检查！");
-                    return;
-                }
-
-                if (lscExist == false)
-                {
-                    MessageBox.Show("LSC内容为空，请检查！");
-                    return;
-                }
+               
 
                 try
                 {
@@ -169,31 +174,29 @@ namespace SaledServices.Test_Outlook
                     //    }
                     //}
 
-                    //if (track_serial_no != "")
-                    //{
-                    //    cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    if (this.tracker_bar_textBox.Text.Trim() != "")
+                    {
+                        cmd.CommandText = "select storehouse from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
-                    //    querySdr = cmd.ExecuteReader();
-                    //    string customMaterialNo = "";
+                        querySdr = cmd.ExecuteReader();
+                        string storehouse = "";
 
-                    //    while (querySdr.Read())
-                    //    {
-                    //        customMaterialNo = querySdr[0].ToString();
-                    //    }
-                    //    querySdr.Close();
+                        while (querySdr.Read())
+                        {
+                            storehouse = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
 
-                    //    if (customMaterialNo != "")
-                    //    {
-                    //        this.testerTextBox.Text = LoginForm.currentUser;
-                    //        this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
-                    //    }
-                    //    else
-                    //    {
-                    //        this.tracker_bar_textBox.Focus();
-                    //        this.tracker_bar_textBox.SelectAll();
-                    //        MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
-                    //    }
-                    //}
+                        if (storehouse.ToUpper().Trim() != "CN")
+                        {
+                            if (isCheckFromServer() == false)
+                            {
+                               // MessageBox.Show("服务端读取文件失败");
+                                mConn.Close();
+                                return;
+                            }
+                        }
+                    }
                     //else 
                     //{
                     //    MessageBox.Show("此追踪条码没有Test2站别的记录！");

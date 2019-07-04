@@ -45,7 +45,8 @@ namespace SaledServices
                     string error = this.errorTrackNoTextBox.Text.ToUpper().Trim();
 
                     cmd.CommandText = " update DeliveredTable set track_serial_no='"+right+"' where track_serial_no='"+error+"'";
-  
+                    cmd.ExecuteNonQuery();
+
                     cmd.CommandText = "update stationInformation set track_serial_no='"+right+"' where track_serial_no='"+error+"'";
                     cmd.ExecuteNonQuery();
   

@@ -124,6 +124,14 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "update stationInformation set station = 'Package', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
+
+
+                    cmd.CommandText = "INSERT INTO Packagetable VALUES('"
+                        + this.tracker_bar_textBox.Text.Trim() + "','"
+                        + LoginForm.currentUser +"','"
+                        + DateTime.Now.ToString()
+                        + "')";
+                    cmd.ExecuteNonQuery();    
                 }
                 else
                 {
