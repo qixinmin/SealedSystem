@@ -9,7 +9,7 @@ namespace SaledServices.CustomsExport
 {
     public class GenerateWorkOrderHead
     {
-        WorkListHeadClass workListHead = new WorkListHeadClass();
+        public WorkListHeadClass workListHead = new WorkListHeadClass();
         List<WorkOrderHead> workOrderHeadList = new List<WorkOrderHead>();
 
         string trade_code;

@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.newBankNo = new System.Windows.Forms.CheckBox();
+            this.excelExport = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // exportxmlbutton
@@ -109,11 +110,22 @@
             this.newBankNo.Text = "新账册号";
             this.newBankNo.UseVisualStyleBackColor = true;
             // 
+            // excelExport
+            // 
+            this.excelExport.AutoSize = true;
+            this.excelExport.Location = new System.Drawing.Point(381, 137);
+            this.excelExport.Name = "excelExport";
+            this.excelExport.Size = new System.Drawing.Size(102, 16);
+            this.excelExport.TabIndex = 16;
+            this.excelExport.Text = "导出Excel文件";
+            this.excelExport.UseVisualStyleBackColor = true;
+            // 
             // StockInOutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 334);
+            this.Controls.Add(this.excelExport);
             this.Controls.Add(this.newBankNo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -140,5 +152,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.CheckBox newBankNo;
+        public System.Windows.Forms.CheckBox excelExport;
     }
 }

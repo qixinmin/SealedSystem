@@ -237,6 +237,12 @@ namespace SaledServices.CustomsExport
                 string startTime = dt.ToString("yyyy/MM/dd");
                 string endTime = dt.ToString("yyyy/MM/dd");
 
+                if (excelExport.Checked)
+                {
+                    startTime = time1.ToString("yyyy/MM/dd");
+                    endTime = time2.ToString("yyyy/MM/dd");
+                }
+
                 StockInOutClass stockinout = new StockInOutClass();
                 List<StoreTrans> storeTransList = new List<StoreTrans>();
 
@@ -1444,6 +1450,11 @@ namespace SaledServices.CustomsExport
 
                 if (isHasError == false)
                 {
+                    if (excelExport.Checked)
+                    {
+                        isAuto = true;//减少对话框的出现
+                    }
+
                     if (storeTransList.Count > 0)//没有数据就不产生文件
                     {
                         string fileName = seq_no;
@@ -1451,6 +1462,11 @@ namespace SaledServices.CustomsExport
                         if (newBankNo.Checked)
                         {
                             fileName = seq_no + "_新账册号";
+                        }
+
+                        if (excelExport.Checked)
+                        {
+                            generateStockInOut(stockinout.storeTransList,startTime, endTime);
                         }
 
                         Untils.createStockInOutXML(stockinout, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
@@ -1465,18 +1481,152 @@ namespace SaledServices.CustomsExport
                     if (generateWorkOrderHead != null)
                     {
                         generateWorkOrderHead.doGenerate(isAuto);
+
+                        if (excelExport.Checked)
+                        {
+                            generateStockInOutHead(generateWorkOrderHead.workListHead.workOrderHeadList, startTime, endTime);
+                        }
                     }
                     if (generateWorkOrderBody != null)
                     {
                         generateWorkOrderBody.addWorkOrderList(null, ref _71bomDic);
                         generateWorkOrderBody.doGenerate(isAuto);
+
+                        if (excelExport.Checked)
+                        {
+                            generateStockInOutBody(generateWorkOrderBody.workListBody.workOrderList, startTime, endTime);
+                        }                      
                     }
                 }
                 else
                 {                    
                     showMessage(dt.ToString("yyyyMMdd") + "生成XML文件有误，请检查！", isAuto);
                 }
+
+                if (excelExport.Checked)
+                {
+                    break;//离开循环，只需要执行以查即可
+                }
             }
+        }
+
+        public static void generateStockInOut(List<StoreTrans> StockCheckList, string startTime, string endTime)
+        {
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+            titleList.Add("EMS_NO");
+            titleList.Add("IO_NO");
+            titleList.Add("GOODS_NATURE");
+            titleList.Add("IO_DATE");
+            titleList.Add("COP_G_NO");
+            titleList.Add("QTY");
+            titleList.Add("UNIT");
+            titleList.Add("TYPE");
+            titleList.Add("CHK_CODE");
+            titleList.Add("ENTRY_ID");
+            titleList.Add("GATEJOB_NO");
+            titleList.Add("WHS_CODE");
+            titleList.Add("LOCATION_CODE");
+            titleList.Add("NOTE");
+
+            foreach (StoreTrans stockcheck in StockCheckList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.ems_no);
+                ct1.Add(stockcheck.io_no);
+                ct1.Add(stockcheck.goods_nature);
+                ct1.Add(stockcheck.io_date);
+                ct1.Add(stockcheck.cop_g_no);
+                ct1.Add(stockcheck.qty);
+                ct1.Add(stockcheck.unit);
+                ct1.Add(stockcheck.type);
+                ct1.Add(stockcheck.chk_code);
+                ct1.Add(stockcheck.entry_id);
+                ct1.Add(stockcheck.gatejob_no);
+                ct1.Add(stockcheck.whs_code);
+                ct1.Add(stockcheck.location_code);
+                ct1.Add(stockcheck.note);
+
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+          
+            Untils.createExcel("D:\\出库入库信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+        }
+
+        public static void generateStockInOutHead(List<WorkOrderHead> StockCheckList, string startTime, string endTime)
+        {
+            if (StockCheckList == null)
+            {
+                return;
+            }
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+            titleList.Add("wo_no");
+            titleList.Add("wo_date");
+            titleList.Add("goods_nature");
+            titleList.Add("cop_g_no");
+            titleList.Add("qty");
+            titleList.Add("unit");
+            titleList.Add("emo_no");
+
+            foreach (WorkOrderHead stockcheck in StockCheckList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.wo_no);
+                ct1.Add(stockcheck.wo_date);
+                ct1.Add(stockcheck.goods_nature);
+                ct1.Add(stockcheck.cop_g_no);
+                ct1.Add(stockcheck.qty);
+                ct1.Add(stockcheck.unit);
+                ct1.Add(stockcheck.emo_no);
+
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+
+            Untils.createExcel("D:\\出库入库表头信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+        }
+
+        public static void generateStockInOutBody(List<WorkOrderList> StockCheckList, string startTime, string endTime)
+        {
+            if (StockCheckList == null)
+            {
+                return;
+            }
+
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+             titleList.Add("wo_no");
+            titleList.Add("take_date");
+            titleList.Add("goods_nature");
+            titleList.Add("cop_g_no");
+            titleList.Add("qty");
+            titleList.Add("unit");
+            titleList.Add("emo_no");
+
+            foreach (WorkOrderList stockcheck in StockCheckList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.wo_no);
+                ct1.Add(stockcheck.take_date);
+                ct1.Add(stockcheck.goods_nature);
+                ct1.Add(stockcheck.cop_g_no);
+                ct1.Add(stockcheck.qty);
+                ct1.Add(stockcheck.unit);
+                ct1.Add(stockcheck.emo_no);
+
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+
+            Untils.createExcel("D:\\出库入库表体信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }
 }

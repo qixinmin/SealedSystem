@@ -11,7 +11,7 @@ namespace SaledServices.CustomsExport
 {
     public class GenerateWorkOrderBody
     {
-        WorkListBodyClass workListBody = new WorkListBodyClass();
+        public WorkListBodyClass workListBody = new WorkListBodyClass();
         List<WorkOrderList> workOrderList = new List<WorkOrderList>();
 
         string seq_no = "";//DateTime.Now.ToString("yyyyMMdd") + "4003" + "1";//日期+类型,后面需要加入序号信息
