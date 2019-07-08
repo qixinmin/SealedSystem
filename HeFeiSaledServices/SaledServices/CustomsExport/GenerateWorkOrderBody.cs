@@ -27,13 +27,13 @@ namespace SaledServices.CustomsExport
 
         StockInOutForm stockInOutForm;
 
-        public GenerateWorkOrderBody(string tradeCode, string emsNo, DateTime currentday,StockInOutForm stockInOutForm)
+        public GenerateWorkOrderBody(string tradeCode, string emsNo, DateTime start, DateTime end, StockInOutForm stockInOutForm)
         {
             this.trade_code = tradeCode;
             this.ems_no = emsNo;
-            this.startTime = currentday.ToString("yyyy/MM/dd");
-            this.endTime = currentday.ToString("yyyy/MM/dd");
-            seq_no = currentday.ToString("yyyyMMdd") + "4003" + "1";
+            this.startTime = start.ToString("yyyy/MM/dd");
+            this.endTime = end.ToString("yyyy/MM/dd");
+            seq_no = end.ToString("yyyyMMdd") + "4003" + "1";
             this.stockInOutForm = stockInOutForm;
         }
 

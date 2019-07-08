@@ -805,7 +805,7 @@ namespace SaledServices
                                 + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
-                    bool isAutoChuku = true;//这个标准为是否手动出库的标志，以后编译之前可以修改一下
+                    bool isAutoChuku = false;//这个标准为是否手动出库的标志，以后编译之前可以修改一下
                     if (isAutoChuku)
                     {
                         //注意：备份自动出库的代码

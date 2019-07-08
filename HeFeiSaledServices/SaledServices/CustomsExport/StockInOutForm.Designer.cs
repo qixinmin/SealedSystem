@@ -109,6 +109,7 @@
             this.newBankNo.TabIndex = 16;
             this.newBankNo.Text = "新账册号";
             this.newBankNo.UseVisualStyleBackColor = true;
+            this.newBankNo.Visible = false;
             // 
             // excelExport
             // 

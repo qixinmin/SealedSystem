@@ -100,7 +100,7 @@ namespace SaledServices.CustomsExport
                 }
                 querySdr.Close();
 
-                if (newBankNo.Checked)
+                // if (newBankNo.Checked) //调整阶段，期初都用新账册
                 {
                     cmd.CommandText = "select indentifier, book_number from company_fixed_table_new";
                     querySdr = cmd.ExecuteReader();

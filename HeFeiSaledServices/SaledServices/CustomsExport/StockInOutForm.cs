@@ -255,6 +255,7 @@ namespace SaledServices.CustomsExport
                 string flowstateg = "";
                 string trade_code = "";
                 string ems_no = "";
+                string ems_no_new="";
 
                 string status = "A";
                 //string today = DateTime.Now.ToString("yyyy/MM/dd");
@@ -277,7 +278,8 @@ namespace SaledServices.CustomsExport
                     }
                     querySdr.Close();
 
-                    if (newBankNo.Checked)
+                   // if (newBankNo.Checked)
+                  
                     {
                         cmd.CommandText = "select indentifier, book_number from company_fixed_table_new";
                         querySdr = cmd.ExecuteReader();
@@ -285,13 +287,23 @@ namespace SaledServices.CustomsExport
                         while (querySdr.Read())
                         {
                             trade_code = querySdr[0].ToString();
-                            ems_no = querySdr[1].ToString();
+                            ems_no_new = querySdr[1].ToString();
                         }
                         querySdr.Close();
                     }
 
+                    //调整阶段，工单表头都用老账册
                     generateWorkOrderHead = new GenerateWorkOrderHead(trade_code, ems_no, dt, this);
-                    generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no, dt, this);
+
+                    //调整阶段，工单 表体 都用新账册
+                    if (this.excelExport.Enabled)
+                    {
+                        generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no_new, time1,time2, this);
+                    }
+                    else
+                    {
+                        generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no_new, dt, dt, this);
+                    }
 
                     //板子入库信息,过滤条件是今天DateTime.Now.ToString("yyyy/MM/dd")
 
@@ -413,7 +425,7 @@ namespace SaledServices.CustomsExport
                         foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = trackTemp.trackno;
                             init1.goods_nature = "I";
                             init1.io_date = Untils.getCustomDate(trackTemp.date);
@@ -886,7 +898,19 @@ namespace SaledServices.CustomsExport
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            if (materialTemp.type == "I0001")
+                            {
+                                init1.ems_no = ems_no_new;
+                            }
+                            else if (materialTemp.type == "I0002")
+                            {
+                                init1.ems_no = ems_no_new;
+                            }
+                            else if (materialTemp.type == "I0003")
+                            {
+                                init1.ems_no = ems_no;
+                            }
+                            
                             init1.io_no = materialTemp.id;
                             init1.goods_nature = "I";
                             init1.io_date = Untils.getCustomDate(materialTemp.date);
@@ -1029,7 +1053,7 @@ namespace SaledServices.CustomsExport
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = materialTemp.id;
                             init1.goods_nature = "I";
                             init1.io_date = Untils.getCustomDate(materialTemp.date);
@@ -1165,7 +1189,7 @@ namespace SaledServices.CustomsExport
                     {
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
-                            cmd.CommandText = "select declare_unit,declare_number,custom_request_number from stock_in_sheet where buy_order_serial_no ='" + materialTemp.buy_order_serial_no + "' and isdeclare='是'";
+                            cmd.CommandText = "select declare_unit,declare_number,custom_request_number from stock_in_sheet where buy_order_serial_no ='" + materialTemp.buy_order_serial_no + "' and vendormaterialNo='" + materialTemp.mpn + "' and isdeclare='是'";
                             querySdr = cmd.ExecuteReader();
                             while (querySdr.Read())
                             {
@@ -1193,7 +1217,18 @@ namespace SaledServices.CustomsExport
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            if (materialTemp.type == "I0001")
+                            {
+                                init1.ems_no = ems_no_new;
+                            }
+                            else if (materialTemp.type == "I0002")
+                            {
+                                init1.ems_no = ems_no_new;
+                            }
+                            else if (materialTemp.type == "I0003")
+                            {
+                                init1.ems_no = ems_no;
+                            }
                             init1.io_no = materialTemp.id;
                             init1.goods_nature = "I";
                             init1.io_date = Untils.getCustomDate(materialTemp.date);
@@ -1264,7 +1299,7 @@ namespace SaledServices.CustomsExport
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = materialTemp.id;
                             init1.goods_nature = "I";
                             init1.io_date = Untils.getCustomDate(materialTemp.date);
@@ -1305,7 +1340,7 @@ namespace SaledServices.CustomsExport
                     {
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
-                            cmd.CommandText = "select declare_unit,declare_number,custom_request_number from stock_in_sheet where buy_order_serial_no ='" + materialTemp.buy_order_serial_no + "' and isdeclare='是'";
+                            cmd.CommandText = "select declare_unit,declare_number,custom_request_number from stock_in_sheet where buy_order_serial_no ='" + materialTemp.buy_order_serial_no + "' and vendormaterialNo='" + materialTemp.mpn + "' and isdeclare='是'";
                             querySdr = cmd.ExecuteReader();
                             while (querySdr.Read())
                             {
@@ -1332,7 +1367,18 @@ namespace SaledServices.CustomsExport
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            if (materialTemp.type == "I0001")
+                            {
+                                init1.ems_no = ems_no_new;
+                            }
+                            else if (materialTemp.type == "I0002")
+                            {
+                                init1.ems_no = ems_no_new;
+                            }
+                            else if (materialTemp.type == "I0003")
+                            {
+                                init1.ems_no = ems_no;
+                            }
                             init1.io_no = materialTemp.id;
                             init1.goods_nature = "I";
                             init1.io_date = Untils.getCustomDate(materialTemp.date);
