@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -122,6 +122,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.delete.Enabled = false;
             this.delete.Location = new System.Drawing.Point(1141, 11);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
@@ -143,6 +144,7 @@
             // 
             // vendorTextBox
             // 
+            this.vendorTextBox.BackColor = System.Drawing.Color.LightSalmon;
             this.vendorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vendorTextBox.Location = new System.Drawing.Point(176, 7);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -252,6 +254,7 @@
             // 
             // productTextBox
             // 
+            this.productTextBox.BackColor = System.Drawing.Color.LightSalmon;
             this.productTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productTextBox.Location = new System.Drawing.Point(176, 54);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -261,6 +264,7 @@
             // 
             // ordernoTextBox
             // 
+            this.ordernoTextBox.BackColor = System.Drawing.Color.LightSalmon;
             this.ordernoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ordernoTextBox.Location = new System.Drawing.Point(176, 101);
             this.ordernoTextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -381,8 +385,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -584,21 +588,17 @@
             // 
             // declare_numbertextBox
             // 
-            this.declare_numbertextBox.Enabled = false;
             this.declare_numbertextBox.Location = new System.Drawing.Point(1190, 54);
             this.declare_numbertextBox.Margin = new System.Windows.Forms.Padding(4);
             this.declare_numbertextBox.Name = "declare_numbertextBox";
-            this.declare_numbertextBox.ReadOnly = true;
             this.declare_numbertextBox.Size = new System.Drawing.Size(165, 26);
             this.declare_numbertextBox.TabIndex = 5;
             // 
             // custom_request_numbertextBox
             // 
-            this.custom_request_numbertextBox.Enabled = false;
             this.custom_request_numbertextBox.Location = new System.Drawing.Point(1190, 101);
             this.custom_request_numbertextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_request_numbertextBox.Name = "custom_request_numbertextBox";
-            this.custom_request_numbertextBox.ReadOnly = true;
             this.custom_request_numbertextBox.Size = new System.Drawing.Size(165, 26);
             this.custom_request_numbertextBox.TabIndex = 5;
             // 

@@ -137,7 +137,7 @@
             this.Controls.Add(this.exportxmlbutton);
             this.Name = "StockInOutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "出库入库";
+            this.Text = "出库入库(原来的界面）";
             this.ResumeLayout(false);
             this.PerformLayout();
 

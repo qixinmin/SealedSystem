@@ -61,7 +61,14 @@ namespace SaledServices
         }
 
         private void add_Click(object sender, EventArgs e)
-        {            
+        {
+
+            if (this.ordernoTextBox.Text.Trim() == "" || this.declare_numbertextBox.Text.Trim() =="")
+            {
+                MessageBox.Show("有错误，请检查");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -139,6 +146,18 @@ namespace SaledServices
                     }
                 }
 
+                if (ordernoTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where orderno= '" + ordernoTextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and orderno= '" + ordernoTextBox.Text.Trim() + "' ";
+                    }
+                }
+
                 mConn = new SqlConnection(Constlist.ConStr);
 
                 SqlCommand cmd = new SqlCommand();
@@ -171,6 +190,12 @@ namespace SaledServices
 
         private void modify_Click(object sender, EventArgs e)
         {
+            if (this.ordernoTextBox.Text.Trim() == "" || this.declare_numbertextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("修改完毕需要重新选择一行，再修改，请检查是否选择要修改的行");
+                return;
+            }
+
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.idTextBox.Text.Trim());
@@ -199,6 +224,9 @@ namespace SaledServices
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
             MessageBox.Show("修改成功！");
+
+            this.ordernoTextBox.Text = "";
+            this.declare_numbertextBox.Text = "";
         }
 
         private void delete_Click(object sender, EventArgs e)

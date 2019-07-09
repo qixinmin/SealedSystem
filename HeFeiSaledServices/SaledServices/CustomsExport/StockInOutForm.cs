@@ -341,7 +341,7 @@ namespace SaledServices.CustomsExport
 
                         foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
                         {
-                            cmd.CommandText = "select declare_unit,declare_number,custom_request_number from receiveOrder where orderno ='" + trackTemp.orderno + "'";
+                            cmd.CommandText = "select declare_unit,declare_number,custom_request_number from receiveOrder where orderno ='" + trackTemp.orderno + "' and custom_materialNo like '%"+trackTemp.custom_materialNo+"'";
                             querySdr = cmd.ExecuteReader();
                             while (querySdr.Read())
                             {
@@ -356,7 +356,7 @@ namespace SaledServices.CustomsExport
                         foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = trackTemp.trackno;
                             init1.goods_nature = "I";
                             init1.io_date = Untils.getCustomDate(trackTemp.date);
@@ -1505,9 +1505,50 @@ namespace SaledServices.CustomsExport
                     {
                         string fileName = seq_no;
 
-                        if (newBankNo.Checked)
+                        //分2个内容，新与旧账册
+                        StockInOutClass stockinoutold = new StockInOutClass();
+                        stockinoutold.seq_no = seq_no;
+                        stockinoutold.boxtype = boxtype;
+                        stockinoutold.flowstateg = flowstateg;
+                        stockinoutold.trade_code = trade_code;
+                        stockinoutold.ems_no = ems_no;
+                        stockinoutold.status = status;
+                        List<StoreTrans> storeTransListold = new List<StoreTrans>();
+
+                        StockInOutClass stockinoutnew = new StockInOutClass();
+                        stockinoutnew.seq_no = seq_no;
+                        stockinoutnew.boxtype = boxtype;
+                        stockinoutnew.flowstateg = flowstateg;
+                        stockinoutnew.trade_code = trade_code;
+                        stockinoutnew.ems_no = ems_no_new;
+                        stockinoutnew.status = status;
+                        List<StoreTrans> storeTransListnew = new List<StoreTrans>();
+                        foreach (StoreTrans temp in storeTransList)
+                        {
+                            if (temp.ems_no == ems_no)
+                            {
+                                storeTransListold.Add(temp);
+                            }else
+                                if (temp.ems_no == ems_no_new)
+                            {
+                                storeTransListnew.Add(temp);
+                            }
+                        }
+
+                        stockinoutold.storeTransList = storeTransListold;
+
+                        stockinoutnew.storeTransList = storeTransListnew;
+
+                        if (storeTransListold.Count > 0)
+                        {
+                            fileName = seq_no + "_老账册号";
+                            Untils.createStockInOutXML(stockinoutold, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
+                        }
+
+                        if (storeTransListnew.Count > 0)
                         {
                             fileName = seq_no + "_新账册号";
+                            Untils.createStockInOutXML(stockinoutnew, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
                         }
 
                         if (excelExport.Checked)
@@ -1515,7 +1556,7 @@ namespace SaledServices.CustomsExport
                             generateStockInOut(stockinout.storeTransList,startTime, endTime);
                         }
 
-                        Untils.createStockInOutXML(stockinout, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
+                      
                         showMessage(dt.ToString("yyyyMMdd") + "海关出入库信息产生成功！", isAuto);
                     }
                     else
