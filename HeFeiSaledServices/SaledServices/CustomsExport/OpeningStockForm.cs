@@ -505,6 +505,7 @@ namespace SaledServices.CustomsExport
             //导出xml的逻辑变成excel上传了
             if (storeInitList.Count > 0)
             {
+                seq_no += "_新账册号";
                 Untils.createOpeningStockXML(openingstock, "D:\\STORE_INIT" + seq_no + "test.xml");
                 MessageBox.Show("海关期初库存信息产生成功！");
             }

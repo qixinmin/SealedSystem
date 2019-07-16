@@ -192,7 +192,7 @@ namespace SaledServices.CustomsExport
                 {
                     string fileName = seq_no;
 
-                    if (stockInOutForm.newBankNo.Checked)
+                   // if (stockInOutForm.newBankNo.Checked)
                     {
                         fileName = seq_no + "_新账册号";
                     }

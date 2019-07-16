@@ -293,7 +293,7 @@ namespace SaledServices.CustomsExport
                     }
 
                     //调整阶段，工单表头都用老账册
-                    generateWorkOrderHead = new GenerateWorkOrderHead(trade_code, ems_no, dt, this);
+                    generateWorkOrderHead = new GenerateWorkOrderHead(trade_code, ems_no,  dt, this);
 
                     //调整阶段，工单 表体 都用新账册
                     if (this.excelExport.Enabled)

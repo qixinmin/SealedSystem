@@ -165,7 +165,8 @@ namespace SaledServices
         private void add_Click(object sender, EventArgs e)
         {
             bool error = false;
-            if (this.track_serial_noTextBox.Text.Trim() == "" || this.bgaRepair_resultcomboBox.Text.Trim() == "" || this.custom_serial_notextBox.Text.Trim() == "")
+            if (this.track_serial_noTextBox.Text.Trim() == "" || this.bgaRepair_resultcomboBox.Text.Trim() == "" || this.custom_serial_notextBox.Text.Trim() == ""
+                || this.bga_brieftextBox.Text.Trim() == "")
             {
                 MessageBox.Show("需要加入的内容为空，请检查！");
                 return;

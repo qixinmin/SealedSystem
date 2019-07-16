@@ -393,7 +393,7 @@ namespace SaledServices.Test_Outlook
                     }
 
                     //根据生命周期来判断最近的记录是否是测试，如果是测试，则不能在插入
-                    cmd.CommandText = "SELECT TOP 1 station FROM  stationInfoRecord where trackno='" + this.tracker_bar_textBox.Text.Trim() +"' order by Id desc '";
+                    cmd.CommandText = "SELECT TOP 1 station FROM  stationInfoRecord where trackno='" + this.tracker_bar_textBox.Text.Trim() +"' order by Id desc";
                     querySdr = cmd.ExecuteReader();
                     string preStation = "";
                     while (querySdr.Read())
