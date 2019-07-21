@@ -42,7 +42,7 @@ namespace SaledServices.Export
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select custom_order,track_serial_no,custommaterialNo,custom_serial_no,dpk_status,mac,mpn,mb_describe,source_brief,order_receive_date,lenovo_custom_service_no,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where order_receive_date between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "select custom_order,track_serial_no,custommaterialNo,custom_serial_no,dpk_status,mac,mpn,mb_describe,source_brief,order_receive_date,lenovo_custom_service_no,lenovo_maintenance_no,lenovo_repair_no,mb_brief from DeliveredTable where order_receive_date between '" + startTime + "' and '" + endTime + "'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -61,6 +61,7 @@ namespace SaledServices.Export
                     temp.lenovo_custom_service_no = querySdr[10].ToString();
                     temp.lenovo_maintenance_no = querySdr[11].ToString();
                     temp.lenovo_repair_no = querySdr[12].ToString();
+                    temp.custom_machine_type = querySdr[13].ToString();
 
                     receiveOrderList.Add(temp);                  
                 }
@@ -100,6 +101,7 @@ namespace SaledServices.Export
             titleList.Add("DPK类型");
             titleList.Add("MAC");
             titleList.Add("MPN");
+            titleList.Add("机型");
             titleList.Add("MB描述");
             titleList.Add("来源");
             titleList.Add("收货时间");
@@ -120,6 +122,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.dpktype);
                 ct1.Add(stockcheck.mac);
                 ct1.Add(stockcheck.mpn);
+                ct1.Add(stockcheck.custom_machine_type);
                 ct1.Add(stockcheck.mbdescribe);
                 ct1.Add(stockcheck.source_brief);
                 ct1.Add(stockcheck.order_receive_date);
@@ -146,6 +149,7 @@ namespace SaledServices.Export
         public string dpktype;
         public string mac;
         public string mpn;
+        public string custom_machine_type;
         public string mbdescribe;
         public string source_brief;
         public string order_receive_date;

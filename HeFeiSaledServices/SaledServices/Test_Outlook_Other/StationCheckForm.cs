@@ -99,39 +99,52 @@ namespace SaledServices.Test_Outlook
                         conn.Close();
                         return;
                     }
-
-                    string track_serial_no = "";
-                    string currentUsedTable = "Packagetable";
-                    cmd.CommandText = "select track_serial_no from " + currentUsedTable + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-                    querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
-                    {
-                        track_serial_no = querySdr[0].ToString();
-                    }
                     querySdr.Close();
-                    if (track_serial_no == "")
+
+                    string currentStation = stationComboBox.Text.Trim();
+                    if(currentStation == "Package")
                     {
-                        MessageBox.Show("此单在Package站別沒有操作信息，是不是沒有操作过Package界面？");
-                        conn.Close();
-                        return;
+                        string track_serial_no_temp = "";                 
+                        cmd.CommandText = "select track_serial_no from Packagetable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            track_serial_no_temp = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        if (track_serial_no_temp == "")
+                        {
+                            MessageBox.Show("此单在Package站別沒有操作信息，是不是沒有操作过Package界面？");
+                            conn.Close();
+                            return;
+                        }                    
+                        querySdr.Close();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                     "','Package_change','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + User.UserSelfForm.username + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "update stationInformation set station = 'Package', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                  + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "INSERT INTO Packagetable VALUES('"
+                            + this.tracker_bar_textBox.Text.Trim() + "','"
+                            + LoginForm.currentUser +"','"
+                            + DateTime.Now.ToString()
+                            + "')";
+                            cmd.ExecuteNonQuery();    
                     }
-                    
-                    querySdr.Close();
-                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                 "','Package_change','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + User.UserSelfForm.username + "')";
-                    cmd.ExecuteNonQuery();
+                    else if(currentStation=="TakePhoto")
+                    {
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                    "','TakePhoto_change','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + User.UserSelfForm.username + "')";
+                        cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Package', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
-                    cmd.ExecuteNonQuery();
-
-
-                    cmd.CommandText = "INSERT INTO Packagetable VALUES('"
-                        + this.tracker_bar_textBox.Text.Trim() + "','"
-                        + LoginForm.currentUser +"','"
-                        + DateTime.Now.ToString()
-                        + "')";
-                    cmd.ExecuteNonQuery();    
+                        cmd.CommandText = "update stationInformation set station = 'TakePhoto', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                  + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 else
                 {

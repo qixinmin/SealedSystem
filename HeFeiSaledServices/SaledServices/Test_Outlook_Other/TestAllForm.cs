@@ -398,7 +398,7 @@ namespace SaledServices.Test_Outlook
                     string preStation = "";
                     while (querySdr.Read())
                     {
-                        productCheck = querySdr[0].ToString();
+                        preStation = querySdr[0].ToString();
                     }
                     querySdr.Close();
 

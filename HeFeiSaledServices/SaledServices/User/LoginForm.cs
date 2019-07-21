@@ -159,6 +159,24 @@ namespace SaledServices
                         mParent.additionMenuItem.DropDownItems.Remove(mParent.员工管理ToolStripMenuItem);
                     }                    
                 }
+                if (User.UserSelfForm.super_manager == "True")
+                {
+                    cmd.CommandText = "select COUNT(*) from DPK_table where _status ='未使用'";
+                    querySdr = cmd.ExecuteReader();
+                    string dpkcount = "0";
+                    while (querySdr.Read())
+                    {
+                        dpkcount = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    mConn.Close();
+
+                    if (Int16.Parse(dpkcount) < 1500)
+                    {
+                        MessageBox.Show("DPK未使用的数量已经少于1500了，现在为" + dpkcount);
+                    }
+                }
 
                 mConn.Close();
             }

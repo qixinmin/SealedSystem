@@ -408,6 +408,13 @@ namespace SaledServices
                 return;
             }
 
+            if(!this.custommaterialNoTextBox.Text.Trim().Contains(this.inputCustomMaterialtextBox.Text.Trim()) 
+                ||!this.custommaterialNoTextBox.Text.Trim().EndsWith(this.inputCustomMaterialtextBox.Text.Trim()))
+            {
+                MessageBox.Show("选择的客户料号与输入的客户料号不一致，请检查！");
+                return;
+            }
+
             //if (statusComboBox.Text.Trim() == "不良品")
             //{
             //    if (this.lenovo_maintenance_noTextBox.Text == "" || this.lenovo_repair_noTextBox.Text == "")
@@ -1061,6 +1068,20 @@ namespace SaledServices
             {
                 this.custom_serial_noTextBox.Focus();
                 this.custom_serial_noTextBox.SelectAll();
+            }
+        }
+
+        private void inputCustomMaterialtextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.inputCustomMaterialtextBox.Text.Trim() == "")
+                {
+                    MessageBox.Show("输入的客户料号的不对");
+                    return;
+                }
+                this.track_serial_noTextBox.Focus();
+                this.track_serial_noTextBox.SelectAll();
             }
         }
     }

@@ -113,7 +113,8 @@
             // 
             this.stationComboBox.FormattingEnabled = true;
             this.stationComboBox.Items.AddRange(new object[] {
-            "Package"});
+            "Package",
+            "TakePhoto"});
             this.stationComboBox.Location = new System.Drawing.Point(443, 3);
             this.stationComboBox.Name = "stationComboBox";
             this.stationComboBox.Size = new System.Drawing.Size(164, 20);

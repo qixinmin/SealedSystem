@@ -179,6 +179,8 @@ namespace SaledServices.Repair
             }
             else
             {
+                //以防輸多了但是不回車
+
                 try
                 {
                     Int32.Parse(this.thisNumbertextBox.Text);
@@ -186,6 +188,29 @@ namespace SaledServices.Repair
                 catch (Exception ex)
                 {
                     MessageBox.Show("本次使用的數量 輸入框 輸入了非法字符，请检查");
+                    return;
+                }
+
+                try
+                {
+                    int totalNumber = Int32.Parse(this.realNumbertextBox.Text);
+                    int usedNumber = Int32.Parse(this.usedNumbertextBox.Text);
+                    int thisTryToUse = Int32.Parse(this.thisNumbertextBox.Text);
+
+                    if (thisTryToUse + usedNumber > totalNumber)
+                    {
+                        MessageBox.Show("输入的数量不能大于能使用的数量!");
+                        this.thisNumbertextBox.Clear();
+                        this.thisNumbertextBox.Focus();
+                    }
+                    else
+                    {
+                        totalUseNumber = (thisTryToUse + usedNumber).ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
                     return;
                 }
             }
