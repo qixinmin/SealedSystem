@@ -204,7 +204,7 @@ namespace SaledServices.Test_Outlook
                             int totalchecknum = (int)Math.Ceiling(num * rate);
 
                             //查询现在有多少个了，只需要查最后一个，也许没有
-                            cmd.CommandText = "select COUNT(*)  from decideOBEchecktable where orderno='" + customorder + "'";
+                            cmd.CommandText = "select COUNT(*)  from decideOBEchecktable where orderno='" + customorder + "'and custom_materialNo='" + custom_materialNo + "'";
                             querySdr = cmd.ExecuteReader();
                             string existnum = "";
                             while (querySdr.Read())

@@ -511,7 +511,7 @@ namespace SaledServices
                        {
                            this.source_briefComboBox.Text = "DOA";
                        }
-                       else if (diffDays <= 120)
+                       else if (diffDays <= 120)//这个逻辑暂时不管
                        {
                            this.source_briefComboBox.Text = "RR";
                        }

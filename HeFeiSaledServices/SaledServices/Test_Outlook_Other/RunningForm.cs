@@ -20,11 +20,12 @@ namespace SaledServices.Test_Outlook
             testerTextBox.Text = LoginForm.currentUser;
             testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
             this.tracker_bar_textBox.Focus();
+            this.confirmbutton.Enabled = false;
         }
 
-        private bool isCheckFromServer()
+        private bool isCheckFromServer(String custom_serial_no)
         { //根据服务器要判断内容是否存在即可，找到要移动走，现在并发欠考虑
-            string trackno = this.tracker_bar_textBox.Text.Trim();
+            string custom_serial_no_temp = custom_serial_no;// this.tracker_bar_textBox.Text.Trim();
             //根据网络状态查询状态
             string serverIPaddress = "\\\\192.168.1.1\\test\\";// +Environment.MachineName + "\\E$";
             string _3dmark = serverIPaddress + "3DMARKLOG\\";
@@ -42,7 +43,7 @@ namespace SaledServices.Test_Outlook
             foreach (string file in folders3dmark)
             {
                 string filename = Path.GetFileName(file);
-                if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
                 {
                     _3dmarkerExist = true;
                     //move to backup
@@ -56,7 +57,7 @@ namespace SaledServices.Test_Outlook
             foreach (string file in foldersburn)
             {
                 string filename = Path.GetFileName(file);
-                if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
                 {
                     burnExist = true;
                     //move to backup
@@ -70,7 +71,7 @@ namespace SaledServices.Test_Outlook
             foreach (string file in foldersLSC20)
             {
                 string filename = Path.GetFileName(file);
-                if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
                 {
                     lscExist = true;
                     //move to backup
@@ -84,7 +85,7 @@ namespace SaledServices.Test_Outlook
             foreach (string file in foldersLSC60)
             {
                 string filename = Path.GetFileName(file);
-                if (filename.Contains(trackno) && filename.Contains("_PASS"))
+                if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
                 {
                     lscExist = true;
                     //move to backup
@@ -118,8 +119,6 @@ namespace SaledServices.Test_Outlook
                     MessageBox.Show("追踪条码的内容为空，请检查！");
                     return;
                 }
-
-               
 
                 try
                 {
@@ -176,20 +175,21 @@ namespace SaledServices.Test_Outlook
 
                     if (this.tracker_bar_textBox.Text.Trim() != "")
                     {
-                        cmd.CommandText = "select storehouse from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.CommandText = "select storehouse,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                         querySdr = cmd.ExecuteReader();
-                        string storehouse = "";
+                        string storehouse = "", custom_serial_no="";
 
                         while (querySdr.Read())
                         {
                             storehouse = querySdr[0].ToString();
+                            custom_serial_no = querySdr[1].ToString();
                         }
                         querySdr.Close();
 
                         if (storehouse.ToUpper().Trim() != "CN")
                         {
-                            if (isCheckFromServer() == false)
+                            if (isCheckFromServer(custom_serial_no) == false)
                             {
                                // MessageBox.Show("服务端读取文件失败");
                                 mConn.Close();
@@ -204,6 +204,7 @@ namespace SaledServices.Test_Outlook
                     this.testerTextBox.Text = LoginForm.currentUser;
                     this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
                     mConn.Close();
+                    this.confirmbutton.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -219,11 +220,14 @@ namespace SaledServices.Test_Outlook
                 MessageBox.Show("追踪条码的内容为空，请检查！");
                 return;
             }
+            if (this.testerTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("用户为空！请回车");
+                return;
+            }
 
             try
             {
-
-
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
 
@@ -271,6 +275,8 @@ namespace SaledServices.Test_Outlook
 
                 conn.Close();
                 MessageBox.Show("插入Running2数据OK");
+                this.testerTextBox.Text = "";
+                this.confirmbutton.Enabled = true;
             }
             catch (Exception ex)
             {

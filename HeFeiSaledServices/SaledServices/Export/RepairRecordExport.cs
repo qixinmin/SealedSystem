@@ -44,10 +44,11 @@ namespace SaledServices.Export
                 SqlDataReader querySdr = null;
 
 
-                if (checkBoxtwo.Checked)//2返查询
+                if (checkBoxtwo.Checked)//2返查询，根据收货的类别为非正常RMA的版本都是2返
                 {
                     List<string> customserialnolist = new List<string>();
-                    cmd.CommandText = "SELECT custom_serial_no from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "' group by custom_serial_no having COUNT(custom_serial_no)>1";
+                   // cmd.CommandText = "SELECT custom_serial_no from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "' group by custom_serial_no having COUNT(custom_serial_no)>1";
+                    cmd.CommandText = "select custom_serial_no from DeliveredTable where source_brief!='正常RMA' and order_receive_date  between '" + startTime + "' and '" + endTime + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
