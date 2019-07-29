@@ -234,13 +234,86 @@ namespace SaledServices
             }
         }
 
+        private void simulateEnter(string custommaterialNo, string orderNo, string tat)
+        {
+            try
+            {
+                this.return_file_noTextBox.Text = generateFileNo();
+                this.ordernoTextBox.Text =orderNo;
+                this.custommaterialNoTextBox.Text = custommaterialNo;
+                this.return_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+
+                if (Untils.isTimeError(this.return_dateTextBox.Text.Trim()))
+                {
+                    this.returnStore.Enabled = false;
+                }
+
+                this.tatTextBox.Text = tat;
+
+
+                //根据输入的客户料号，查询MB物料对照表找到dpk状态与mpn
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select storehouse from receiveOrder where vendor='" + vendorStr
+                    + "' and product ='" + productStr + "' and _status = 'close' and orderno ='" + this.ordernoTextBox.Text.Trim() + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        this.storehouseTextBox.Text = querySdr[0].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+
+                    //列出所有可用的flexid给flexidcomboBox
+                    cmd.CommandText = "select flex_id from flexidRecord where custom_order='" + ordernoTextBox.Text
+                    + "' and custommaterialNo ='" + custommaterialNoTextBox.Text + "' and _status = ''";
+                    querySdr = cmd.ExecuteReader();
+                    flexidcomboBox.Items.Clear();
+                    while (querySdr.Read())
+                    {
+                        flexidcomboBox.Items.Add(querySdr[0].ToString());
+                    }
+                    querySdr.Close();
+
+
+                    cmd.CommandText = "select dpk_type, mpn, replace_custom_materialNo from MBMaterialCompare where custommaterialNo = '"
+                        + this.custommaterialNoTextBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        this.dpkpnTextBox.Text = querySdr[0].ToString();
+                        this.bommpnTextBox.Text = querySdr[1].ToString();
+                        this.replace_custom_materialNotextBox.Text = querySdr[2].ToString();
+                    }
+                    querySdr.Close();
+
+                    mConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.ToString()); }
+        }
+
         private void dataGridViewToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (this.dataGridViewToReturn.CurrentRow == null)
             {
                 return;
             }
-
+            clearInputData();
             try
             {
                 this.return_file_noTextBox.Text = generateFileNo();
@@ -436,7 +509,23 @@ namespace SaledServices
                     cmd.CommandType = CommandType.Text;
 
                     SqlDataReader querySdr = null;
-                    //if (statusComboBox.Text.Trim() == "不良品")                    
+                    //if (statusComboBox.Text.Trim() == "不良品")    
+
+                    cmd.CommandText = "select custom_order from flexidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string customOrder = "";
+                    while (querySdr.Read())
+                    {
+                        customOrder = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (customOrder != ordernoTextBox.Text.Trim())
+                    {
+                        MessageBox.Show("此序列号的订单编号是" + customOrder + "，跟选择的订单编号应该不符合！");
+                        conn.Close();
+                        return;
+                    }
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +                        
                         this.vendorComboBox.Text.Trim() + "','" +
@@ -704,6 +793,7 @@ namespace SaledServices
                 SetValue(tableLayoutPanel4, true, null);
         }
 
+        string currentMaterialNo, orderNo, tat;
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -716,6 +806,31 @@ namespace SaledServices
 
                 try
                 {
+                    int row = dataGridViewToReturn.Rows.Count;
+                    for (int i = 0; i < row; i++)
+                    {
+                        dataGridViewToReturn.Rows[i].Selected = false;
+                    }
+
+                    //int count = 0;
+                    //currentMaterialNo = this.custommaterialNoTextBox.Text.Trim();
+                    //for (int i = 0; i < row; i++)
+                    //{
+                    //    string queryedStr = dataGridViewToReturn.Rows[i].Cells[1].Value.ToString();
+                    //    if (queryedStr.EndsWith(currentMaterialNo)
+                    //        && this.ordernoTextBox.Text.Trim() == dataGridViewToReturn.Rows[i].Cells[0].Value.ToString().Trim())
+                    //    {
+                    //        count++;
+                    //        this.custommaterialNoTextBox.Text = queryedStr;
+                    //        orderNo = this.ordernoTextBox.Text = dataGridViewToReturn.Rows[i].Cells[0].Value.ToString();
+                    //        tat = this.tatTextBox.Text = dataGridViewToReturn.Rows[i].Cells[5].Value.ToString();
+
+                    //        dataGridViewToReturn.Rows[i].Selected = true;
+                    //        dataGridViewToReturn.CurrentCell = dataGridViewToReturn.Rows[i].Cells[0];
+                    //        break;
+                    //    }
+                    //}
+
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                     mConn.Open();
 
@@ -751,21 +866,7 @@ namespace SaledServices
                     this.returnStore.Enabled = true;
                     querySdr.Close();
 
-                    cmd.CommandText = "select custom_order from flexidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
-                    querySdr = cmd.ExecuteReader();
-                    string customOrder = "";
-                    while (querySdr.Read())
-                    {
-                        customOrder = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-
-                    if (customOrder != ordernoTextBox.Text.Trim())
-                    {
-                        MessageBox.Show("此序列号的订单编号是"+customOrder+"，跟选择的订单编号应该不符合！");
-                        mConn.Close();
-                        return;
-                    }
+                    
                     
                     cmd.CommandText = "select Id from cidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     querySdr = cmd.ExecuteReader();
@@ -843,18 +944,10 @@ namespace SaledServices
                             return;
                         }
                     }
+              
 
-                    cmd.CommandText = "select flex_id from flexidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
-                    querySdr = cmd.ExecuteReader();                   
-                    while (querySdr.Read())
-                    {
-                        flexidcomboBox.Text = querySdr[0].ToString();
-                        break;
-                    }
-                    querySdr.Close();
-                  
-                   
-                    cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where track_serial_no = '"
+                    //开始查询订单号与料号根据跟踪条码
+                    cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no,custom_order,custommaterialNo from DeliveredTable where track_serial_no = '"
                         + this.track_serial_noTextBox.Text + "'";
 
                     querySdr = cmd.ExecuteReader();
@@ -865,8 +958,53 @@ namespace SaledServices
                         this.matertiallibMpnTextBox.Text = querySdr[2].ToString();              
                         this.lenovo_maintenance_noTextBox.Text = querySdr[3].ToString();
                         this.lenovo_repair_noTextBox.Text = querySdr[4].ToString();
+                        this.orderNo = querySdr[5].ToString();
+                        this.currentMaterialNo = querySdr[6].ToString();
                     }
                     querySdr.Close();
+
+                    //开始查询内容
+                    for (int i = 0; i < row; i++)
+                    {
+                        string queryedStr = dataGridViewToReturn.Rows[i].Cells[1].Value.ToString();
+                        if (queryedStr.EndsWith(currentMaterialNo)
+                            && this.orderNo.Trim() == dataGridViewToReturn.Rows[i].Cells[0].Value.ToString().Trim())
+                        {
+                            this.custommaterialNoTextBox.Text = queryedStr;
+                            orderNo = this.ordernoTextBox.Text = dataGridViewToReturn.Rows[i].Cells[0].Value.ToString();
+                            tat = this.tatTextBox.Text = dataGridViewToReturn.Rows[i].Cells[5].Value.ToString();
+
+                            dataGridViewToReturn.Rows[i].Selected = true;
+                            dataGridViewToReturn.CurrentCell = dataGridViewToReturn.Rows[i].Cells[0];
+                            break;
+                        }
+                    }
+                    simulateEnter(currentMaterialNo, orderNo, tat);
+
+                    cmd.CommandText = "select flex_id from flexidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        flexidcomboBox.Text = querySdr[0].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "select custom_order from flexidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string customOrder = "";
+                    while (querySdr.Read())
+                    {
+                        customOrder = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (customOrder != ordernoTextBox.Text.Trim())
+                    {
+                        MessageBox.Show("此序列号的订单编号是" + customOrder + "，跟选择的订单编号应该不符合！");
+                        mConn.Close();
+                        return;
+                    }
 
                     if (this.custom_serial_noTextBox.Text == "")//说明板子从buffer库出来的
                     {
