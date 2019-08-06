@@ -630,7 +630,7 @@ namespace SaledServices
                         querySdr.Close();
                     }
 
-                    cmd.CommandText = "select Id from flexidRecord where flex_id = '" + this.flexidTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select Id from flexidRecord where flex_id = '" + this.flexidTextBox.Text.Trim() + "' and custom_order='"+this.custom_orderComboBox.Text.Trim()+"'";
                     querySdr = cmd.ExecuteReader();
                     bool existFlexId = false;
                     while (querySdr.Read())

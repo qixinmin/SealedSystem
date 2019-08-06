@@ -43,12 +43,13 @@ namespace SaledServices.Test_Outlook
             foreach (string file in folders3dmark)
             {
                 string filename = Path.GetFileName(file);
+                Console.WriteLine(filename);
                 if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
                 {
                     _3dmarkerExist = true;
                     //move to backup
                     FileInfo myfile = new FileInfo(file);//移动
-                    myfile.MoveTo(_3dmarkbackup + filename);
+                    myfile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
                     break;
                 }
             }
@@ -62,7 +63,7 @@ namespace SaledServices.Test_Outlook
                     burnExist = true;
                     //move to backup
                     FileInfo myfile = new FileInfo(file);//移动
-                    myfile.MoveTo(_3dmarkbackup + filename);
+                    myfile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
                     break;
                 }
             }
@@ -76,7 +77,7 @@ namespace SaledServices.Test_Outlook
                     lscExist = true;
                     //move to backup
                     FileInfo myfile = new FileInfo(file);//移动
-                    myfile.MoveTo(_3dmarkbackup + filename);
+                    myfile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
                     break;
                 }
             }
@@ -90,7 +91,7 @@ namespace SaledServices.Test_Outlook
                     lscExist = true;
                     //move to backup
                     FileInfo myfile = new FileInfo(file);//移动
-                    myfile.MoveTo(_3dmarkbackup + filename);
+                    myfile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
                     break;
                 }
             }
@@ -146,7 +147,7 @@ namespace SaledServices.Test_Outlook
 
                     if (station != "Test2" && station != "Test1&2")
                     {
-                        MessageBox.Show("板子已经经过站别" + station);
+                        MessageBox.Show("板子已经经过站别==>" + station);
                         mConn.Close();
                         this.tracker_bar_textBox.Focus();
                         this.tracker_bar_textBox.SelectAll();
@@ -173,30 +174,35 @@ namespace SaledServices.Test_Outlook
                     //    }
                     //}
 
-                    if (this.tracker_bar_textBox.Text.Trim() != "")
-                    {
-                        cmd.CommandText = "select storehouse,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
-                        querySdr = cmd.ExecuteReader();
-                        string storehouse = "", custom_serial_no="";
+                    //移动到确定的时候操作，防止误操作
+                    //if (this.tracker_bar_textBox.Text.Trim() != "")
+                    //{
+                    //    cmd.CommandText = "select storehouse,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
-                        while (querySdr.Read())
-                        {
-                            storehouse = querySdr[0].ToString();
-                            custom_serial_no = querySdr[1].ToString();
-                        }
-                        querySdr.Close();
+                    //    querySdr = cmd.ExecuteReader();
+                    //    string storehouse = "", custom_serial_no="";
 
-                        if (storehouse.ToUpper().Trim() != "CN")
-                        {
-                            if (isCheckFromServer(custom_serial_no) == false)
-                            {
-                               // MessageBox.Show("服务端读取文件失败");
-                                mConn.Close();
-                                return;
-                            }
-                        }
-                    }
+                    //    while (querySdr.Read())
+                    //    {
+                    //        storehouse = querySdr[0].ToString();
+                    //        custom_serial_no = querySdr[1].ToString();
+                    //    }
+                    //    querySdr.Close();
+
+                    //    if (storehouse.ToUpper().Trim() != "CN")
+                    //    {
+                    //        if (isCheckFromServer(custom_serial_no) == false)
+                    //        {
+                    //           // MessageBox.Show("服务端读取文件失败");
+                    //            mConn.Close();
+                    //            return;
+                    //        }
+                    //    }
+                    //}
+
+
+
                     //else 
                     //{
                     //    MessageBox.Show("此追踪条码没有Test2站别的记录！");
@@ -252,6 +258,31 @@ namespace SaledServices.Test_Outlook
                     //    conn.Close();
                     //    return;
                     //}
+
+                    if (this.tracker_bar_textBox.Text.Trim() != "")
+                    {
+                        cmd.CommandText = "select storehouse,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string storehouse = "", custom_serial_no = "";
+
+                        while (querySdr.Read())
+                        {
+                            storehouse = querySdr[0].ToString();
+                            custom_serial_no = querySdr[1].ToString();
+                        }
+                        querySdr.Close();
+
+                        if (storehouse.ToUpper().Trim() != "CN")
+                        {
+                            if (isCheckFromServer(custom_serial_no) == false)
+                            {
+                                MessageBox.Show("服务端读取文件失败");
+                                conn.Close();
+                                return;
+                            }
+                        }
+                    }
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
