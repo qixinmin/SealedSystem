@@ -63,7 +63,7 @@ namespace SaledServices
 
                     //更新ECO站别
                     cmd.CommandText = "update stationInformation set station = 'ECO', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                               + "where track_serial_no = '" + this.track_serial_no.Text + "'";
+                               + "where track_serial_no = '" + this.track_serial_no.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
                 }
                 else

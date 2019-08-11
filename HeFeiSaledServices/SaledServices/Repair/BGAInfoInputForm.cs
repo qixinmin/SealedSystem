@@ -656,7 +656,7 @@ namespace SaledServices
                         }
 
                         cmd.CommandText = "update stationInformation set station = '" + stationInfo + "', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                                      + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                                      + "where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
 
                         cmd.ExecuteNonQuery();
                     }
@@ -900,7 +900,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
                 }
                 else

@@ -940,7 +940,7 @@ namespace SaledServices
 
                     //更新维修站别
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                               + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                               + "where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
                     //记录维修记录

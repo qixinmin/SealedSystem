@@ -560,14 +560,15 @@ namespace SaledServices
                     cmd.CommandText = "select _status, ordernum, receivedNum, returnNum,cid_number from receiveOrder where orderno = '" + this.ordernoTextBox.Text
                            + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
 
-                    int receivedNum = 0, returnNum =0,cidNum=0;
+                    int receivedNum = 0, returnNum =0,cidNum=0, orderNum=0;
                     string status = "close";
                     querySdr = cmd.ExecuteReader();
                     bool isDone = false;
                     while (querySdr.Read())
                     {
-                        cidNum = Int32.Parse(querySdr[4].ToString());
-                        receivedNum = Int32.Parse(querySdr[2].ToString());
+                        orderNum = Int32.Parse(querySdr[1].ToString().Trim());
+                        cidNum = Int32.Parse(querySdr[4].ToString().Trim());
+                        receivedNum = Int32.Parse(querySdr[2].ToString().Trim());
                         int leftNum = receivedNum - cidNum;
                         if (querySdr[3].ToString() == "")
                         {
@@ -592,6 +593,11 @@ namespace SaledServices
 
                     if (isDone == false)
                     {
+                        if (orderNum != receivedNum + cidNum)
+                        {
+                            status = "open";
+                        }
+
                         cmd.CommandText = "update receiveOrder set _status = '" + status + "',returnNum = '" + (returnNum + 1) +"' "
                                     + "where orderno = '" + this.ordernoTextBox.Text
                                     + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";

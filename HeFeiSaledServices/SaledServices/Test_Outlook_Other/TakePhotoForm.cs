@@ -262,7 +262,7 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = 'TakePhoto', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
                 }
                 else

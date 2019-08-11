@@ -157,7 +157,7 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = 'Obe', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "select orderno,custom_materialNo from decideOBEchecktable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
@@ -246,7 +246,7 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
 

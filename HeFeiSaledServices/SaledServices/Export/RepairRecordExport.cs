@@ -212,7 +212,7 @@ namespace SaledServices.Export
                         //拆件的数据
                         cmd.CommandText = "select material_mpn,thisNumber,stock_place from fru_smt_used_record_other where track_serial_no ='" + repairRecord.track_serial_no + "'";
                         querySdr = cmd.ExecuteReader();
-                        repairRecord.smtRecords = new List<SmtRecort>();
+                       // repairRecord.smtRecords = new List<SmtRecort>();
                         while (querySdr.Read())
                         {
                             SmtRecort sub = new SmtRecort();

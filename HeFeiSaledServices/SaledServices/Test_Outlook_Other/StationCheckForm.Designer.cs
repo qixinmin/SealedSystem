@@ -113,8 +113,18 @@
             // 
             this.stationComboBox.FormattingEnabled = true;
             this.stationComboBox.Items.AddRange(new object[] {
+            "BGA",
+            "CID",
+            "ECO",
+            "Obe",
             "Package",
-            "TakePhoto"});
+            "Running",
+            "TakePhoto",
+            "Test1&2",
+            "不良品库",
+            "收货",
+            "外观",
+            "维修"});
             this.stationComboBox.Location = new System.Drawing.Point(443, 3);
             this.stationComboBox.Name = "stationComboBox";
             this.stationComboBox.Size = new System.Drawing.Size(164, 20);

@@ -193,6 +193,14 @@ namespace SaledServices
                     cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
                     cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = "select mpn from store_house where mpn != '' group by mpn having COUNT(*) > 1 ";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        MessageBox.Show("请关闭窗口之前上报管理员并拍照");
+                    }
+                    querySdr.Close();
+
                     //清除历史缓存，保证下次选择是新的
                     chooseStock.house = "";
                 }

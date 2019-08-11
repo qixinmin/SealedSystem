@@ -344,11 +344,12 @@ namespace SaledServices.Test_Outlook
                     querySdr.Close();
 
                     bool docheckExist = false;
-                    if (productCheck == "TBG")
+                    //20190811放开TBG也要查DPK烧录
+                    /*if (productCheck == "TBG")
                     {
                         //do                        
                     }
-                    else
+                    else*/
                     {
                         if (this.KEYID == "NOK")
                         {
@@ -440,7 +441,7 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = GETDATE()  "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
 
@@ -515,7 +516,7 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandType = CommandType.Text;
 
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = GETDATE()  "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
@@ -779,7 +780,7 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = GETDATE()  "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
                 }
                 else

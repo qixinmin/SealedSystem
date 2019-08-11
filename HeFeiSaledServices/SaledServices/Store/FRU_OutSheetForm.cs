@@ -137,6 +137,14 @@ namespace SaledServices
 
                     cmd.CommandText = "update store_house set number = '" + (Int32.Parse(number) - Int32.Parse(this.stock_out_numTextBox.Text)) + "'  where house='"+ house+"' and place='"+place+"'";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "select mpn from store_house where mpn != '' group by mpn having COUNT(*) > 1 ";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        MessageBox.Show("请关闭窗口之前上报管理员并拍照");
+                    }
+                    querySdr.Close();
                 }
                 else
                 {

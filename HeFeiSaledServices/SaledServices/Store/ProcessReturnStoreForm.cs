@@ -152,6 +152,14 @@ namespace SaledServices.Store
                     //3.更新表request_fru_smt_to_store_table中的status的字段的数量为return
                     cmd.CommandText = "update request_fru_smt_to_store_table set _status = 'return' where Id='"+this.fromIdtextBox.Text.Trim()+"'";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "select mpn from store_house where mpn != '' group by mpn having COUNT(*) > 1 ";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        MessageBox.Show("请关闭窗口之前上报管理员并拍照");
+                    }
+                    querySdr.Close();
                 }
                 else
                 {

@@ -310,7 +310,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                              + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                              + "where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
                     //记录BGA维修记录

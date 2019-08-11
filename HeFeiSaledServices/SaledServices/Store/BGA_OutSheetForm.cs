@@ -104,6 +104,14 @@ namespace SaledServices
                     cmd.CommandText = "update store_house set number = '" + (Int32.Parse(number) - Int32.Parse(this.stock_out_numTextBox.Text)) + "'  where house='"+ house+"' and place='"+place+"'";
                     cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = "select mpn from store_house where mpn != '' group by mpn having COUNT(*) > 1 ";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        MessageBox.Show("请关闭窗口之前上报管理员并拍照");
+                    }
+                    querySdr.Close();
+
                     //不良品库, 需要更新库房对应储位的数量 减去 本次出库的数量
                     //根据mpn查对应的查询
                     cmd.CommandText = "select house,place,Id,number from store_house_ng where mpn='" + this.mpnTextBox.Text.Trim() + "'";
