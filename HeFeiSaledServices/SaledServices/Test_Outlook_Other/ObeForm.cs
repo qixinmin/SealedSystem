@@ -192,6 +192,7 @@ namespace SaledServices.Test_Outlook
                 MessageBox.Show("插入OBE数据OK");
                 this.confirmbutton.Enabled = false;
                 this.button1.Enabled = false;
+                this.tracker_bar_textBox.Text = "";
             }
             catch (Exception ex)
             {

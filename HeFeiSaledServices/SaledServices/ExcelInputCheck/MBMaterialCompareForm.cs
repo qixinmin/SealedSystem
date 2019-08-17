@@ -25,6 +25,7 @@ namespace SaledServices
 
             if (User.UserSelfForm.isSuperManager() == false)
             {
+                this.add.Visible = false;
                 this.modify.Visible = false;
                 this.delete.Visible = false;
             }

@@ -1645,6 +1645,21 @@ namespace SaledServices
             allForm.Add(sITaxExport);
         }
 
+        private void mB物料对照表查看ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mBMaterialCompareMenuItem_Click(sender, e);
+        }
+
+        private void mB物料对照表查看ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            mBMaterialCompareMenuItem_Click(sender, e);
+        }
+
+        private void 库存管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         
     }
 }

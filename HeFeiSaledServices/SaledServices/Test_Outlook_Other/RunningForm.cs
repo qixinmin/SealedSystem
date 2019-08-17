@@ -255,6 +255,7 @@ namespace SaledServices.Test_Outlook
                     //{
                     //    MessageBox.Show("此序列号已经存在！");
                     //    this.tracker_bar_textBox.Text = "";
+
                     //    conn.Close();
                     //    return;
                     //}

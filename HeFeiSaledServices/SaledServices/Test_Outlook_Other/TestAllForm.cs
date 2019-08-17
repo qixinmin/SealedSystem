@@ -160,8 +160,8 @@ namespace SaledServices.Test_Outlook
                                 querySdr = cmd.ExecuteReader();
                                 while (querySdr.Read())
                                 {
-                                    customMaterialNo = querySdr[0].ToString();
-                                    vendor_serail_no = querySdr[1].ToString();
+                                    customMaterialNo = querySdr[0].ToString().Trim();
+                                    vendor_serail_no = querySdr[1].ToString().Trim();
 
                                     mac = querySdr[2].ToString();
                                     uuid = querySdr[3].ToString();
@@ -176,8 +176,8 @@ namespace SaledServices.Test_Outlook
                                 querySdr = cmd.ExecuteReader();
                                 while (querySdr.Read())
                                 {
-                                    customMaterialNo = querySdr[0].ToString();
-                                    vendor_serail_no = querySdr[1].ToString();
+                                    customMaterialNo = querySdr[0].ToString().Trim();
+                                    vendor_serail_no = querySdr[1].ToString().Trim();
 
                                     custom_serial_no = querySdr[2].ToString();
                                     mb_brief = querySdr[3].ToString();
@@ -561,6 +561,11 @@ namespace SaledServices.Test_Outlook
             {
                 tempCustomMaterialNo = customMaterialNo.Substring(3);
             }
+            else if(customMaterialNo.Length == 10)//10位，但是不以000开头
+            {
+                tempCustomMaterialNo = customMaterialNo;
+            }
+
             string totalStr = "SET -v MBID " + track_serial_no + "\r\n"
                             + "SET -v SN " + vendor_serail_no + "\r\n"
                             + "SET -v SKU " + mpn + "\r\n"

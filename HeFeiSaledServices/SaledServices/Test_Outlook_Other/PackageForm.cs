@@ -442,6 +442,17 @@ namespace SaledServices.Test_Outlook
                 conn.Close();
                 MessageBox.Show("插入Package数据OK");
                 this.confirmbutton.Enabled = false;
+
+                this.tracker_bar_textBox.Text = "";
+                this.innerboxtextBox.Text = "";
+                this.innerboxnumtextBox.Text = "";
+                this.paomiantextBox.Text = "";
+                this.paomiannumtextBox.Text = "";
+                this.outboxtextBox.Text = "";
+                this.outboxNumtextBox.Text = "";
+
+    
+
             }
             catch (Exception ex)
             {
