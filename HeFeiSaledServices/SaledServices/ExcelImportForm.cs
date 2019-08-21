@@ -878,7 +878,25 @@ namespace SaledServices
                     //end重复性判断
 
                     //把库房的的库位做重复性检查
+                    if (this.storeInfoImportradioButton.Checked)
+                    {
+                        for (int i = 2; i <= rowLength; i++)
+                        {
+                            string house = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString().Trim();
+                            string place = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 2]).Value2.ToString().Trim();
 
+                            cmd.CommandText = "select Id from store_house where house='"+house+"' and place='"+place+"'";
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            if(querySdr.HasRows){
+                                querySdr.Close();
+                                conn.Close();
+                                conn.Dispose();
+                                MessageBox.Show("导入的有重复性位置，不能导入:"+house+","+place);
+                                return;
+                            }
+                            querySdr.Close();
+                        }
+                    }
 
                     transaction = conn.BeginTransaction();
                     cmd.Transaction = transaction;  
