@@ -214,6 +214,22 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    //检查跟踪条码与8s是否跟收货的时候一致，不一致不让过
+                    cmd.CommandText = "select custom_serial_no from DeliveredTable where track_serial_no ='" + track_serial_no_txt + "'";
+                    SqlDataReader querySdr1 = cmd.ExecuteReader();
+                    string shoucustom_serial_no = "";
+                    while (querySdr1.Read())
+                    {
+                        shoucustom_serial_no = querySdr1[0].ToString();
+                    }
+                    querySdr1.Close();
+                    if (custom_serial_no_txt != shoucustom_serial_no)
+                    {
+                        MessageBox.Show("收货的8s与当前输入的不一样，请检查！");
+                        conn.Close();
+                        return;
+                    }
+
                     cmd.CommandText = "select top 1 bga_repair_result from bga_repair_record_table where track_serial_no='" + track_serial_no_txt + "'  order by Id desc";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();

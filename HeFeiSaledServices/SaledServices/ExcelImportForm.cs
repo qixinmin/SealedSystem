@@ -877,6 +877,9 @@ namespace SaledServices
                     }
                     //end重复性判断
 
+                    //把库房的的库位做重复性检查
+
+
                     transaction = conn.BeginTransaction();
                     cmd.Transaction = transaction;  
 

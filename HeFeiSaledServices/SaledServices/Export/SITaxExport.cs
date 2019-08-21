@@ -17,6 +17,8 @@ namespace SaledServices.Export
             InitializeComponent();
         }
 
+        Dictionary<string, string> materialbomDic = new Dictionary<string, string>();
+
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
             DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd"));
@@ -54,7 +56,18 @@ namespace SaledServices.Export
 
                     receiveOrderList.Add(temp);
                 }
-                querySdr.Close();                
+                querySdr.Close();
+
+                cmd.CommandText = "select distinct custommaterialNo,vendormaterialNo from MBMaterialCompare";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    if (materialbomDic.ContainsKey(querySdr[0].ToString().Trim()) == false)
+                    {
+                        materialbomDic.Add(querySdr[0].ToString().Trim(), querySdr[1].ToString().Trim());
+                    }
+                }
+                querySdr.Close();
 
                 foreach (SIRepairRecordStruct repairRecord in receiveOrderList)
                 {
@@ -80,7 +93,13 @@ namespace SaledServices.Export
                     while (querySdr.Read())
                     {
                         //repairRecord.custom_fault= querySdr[0].ToString();
+                       
                         repairRecord.custommaterialNo = querySdr[1].ToString();
+
+                        if (materialbomDic.ContainsKey(repairRecord.custommaterialNo))
+                        {
+                            repairRecord.custommaterialNo = materialbomDic[repairRecord.custommaterialNo];
+                        }
                     }
                     querySdr.Close();
 
