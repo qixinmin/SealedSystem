@@ -172,9 +172,9 @@ namespace SaledServices
 
                     mConn.Close();
 
-                    if (Int16.Parse(dpkcount) < 1500)
+                    if (Int16.Parse(dpkcount) < 2500)
                     {
-                        MessageBox.Show("DPK未使用的数量已经少于1500了，现在为" + dpkcount);
+                        MessageBox.Show("DPK未使用的数量已经少于2500了，现在为" + dpkcount);
                     }
                 }
 

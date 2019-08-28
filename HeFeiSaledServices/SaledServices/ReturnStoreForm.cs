@@ -593,7 +593,7 @@ namespace SaledServices
 
                     if (isDone == false)
                     {
-                        if (orderNum != receivedNum + cidNum)
+                        if (orderNum != receivedNum)
                         {
                             status = "open";
                         }
@@ -1189,20 +1189,26 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string customMaterialSub = custommaterialNoTextBox.Text.Substring(2);
-            if (customMaterialSub.Length != 8)
+            string customMaterialSub = custommaterialNoTextBox.Text.Trim();
+            if (customMaterialSub.Length != 10)
             {
-                MessageBox.Show("客户料号的长度不是8位");
+                MessageBox.Show("客户料号的长度不是10位");
                 return;
+            }
+
+            string printCustomNo=custommaterialNoTextBox.Text.Trim();
+            if(printCustomNo.StartsWith("000"))
+            {
+                printCustomNo = printCustomNo.Substring(3);
             }
 
             if (this.storehouseTextBox.Text.ToUpper().StartsWith("CN"))
             {
-                PrintUtils.printCustomMaterialNoChina(ordernoTextBox.Text, custommaterialNoTextBox.Text.Substring(3), custom_serial_noTextBox.Text);
+                PrintUtils.printCustomMaterialNoChina(ordernoTextBox.Text, printCustomNo, custom_serial_noTextBox.Text);
             }
             else
             {
-                PrintUtils.printCustomMaterialNo(ordernoTextBox.Text, vendormaterialNo, custommaterialNoTextBox.Text.Substring(3), flexidcomboBox.Text, custom_serial_noTextBox.Text);
+                PrintUtils.printCustomMaterialNo(ordernoTextBox.Text, vendormaterialNo, printCustomNo, flexidcomboBox.Text, custom_serial_noTextBox.Text);
             }
         }
 

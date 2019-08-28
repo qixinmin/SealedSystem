@@ -17,7 +17,7 @@ namespace SaledServices.Export
             InitializeComponent();
         }
 
-        Dictionary<string, string> materialbomDic = new Dictionary<string, string>();
+        Dictionary<string, string> _71bomDic = new Dictionary<string, string>();
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
@@ -58,16 +58,18 @@ namespace SaledServices.Export
                 }
                 querySdr.Close();
 
-                cmd.CommandText = "select distinct custommaterialNo,vendormaterialNo from MBMaterialCompare";
+                //查询71bom
+                cmd.CommandText = "select distinct material_mpn,material_vendor_pn from LCFC71BOM_table";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    if (materialbomDic.ContainsKey(querySdr[0].ToString().Trim()) == false)
+                    if (_71bomDic.ContainsKey(querySdr[0].ToString().Trim()) == false)
                     {
-                        materialbomDic.Add(querySdr[0].ToString().Trim(), querySdr[1].ToString().Trim());
+                        _71bomDic.Add(querySdr[0].ToString().Trim(), querySdr[1].ToString().Trim());
                     }
                 }
                 querySdr.Close();
+
 
                 foreach (SIRepairRecordStruct repairRecord in receiveOrderList)
                 {
@@ -95,11 +97,6 @@ namespace SaledServices.Export
                         //repairRecord.custom_fault= querySdr[0].ToString();
                        
                         repairRecord.custommaterialNo = querySdr[1].ToString();
-
-                        if (materialbomDic.ContainsKey(repairRecord.custommaterialNo))
-                        {
-                            repairRecord.custommaterialNo = materialbomDic[repairRecord.custommaterialNo];
-                        }
                     }
                     querySdr.Close();
 
@@ -128,7 +125,15 @@ namespace SaledServices.Export
                     {
                         SIBgaRecord sub = new SIBgaRecord();
 
-                        sub.bgampn = querySdr[0].ToString();
+                        //if (_71bomDic.ContainsKey(querySdr[0].ToString()))
+                        //{
+                        //    sub.bgampn = _71bomDic[querySdr[0].ToString()];
+                        //}
+                        //else
+                        {
+                            sub.bgampn = querySdr[0].ToString();
+                        }
+                        //sub.bgampn = querySdr[0].ToString();
                         sub.usedNum = "1";
                         //sub.bgatype = querySdr[1].ToString();
                         //sub.bgabrief = querySdr[2].ToString();
@@ -147,7 +152,14 @@ namespace SaledServices.Export
                     {
                         SIBgaRecord sub = new SIBgaRecord();
 
-                        sub.bgampn = querySdr[0].ToString();
+                        //if (_71bomDic.ContainsKey(querySdr[0].ToString()))
+                        //{
+                        //    sub.bgampn = _71bomDic[querySdr[0].ToString()];
+                        //}
+                        //else
+                        {
+                            sub.bgampn = querySdr[0].ToString();
+                        }
 
                         sub.usedNum = "1";
                         //sub.bgatype = querySdr[1].ToString();
@@ -167,7 +179,15 @@ namespace SaledServices.Export
                     {
                         SISmtRecort sub = new SISmtRecort();
 
-                        sub.smtMpn = querySdr[0].ToString();
+                        //if (_71bomDic.ContainsKey(querySdr[0].ToString()))
+                        //{
+                        //    sub.smtMpn = _71bomDic[querySdr[0].ToString()];
+                        //}
+                        //else
+                        {
+                            sub.smtMpn = querySdr[0].ToString();
+                        }
+                       
                         sub.usedNum = querySdr[1].ToString();
                         //sub.smtNum = querySdr[1].ToString();
                         //sub.smtplace = querySdr[2].ToString();
@@ -217,6 +237,12 @@ namespace SaledServices.Export
                         }
                         querySdr.Close();
 
+                        if (_71bomDic.ContainsKey(bgarecord.bgampn))
+                        {
+                            bgarecord.bgampn = _71bomDic[bgarecord.bgampn];
+                        }
+                        
+
                         //if (bgarecord.product_type.ToUpper() == "SERVER")//将来需要改进
                         //{
                         //    cmd.CommandText = "select material_vendor,product_date,pici from server_material_more_information where mpn ='" + bgarecord.bgampn + "'";
@@ -254,6 +280,11 @@ namespace SaledServices.Export
                             break;
                         }
                         querySdr.Close();
+
+                        if (_71bomDic.ContainsKey(smtrecord.smtMpn))
+                        {
+                            smtrecord.smtMpn = _71bomDic[smtrecord.smtMpn];
+                        }
                     }
                 }
 

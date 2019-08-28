@@ -61,16 +61,13 @@ tester NVARCHAR(128) NOT NULL,
 input_date date
 )
 
-
-
-
 /*1 如果是维修，维修位置，数量，与料号，2  如果是bga则位置，数量为1， 与料号， 3 如果是mylar，则位置，数量，与料号*/
 CREATE TABLE stationInfoRecord(
 Id INT PRIMARY KEY IDENTITY, 
 trackno NVARCHAR(128) NOT NULL, /*订单编号*/
 station NVARCHAR(128) NOT NULL, /*站别*/
 recordstatus NVARCHAR(128) NOT NULL,
-recorddate NVARCHAR(128) NOT NULL,
+recorddate datetime NOT NULL,
 
 repairplace1 NVARCHAR(128) ,
 repairnum1 NVARCHAR(128) ,

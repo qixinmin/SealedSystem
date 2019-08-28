@@ -110,6 +110,46 @@ namespace SaledServices.Test_Outlook
             return true;
         }
 
+        private bool isCheckFromServerCN(String custom_serial_no)
+        { //根据服务器要判断内容是否存在即可，找到要移动走，现在并发欠考虑
+            string custom_serial_no_temp = custom_serial_no;// this.tracker_bar_textBox.Text.Trim();
+            //根据网络状态查询状态
+            string serverIPaddress = "\\\\192.168.1.1\\test\\";// +Environment.MachineName + "\\E$";
+            string _3dmark = serverIPaddress + "3DMARKLOG\\";
+            //string Burninlog = serverIPaddress + "Burninlog\\";
+            //string LSC20LOG = serverIPaddress + "LSC20LOG\\";
+            //string LSC60LOG = serverIPaddress + "LSC60LOG\\";
+
+            string _3dmarkbackup = serverIPaddress + "backup\\3DMARKLOG\\";
+            //string Burninlogbackup = serverIPaddress + "backup\\Burninlog\\";
+            //string LSC20LOGbackup = serverIPaddress + "backup\\LSC20LOG\\";
+            //string LSC60LOGbackup = serverIPaddress + "backup\\LSC60LOG\\";
+
+            bool _3dmarkerExist = false;//, burnExist = false, lscExist = false;
+            string[] folders3dmark = Directory.GetFiles(_3dmark);
+            foreach (string file in folders3dmark)
+            {
+                string filename = Path.GetFileName(file);
+                Console.WriteLine(filename);
+                if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
+                {
+                    _3dmarkerExist = true;
+                    //move to backup
+                    FileInfo myfile = new FileInfo(file);//移动
+                    myfile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                    break;
+                }
+            }
+
+            if (_3dmarkerExist == false)
+            {
+                MessageBox.Show("_3dmarker 不存在，请检查！");
+                return false;
+            }
+           
+            return true;
+        }
+
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -200,9 +240,6 @@ namespace SaledServices.Test_Outlook
                     //        }
                     //    }
                     //}
-
-
-
                     //else 
                     //{
                     //    MessageBox.Show("此追踪条码没有Test2站别的记录！");
@@ -262,25 +299,38 @@ namespace SaledServices.Test_Outlook
 
                     if (this.tracker_bar_textBox.Text.Trim() != "")
                     {
-                        cmd.CommandText = "select storehouse,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.CommandText = "select storehouse,custom_serial_no,product from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                         SqlDataReader querySdr = cmd.ExecuteReader();
-                        string storehouse = "", custom_serial_no = "";
+                        string storehouse = "", custom_serial_no = "", product="";
 
                         while (querySdr.Read())
                         {
                             storehouse = querySdr[0].ToString();
                             custom_serial_no = querySdr[1].ToString();
+                            product = querySdr[1].ToString().Trim();
                         }
                         querySdr.Close();
 
-                        if (storehouse.ToUpper().Trim() != "CN")
+                        if (product != "DT")
                         {
-                            if (isCheckFromServer(custom_serial_no) == false)
+                            if (storehouse.ToUpper().Trim() != "CN")
                             {
-                                MessageBox.Show("服务端读取文件失败");
-                                conn.Close();
-                                return;
+                                if (isCheckFromServer(custom_serial_no) == false)
+                                {
+                                    MessageBox.Show("not CN服务端读取文件失败");
+                                    conn.Close();
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                if (isCheckFromServerCN(custom_serial_no) == false)
+                                {
+                                    MessageBox.Show("CN服务端读取文件失败");
+                                    conn.Close();
+                                    return;
+                                }
                             }
                         }
                     }
