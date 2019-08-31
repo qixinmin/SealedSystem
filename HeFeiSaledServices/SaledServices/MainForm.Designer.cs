@@ -1148,7 +1148,7 @@
         private System.Windows.Forms.ToolStripMenuItem 还货表信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 主板流水导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 手动出待维修库ToolStripMenuItem;
-private System.Windows.Forms.ToolStripMenuItem 解锁板子ToolStripMenuItem;
+public System.Windows.Forms.ToolStripMenuItem 解锁板子ToolStripMenuItem;
 private System.Windows.Forms.ToolStripMenuItem eCOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 拍照ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oBEToolStripMenuItem1;

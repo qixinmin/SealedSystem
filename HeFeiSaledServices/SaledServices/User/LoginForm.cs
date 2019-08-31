@@ -177,6 +177,10 @@ namespace SaledServices
                         MessageBox.Show("DPK未使用的数量已经少于2500了，现在为" + dpkcount);
                     }
                 }
+                else
+                {
+                    mParent.解锁板子ToolStripMenuItem.Visible = false;
+                }
 
                 mConn.Close();
             }

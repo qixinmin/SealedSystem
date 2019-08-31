@@ -120,6 +120,7 @@ namespace SaledServices
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.receiveReturnStoreMenuItem,
                     this.eCOToolStripMenuItem,
+                     this.拍照ToolStripMenuItem,
                    });
                     break;
                 case MenuType.TestALL:
@@ -143,17 +144,20 @@ namespace SaledServices
                 case MenuType.Running:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.runningToolStripMenuItem,
+                     this.拍照ToolStripMenuItem,
                    });
                     break;
                 case MenuType.Outlook:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.外观ToolStripMenuItem,
                     this.报表ToolStripMenuItem,
+                     this.拍照ToolStripMenuItem,
                    });
                     break;
                 case MenuType.Obe:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.oBEToolStripMenuItem,
+                     this.拍照ToolStripMenuItem,
                    });
                     break;
                 case MenuType.Store:
@@ -180,6 +184,7 @@ namespace SaledServices
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.包装ToolStripMenuItem,
                     this.报表ToolStripMenuItem,
+                     this.拍照ToolStripMenuItem,
                    });
                     break;
             }

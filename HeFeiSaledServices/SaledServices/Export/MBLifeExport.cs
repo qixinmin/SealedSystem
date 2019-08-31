@@ -29,8 +29,8 @@ namespace SaledServices.Export
                 return;
             }
 
-            string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd hh:MM:ss");
-            string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd hh:MM:ss");
+            string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd")+" 00:00:00";
+            string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd")+" 23:59:59";
 
             List<stationInfoRecord> stationList = new List<stationInfoRecord>();
 
