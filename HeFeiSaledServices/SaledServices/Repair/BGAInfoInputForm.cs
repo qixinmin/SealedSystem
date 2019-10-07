@@ -224,6 +224,7 @@ namespace SaledServices
                     }
 
                     mConn.Close();
+
                 }
                 catch (Exception ex)
                 {
@@ -682,6 +683,8 @@ namespace SaledServices
                     error = true;
                     MessageBox.Show("SaledService is not opened");
                 }
+
+                this.add.Enabled = false;
 
                 conn.Close();
             }

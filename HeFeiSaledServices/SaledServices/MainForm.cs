@@ -1665,6 +1665,22 @@ namespace SaledServices
 
         }
 
+        private TestCheckMbBriefForm mTestCheckMbBriefForm;
+        private void 添加测试的检查机型ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mTestCheckMbBriefForm == null || mTestCheckMbBriefForm.IsDisposed)
+            {
+                mTestCheckMbBriefForm = new TestCheckMbBriefForm();
+                mTestCheckMbBriefForm.MdiParent = this;
+            }
+
+            //faultOutForm.WindowState = FormWindowState.Maximized;
+            mTestCheckMbBriefForm.BringToFront();
+            mTestCheckMbBriefForm.Show();
+
+            allForm.Add(mTestCheckMbBriefForm);
+        }
+
         
     }
 }

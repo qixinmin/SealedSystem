@@ -51,12 +51,17 @@
             this.bomdownload = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.currentmbbrief = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 6;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.025477F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.80091F));
@@ -84,6 +89,7 @@
             this.tableLayoutPanel1.Controls.Add(this.bomdownload, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.button2, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 5, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -97,7 +103,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(4, 1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
@@ -106,16 +112,16 @@
             // tracker_bar_textBox
             // 
             this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tracker_bar_textBox.Location = new System.Drawing.Point(74, 3);
+            this.tracker_bar_textBox.Location = new System.Drawing.Point(75, 4);
             this.tracker_bar_textBox.Name = "tracker_bar_textBox";
-            this.tracker_bar_textBox.Size = new System.Drawing.Size(214, 21);
+            this.tracker_bar_textBox.Size = new System.Drawing.Size(213, 21);
             this.tracker_bar_textBox.TabIndex = 1;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(294, 0);
+            this.label2.Location = new System.Drawing.Point(295, 1);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
@@ -124,16 +130,16 @@
             // testerTextBox
             // 
             this.testerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testerTextBox.Location = new System.Drawing.Point(375, 3);
+            this.testerTextBox.Location = new System.Drawing.Point(376, 4);
             this.testerTextBox.Name = "testerTextBox";
             this.testerTextBox.ReadOnly = true;
-            this.testerTextBox.Size = new System.Drawing.Size(171, 21);
+            this.testerTextBox.Size = new System.Drawing.Size(169, 21);
             this.testerTextBox.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(552, 0);
+            this.label3.Location = new System.Drawing.Point(552, 1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
@@ -142,16 +148,16 @@
             // testdatetextBox
             // 
             this.testdatetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testdatetextBox.Location = new System.Drawing.Point(693, 3);
+            this.testdatetextBox.Location = new System.Drawing.Point(693, 4);
             this.testdatetextBox.Name = "testdatetextBox";
             this.testdatetextBox.ReadOnly = true;
-            this.testdatetextBox.Size = new System.Drawing.Size(198, 21);
+            this.testdatetextBox.Size = new System.Drawing.Size(197, 21);
             this.testdatetextBox.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 258);
+            this.label6.Location = new System.Drawing.Point(4, 255);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 12);
             this.label6.TabIndex = 5;
@@ -160,16 +166,16 @@
             // keyidtextBox
             // 
             this.keyidtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.keyidtextBox.Location = new System.Drawing.Point(74, 261);
+            this.keyidtextBox.Location = new System.Drawing.Point(75, 258);
             this.keyidtextBox.Name = "keyidtextBox";
             this.keyidtextBox.ReadOnly = true;
-            this.keyidtextBox.Size = new System.Drawing.Size(214, 21);
+            this.keyidtextBox.Size = new System.Drawing.Size(213, 21);
             this.keyidtextBox.TabIndex = 4;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(294, 258);
+            this.label7.Location = new System.Drawing.Point(295, 255);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 12);
             this.label7.TabIndex = 6;
@@ -178,16 +184,16 @@
             // KEYSERIALtextBox
             // 
             this.KEYSERIALtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KEYSERIALtextBox.Location = new System.Drawing.Point(375, 261);
+            this.KEYSERIALtextBox.Location = new System.Drawing.Point(376, 258);
             this.KEYSERIALtextBox.Name = "KEYSERIALtextBox";
             this.KEYSERIALtextBox.ReadOnly = true;
-            this.KEYSERIALtextBox.Size = new System.Drawing.Size(171, 21);
+            this.KEYSERIALtextBox.Size = new System.Drawing.Size(169, 21);
             this.KEYSERIALtextBox.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(294, 129);
+            this.label5.Location = new System.Drawing.Point(295, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 10;
@@ -196,7 +202,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 129);
+            this.label4.Location = new System.Drawing.Point(4, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 12);
             this.label4.TabIndex = 9;
@@ -205,27 +211,27 @@
             // cpuFreqtextBox
             // 
             this.cpuFreqtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cpuFreqtextBox.Location = new System.Drawing.Point(375, 132);
+            this.cpuFreqtextBox.Location = new System.Drawing.Point(376, 131);
             this.cpuFreqtextBox.Name = "cpuFreqtextBox";
             this.cpuFreqtextBox.ReadOnly = true;
-            this.cpuFreqtextBox.Size = new System.Drawing.Size(171, 21);
+            this.cpuFreqtextBox.Size = new System.Drawing.Size(169, 21);
             this.cpuFreqtextBox.TabIndex = 7;
             // 
             // cpuTypetextBox
             // 
             this.cpuTypetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cpuTypetextBox.Location = new System.Drawing.Point(74, 132);
+            this.cpuTypetextBox.Location = new System.Drawing.Point(75, 131);
             this.cpuTypetextBox.Name = "cpuTypetextBox";
             this.cpuTypetextBox.ReadOnly = true;
-            this.cpuTypetextBox.Size = new System.Drawing.Size(214, 21);
+            this.cpuTypetextBox.Size = new System.Drawing.Size(213, 21);
             this.cpuTypetextBox.TabIndex = 8;
             // 
             // button3
             // 
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(3, 338);
+            this.button3.Location = new System.Drawing.Point(4, 336);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(65, 23);
+            this.button3.Size = new System.Drawing.Size(64, 23);
             this.button3.TabIndex = 1;
             this.button3.Text = "仁宝OA3";
             this.button3.UseVisualStyleBackColor = true;
@@ -236,9 +242,9 @@
             // 
             this.panel1.Controls.Add(this.buffertest);
             this.panel1.Controls.Add(this.isburn);
-            this.panel1.Location = new System.Drawing.Point(375, 338);
+            this.panel1.Location = new System.Drawing.Point(376, 336);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(171, 35);
+            this.panel1.Size = new System.Drawing.Size(169, 35);
             this.panel1.TabIndex = 13;
             this.panel1.Visible = false;
             // 
@@ -268,7 +274,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(693, 338);
+            this.button5.Location = new System.Drawing.Point(693, 336);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(107, 35);
             this.button5.TabIndex = 1;
@@ -280,7 +286,7 @@
             // bomdownload
             // 
             this.bomdownload.Enabled = false;
-            this.bomdownload.Location = new System.Drawing.Point(552, 132);
+            this.bomdownload.Location = new System.Drawing.Point(552, 131);
             this.bomdownload.Name = "bomdownload";
             this.bomdownload.Size = new System.Drawing.Size(126, 36);
             this.bomdownload.TabIndex = 1;
@@ -290,7 +296,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(693, 261);
+            this.button1.Location = new System.Drawing.Point(693, 258);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 36);
             this.button1.TabIndex = 1;
@@ -300,13 +306,40 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(552, 261);
+            this.button2.Location = new System.Drawing.Point(552, 258);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 36);
             this.button2.TabIndex = 1;
             this.button2.Text = "测试OK";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.confirmbutton_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.currentmbbrief);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Location = new System.Drawing.Point(693, 131);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(197, 100);
+            this.panel2.TabIndex = 14;
+            // 
+            // currentmbbrief
+            // 
+            this.currentmbbrief.AutoSize = true;
+            this.currentmbbrief.Location = new System.Drawing.Point(105, 23);
+            this.currentmbbrief.Name = "currentmbbrief";
+            this.currentmbbrief.Size = new System.Drawing.Size(17, 12);
+            this.currentmbbrief.TabIndex = 3;
+            this.currentmbbrief.Text = "无";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(16, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "当前机型";
             // 
             // TestAllForm
             // 
@@ -321,6 +354,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -350,5 +385,8 @@
         private System.Windows.Forms.CheckBox isburn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label currentmbbrief;
+        private System.Windows.Forms.Label label9;
     }
 }

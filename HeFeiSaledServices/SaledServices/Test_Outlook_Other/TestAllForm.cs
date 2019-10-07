@@ -181,9 +181,12 @@ namespace SaledServices.Test_Outlook
 
                                     custom_serial_no = querySdr[2].ToString();
                                     mb_brief = querySdr[3].ToString();
+                                  
                                 }
                                 querySdr.Close();
                             }
+
+                            this.currentmbbrief.Text = mb_brief;
 
                             if (customMaterialNo != "")
                             {
@@ -313,6 +316,41 @@ namespace SaledServices.Test_Outlook
                 }
             }
         }
+
+        private bool isCheckFromServer(String custom_serial_no)
+        { //根据服务器要判断内容是否存在即可，找到要移动走，现在并发欠考虑
+            string custom_serial_no_temp = custom_serial_no;// this.tracker_bar_textBox.Text.Trim();
+            //根据网络状态查询状态
+            string serverIPaddress = "\\\\192.168.1.1\\test\\Testlog\\";// +Environment.MachineName + "\\E$";
+            string fctlog = serverIPaddress + "FCTLOG\\";
+
+            string fctlogbackup = serverIPaddress + "backup\\FCTLOG\\";
+
+            bool fctlogExist = false;
+            string[] foldersfctlog = Directory.GetFiles(fctlog);
+            foreach (string file in foldersfctlog)
+            {
+                string filename = Path.GetFileName(file);
+                Console.WriteLine(filename);
+                if (filename.Contains(custom_serial_no_temp))
+                {
+                    fctlogExist = true;
+                    //move to backup
+                    FileInfo myfile = new FileInfo(file);//移动
+                    myfile.MoveTo(fctlogbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                    break;
+                }
+            }
+
+            if (fctlogExist == false)
+            {
+                MessageBox.Show("test LOG 内容为空，请检查！");
+                return false;
+            }
+            return true;
+        }
+
+
         string tempKeySerial = "";
         private void confirmbutton_Click(object sender, EventArgs e)
         {
@@ -342,6 +380,29 @@ namespace SaledServices.Test_Outlook
                         productCheck = querySdr[0].ToString();
                     }
                     querySdr.Close();
+
+                    //查询要检查的类型
+                    cmd.CommandText = "select mbbrief from testcheckmbbrief";
+                    querySdr = cmd.ExecuteReader();
+                    bool ischecktest = false;
+                    while (querySdr.Read())
+                    {
+                        if (querySdr[0].ToString().ToUpper().Trim().Equals(mb_brief.ToUpper()))
+                        {
+                            ischecktest = true;
+                        }
+                    }
+                    querySdr.Close();
+
+                    if (ischecktest)
+                    {
+                        if (isCheckFromServer(custom_serial_no) == false)
+                        {
+                            MessageBox.Show("服务端读取文件失败。。。");
+                            conn.Close();
+                            return;
+                        }
+                    }
 
                     bool docheckExist = false;
                     //20190811放开TBG也要查DPK烧录
@@ -489,6 +550,9 @@ namespace SaledServices.Test_Outlook
 
                 conn.Close();
                 MessageBox.Show("插入测试All数据OK");
+                this.tracker_bar_textBox.Text = "";
+                this.currentmbbrief.Text = "";
+               
             }
             catch (Exception ex)
             {

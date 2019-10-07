@@ -272,6 +272,12 @@
     <Compile Include="additionForm\ModifyErrorTrackNoForm.Designer.cs">
       <DependentUpon>ModifyErrorTrackNoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="additionForm\TestCheckMbBriefForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\TestCheckMbBriefForm.Designer.cs">
+      <DependentUpon>TestCheckMbBriefForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -802,6 +808,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\ModifyErrorTrackNoForm.resx">
       <DependentUpon>ModifyErrorTrackNoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\TestCheckMbBriefForm.resx">
+      <DependentUpon>TestCheckMbBriefForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChartForm.resx">
       <DependentUpon>ChartForm.cs</DependentUpon>

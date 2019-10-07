@@ -433,6 +433,45 @@ namespace SaledServices.Test_Outlook
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("提示：因为超过2个订单的记录有2次NTF，已经锁定，继续后续操作");
                     }
+
+                    //查找如果是2次回来，并且第二次是ntf，则锁住
+                    cmd.CommandText = "select _action,orderno,repair_result,repair_date,fault_describe,software_update from repair_record_table where custom_serial_no ='" + custom_serial_no.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    ntfcount = 0;
+                    orderlist = new List<string>();
+                    bool secondNTF = false;
+                    while (querySdr.Read())
+                    {
+                      //  if (querySdr[0].ToString().Trim().ToUpper() == "NTF")
+                        {
+                            ntfcount++;
+
+                            if (!orderlist.Contains(querySdr[1].ToString().Trim()))
+                            {
+                                orderlist.Add(querySdr[1].ToString().Trim());
+
+                                if (ntfcount > 1 && querySdr[0].ToString().Trim().ToUpper() == "NTF")
+                                {
+                                    secondNTF = true;
+                                }
+                            }
+                        }
+                    }
+                    querySdr.Close();
+
+                    if (secondNTF && orderlist.Count >= 2)
+                    {
+                        cmd.CommandText = "INSERT INTO need_to_lock VALUES('" +
+                                    "second_ntf_or_more" + "','" +
+                                this.tracker_bar_textBox.Text.Trim() + "','" +
+                                custom_order.Trim() + "','" +
+                                custom_serial_no.Trim() + "','" +
+                                "true" + "','" +
+                                DateTime.Now.ToString("yyyy/MM/dd") +
+                                "','')";
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("提示：因为超过2个订单,并且第二个记录有NTF，已经锁定，继续后续操作");
+                    }
                 }
                 else
                 {

@@ -21,6 +21,11 @@ namespace SaledServices.Export
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
+            if (textBoxHuilu.Text.Trim()=="")
+            {
+                MessageBox.Show("汇率为空");
+                return;
+            }
             DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd"));
             DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy/MM/dd"));
 
@@ -220,14 +225,21 @@ namespace SaledServices.Export
                 {
                     foreach (SIBgaRecord bgarecord in repairRecord.bgaRecords)
                     {
-                        cmd.CommandText = "select pricePer from stock_in_sheet where mpn ='" + bgarecord.bgampn + "'";
+                        cmd.CommandText = "select pricePer,vendor from stock_in_sheet where mpn ='" + bgarecord.bgampn + "'";
                         querySdr = cmd.ExecuteReader();
                         while (querySdr.Read())
                         {
-                            bgarecord.thisprice = querySdr[0].ToString();
+                            bgarecord.thisprice = querySdr[0].ToString().Trim();
+                            bgarecord.vendor = querySdr[1].ToString().Trim();                            
+                            
                             if (bgarecord.thisprice != null)
                             {
-                                bgarecord.totalMoney = Double.Parse(bgarecord.thisprice) * Double.Parse(bgarecord.usedNum) + "";
+                                if (bgarecord.vendor != "LCFC")
+                                {
+                                    bgarecord.thisprice = Math.Round(Double.Parse(bgarecord.thisprice) / Double.Parse(this.textBoxHuilu.Text.Trim()),2) + "";
+                                }
+
+                                bgarecord.totalMoney = Math.Round(Double.Parse(bgarecord.thisprice) * Double.Parse(bgarecord.usedNum),2) + "";
                             }
                             else
                             {
@@ -259,19 +271,25 @@ namespace SaledServices.Export
                     }
                 }
 
-
                 foreach (SIRepairRecordStruct repairRecord in receiveOrderList)
                 {
                     foreach (SISmtRecort smtrecord in repairRecord.smtRecords)
                     {
-                        cmd.CommandText = "select pricePer from stock_in_sheet where mpn ='" + smtrecord.smtMpn + "'";
+                        cmd.CommandText = "select pricePer,vendor from stock_in_sheet where mpn ='" + smtrecord.smtMpn + "'";
                         querySdr = cmd.ExecuteReader();
                         while (querySdr.Read())
                         {
                             smtrecord.thisprice = querySdr[0].ToString();
+                            smtrecord.vendor = querySdr[1].ToString();                            
+
                             if (smtrecord.thisprice != null)
                             {
-                                smtrecord.totalMoney = Double.Parse(smtrecord.thisprice) * Double.Parse(smtrecord.usedNum) + "";
+                                if (smtrecord.vendor != "LCFC")
+                                {
+                                    smtrecord.thisprice = Math.Round( Double.Parse(smtrecord.thisprice) / Double.Parse(this.textBoxHuilu.Text.Trim()),2) + "";
+                                }
+
+                                smtrecord.totalMoney = Math.Round(Double.Parse(smtrecord.thisprice) * Double.Parse(smtrecord.usedNum),2) + "";
                             }
                             else
                             {
@@ -496,6 +514,8 @@ namespace SaledServices.Export
        public string thisprice;
        public string totalMoney;
 
+       public string vendor;
+
        //public string bgatype;
        //public string bgabrief;
        //public string bgambfa1;
@@ -516,6 +536,8 @@ namespace SaledServices.Export
        public string usedNum;
        public string thisprice;
        public string totalMoney;
+
+       public string vendor;
 
        //public string smtplace;
        //public string smtNum;

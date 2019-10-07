@@ -61,6 +61,22 @@ namespace SaledServices
 
             try
             {
+                int currentStockNumber = Int32.Parse(this.currentStockNumbertextBox.Text.Trim());
+                int outNumber = Int32.Parse(this.stock_out_numTextBox.Text.Trim());
+                if (outNumber > currentStockNumber)
+                {
+                    MessageBox.Show("输入的数量不能大于库存数量!!");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return;
+            }
+
+            try
+            {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
                
@@ -69,22 +85,6 @@ namespace SaledServices
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
-                        this.vendorcomboBox.Text.Trim() + "','" +
-                        this.productcomboBox.Text.Trim() + "','" +
-                        this.mpnTextBox.Text.Trim() + "','" +
-                        this.bga_brieftextBox.Text.Trim() + "','" +
-                        this.bgadescribeTextBox.Text.Trim() + "','" +
-                        this.stock_placetextBox.Text.Trim() + "','" +
-                        this.stock_out_numTextBox.Text.Trim() + "','" +
-                        this.isDeclareTextBox.Text.Trim() + "','" +
-                        this.notetextBox.Text.Trim() + "','" +
-                        this.takertextBox.Text.Trim() + "','" +
-                        this.inputerTextBox.Text.Trim() + "','" +
-                        this.input_dateTextBox.Text.Trim() + "')";
-                    
-                    cmd.ExecuteNonQuery();                   
 
                     //良品库
                     //需要更新库房对应储位的数量 减去 本次出库的数量
@@ -100,6 +100,40 @@ namespace SaledServices
                         number = querySdr[3].ToString();
                     }
                     querySdr.Close();
+
+                    try
+                    {
+                        int left = (Int32.Parse(number) - Int32.Parse(this.stock_out_numTextBox.Text));
+                        if (left < 0)
+                        {
+                            MessageBox.Show("输入的数量不能大于库存数量!");
+                            conn.Close();
+                            return;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("输入的数量不能大于库存数量~~~~");
+                        conn.Close();
+                        return;
+                    }
+
+
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
+                        this.vendorcomboBox.Text.Trim() + "','" +
+                        this.productcomboBox.Text.Trim() + "','" +
+                        this.mpnTextBox.Text.Trim() + "','" +
+                        this.bga_brieftextBox.Text.Trim() + "','" +
+                        this.bgadescribeTextBox.Text.Trim() + "','" +
+                        this.stock_placetextBox.Text.Trim() + "','" +
+                        this.stock_out_numTextBox.Text.Trim() + "','" +
+                        this.isDeclareTextBox.Text.Trim() + "','" +
+                        this.notetextBox.Text.Trim() + "','" +
+                        this.takertextBox.Text.Trim() + "','" +
+                        this.inputerTextBox.Text.Trim() + "','" +
+                        this.input_dateTextBox.Text.Trim() + "')";
+                    
+                    cmd.ExecuteNonQuery();                                                         
 
                     cmd.CommandText = "update store_house set number = '" + (Int32.Parse(number) - Int32.Parse(this.stock_out_numTextBox.Text)) + "'  where house='"+ house+"' and place='"+place+"'";
                     cmd.ExecuteNonQuery();

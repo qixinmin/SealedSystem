@@ -308,7 +308,7 @@ namespace SaledServices.Test_Outlook
                         {
                             storehouse = querySdr[0].ToString();
                             custom_serial_no = querySdr[1].ToString();
-                            product = querySdr[1].ToString().Trim();
+                            product = querySdr[2].ToString().Trim();
                         }
                         querySdr.Close();
 
@@ -348,7 +348,7 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = 'Running', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
                 }
                 else

@@ -254,7 +254,7 @@ namespace SaledServices
 
                     //更新维修站别
                     cmd.CommandText = "update stationInformation set station = '不良品库', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                               + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                               + "where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +

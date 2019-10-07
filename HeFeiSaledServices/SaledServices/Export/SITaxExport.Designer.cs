@@ -34,6 +34,8 @@
             this.dateTimePickerend = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             this.exportxmlbutton = new System.Windows.Forms.Button();
+            this.textBoxHuilu = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label4
@@ -87,11 +89,30 @@
             this.exportxmlbutton.UseVisualStyleBackColor = true;
             this.exportxmlbutton.Click += new System.EventHandler(this.exportxmlbutton_Click);
             // 
+            // textBoxHuilu
+            // 
+            this.textBoxHuilu.Location = new System.Drawing.Point(368, 98);
+            this.textBoxHuilu.Name = "textBoxHuilu";
+            this.textBoxHuilu.Size = new System.Drawing.Size(100, 21);
+            this.textBoxHuilu.TabIndex = 21;
+            this.textBoxHuilu.Text = "7.1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(297, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "汇率默认值";
+            // 
             // SITaxExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 365);
+            this.ClientSize = new System.Drawing.Size(522, 366);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBoxHuilu);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -115,5 +136,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerend;
         private System.Windows.Forms.DateTimePicker dateTimePickerstart;
         private System.Windows.Forms.Button exportxmlbutton;
+        private System.Windows.Forms.TextBox textBoxHuilu;
+        private System.Windows.Forms.Label label3;
     }
 }

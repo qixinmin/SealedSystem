@@ -1,4 +1,10 @@
 
+/*在测试站别添加是否过站检查的信息*/
+CREATE TABLE testcheckmbbrief(
+Id INT PRIMARY KEY IDENTITY, 
+mbbrief NVARCHAR(128) NOT NULL
+)
+
 
 /*需要创建一个表格，记录二返RR， NTF， BGA维修记录*/
 CREATE TABLE mb_repair_status_record(

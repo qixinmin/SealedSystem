@@ -174,6 +174,18 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
+                    //只考虑了带old sn号
+                    foreach (BgaRecord bgarecord in repairRecord.bgaRecords)
+                    {
+                        cmd.CommandText = "select oldSn from bga_repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and oldSn !='' and bga_repair_result='BGA待换'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            bgarecord.oldsn = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                    }
+                    
                     //现在考虑不带sn的，如VGA
                     cmd.CommandText = "select BGAPN,bgatype,bga_brief,BGA_place,newSn,product from bga_repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and bgatype='VGA' and bga_repair_result='更换OK待测量'";
                     querySdr = cmd.ExecuteReader();
@@ -328,6 +340,7 @@ namespace SaledServices.Export
                 titleList.Add("BGA_mbfa1" + i);
                 titleList.Add("BGAShortCut" + i);
                 titleList.Add("BGA SN" + i);
+                titleList.Add("BGA Old SN" + i);
 
                 titleList.Add("原材料厂商" + i);
                 titleList.Add("材料生产日期" + i);
@@ -394,6 +407,7 @@ namespace SaledServices.Export
                         ct1.Add(repaircheck.bgaRecords[i].bgambfa1);
                         ct1.Add(repaircheck.bgaRecords[i].bgashort_cut);
                         ct1.Add(repaircheck.bgaRecords[i].newsn);
+                        ct1.Add(repaircheck.bgaRecords[i].oldsn);
 
                         ct1.Add(repaircheck.bgaRecords[i].material_vendor);
                         ct1.Add(repaircheck.bgaRecords[i].product_date);
@@ -401,6 +415,7 @@ namespace SaledServices.Export
                     }
                     else
                     {
+                        ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
@@ -515,6 +530,7 @@ namespace SaledServices.Export
        public string bgashort_cut;
        public string bga_place;
        public string newsn;
+       public string oldsn;
 
        public string product_type;//材料类别，判断是否为server
        public string material_vendor;// NVARCHAR(128),/*原材料厂商*/
