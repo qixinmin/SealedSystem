@@ -370,10 +370,10 @@ namespace SaledServices.CustomsExport
             {
                 string fileName = seq_no;
 
-                if (newBankNo.Checked)
-                {
-                    fileName = seq_no + "_新账册号";
-                }
+                //if (newBankNo.Checked)
+                //{
+                //    fileName = seq_no + "_新账册号";
+                //}
 
                 Untils.createRealStockXML(realstock, "D:\\STORE_AMOUNT" + fileName + ".xml");
                 MessageBox.Show("海关实盘库存信息产生成功！");

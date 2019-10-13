@@ -35,7 +35,6 @@
             this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.newBankNo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // exportxmlbutton
@@ -103,23 +102,11 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "默认输出路径D:\\";
             // 
-            // newBankNo
-            // 
-            this.newBankNo.AutoSize = true;
-            this.newBankNo.Location = new System.Drawing.Point(462, 142);
-            this.newBankNo.Name = "newBankNo";
-            this.newBankNo.Size = new System.Drawing.Size(72, 16);
-            this.newBankNo.TabIndex = 16;
-            this.newBankNo.Text = "新账册号";
-            this.newBankNo.UseVisualStyleBackColor = true;
-            this.newBankNo.Visible = false;
-            // 
             // RealStockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 450);
-            this.Controls.Add(this.newBankNo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -144,6 +131,5 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerstart;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox newBankNo;
     }
 }

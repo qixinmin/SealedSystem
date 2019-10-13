@@ -960,10 +960,10 @@ namespace SaledServices.CustomsExport
             {
                 string fileName = seq_no;
 
-                if (newBankNo.Checked)
-                {
-                    fileName = seq_no + "_新账册号";
-                }
+                //if (newBankNo.Checked)
+                //{
+                //    fileName = seq_no + "_新账册号";
+                //}
                 Untils.createOpeningStockXML(openingstock, "D:\\STORE_INIT" + fileName + ".xml");
                 MessageBox.Show("海关期初库存信息产生成功！");
             }

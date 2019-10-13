@@ -97,9 +97,9 @@ namespace SaledServices.CustomsExport
                     string fileName = seq_no;
 
                    // if (stockInOutForm.newBankNo.Checked)
-                    {
-                        fileName = seq_no + "_老账册号";
-                    }
+                    //{
+                    //    fileName = seq_no + "_老账册号";
+                    //}
 
                     Untils.createWorkListHeadXML(workListHead, "D:\\MOV\\WO_HEAD" + fileName + ".xml");
                     StockInOutForm.showMessage(currentDay.ToString("yyyyMMdd") + "工单表头信息产生成功！", isAuto);
