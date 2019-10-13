@@ -947,5 +947,10 @@ namespace SaledServices
 
             tobedeletedId = dataGridView1.SelectedCells[0].Value.ToString();
         }
+
+        private void modify_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

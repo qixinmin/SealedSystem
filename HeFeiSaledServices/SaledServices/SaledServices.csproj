@@ -561,6 +561,12 @@
     <Compile Include="Repair\RrepareUseListForm.Designer.cs">
       <DependentUpon>RrepareUseListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repair\BGAInfoInputModifyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\BGAInfoInputModifyForm.Designer.cs">
+      <DependentUpon>BGAInfoInputModifyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReturnStoreForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -949,6 +955,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RrepareUseListForm.resx">
       <DependentUpon>RrepareUseListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\BGAInfoInputModifyForm.resx">
+      <DependentUpon>BGAInfoInputModifyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnStoreForm.resx">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>

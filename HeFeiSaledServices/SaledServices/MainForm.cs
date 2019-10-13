@@ -1681,6 +1681,22 @@ namespace SaledServices
             allForm.Add(mTestCheckMbBriefForm);
         }
 
+        private BGAInfoInputModifyForm mBGAInfoInputModifyForm;
+        private void bGA维修信息修改ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mBGAInfoInputModifyForm == null || mBGAInfoInputModifyForm.IsDisposed)
+            {
+                mBGAInfoInputModifyForm = new BGAInfoInputModifyForm();
+                mBGAInfoInputModifyForm.MdiParent = this;
+            }
+
+            //faultOutForm.WindowState = FormWindowState.Maximized;
+            mBGAInfoInputModifyForm.BringToFront();
+            mBGAInfoInputModifyForm.Show();
+
+            allForm.Add(mBGAInfoInputModifyForm);
+        }
+
         
     }
 }
