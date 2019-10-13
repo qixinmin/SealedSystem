@@ -294,11 +294,11 @@ namespace SaledServices.CustomsExport
                     generateWorkOrderHead = new GenerateWorkOrderHead(trade_code, ems_no_new,  dt, this);
 
                     //调整阶段，工单 表体 都用新账册
-                    if (this.excelExport.Enabled)
-                    {
-                        generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no_new, time1,time2, this);
-                    }
-                    else
+                    //if (this.excelExport.Enabled)
+                    //{
+                    //    generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no_new, time1,time2, this);
+                    //}
+                    //else
                     {
                         generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no_new, dt, dt, this);
                     }
@@ -1543,19 +1543,19 @@ namespace SaledServices.CustomsExport
                         //    Untils.createStockInOutXML(stockinoutold, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
                         //}
 
-                        if (storeTransListnew.Count > 0)
-                        {
-                            //fileName = seq_no + "_新账册号";
-                            Untils.createStockInOutXML(stockinoutnew, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
-                        }
-
                         if (excelExport.Checked)
                         {
-                            generateStockInOut(stockinout.storeTransList,startTime, endTime);
+                            generateStockInOut(stockinout.storeTransList, startTime, endTime);
                         }
-
-                      
-                        showMessage(dt.ToString("yyyyMMdd") + "海关出入库信息产生成功！", isAuto);
+                        else
+                        {
+                            if (storeTransListnew.Count > 0)
+                            {
+                                //fileName = seq_no + "_新账册号";
+                                Untils.createStockInOutXML(stockinoutnew, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
+                                showMessage(dt.ToString("yyyyMMdd") + "海关出入库信息产生成功！", isAuto);
+                            }
+                        }
                     }
                     else
                     {
