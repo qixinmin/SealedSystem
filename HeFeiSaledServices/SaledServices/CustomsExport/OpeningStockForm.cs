@@ -673,7 +673,7 @@ namespace SaledServices.CustomsExport
                 }
                 querySdr.Close();
 
-                if (newBankNo.Checked)
+                //if (newBankNo.Checked)
                 {
                     cmd.CommandText = "select indentifier, book_number from company_fixed_table_new";
                     querySdr = cmd.ExecuteReader();

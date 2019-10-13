@@ -254,7 +254,7 @@ namespace SaledServices.CustomsExport
                 string boxtype = "4001";//代码
                 string flowstateg = "";
                 string trade_code = "";
-                string ems_no = "";
+                //string ems_no = "";
                 string ems_no_new="";
 
                 string status = "A";
@@ -268,32 +268,30 @@ namespace SaledServices.CustomsExport
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select indentifier, book_number from company_fixed_table";
+                    //cmd.CommandText = "select indentifier, book_number from company_fixed_table";
+                    //SqlDataReader querySdr = cmd.ExecuteReader();
+
+                    //while (querySdr.Read())
+                    //{
+                    //    trade_code = querySdr[0].ToString();
+                    //    ems_no = querySdr[1].ToString();
+                    //}
+                    //querySdr.Close();
+
+                   // if (newBankNo.Checked)                  
+                    
+                    cmd.CommandText = "select indentifier, book_number from company_fixed_table_new";
                     SqlDataReader querySdr = cmd.ExecuteReader();
 
                     while (querySdr.Read())
                     {
                         trade_code = querySdr[0].ToString();
-                        ems_no = querySdr[1].ToString();
+                        ems_no_new = querySdr[1].ToString();
                     }
                     querySdr.Close();
-
-                   // if (newBankNo.Checked)
-                  
-                    {
-                        cmd.CommandText = "select indentifier, book_number from company_fixed_table_new";
-                        querySdr = cmd.ExecuteReader();
-
-                        while (querySdr.Read())
-                        {
-                            trade_code = querySdr[0].ToString();
-                            ems_no_new = querySdr[1].ToString();
-                        }
-                        querySdr.Close();
-                    }
-
+                    
                     //调整阶段，工单表头都用老账册
-                    generateWorkOrderHead = new GenerateWorkOrderHead(trade_code, ems_no,  dt, this);
+                    generateWorkOrderHead = new GenerateWorkOrderHead(trade_code, ems_no_new,  dt, this);
 
                     //调整阶段，工单 表体 都用新账册
                     if (this.excelExport.Enabled)
@@ -495,7 +493,7 @@ namespace SaledServices.CustomsExport
                         foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = trackTemp.trackno;
                             init1.goods_nature = "E";//成品
                             init1.io_date = Untils.getCustomDate(trackTemp.date);
@@ -544,7 +542,7 @@ namespace SaledServices.CustomsExport
                         foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = trackTemp.trackno;
                             init1.goods_nature = "E";
                             init1.io_date = Untils.getCustomDate(trackTemp.date);
@@ -620,7 +618,7 @@ namespace SaledServices.CustomsExport
                         foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = trackTemp.trackno;
                             init1.goods_nature = "E";
                             init1.io_date = Untils.getCustomDate(trackTemp.date);
@@ -701,7 +699,7 @@ namespace SaledServices.CustomsExport
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = materialTemp.id;
 
                             cmd.CommandText = "select Id from MBMaterialCompare where custommaterialNo='" + materialTemp.mpn + "'";
@@ -797,7 +795,7 @@ namespace SaledServices.CustomsExport
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = materialTemp.id;
 
                             cmd.CommandText = "select Id from MBMaterialCompare where custommaterialNo='" + materialTemp.mpn + "'";
@@ -908,7 +906,7 @@ namespace SaledServices.CustomsExport
                             }
                             else if (materialTemp.type == "I0003")
                             {
-                                init1.ems_no = ems_no;
+                                init1.ems_no = ems_no_new;
                             }
                             
                             init1.io_no = materialTemp.id;
@@ -985,7 +983,7 @@ namespace SaledServices.CustomsExport
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = materialTemp.id;
                             init1.goods_nature = "I";
                             init1.io_date = Untils.getCustomDate(materialTemp.date);
@@ -1134,7 +1132,7 @@ namespace SaledServices.CustomsExport
                         foreach (MaterialCustomRelation materialTemp in MaterialCustomRelationList)
                         {
                             StoreTrans init1 = new StoreTrans();
-                            init1.ems_no = ems_no;
+                            init1.ems_no = ems_no_new;
                             init1.io_no = materialTemp.id;
                             init1.goods_nature = "I";
                             init1.io_date = Untils.getCustomDate(materialTemp.date);
@@ -1227,7 +1225,7 @@ namespace SaledServices.CustomsExport
                             }
                             else if (materialTemp.type == "I0003")
                             {
-                                init1.ems_no = ems_no;
+                                init1.ems_no = ems_no_new;
                             }
                             init1.io_no = materialTemp.id;
                             init1.goods_nature = "I";
@@ -1377,7 +1375,7 @@ namespace SaledServices.CustomsExport
                             }
                             else if (materialTemp.type == "I0003")
                             {
-                                init1.ems_no = ems_no;
+                                init1.ems_no = ems_no_new;
                             }
                             init1.io_no = materialTemp.id;
                             init1.goods_nature = "I";
@@ -1476,7 +1474,7 @@ namespace SaledServices.CustomsExport
                 stockinout.boxtype = boxtype;
                 stockinout.flowstateg = flowstateg;
                 stockinout.trade_code = trade_code;
-                stockinout.ems_no = ems_no;
+                stockinout.ems_no = ems_no_new;
                 stockinout.status = status;
 
                 stockinout.storeTransList = storeTransList;
@@ -1506,14 +1504,14 @@ namespace SaledServices.CustomsExport
                         string fileName = seq_no;
 
                         //分2个内容，新与旧账册
-                        StockInOutClass stockinoutold = new StockInOutClass();
-                        stockinoutold.seq_no = seq_no;
-                        stockinoutold.boxtype = boxtype;
-                        stockinoutold.flowstateg = flowstateg;
-                        stockinoutold.trade_code = trade_code;
-                        stockinoutold.ems_no = ems_no;
-                        stockinoutold.status = status;
-                        List<StoreTrans> storeTransListold = new List<StoreTrans>();
+                        //StockInOutClass stockinoutold = new StockInOutClass();
+                        //stockinoutold.seq_no = seq_no;
+                        //stockinoutold.boxtype = boxtype;
+                        //stockinoutold.flowstateg = flowstateg;
+                        //stockinoutold.trade_code = trade_code;
+                        //stockinoutold.ems_no = ems_no_new;
+                        //stockinoutold.status = status;
+                        //List<StoreTrans> storeTransListold = new List<StoreTrans>();
 
                         StockInOutClass stockinoutnew = new StockInOutClass();
                         stockinoutnew.seq_no = seq_no;
@@ -1525,29 +1523,29 @@ namespace SaledServices.CustomsExport
                         List<StoreTrans> storeTransListnew = new List<StoreTrans>();
                         foreach (StoreTrans temp in storeTransList)
                         {
-                            if (temp.ems_no == ems_no)
-                            {
-                                storeTransListold.Add(temp);
-                            }else
+                            //if (temp.ems_no == ems_no_new)
+                            //{
+                            //    storeTransListold.Add(temp);
+                            //}else
                                 if (temp.ems_no == ems_no_new)
                             {
                                 storeTransListnew.Add(temp);
                             }
                         }
 
-                        stockinoutold.storeTransList = storeTransListold;
+                       // stockinoutold.storeTransList = storeTransListold;
 
                         stockinoutnew.storeTransList = storeTransListnew;
 
-                        if (storeTransListold.Count > 0)
-                        {
-                            fileName = seq_no + "_老账册号";
-                            Untils.createStockInOutXML(stockinoutold, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
-                        }
+                        //if (storeTransListold.Count > 0)
+                        //{
+                        //    fileName = seq_no + "_老账册号";
+                        //    Untils.createStockInOutXML(stockinoutold, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
+                        //}
 
                         if (storeTransListnew.Count > 0)
                         {
-                            fileName = seq_no + "_新账册号";
+                            //fileName = seq_no + "_新账册号";
                             Untils.createStockInOutXML(stockinoutnew, "D:\\MOV\\WO_HCHX" + fileName + ".xml");
                         }
 

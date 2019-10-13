@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.BGA_placetextBox = new System.Windows.Forms.TextBox();
@@ -39,12 +39,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
+            this.bgatypetextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
-            this.bgatypetextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -168,6 +168,13 @@
             this.track_serial_noTextBox.TabIndex = 55;
             this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
             // 
+            // bgatypetextBox
+            // 
+            this.bgatypetextBox.Location = new System.Drawing.Point(419, 5);
+            this.bgatypetextBox.Name = "bgatypetextBox";
+            this.bgatypetextBox.Size = new System.Drawing.Size(227, 26);
+            this.bgatypetextBox.TabIndex = 56;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -190,8 +197,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -246,13 +253,6 @@
             this.modify.Text = "修改";
             this.modify.UseVisualStyleBackColor = true;
             this.modify.Click += new System.EventHandler(this.modify_Click);
-            // 
-            // bgatypetextBox
-            // 
-            this.bgatypetextBox.Location = new System.Drawing.Point(419, 5);
-            this.bgatypetextBox.Name = "bgatypetextBox";
-            this.bgatypetextBox.Size = new System.Drawing.Size(227, 26);
-            this.bgatypetextBox.TabIndex = 56;
             // 
             // BGAInfoInputModifyForm
             // 

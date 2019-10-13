@@ -111,6 +111,7 @@
             this.企业固定信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.材料名称ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA维修信息修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,7 +138,6 @@
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bGA维修信息修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -830,6 +830,13 @@
             this.材料名称ToolStripMenuItem.Text = "材料名称";
             this.材料名称ToolStripMenuItem.Click += new System.EventHandler(this.材料名称ToolStripMenuItem_Click);
             // 
+            // bGA维修信息修改ToolStripMenuItem
+            // 
+            this.bGA维修信息修改ToolStripMenuItem.Name = "bGA维修信息修改ToolStripMenuItem";
+            this.bGA维修信息修改ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.bGA维修信息修改ToolStripMenuItem.Text = "BGA维修信息修改";
+            this.bGA维修信息修改ToolStripMenuItem.Click += new System.EventHandler(this.bGA维修信息修改ToolStripMenuItem_Click);
+            // 
             // 报表ToolStripMenuItem
             // 
             this.报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1040,13 +1047,6 @@
             this.拍照ToolStripMenuItem.Text = "拍照";
             this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
             // 
-            // bGA维修信息修改ToolStripMenuItem
-            // 
-            this.bGA维修信息修改ToolStripMenuItem.Name = "bGA维修信息修改ToolStripMenuItem";
-            this.bGA维修信息修改ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
-            this.bGA维修信息修改ToolStripMenuItem.Text = "BGA维修信息修改";
-            this.bGA维修信息修改ToolStripMenuItem.Click += new System.EventHandler(this.bGA维修信息修改ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1059,7 +1059,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "合肥进销存系统1007-";
+            this.Text = "合肥进销存系统1013-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
