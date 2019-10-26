@@ -36,14 +36,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.ordernotextBox = new System.Windows.Forms.TextBox();
             this.receivedatetextBox = new System.Windows.Forms.TextBox();
             this.mb_describetextBox = new System.Windows.Forms.TextBox();
             this.mb_brieftextBox = new System.Windows.Forms.TextBox();
-            this.custom_serial_notextBox = new System.Windows.Forms.TextBox();
             this.customFaulttextBox = new System.Windows.Forms.TextBox();
             this.mb_make_dateTextBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -77,6 +75,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.mpntextBox = new System.Windows.Forms.TextBox();
+            this.custom_serial_notextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.modifyactiontypecomboBox = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.add = new System.Windows.Forms.Button();
@@ -159,8 +161,6 @@
             this.clear3 = new System.Windows.Forms.Button();
             this.clear4 = new System.Windows.Forms.Button();
             this.clear5 = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.modifyactiontypecomboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -318,16 +318,6 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "MB简称";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(817, 242);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 16);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "客户序号";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -387,16 +377,6 @@
             this.mb_brieftextBox.ReadOnly = true;
             this.mb_brieftextBox.Size = new System.Drawing.Size(193, 26);
             this.mb_brieftextBox.TabIndex = 43;
-            // 
-            // custom_serial_notextBox
-            // 
-            this.custom_serial_notextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_serial_notextBox.Location = new System.Drawing.Point(1019, 246);
-            this.custom_serial_notextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.custom_serial_notextBox.Name = "custom_serial_notextBox";
-            this.custom_serial_notextBox.ReadOnly = true;
-            this.custom_serial_notextBox.Size = new System.Drawing.Size(196, 26);
-            this.custom_serial_notextBox.TabIndex = 43;
             // 
             // customFaulttextBox
             // 
@@ -742,6 +722,52 @@
             this.mpntextBox.ReadOnly = true;
             this.mpntextBox.Size = new System.Drawing.Size(193, 26);
             this.mpntextBox.TabIndex = 43;
+            // 
+            // custom_serial_notextBox
+            // 
+            this.custom_serial_notextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custom_serial_notextBox.Location = new System.Drawing.Point(1019, 246);
+            this.custom_serial_notextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.custom_serial_notextBox.Name = "custom_serial_notextBox";
+            this.custom_serial_notextBox.ReadOnly = true;
+            this.custom_serial_notextBox.Size = new System.Drawing.Size(196, 26);
+            this.custom_serial_notextBox.TabIndex = 43;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(817, 242);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(72, 16);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "客户序号";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(410, 242);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(104, 16);
+            this.label18.TabIndex = 45;
+            this.label18.Text = "维修动作分类";
+            // 
+            // modifyactiontypecomboBox
+            // 
+            this.modifyactiontypecomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modifyactiontypecomboBox.FormattingEnabled = true;
+            this.modifyactiontypecomboBox.Items.AddRange(new object[] {
+            "BIOS Corruption",
+            "Repairable CID",
+            "Irrepairable CID",
+            "Material Induced",
+            "NDF  without  EC",
+            "NDF with  EC",
+            "Process Induced"});
+            this.modifyactiontypecomboBox.Location = new System.Drawing.Point(613, 245);
+            this.modifyactiontypecomboBox.Name = "modifyactiontypecomboBox";
+            this.modifyactiontypecomboBox.Size = new System.Drawing.Size(195, 24);
+            this.modifyactiontypecomboBox.TabIndex = 46;
             // 
             // dataGridView1
             // 
@@ -1706,32 +1732,6 @@
             this.clear5.Text = "清除选择5";
             this.clear5.UseVisualStyleBackColor = true;
             this.clear5.Click += new System.EventHandler(this.clear5_Click);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(410, 242);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(104, 16);
-            this.label18.TabIndex = 45;
-            this.label18.Text = "维修动作分类";
-            // 
-            // modifyactiontypecomboBox
-            // 
-            this.modifyactiontypecomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modifyactiontypecomboBox.FormattingEnabled = true;
-            this.modifyactiontypecomboBox.Items.AddRange(new object[] {
-            "BIOS Corruption",
-            "Repairable CID",
-            "Irrepairable CID",
-            "Material Induced",
-            "NDF  without  EC",
-            "NDF with  EC",
-            "Process Induced"});
-            this.modifyactiontypecomboBox.Location = new System.Drawing.Point(613, 245);
-            this.modifyactiontypecomboBox.Name = "modifyactiontypecomboBox";
-            this.modifyactiontypecomboBox.Size = new System.Drawing.Size(195, 24);
-            this.modifyactiontypecomboBox.TabIndex = 46;
             // 
             // RepairOperationForm
             // 

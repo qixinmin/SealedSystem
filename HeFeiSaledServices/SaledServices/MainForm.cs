@@ -1697,6 +1697,22 @@ namespace SaledServices
             allForm.Add(mBGAInfoInputModifyForm);
         }
 
+        private ObeCheckMbBriefForm mObeCheckMbBriefForm;
+        private void 添加OBE的检查机型ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mObeCheckMbBriefForm == null || mObeCheckMbBriefForm.IsDisposed)
+            {
+                mObeCheckMbBriefForm = new ObeCheckMbBriefForm();
+                mObeCheckMbBriefForm.MdiParent = this;
+            }
+
+            //faultOutForm.WindowState = FormWindowState.Maximized;
+            mObeCheckMbBriefForm.BringToFront();
+            mObeCheckMbBriefForm.Show();
+
+            allForm.Add(mObeCheckMbBriefForm);
+        }
+
         
     }
 }

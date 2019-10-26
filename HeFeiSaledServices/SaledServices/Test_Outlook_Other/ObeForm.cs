@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace SaledServices.Test_Outlook
 {
@@ -110,6 +111,39 @@ namespace SaledServices.Test_Outlook
             }
         }
 
+        private bool isCheckFromServer(String custom_serial_no)
+        { //根据服务器要判断内容是否存在即可，找到要移动走，现在并发欠考虑
+            string custom_serial_no_temp = custom_serial_no;// this.tracker_bar_textBox.Text.Trim();
+            //根据网络状态查询状态
+            string serverIPaddress = "\\\\192.168.1.1\\test\\Testlog\\";// +Environment.MachineName + "\\E$";
+            string fctlog = serverIPaddress + "OBALOG\\";
+
+            string fctlogbackup = serverIPaddress + "backup\\OBALOG\\";
+
+            bool fctlogExist = false;
+            string[] foldersfctlog = Directory.GetFiles(fctlog);
+            foreach (string file in foldersfctlog)
+            {
+                string filename = Path.GetFileName(file);
+                //Console.WriteLine(filename);
+                if (filename.Contains(custom_serial_no_temp))
+                {
+                    fctlogExist = true;
+                    //move to backup
+                    FileInfo myfile = new FileInfo(file);//移动
+                    myfile.MoveTo(fctlogbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                    break;
+                }
+            }
+
+            if (fctlogExist == false)
+            {
+                MessageBox.Show("OBA LOG 内容为空，请检查！");
+                return false;
+            }
+            return true;
+        }
+
         private void confirmbutton_Click(object sender, EventArgs e)
         {
             if (this.tracker_bar_textBox.Text.Trim() == "")
@@ -145,6 +179,40 @@ namespace SaledServices.Test_Outlook
                     //    return;
                     //}
 
+                    //查询要检查的类型
+                    //查询板子类型
+                    cmd.CommandText = "select mb_brief,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string mb_brief = "", custom_serial_no="";
+                    while (querySdr.Read())
+                    {
+                        mb_brief = querySdr[0].ToString();
+                        custom_serial_no = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "select mbbrief from obecheckmbbrief";
+                    querySdr = cmd.ExecuteReader();
+                    bool ischecktest = false;
+                    while (querySdr.Read())
+                    {
+                        if (querySdr[0].ToString().ToUpper().Trim().Equals(mb_brief.ToUpper()))
+                        {
+                            ischecktest = true;
+                        }
+                    }
+                    querySdr.Close();
+
+                    if (ischecktest)
+                    {
+                        if (isCheckFromServer(custom_serial_no) == false)
+                        {
+                            MessageBox.Show("obe服务端读取文件失败。。。");
+                            conn.Close();
+                            return;
+                        }
+                    }
+
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
                         + this.testerTextBox.Text.Trim() + "','"
@@ -162,7 +230,7 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "select orderno,custom_materialNo from decideOBEchecktable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                     querySdr = cmd.ExecuteReader();
                     string orderno = "", custom_materialNo="";
                     while (querySdr.Read())
                     {

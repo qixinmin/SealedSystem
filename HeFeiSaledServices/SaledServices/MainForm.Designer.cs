@@ -138,6 +138,7 @@
             this.预领料申请ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eCOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.拍照ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.添加OBE的检查机型ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -223,7 +224,8 @@
             this.手动出待维修库ToolStripMenuItem,
             this.oBEToolStripMenuItem1,
             this.修改收错的板子ToolStripMenuItem,
-            this.添加测试的检查机型ToolStripMenuItem});
+            this.添加测试的检查机型ToolStripMenuItem,
+            this.添加OBE的检查机型ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -1047,6 +1049,13 @@
             this.拍照ToolStripMenuItem.Text = "拍照";
             this.拍照ToolStripMenuItem.Click += new System.EventHandler(this.拍照ToolStripMenuItem_Click);
             // 
+            // 添加OBE的检查机型ToolStripMenuItem
+            // 
+            this.添加OBE的检查机型ToolStripMenuItem.Name = "添加OBE的检查机型ToolStripMenuItem";
+            this.添加OBE的检查机型ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.添加OBE的检查机型ToolStripMenuItem.Text = "添加OBE的检查机型";
+            this.添加OBE的检查机型ToolStripMenuItem.Click += new System.EventHandler(this.添加OBE的检查机型ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1059,7 +1068,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "合肥进销存系统1026-";
+            this.Text = "合肥进销存系统1026-02-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1181,6 +1190,7 @@ private System.Windows.Forms.ToolStripMenuItem eCOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mB物料对照表查看ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 添加测试的检查机型ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA维修信息修改ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 添加OBE的检查机型ToolStripMenuItem;
     }
 }
 

@@ -331,7 +331,7 @@ namespace SaledServices.Test_Outlook
             foreach (string file in foldersfctlog)
             {
                 string filename = Path.GetFileName(file);
-                Console.WriteLine(filename);
+                //Console.WriteLine(filename);
                 if (filename.Contains(custom_serial_no_temp))
                 {
                     fctlogExist = true;
@@ -398,7 +398,7 @@ namespace SaledServices.Test_Outlook
                     {
                         if (isCheckFromServer(custom_serial_no) == false)
                         {
-                            MessageBox.Show("服务端读取文件失败。。。");
+                            MessageBox.Show("TestAll服务端读取文件失败。。。");
                             conn.Close();
                             return;
                         }

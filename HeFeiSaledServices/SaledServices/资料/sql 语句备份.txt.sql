@@ -10,6 +10,12 @@ note NVARCHAR(128),/*备用*/
 )
 
 /*在测试站别添加是否过站检查的信息*/
+CREATE TABLE obecheckmbbrief(
+Id INT PRIMARY KEY IDENTITY, 
+mbbrief NVARCHAR(128) NOT NULL
+)
+
+/*在测试站别添加是否过站检查的信息*/
 CREATE TABLE testcheckmbbrief(
 Id INT PRIMARY KEY IDENTITY, 
 mbbrief NVARCHAR(128) NOT NULL
