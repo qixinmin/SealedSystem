@@ -578,9 +578,15 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
-            if (this.mb_brieftextBox.Text == "" || this.vendorTextBox.Text == "")
+            if (this.mb_brieftextBox.Text.Trim() == "" || this.vendorTextBox.Text.Trim() == "")
             {
                 MessageBox.Show("输入完跟踪条码需要回车！");
+                return;
+            }
+
+            if (this.modifyactiontypecomboBox.Text.Trim() == "")
+            {
+                MessageBox.Show("维修动作分类不能为空！");
                 return;
             }
 
@@ -979,6 +985,13 @@ namespace SaledServices
                         cmd.ExecuteNonQuery();
                     }
 
+                    //记录维修动作分类
+                    cmd.CommandText = "INSERT INTO mb_repair_action_type VALUES('"
+                            + repairer_txt + "','"
+                            + DateTime.Now.ToString("yyyy/MM/dd") + "','"
+                            + this.track_serial_noTextBox.Text.Trim() + "','"+this.modifyactiontypecomboBox.Text.Trim()+"','"
+                            + "" + "')";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
@@ -1560,6 +1573,11 @@ namespace SaledServices
         }
 
         private void modify_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

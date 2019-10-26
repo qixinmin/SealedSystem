@@ -172,7 +172,7 @@ namespace SaledServices.Repair
                 return;
             }
 
-            if (this.thisNumbertextBox.Text == "")
+            if (this.thisNumbertextBox.Text.Trim() == "")
             {
                 MessageBox.Show("请输入使用数量！");
                 return;
@@ -180,7 +180,6 @@ namespace SaledServices.Repair
             else
             {
                 //以防輸多了但是不回車
-
                 try
                 {
                     Int32.Parse(this.thisNumbertextBox.Text);

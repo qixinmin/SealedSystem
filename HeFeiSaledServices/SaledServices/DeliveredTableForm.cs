@@ -515,6 +515,20 @@ namespace SaledServices
                        {
                            this.source_briefComboBox.Text = "RR";
                        }
+
+                        //下面逻辑指针对国外版子
+                        if(this.storehouseTextBox.Text.Trim() != "CN")
+                        {
+                            if(diffDays  <=120)
+                           {
+                               this.source_briefComboBox.Text = "RR_120";
+                           }
+                           else if (diffDays > 120)
+                           {
+                               this.source_briefComboBox.Text = "RR_over_120";
+                           }
+
+                        }
                     }
 
                     mConn.Close();
@@ -909,8 +923,11 @@ namespace SaledServices
                             + DateTime.Now.ToString("yyyy/MM/dd") + "')";
                         cmd.ExecuteNonQuery();
 
-                        //记录RRR this.source_briefComboBox.Text = "RR";
-                        if (this.source_briefComboBox.Text.Trim() == "RR")
+                        //记录RRR this.source_briefComboBox.Text = "RR";//DOA/IQC/RR 120 day/RR over120 day. 都是RR，只是细类不一样，所以统一记录为RR
+                        if (this.source_briefComboBox.Text.ToUpper().Trim().StartsWith("RR")
+                            || this.source_briefComboBox.Text.ToUpper().Trim().StartsWith("DOA")
+                            || this.source_briefComboBox.Text.ToUpper().Trim().StartsWith("IQC")
+                            )
                         {
                             cmd.CommandText = "INSERT INTO mb_repair_status_record VALUES('"
                                 + this.inputUserTextBox.Text.Trim() + "','"

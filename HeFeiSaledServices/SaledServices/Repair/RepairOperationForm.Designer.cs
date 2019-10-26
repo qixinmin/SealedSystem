@@ -159,6 +159,8 @@
             this.clear3 = new System.Windows.Forms.Button();
             this.clear4 = new System.Windows.Forms.Button();
             this.clear5 = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.modifyactiontypecomboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -206,14 +208,12 @@
             this.tableLayoutPanel2.Controls.Add(this.label5, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.label7, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.label8, 2, 6);
-            this.tableLayoutPanel2.Controls.Add(this.label9, 2, 7);
             this.tableLayoutPanel2.Controls.Add(this.label12, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.label13, 4, 1);
             this.tableLayoutPanel2.Controls.Add(this.ordernotextBox, 3, 3);
             this.tableLayoutPanel2.Controls.Add(this.receivedatetextBox, 3, 4);
             this.tableLayoutPanel2.Controls.Add(this.mb_describetextBox, 3, 5);
             this.tableLayoutPanel2.Controls.Add(this.mb_brieftextBox, 3, 6);
-            this.tableLayoutPanel2.Controls.Add(this.custom_serial_notextBox, 3, 7);
             this.tableLayoutPanel2.Controls.Add(this.customFaulttextBox, 5, 1);
             this.tableLayoutPanel2.Controls.Add(this.mb_make_dateTextBox, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.label17, 0, 2);
@@ -247,6 +247,10 @@
             this.tableLayoutPanel2.Controls.Add(this.label6, 2, 4);
             this.tableLayoutPanel2.Controls.Add(this.label11, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.mpntextBox, 3, 2);
+            this.tableLayoutPanel2.Controls.Add(this.custom_serial_notextBox, 5, 7);
+            this.tableLayoutPanel2.Controls.Add(this.label9, 4, 7);
+            this.tableLayoutPanel2.Controls.Add(this.label18, 2, 7);
+            this.tableLayoutPanel2.Controls.Add(this.modifyactiontypecomboBox, 3, 7);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(7, 7);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -262,6 +266,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.03732F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1221, 283);
             this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // label1
             // 
@@ -316,7 +321,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(411, 242);
+            this.label9.Location = new System.Drawing.Point(817, 242);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 16);
@@ -386,11 +391,11 @@
             // custom_serial_notextBox
             // 
             this.custom_serial_notextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_serial_notextBox.Location = new System.Drawing.Point(614, 246);
+            this.custom_serial_notextBox.Location = new System.Drawing.Point(1019, 246);
             this.custom_serial_notextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_serial_notextBox.Name = "custom_serial_notextBox";
             this.custom_serial_notextBox.ReadOnly = true;
-            this.custom_serial_notextBox.Size = new System.Drawing.Size(193, 26);
+            this.custom_serial_notextBox.Size = new System.Drawing.Size(196, 26);
             this.custom_serial_notextBox.TabIndex = 43;
             // 
             // customFaulttextBox
@@ -1702,6 +1707,32 @@
             this.clear5.UseVisualStyleBackColor = true;
             this.clear5.Click += new System.EventHandler(this.clear5_Click);
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(410, 242);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(104, 16);
+            this.label18.TabIndex = 45;
+            this.label18.Text = "维修动作分类";
+            // 
+            // modifyactiontypecomboBox
+            // 
+            this.modifyactiontypecomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modifyactiontypecomboBox.FormattingEnabled = true;
+            this.modifyactiontypecomboBox.Items.AddRange(new object[] {
+            "BIOS Corruption",
+            "Repairable CID",
+            "Irrepairable CID",
+            "Material Induced",
+            "NDF  without  EC",
+            "NDF with  EC",
+            "Process Induced"});
+            this.modifyactiontypecomboBox.Location = new System.Drawing.Point(613, 245);
+            this.modifyactiontypecomboBox.Name = "modifyactiontypecomboBox";
+            this.modifyactiontypecomboBox.Size = new System.Drawing.Size(195, 24);
+            this.modifyactiontypecomboBox.TabIndex = 46;
+            // 
             // RepairOperationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1860,5 +1891,7 @@
         private System.Windows.Forms.Button clear3;
         private System.Windows.Forms.Button clear4;
         private System.Windows.Forms.Button clear5;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox modifyactiontypecomboBox;
     }
 }

@@ -1,4 +1,14 @@
 
+/*新增需求，记录新的维修动作分类*/
+CREATE TABLE mb_repair_action_type(
+Id INT PRIMARY KEY IDENTITY, 
+inputer  NVARCHAR(128),/*输入人*/
+input_date  date,/*日期*/
+track_serial_no NVARCHAR(128),/*跟踪条码*/
+action_type NVARCHAR(128), /*RR, NTF, BGA*/
+note NVARCHAR(128),/*备用*/
+)
+
 /*在测试站别添加是否过站检查的信息*/
 CREATE TABLE testcheckmbbrief(
 Id INT PRIMARY KEY IDENTITY, 

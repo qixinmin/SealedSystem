@@ -518,8 +518,8 @@ namespace SaledServices.Test_Outlook
 
                     if (exist != "")
                     {
-                        //提示四个小时
-                        MessageBox.Show("此主板需要运行    4个小时");
+                        //提示四个小时-》改为2个小时
+                        MessageBox.Show("此主板需要运行    2个小时");
                     }
                     else//如果上面找到记录，则下面就不用再找一遍了，否在判断NTF
                     {
@@ -539,7 +539,7 @@ namespace SaledServices.Test_Outlook
                         }
                         else
                         {
-                            MessageBox.Show("此主板需要运行   4个小时");
+                            MessageBox.Show("此主板需要运行   2个小时");
                         }
                     }
                 }

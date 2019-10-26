@@ -95,7 +95,6 @@ namespace SaledServices.Export
                         receiveOrderList.Add(temp);
                     }
                 }
-
                 else
                 {
                     cmd.CommandText = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
@@ -135,6 +134,15 @@ namespace SaledServices.Export
                     while (querySdr.Read())
                     {
                         repairRecord.custom_fault= querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    //增加维修动作分类
+                    cmd.CommandText = "select action_type from mb_repair_action_type where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        repairRecord.repair_modify_action_type = querySdr[0].ToString();
                     }
                     querySdr.Close();
 
@@ -317,6 +325,7 @@ namespace SaledServices.Export
             titleList.Add("客户不良现象");
             titleList.Add("维修人");
             titleList.Add("维修次数");
+            titleList.Add("维修动作分类");
 
             int repairLenght = 5;
             int bgaLength = 3;
@@ -375,6 +384,7 @@ namespace SaledServices.Export
                 ct1.Add(repaircheck.custom_fault);
                 ct1.Add(repaircheck.repairer);
                 ct1.Add(repaircheck.repair_Num);
+                ct1.Add(repaircheck.repair_modify_action_type);
 
                 for (int i = 0; i < repairLenght; i++)
                 {
@@ -505,6 +515,7 @@ namespace SaledServices.Export
         public string custom_fault;
        
         public string repair_Num;//维修次数
+        public string repair_modify_action_type;//维修动作分类
 
         public List<SubRepairRecord> subRecords;
 

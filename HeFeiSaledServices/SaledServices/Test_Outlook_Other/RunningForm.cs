@@ -301,16 +301,16 @@ namespace SaledServices.Test_Outlook
                     {
                         cmd.CommandText = "select storehouse,custom_serial_no,product from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
-                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        SqlDataReader querySdr1 = cmd.ExecuteReader();
                         string storehouse = "", custom_serial_no = "", product="";
 
-                        while (querySdr.Read())
+                        while (querySdr1.Read())
                         {
-                            storehouse = querySdr[0].ToString();
-                            custom_serial_no = querySdr[1].ToString();
-                            product = querySdr[2].ToString().Trim();
+                            storehouse = querySdr1[0].ToString();
+                            custom_serial_no = querySdr1[1].ToString();
+                            product = querySdr1[2].ToString().Trim();
                         }
-                        querySdr.Close();
+                        querySdr1.Close();
 
                         if (product != "DT")
                         {
@@ -336,6 +336,58 @@ namespace SaledServices.Test_Outlook
                         }
                     }
 
+
+                    //检测时间间隔，如果少于规定时间则不能通过
+                    bool isPassTimeSpan = false;
+                    int timeSpan = 1;
+                    //需要加入RR，NTF(NOT_NTF)， BGA维修记录， 不稳定的为四个小时，否则一个小时
+                    cmd.CommandText = "select Id from mb_repair_status_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' and feature ='RR' or feature='BGA'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string exist = "";
+                    while (querySdr.Read())
+                    {
+                        exist = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (exist != "")
+                    {
+                        //提示四个小时-》改为2个小时
+                        //MessageBox.Show("此主板需要运行    2个小时");
+                        timeSpan = 2;
+                    }
+                    else//如果上面找到记录，则下面就不用再找一遍了，否在判断NTF
+                    {
+                        //NTF比较特殊， 可能有多条NTF记录，所以只查询NOT_NTF,只有有就认为不是NTF
+                        cmd.CommandText = "select Id from mb_repair_status_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' and feature ='NOT_NTF'";
+                        querySdr = cmd.ExecuteReader();
+                        exist = "";
+                        while (querySdr.Read())
+                        {
+                            exist = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        if (exist != "")
+                        {
+                            //提示1个小时
+                            //MessageBox.Show("此主板需要运行   1个小时");
+                            timeSpan = 1;
+                        }
+                        else
+                        {
+                            //MessageBox.Show("此主板需要运行   2个小时");
+                            timeSpan = 2;
+                        }
+                    }
+
+                    //计算当前时间与上一个test的时间差
+                    isPassTimeSpan = Untils.isTimeSpanRight(timeSpan, this.tracker_bar_textBox.Text.Trim());
+                    if (!isPassTimeSpan)
+                    {
+                        MessageBox.Show("此主板需要运行   " + timeSpan + "个小时,但是时间间隔不够");
+                        return;
+                    }
+                    //end时间间隔检测
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
                         + this.testerTextBox.Text.Trim() + "','"

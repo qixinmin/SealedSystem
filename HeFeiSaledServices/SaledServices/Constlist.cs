@@ -222,6 +222,51 @@ namespace SaledServices
             return (date != null && date != "") ? date.Substring(0, date.IndexOf(" ")).Trim() : "";
         }
 
+        public static bool isTimeSpanRight(int hour, string trackno)
+        {
+            try
+            {
+                DateTime timeNow = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss"));
+
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = " select top 1 recorddate from stationInfoRecord where trackno='"+trackno+"' and station ='测试' order by  recorddate desc";
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                string oldTime = "";
+                while (querySdr.Read())
+                {
+                    oldTime = querySdr[0].ToString();
+                }
+
+                querySdr.Close();
+
+                mConn.Close();
+
+                if (oldTime != "")
+                {
+                    DateTime timeOld = Convert.ToDateTime(Convert.ToDateTime(oldTime).ToString("yyyy/MM/dd hh:mm:ss"));
+
+                    TimeSpan span = timeNow - timeOld;
+                    if (span.TotalHours >= hour)
+                    {                        
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return false;
+        }
+
         public static bool isTimeError(string nowDate)
         {
             try

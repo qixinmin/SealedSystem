@@ -294,11 +294,11 @@ namespace SaledServices.CustomsExport
                     generateWorkOrderHead = new GenerateWorkOrderHead(trade_code, ems_no_new,  dt, this);
 
                     //调整阶段，工单 表体 都用新账册
-                    //if (this.excelExport.Enabled)
-                    //{
-                    //    generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no_new, time1,time2, this);
-                    //}
-                    //else
+                    if (this.excelExport.Checked)
+                    {
+                        generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no_new, time1, time2, this);
+                    }
+                    else
                     {
                         generateWorkOrderBody = new GenerateWorkOrderBody(trade_code, ems_no_new, dt, dt, this);
                     }
