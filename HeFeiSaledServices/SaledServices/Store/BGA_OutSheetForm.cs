@@ -36,6 +36,11 @@ namespace SaledServices
             {
                 this.modify.Visible = false;
                 this.delete.Visible = false;
+                this.mpnTextBox.ReadOnly = true;
+            }
+            else
+            {
+                this.mpnTextBox.ReadOnly = false;
             }
         }
 
@@ -248,6 +253,30 @@ namespace SaledServices
                     }
                 }
 
+                if (this.bga_brieftextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where bga_brief= '" + bga_brieftextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and bga_brief= '" + bga_brieftextBox.Text.Trim() + "' ";
+                    }
+                }
+
+                if (this.mpnTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where mpn= '" + mpnTextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and mpn= '" + mpnTextBox.Text.Trim() + "' ";
+                    }
+                }
+
                 mConn = new SqlConnection(Constlist.ConStr);
 
                 SqlCommand cmd = new SqlCommand();
@@ -326,6 +355,7 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+            MessageBox.Show("删除成功！");
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

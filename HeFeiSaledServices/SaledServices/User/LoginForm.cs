@@ -179,7 +179,7 @@ namespace SaledServices
                 }
                 else
                 {
-                    mParent.解锁板子ToolStripMenuItem.Visible = false;
+                    mParent.解锁板子ToolStripMenuItem.Visible = true;
                 }
 
                 mConn.Close();

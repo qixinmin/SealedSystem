@@ -387,63 +387,65 @@ namespace SaledServices
 
         private string generateFileNo()
         {
-            string retStr = "";
-            string preStr = this.vendorComboBox.Text.Trim() + this.productComboBox.Text.Trim() + DateTime.Now.ToString("yyMMdd");
 
-            try
-            {
-                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+            return "tempno";
+            //string retStr = "";
+            //string preStr = this.vendorComboBox.Text.Trim() + this.productComboBox.Text.Trim() + DateTime.Now.ToString("yyMMdd");
 
-                mConn.Open();
+            //try
+            //{
+            //    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = mConn;
-                cmd.CommandText = "select distinct return_file_no from returnStore where vendor ='" + this.vendorComboBox.Text.Trim() + "' and product ='" + this.productComboBox.Text.Trim() + "'";
-                cmd.CommandType = CommandType.Text;
+            //    mConn.Open();
 
-                SqlDataReader querySdr = cmd.ExecuteReader();
-                string subRetStr= "";
-                while (querySdr.Read())
-                {                    
-                    string queryStr = querySdr[0].ToString();
-                    if (queryStr != "")
-                    {
-                        subRetStr = queryStr.Substring(preStr.Length, 2);
-                    }
-                }
-                querySdr.Close();
+            //    SqlCommand cmd = new SqlCommand();
+            //    cmd.Connection = mConn;
+            //    cmd.CommandText = "select distinct return_file_no from returnStore where vendor ='" + this.vendorComboBox.Text.Trim() + "' and product ='" + this.productComboBox.Text.Trim() + "'";
+            //    cmd.CommandType = CommandType.Text;
 
-                if (subRetStr == "")
-                {
-                    retStr = preStr + "01";
-                }
-                else
-                {
-                    int last = Int32.Parse(subRetStr);
+            //    SqlDataReader querySdr = cmd.ExecuteReader();
+            //    string subRetStr= "";
+            //    while (querySdr.Read())
+            //    {                    
+            //        string queryStr = querySdr[0].ToString();
+            //        if (queryStr != "")
+            //        {
+            //            subRetStr = queryStr.Substring(preStr.Length, 2);
+            //        }
+            //    }
+            //    querySdr.Close();
 
-                    if (checkBoxMakeNew.Checked)
-                    {
-                        last += 1;
-                    }
+            //    if (subRetStr == "")
+            //    {
+            //        retStr = preStr + "01";
+            //    }
+            //    else
+            //    {
+            //        int last = Int32.Parse(subRetStr);
 
-                    if (last < 10)
-                    {
-                        retStr = preStr + "0" + last;
-                    }
-                    else
-                    {
-                        retStr = preStr + last;
-                    }
-                }
+            //        if (checkBoxMakeNew.Checked)
+            //        {
+            //            last += 1;
+            //        }
 
-                mConn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            //        if (last < 10)
+            //        {
+            //            retStr = preStr + "0" + last;
+            //        }
+            //        else
+            //        {
+            //            retStr = preStr + last;
+            //        }
+            //    }
 
-            return retStr;
+            //    mConn.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
+
+            //return retStr;
         }
 
         private void returnStore_Click(object sender, EventArgs e)

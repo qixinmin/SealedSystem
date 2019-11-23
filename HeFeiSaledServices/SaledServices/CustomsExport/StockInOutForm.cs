@@ -588,6 +588,26 @@ namespace SaledServices.CustomsExport
                         TrackNoCustomRelationList.Add(TrackNoCustomRelationTemp);
                     }
                     querySdr.Close();
+
+                    //这里需要加一个条件，如果这个板子已经在良品库里面有记录了，则不良品库就不需要在加入进去了
+                    List<TrackNoCustomRelation> toDeleteList = new List<TrackNoCustomRelation>();
+                    foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
+                    {
+                        cmd.CommandText = "select track_serial_no from repaired_in_house_table where track_serial_no='" + trackTemp.trackno + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if(querySdr.HasRows)
+                        {
+                            toDeleteList.Add(trackTemp);
+                        }
+                        querySdr.Close();
+                    }
+
+                    foreach (TrackNoCustomRelation trackTemp in toDeleteList)
+                    {
+                        TrackNoCustomRelationList.Remove(trackTemp);
+                    }
+                    //end 删除重复数据
+
                     if (TrackNoCustomRelationList.Count > 0)
                     {
                         foreach (TrackNoCustomRelation trackTemp in TrackNoCustomRelationList)
@@ -635,7 +655,7 @@ namespace SaledServices.CustomsExport
 
                             // storeTransList.Add(init1);
                         }
-
+                        
                         generateWorkOrderHead.addWorkListHeads(TrackNoCustomRelationList, false, ref materialbomDic);
                     }
 
