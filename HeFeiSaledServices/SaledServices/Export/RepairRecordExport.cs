@@ -413,7 +413,7 @@ namespace SaledServices.Export
                         ct1.Add(repaircheck.bgaRecords[i].bgampn);
                         ct1.Add(repaircheck.bgaRecords[i].bgatype);
                         ct1.Add(repaircheck.bgaRecords[i].bgabrief);
-                        ct1.Add(repaircheck.bgaRecords[i].bga_place);
+                        ct1.Add(repaircheck.bgaRecords[i].bga_place.ToUpper());
                         ct1.Add(repaircheck.bgaRecords[i].bgambfa1);
                         ct1.Add(repaircheck.bgaRecords[i].bgashort_cut);
                         ct1.Add(repaircheck.bgaRecords[i].newsn);
@@ -445,7 +445,7 @@ namespace SaledServices.Export
                     if (i < repaircheck.smtRecords.Count)
                     {
                         ct1.Add(repaircheck.smtRecords[i].smtMpn);
-                        ct1.Add(repaircheck.smtRecords[i].smtplace);
+                        ct1.Add(repaircheck.smtRecords[i].smtplace.ToUpper());
                         ct1.Add(repaircheck.smtRecords[i].smtNum);
 
                         ct1.Add(repaircheck.smtRecords[i].material_vendor);

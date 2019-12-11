@@ -28,6 +28,15 @@ namespace SaledServices
                 this.modify.Visible = false;
                 this.delete.Visible = false;
             }
+            else
+            {
+                this.declare_numbertextBox.Enabled = true;
+                this.declare_unittextBox.Enabled = true;
+                this.custom_request_numbertextBox.Enabled = true;
+                this.declare_numbertextBox.ReadOnly = false;
+                this.declare_unittextBox.ReadOnly = false;
+                this.custom_request_numbertextBox.ReadOnly = false;
+            }
         }
 
         private void add_Click(object sender, EventArgs e)

@@ -38,60 +38,68 @@ namespace SaledServices.Test_Outlook
             string LSC20LOGbackup = serverIPaddress + "backup\\LSC20LOG\\";
             string LSC60LOGbackup = serverIPaddress + "backup\\LSC60LOG\\";
 
-            bool _3dmarkerExist = false, burnExist = false, lscExist = false;
+            bool _3dmarkerExist = false, burnExist = false, lscExist60 = false, lscExist20 = false;
             string[] folders3dmark = Directory.GetFiles(_3dmark);
+            string _3dmarkfileName = null;
+            FileInfo _3dmarkFile = null;
             foreach (string file in folders3dmark)
             {
-                string filename = Path.GetFileName(file);
-                Console.WriteLine(filename);
-                if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
+                _3dmarkfileName = Path.GetFileName(file);
+               // Console.WriteLine(filename);
+                if (_3dmarkfileName.Contains(custom_serial_no_temp) && _3dmarkfileName.Contains("_PASS"))
                 {
                     _3dmarkerExist = true;
                     //move to backup
-                    FileInfo myfile = new FileInfo(file);//移动
-                    myfile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                    _3dmarkFile = new FileInfo(file);//移动
+                   // _3dmarkFile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + _3dmarkfileName);
                     break;
                 }
             }
 
             string[] foldersburn = Directory.GetFiles(Burninlog);
+            string burnfileName = null;
+            FileInfo burnFile = null;
             foreach (string file in foldersburn)
             {
-                string filename = Path.GetFileName(file);
-                if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
+                burnfileName = Path.GetFileName(file);
+                if (burnfileName.Contains(custom_serial_no_temp) && burnfileName.Contains("_PASS"))
                 {
                     burnExist = true;
                     //move to backup
-                    FileInfo myfile = new FileInfo(file);//移动
-                    myfile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                    burnFile = new FileInfo(file);//移动
+                    burnFile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + burnfileName);
                     break;
                 }
             }
 
             string[] foldersLSC20 = Directory.GetFiles(LSC20LOG);
+            string lsc20name = null;
+            FileInfo lsc20File = null;
             foreach (string file in foldersLSC20)
             {
-                string filename = Path.GetFileName(file);
-                if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
+                lsc20name = Path.GetFileName(file);
+                if (lsc20name.Contains(custom_serial_no_temp) && lsc20name.Contains("_PASS"))
                 {
-                    lscExist = true;
+                    lscExist20 = true;
                     //move to backup
-                    FileInfo myfile = new FileInfo(file);//移动
-                    myfile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                    lsc20File = new FileInfo(file);//移动
+                   // lsc20File.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + lsc20name);
                     break;
                 }
             }
 
             string[] foldersLSC60 = Directory.GetFiles(LSC60LOG);
+            string lsc60name = null;
+            FileInfo lsc60File = null;
             foreach (string file in foldersLSC60)
             {
-                string filename = Path.GetFileName(file);
-                if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
+                lsc60name = Path.GetFileName(file);
+                if (lsc60name.Contains(custom_serial_no_temp) && lsc60name.Contains("_PASS"))
                 {
-                    lscExist = true;
+                    lscExist60 = true;
                     //move to backup
-                    FileInfo myfile = new FileInfo(file);//移动
-                    myfile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                    lsc60File = new FileInfo(file);//移动
+                    //lsc60File.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + lsc60name);
                     break;
                 }
             }
@@ -101,11 +109,28 @@ namespace SaledServices.Test_Outlook
                 MessageBox.Show("_3dmarker 与Burning都不存在，请检查！");
                 return false;
             }
-
-            if (lscExist == false)
+            
+            if (lscExist20 == false && lscExist60 == false)
             {
                 MessageBox.Show("LSC内容为空，请检查！");
                 return false;
+            }
+
+            if(_3dmarkerExist)
+            {
+                _3dmarkFile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + _3dmarkfileName);
+            }
+            if (burnExist)
+            {
+                burnFile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + burnfileName);
+            }
+            if (lscExist20)
+            {
+                lsc20File.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + lsc20name);
+            }
+            if (lscExist60)
+            {
+                lsc60File.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + lsc60name);
             }
             return true;
         }
@@ -127,16 +152,18 @@ namespace SaledServices.Test_Outlook
 
             bool _3dmarkerExist = false;//, burnExist = false, lscExist = false;
             string[] folders3dmark = Directory.GetFiles(_3dmark);
+            string _3dmarkfileName = null;
+            FileInfo _3dmarkFile = null;
             foreach (string file in folders3dmark)
             {
-                string filename = Path.GetFileName(file);
-                Console.WriteLine(filename);
-                if (filename.Contains(custom_serial_no_temp) && filename.Contains("_PASS"))
+                _3dmarkfileName = Path.GetFileName(file);
+               // Console.WriteLine(filename);
+                if (_3dmarkfileName.Contains(custom_serial_no_temp) && _3dmarkfileName.Contains("_PASS"))
                 {
                     _3dmarkerExist = true;
                     //move to backup
-                    FileInfo myfile = new FileInfo(file);//移动
-                    myfile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                    _3dmarkFile = new FileInfo(file);//移动
+                   // _3dmarkFile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + _3dmarkfileName);
                     break;
                 }
             }
@@ -145,6 +172,11 @@ namespace SaledServices.Test_Outlook
             {
                 MessageBox.Show("_3dmarker 不存在，请检查！");
                 return false;
+            }
+
+            if (_3dmarkerExist)
+            {
+                _3dmarkFile.MoveTo(_3dmarkbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + _3dmarkfileName);
             }
            
             return true;
@@ -297,45 +329,6 @@ namespace SaledServices.Test_Outlook
                     //    return;
                     //}
 
-                    if (this.tracker_bar_textBox.Text.Trim() != "")
-                    {
-                        cmd.CommandText = "select storehouse,custom_serial_no,product from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-
-                        SqlDataReader querySdr1 = cmd.ExecuteReader();
-                        string storehouse = "", custom_serial_no = "", product="";
-
-                        while (querySdr1.Read())
-                        {
-                            storehouse = querySdr1[0].ToString();
-                            custom_serial_no = querySdr1[1].ToString();
-                            product = querySdr1[2].ToString().Trim();
-                        }
-                        querySdr1.Close();
-
-                        if (product != "DT")
-                        {
-                            if (storehouse.ToUpper().Trim() != "CN")
-                            {
-                                if (isCheckFromServer(custom_serial_no) == false)
-                                {
-                                    MessageBox.Show("not CN服务端读取文件失败");
-                                    conn.Close();
-                                    return;
-                                }
-                            }
-                            else
-                            {
-                                if (isCheckFromServerCN(custom_serial_no) == false)
-                                {
-                                    MessageBox.Show("CN服务端读取文件失败");
-                                    conn.Close();
-                                    return;
-                                }
-
-                            }
-                        }
-                    }
-
 
                     //检测时间间隔，如果少于规定时间则不能通过
                     bool isPassTimeSpan = false;
@@ -380,13 +373,60 @@ namespace SaledServices.Test_Outlook
                         }
                     }
 
-                    //计算当前时间与上一个test的时间差
-                    isPassTimeSpan = Untils.isTimeSpanRight(timeSpan, this.tracker_bar_textBox.Text.Trim());
-                    if (!isPassTimeSpan)
+                 
+
+
+                    if (this.tracker_bar_textBox.Text.Trim() != "")
                     {
-                        MessageBox.Show("此主板需要运行   " + timeSpan + "个小时,但是时间间隔不够");
-                        return;
+                        cmd.CommandText = "select storehouse,custom_serial_no,product from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                        SqlDataReader querySdr1 = cmd.ExecuteReader();
+                        string storehouse = "", custom_serial_no = "", product = "";
+
+                        while (querySdr1.Read())
+                        {
+                            storehouse = querySdr1[0].ToString();
+                            custom_serial_no = querySdr1[1].ToString();
+                            product = querySdr1[2].ToString().Trim();
+                        }
+                        querySdr1.Close();
+
+                        if (storehouse.ToUpper() != "CN")//只检查国外的产品
+                        {
+                            //计算当前时间与上一个test的时间差
+                            isPassTimeSpan = Untils.isTimeSpanRight(timeSpan, this.tracker_bar_textBox.Text.Trim());
+                            if (!isPassTimeSpan)
+                            {
+                                MessageBox.Show("此主板需要运行   " + timeSpan + "个小时,但是时间间隔不够");
+                                return;
+                            }
+
+                        }
+
+                        if (product != "DT")
+                        {
+                            if (storehouse.ToUpper().Trim() != "CN")
+                            {
+                                if (isCheckFromServer(custom_serial_no) == false)
+                                {
+                                    MessageBox.Show("not CN服务端读取文件失败");
+                                    conn.Close();
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                if (isCheckFromServerCN(custom_serial_no) == false)
+                                {
+                                    MessageBox.Show("CN服务端读取文件失败");
+                                    conn.Close();
+                                    return;
+                                }
+
+                            }
+                        }
                     }
+
                     //end时间间隔检测
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"

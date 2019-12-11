@@ -115,6 +115,9 @@ namespace SaledServices.Test_Outlook
                 {
                     MessageBox.Show(ex.ToString());
                 }
+
+                this.frutextBox.Focus();
+                this.frutextBox.SelectAll();
             }
         }
 
@@ -123,6 +126,12 @@ namespace SaledServices.Test_Outlook
             if (this.tracker_bar_textBox.Text.Trim() == "")
             {
                 MessageBox.Show("追踪条码的内容为空，请检查！");
+                return;
+            }
+
+            if (this.frutextBox.Text.Trim().Length != 7 && this.frutextBox.Text.Trim().Length != 11)
+            {
+                MessageBox.Show("Fru的输入框内容不是7位或11位，请检查！");
                 return;
             }
 
@@ -141,19 +150,27 @@ namespace SaledServices.Test_Outlook
 
                     //开始计算决定是否走obe站别，规则如下：根据跟踪条码查到对应的订单号，从订单号可以在receiveorder中查找这个订单有多少量，然后根据比率（有默认值）来抽检
                     //如果在表中有抽检则需查询obe站别是否ok，否则不能走包装站别，有一个问题，如果第一次fail，第二次可以不走obe，如何判断？
-                    cmd.CommandText = "select custom_order,custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select custom_order,custommaterialNo,mac from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string customorder = "", custom_materialNo="";
+                    string customorder = "", custom_materialNo="",mac="";
                     while (querySdr.Read())
                     {
                         customorder = querySdr[0].ToString();
                         custom_materialNo = querySdr[1].ToString();
+                        mac = querySdr[2].ToString();
                     }
                     querySdr.Close();
 
                     if (customorder == "")
                     {
-                        MessageBox.Show("此序列号查不到对应的订单编号！");
+                        MessageBox.Show("此序列号查不到对应的订单编号！");                       
+                        conn.Close();
+                        return;
+                    }
+
+                    if (mac.Trim().ToLower() != this.mactextBox.Text.Trim().ToLower())
+                    {
+                        MessageBox.Show("此序列号的收货mac与输入的mac不相符，请检查！");
                         this.tracker_bar_textBox.Text = "";
                         conn.Close();
                         return;
@@ -364,6 +381,31 @@ namespace SaledServices.Test_Outlook
             //{
             //    MessageBox.Show(ex.ToString());
             //}
+        }
+
+        private void mactextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                string mactext = this.mactextBox.Text.Trim();
+                mactext = mactext.Substring(3);
+                this.mactextBox.Text = mactext;
+            }
+        }
+
+        private void frutextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.frutextBox.Text.Trim().Length != 7 && this.frutextBox.Text.Trim().Length != 11)
+                {
+                    MessageBox.Show("Fru的输入框内容不是7位或11位，请检查！");
+                    return;
+                }
+
+                this.mactextBox.Focus();
+                this.mactextBox.SelectAll();
+            }
         }
     }
 }
