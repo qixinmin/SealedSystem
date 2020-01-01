@@ -443,6 +443,28 @@ namespace SaledServices.CustomsExport
                         }
                     }
 
+                    //加入良品库的临时表信息，晚点需要把临时表隔离开来
+                    List<string> excludeTracknoList = new List<string>();//包含之前2019-12-31之前传过表头数据，所以后续要隔离开，不能重复传输
+                    cmd.CommandText = "select track_serial_no,custom_materialNo,input_date from repaired_in_house_table_temp where input_date between '" + startTime + "' and '" + endTime + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        //TrackNoCustomRelation TrackNoCustomRelationTemp = new TrackNoCustomRelation();
+                        //TrackNoCustomRelationTemp.trackno = querySdr[0].ToString();
+                        //string temp = querySdr[1].ToString();
+                        //if (temp.Length == 10 && temp.StartsWith("000"))
+                        //{
+                        //    temp = temp.Substring(3);
+                        //}
+
+                        //TrackNoCustomRelationTemp.custom_materialNo = temp;//正常使用客户料号
+                        //TrackNoCustomRelationTemp.date = querySdr[2].ToString();
+
+                        // TrackNoCustomRelationList.Add(TrackNoCustomRelationTemp);
+                        excludeTracknoList.Add(querySdr[0].ToString());
+                    }
+                    querySdr.Close();
+
                     //3 良品入库信息
                     TrackNoCustomRelationList.Clear();
                     cmd.CommandText = "select track_serial_no,custom_materialNo,input_date from repaired_in_house_table where input_date between '" + startTime + "' and '" + endTime + "'";
@@ -460,29 +482,13 @@ namespace SaledServices.CustomsExport
                         TrackNoCustomRelationTemp.custom_materialNo = temp;//正常使用客户料号
                         TrackNoCustomRelationTemp.date = querySdr[2].ToString();
 
-                        TrackNoCustomRelationList.Add(TrackNoCustomRelationTemp);
-                    }
-                    querySdr.Close();
-
-                    //加入良品库的临时表信息，晚点需要把临时表隔离开来
-                    cmd.CommandText = "select track_serial_no,custom_materialNo,input_date from repaired_in_house_table_temp where input_date between '" + startTime + "' and '" + endTime + "'";
-                    querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
-                    {
-                        TrackNoCustomRelation TrackNoCustomRelationTemp = new TrackNoCustomRelation();
-                        TrackNoCustomRelationTemp.trackno = querySdr[0].ToString();
-                        string temp = querySdr[1].ToString();
-                        if (temp.Length == 10 && temp.StartsWith("000"))
+                        //包含之前2019-12-31之前传过表头数据，所以后续要隔离开，不能重复传输
+                        if (excludeTracknoList.Contains(TrackNoCustomRelationTemp.trackno) == false)
                         {
-                            temp = temp.Substring(3);
+                            TrackNoCustomRelationList.Add(TrackNoCustomRelationTemp);
                         }
-
-                        TrackNoCustomRelationTemp.custom_materialNo = temp;//正常使用客户料号
-                        TrackNoCustomRelationTemp.date = querySdr[2].ToString();
-
-                        TrackNoCustomRelationList.Add(TrackNoCustomRelationTemp);
                     }
-                    querySdr.Close();
+                    querySdr.Close();                    
 
                     if (TrackNoCustomRelationList.Count > 0)
                     {
