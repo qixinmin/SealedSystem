@@ -252,11 +252,21 @@ namespace SaledServices
                 {
                     DateTime timeOld = Convert.ToDateTime(Convert.ToDateTime(oldTime).ToString("yyyy/MM/dd hh:mm:ss"));
 
+                   // MessageBox.Show("时间间隔不符合:" + hour + "小时, 历史：" + oldTime + ",现在:" + timeNow.ToString());
+
                     TimeSpan span = timeNow - timeOld;
                     if (span.TotalHours >= hour)
-                    {                        
+                    {
                         return true;
                     }
+                    else
+                    {
+                        MessageBox.Show("时间间隔[" + span.TotalHours + "小时]不符合:[" + hour + "小时], 历史：" + oldTime + ",现在:" + timeNow.ToString());
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("注意错误 历史时间不存在..." + ",现在:" + timeNow.ToString());
                 }
             }
             catch (Exception ex)

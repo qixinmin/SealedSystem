@@ -351,6 +351,35 @@ namespace SaledServices.CustomsExport
                 }
                 querySdr.Close();
 
+                //读取临时新家，将来要删掉的数据
+                //5 读取MB良品库信息
+                cmd.CommandText = "select custom_materialNo, leftNumber from repaired_left_house_table_temp where leftNumber !='0'";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    StoreAmount init1 = new StoreAmount();
+                    init1.ems_no = ems_no;
+
+                    string temp = querySdr[0].ToString();
+                    if (temp.Length == 10 && temp.StartsWith("000"))
+                    {
+                        temp = temp.Substring(3);
+                    }
+
+                    init1.cop_g_no = temp;//正常使用客户料号
+                    init1.qty = querySdr[1].ToString();
+                    init1.unit = "007";//固定单位
+                    init1.goods_nature = "E";//代码
+                    init1.bom_version = "";
+                    init1.stock_date = Untils.getCustomCurrentDate();
+                    init1.date_type = "B";//代码
+                    init1.whs_code = "";
+                    init1.location_code = "";
+                    init1.note = "";
+                    storeAmountList.Add(init1);
+                }
+                querySdr.Close();
+
                 mConn.Close();
             }
             catch (Exception ex)

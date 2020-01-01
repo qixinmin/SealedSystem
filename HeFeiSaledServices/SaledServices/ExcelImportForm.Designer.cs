@@ -45,6 +45,8 @@
             this.flexid8scheck = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
+            this.testinputbynumber = new System.Windows.Forms.RadioButton();
+            this.testinputNumber = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +83,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.testinputNumber);
+            this.panel1.Controls.Add(this.testinputbynumber);
             this.panel1.Controls.Add(this.test);
             this.panel1.Controls.Add(this.analysis8scode);
             this.panel1.Controls.Add(this.userInputRadioButton);
@@ -225,6 +229,26 @@
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
             // 
+            // testinputbynumber
+            // 
+            this.testinputbynumber.AutoSize = true;
+            this.testinputbynumber.Location = new System.Drawing.Point(238, 438);
+            this.testinputbynumber.Name = "testinputbynumber";
+            this.testinputbynumber.Size = new System.Drawing.Size(167, 24);
+            this.testinputbynumber.TabIndex = 4;
+            this.testinputbynumber.Text = "跟踪条码与料号";
+            this.testinputbynumber.UseVisualStyleBackColor = true;
+            // 
+            // testinputNumber
+            // 
+            this.testinputNumber.AutoSize = true;
+            this.testinputNumber.Location = new System.Drawing.Point(238, 468);
+            this.testinputNumber.Name = "testinputNumber";
+            this.testinputNumber.Size = new System.Drawing.Size(127, 24);
+            this.testinputNumber.TabIndex = 4;
+            this.testinputNumber.Text = "料号与数量";
+            this.testinputNumber.UseVisualStyleBackColor = true;
+            // 
             // ExcelImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -265,5 +289,7 @@
         private System.Windows.Forms.RadioButton test;
         private System.Windows.Forms.RadioButton flexid8scheck;
         private System.Windows.Forms.RadioButton analysis8scode;
+        private System.Windows.Forms.RadioButton testinputbynumber;
+        private System.Windows.Forms.RadioButton testinputNumber;
     }
 }

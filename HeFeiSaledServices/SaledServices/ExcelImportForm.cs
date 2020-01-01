@@ -180,10 +180,22 @@ namespace SaledServices
                 this.importButton.Enabled = true;
                 return;
             }
+            else if (this.testinputbynumber.Checked)
+            {
+                this.importAnalysis8scodesTrackNo("跟踪条码与料号", "repaired_in_house_table_temp");
+                this.importButton.Enabled = true;
+                return;
+            }
+            else if (this.testinputNumber.Checked)
+            {
+                this.importAnalysis8scodesNumber("料号与数量", "repaired_left_house_table_temp");
+                this.importButton.Enabled = true;
+                return;
+            }
             else if (this.test.Checked)
             {
                 this.importButton.Enabled = true;
-               // return;
+                // return;
             }
 
             app = new Microsoft.Office.Interop.Excel.Application();
@@ -794,6 +806,88 @@ namespace SaledServices
                     bcp.ColumnMappings.Add("8S码", "_8sCode");
                     bcp.ColumnMappings.Add("导入人", "inputer");
                     bcp.ColumnMappings.Add("导入时间", "input_date");
+
+                    bcp.WriteToServer(ds.Tables[0]);
+                    bcp.Close();
+
+                    conn.Close();
+                    MessageBox.Show("导入完成");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void importAnalysis8scodesTrackNo(string sheetName, string tableName)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                //获取全部数据
+                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
+                OleDbConnection conn = new OleDbConnection(strConn);
+                conn.Open();
+                string strExcel = "";
+                OleDbDataAdapter myCommand = null;
+                strExcel = string.Format("select * from [{0}$]", sheetName);
+                myCommand = new OleDbDataAdapter(strExcel, strConn);
+                myCommand.Fill(ds, sheetName);
+
+                //用bcp导入数据
+                using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
+                {
+                    // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
+                    bcp.BatchSize = 1000;//每次传输的行数
+                    bcp.NotifyAfter = 1000;//进度提示的行数
+                    bcp.DestinationTableName = tableName;//目标表
+
+
+                    bcp.ColumnMappings.Add("跟踪条码", "track_serial_no");
+                    bcp.ColumnMappings.Add("FRU", "custom_materialNo");
+                    bcp.ColumnMappings.Add("number", "in_number");
+                    bcp.ColumnMappings.Add("日期", "input_date");
+
+                    bcp.WriteToServer(ds.Tables[0]);
+                    bcp.Close();
+
+                    conn.Close();
+                    MessageBox.Show("导入完成");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        public void importAnalysis8scodesNumber(string sheetName, string tableName)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                //获取全部数据
+                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
+                OleDbConnection conn = new OleDbConnection(strConn);
+                conn.Open();
+                string strExcel = "";
+                OleDbDataAdapter myCommand = null;
+                strExcel = string.Format("select * from [{0}$]", sheetName);
+                myCommand = new OleDbDataAdapter(strExcel, strConn);
+                myCommand.Fill(ds, sheetName);
+
+                //用bcp导入数据
+                using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
+                {
+                    // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
+                    bcp.BatchSize = 1000;//每次传输的行数
+                    bcp.NotifyAfter = 1000;//进度提示的行数
+                    bcp.DestinationTableName = tableName;//目标表
+
+                    bcp.ColumnMappings.Add("FRU", "custom_materialNo");
+                    bcp.ColumnMappings.Add("数量", "leftNumber");
 
                     bcp.WriteToServer(ds.Tables[0]);
                     bcp.Close();

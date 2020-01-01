@@ -111,7 +111,7 @@ namespace SaledServices.Test_Outlook
             }
         }
 
-        private bool isCheckFromServer(String custom_serial_no)
+        private bool isCheckFromServer(String custom_serial_no, String storehouse)
         { //根据服务器要判断内容是否存在即可，找到要移动走，现在并发欠考虑
             string custom_serial_no_temp = custom_serial_no;// this.tracker_bar_textBox.Text.Trim();
             //根据网络状态查询状态
@@ -119,27 +119,83 @@ namespace SaledServices.Test_Outlook
             string fctlog = serverIPaddress + "OBALOG\\";
 
             string fctlogbackup = serverIPaddress + "backup\\OBALOG\\";
-
-            bool fctlogExist = false;
-            string[] foldersfctlog = Directory.GetFiles(fctlog);
-            foreach (string file in foldersfctlog)
+            if (storehouse.ToUpper() == "CN")//中国区
             {
-                string filename = Path.GetFileName(file);
-                //Console.WriteLine(filename);
-                if (filename.Contains(custom_serial_no_temp))
+                bool fctlogExistcn = false;
+                string[] foldersfctlog = Directory.GetFiles(fctlog);
+                foreach (string file in foldersfctlog)
                 {
-                    fctlogExist = true;
-                    //move to backup
-                    FileInfo myfile = new FileInfo(file);//移动
-                    myfile.MoveTo(fctlogbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
-                    break;
+                    string filename = Path.GetFileName(file);
+                    //Console.WriteLine(filename);
+                    if (filename.Contains(custom_serial_no_temp))
+                    {
+                        fctlogExistcn = true;
+                        //move to backup
+                        FileInfo myfile = new FileInfo(file);//移动
+                        myfile.MoveTo(fctlogbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                        break;
+                    }
+                }
+
+                if (fctlogExistcn == false)
+                {
+                    MessageBox.Show("OBA LOG 内容为空，请检查！");
+                    return false;
                 }
             }
-
-            if (fctlogExist == false)
+            else//国外的板子判断，路径不一样
             {
-                MessageBox.Show("OBA LOG 内容为空，请检查！");
-                return false;
+                bool fctlogexist = false, lsclogexist = false;
+                FileInfo fctfile = null, lscfile = null;
+                string fctfilename = "", lscfilename = "";
+                string fctpath = fctlog + "FCT\\", lscpath = fctlog + "LSC\\";
+
+                string[] foldersfctlog = Directory.GetFiles(fctpath);
+                foreach (string file in foldersfctlog)
+                {
+                    fctfilename = Path.GetFileName(file);
+                    //Console.WriteLine(filename);
+                    if (fctfilename.Contains(custom_serial_no_temp))
+                    {
+                        fctlogexist = true;
+                        //move to backup
+                         fctfile = new FileInfo(file);//移动
+                       // myfile.MoveTo(fctlogbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                        break;
+                    }
+                }
+
+                string[] folderslsclog = Directory.GetFiles(lscpath);
+                foreach (string file in folderslsclog)
+                {
+                    lscfilename = Path.GetFileName(file);
+                    //Console.WriteLine(filename);
+                    if (lscfilename.Contains(custom_serial_no_temp))
+                    {
+                        lsclogexist = true;
+                        //move to backup
+                        lscfile = new FileInfo(file);//移动
+                        // myfile.MoveTo(fctlogbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + filename);
+                        break;
+                    }
+                }
+
+                if (fctlogexist == false || lsclogexist == false)
+                {
+                    MessageBox.Show("OBA LOG 内容为空，请检查！");
+                    return false;
+                }
+
+                if (lsclogexist)
+                {
+                    lscfile.MoveTo(fctlogbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + lscfilename);
+                }
+
+                if (fctlogexist)
+                {
+                    fctfile.MoveTo(fctlogbackup + DateTime.Now.ToString("yyyyMMddHHmmss") + fctfilename);
+                }
+
             }
             return true;
         }
@@ -181,13 +237,14 @@ namespace SaledServices.Test_Outlook
 
                     //查询要检查的类型
                     //查询板子类型
-                    cmd.CommandText = "select mb_brief,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select mb_brief,custom_serial_no,storehouse from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string mb_brief = "", custom_serial_no="";
+                    string mb_brief = "", custom_serial_no = "", storehouse="";
                     while (querySdr.Read())
                     {
                         mb_brief = querySdr[0].ToString();
                         custom_serial_no = querySdr[1].ToString();
+                        storehouse = querySdr[2].ToString();
                     }
                     querySdr.Close();
 
@@ -205,7 +262,7 @@ namespace SaledServices.Test_Outlook
 
                     if (ischecktest)
                     {
-                        if (isCheckFromServer(custom_serial_no) == false)
+                        if (isCheckFromServer(custom_serial_no, storehouse) == false)
                         {
                             MessageBox.Show("obe服务端读取文件失败。。。");
                             conn.Close();
