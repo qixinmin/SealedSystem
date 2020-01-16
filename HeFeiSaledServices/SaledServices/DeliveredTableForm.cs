@@ -87,6 +87,7 @@ namespace SaledServices
                     }
                 }
                 querySdr.Close();
+                this.guaranteeComboBox.SelectedIndex = 0;//
 
                 cmd.CommandText = "select distinct responsibility_describe from customResponsibility";
                 querySdr = cmd.ExecuteReader();
@@ -560,15 +561,15 @@ namespace SaledServices
 
                         if (overdays >= 0)
                         {
-                            this.guaranteeComboBox.Text = "保外";
+                           // this.guaranteeComboBox.Text = "保外";
                             //this.guaranteeComboBox.Enabled = false;
-                            this.customResponsibilityComboBox.Text = "过保";
+                           // this.customResponsibilityComboBox.Text = "过保";
                            // this.customResponsibilityComboBox.Enabled = false;
-                            MessageBox.Show((overdays) + " 天超过， 已经过保!");
+                           // MessageBox.Show((overdays) + " 天超过， 已经过保!");
                         }
                         else
                         {
-                            this.guaranteeComboBox.Text = "";
+                          //  this.guaranteeComboBox.Text = "";
                             this.guaranteeComboBox.Enabled = true;
                             this.customResponsibilityComboBox.Text = "";
                             //this.customResponsibilityComboBox.Enabled = true;
@@ -972,8 +973,8 @@ namespace SaledServices
             this.macTextBox.Text = "";
             this.custom_faultComboBox.Text = "";
             this.custom_faultComboBox.SelectedIndex = -1;
-            this.guaranteeComboBox.Text = "";
-            this.guaranteeComboBox.SelectedIndex = -1;
+            //this.guaranteeComboBox.Text = "";
+           // this.guaranteeComboBox.SelectedIndex = -1;
             this.customResponsibilityComboBox.Text = "";
             this.customResponsibilityComboBox.SelectedIndex = -1;
             this.lenovo_custom_service_noTextBox.Text = "";

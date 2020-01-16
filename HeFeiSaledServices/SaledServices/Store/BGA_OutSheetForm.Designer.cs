@@ -95,7 +95,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(641, 9);
+            this.query.Location = new System.Drawing.Point(640, 9);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -107,7 +107,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(867, 9);
+            this.modify.Location = new System.Drawing.Point(865, 9);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -119,7 +119,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1137, 9);
+            this.delete.Location = new System.Drawing.Point(1136, 9);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -523,7 +523,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 348F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);

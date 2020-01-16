@@ -126,7 +126,7 @@
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(68, 10);
+            this.add.Location = new System.Drawing.Point(68, 7);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(200, 34);
@@ -138,7 +138,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(404, 10);
+            this.query.Location = new System.Drawing.Point(404, 7);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(200, 34);
@@ -150,7 +150,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(790, 11);
+            this.modify.Location = new System.Drawing.Point(790, 9);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -162,7 +162,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1127, 11);
+            this.delete.Location = new System.Drawing.Point(1127, 9);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -259,7 +259,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 370);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 375);
             this.tableLayoutPanel1.TabIndex = 2;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -936,8 +936,8 @@
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.56889F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.45839F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.25102F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.776262F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.83629F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1354, 733);
             this.tableLayoutPanel2.TabIndex = 3;
@@ -954,12 +954,12 @@
             this.tableLayoutPanel3.Controls.Add(this.modify, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.delete, 3, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 382);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 387);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1346, 54);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1346, 49);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // tableLayoutPanel4

@@ -445,7 +445,7 @@ namespace SaledServices.CustomsExport
 
                     //加入良品库的临时表信息，晚点需要把临时表隔离开来
                     List<string> excludeTracknoList = new List<string>();//包含之前2019-12-31之前传过表头数据，所以后续要隔离开，不能重复传输
-                    cmd.CommandText = "select track_serial_no,custom_materialNo,input_date from repaired_in_house_table_temp where input_date between '" + startTime + "' and '" + endTime + "'";
+                    cmd.CommandText = "select track_serial_no,custom_materialNo,input_date from repaired_in_house_table_temp";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {

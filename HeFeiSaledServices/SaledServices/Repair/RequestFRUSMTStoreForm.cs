@@ -109,6 +109,8 @@ namespace SaledServices.Store
             public string materialName{get;set;}
             public string materialDescribe{get;set;}
             public string storeNum { get; set; }
+            public string house { get; set; }
+            public string place { get; set; }
         }
 
         private void not_good_placeTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -219,11 +221,13 @@ namespace SaledServices.Store
                     {
                         foreach (useClass temp in list)
                         {
-                            cmd.CommandText = "select number from store_house where mpn ='" + temp.materialName + "' and number >0";
+                            cmd.CommandText = "select number,house,place from store_house where mpn ='" + temp.materialName + "' and number >0";
                             SqlDataReader querySdr = cmd.ExecuteReader();
                             while (querySdr.Read())
                             {
                                 temp.storeNum = querySdr[0].ToString();
+                                temp.house = querySdr[1].ToString();
+                                temp.place = querySdr[2].ToString();
                                 reallist.Add(temp);
                             }
                             querySdr.Close();
