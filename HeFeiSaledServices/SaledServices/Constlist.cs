@@ -226,7 +226,7 @@ namespace SaledServices
         {
             try
             {
-                DateTime timeNow = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss"));
+                DateTime timeNow = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
 
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
 
@@ -250,7 +250,7 @@ namespace SaledServices
 
                 if (oldTime != "")
                 {
-                    DateTime timeOld = Convert.ToDateTime(Convert.ToDateTime(oldTime).ToString("yyyy/MM/dd hh:mm:ss"));
+                    DateTime timeOld = Convert.ToDateTime(Convert.ToDateTime(oldTime).ToString("yyyy/MM/dd HH:mm:ss"));
 
                    // MessageBox.Show("时间间隔不符合:" + hour + "小时, 历史：" + oldTime + ",现在:" + timeNow.ToString());
 

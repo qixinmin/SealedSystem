@@ -46,7 +46,7 @@ namespace SaledServices.Test_Outlook
             {
                 _3dmarkfileName = Path.GetFileName(file);
                // Console.WriteLine(filename);
-                if (_3dmarkfileName.Contains(custom_serial_no_temp) && _3dmarkfileName.Contains("_PASS"))
+                if (_3dmarkfileName.Contains(custom_serial_no_temp))
                 {
                     _3dmarkerExist = true;
                     //move to backup
@@ -62,7 +62,7 @@ namespace SaledServices.Test_Outlook
             foreach (string file in foldersburn)
             {
                 burnfileName = Path.GetFileName(file);
-                if (burnfileName.Contains(custom_serial_no_temp) && burnfileName.Contains("_PASS"))
+                if (burnfileName.Contains(custom_serial_no_temp))
                 {
                     burnExist = true;
                     //move to backup
@@ -78,7 +78,7 @@ namespace SaledServices.Test_Outlook
             foreach (string file in foldersLSC20)
             {
                 lsc20name = Path.GetFileName(file);
-                if (lsc20name.Contains(custom_serial_no_temp) && lsc20name.Contains("_PASS"))
+                if (lsc20name.Contains(custom_serial_no_temp))
                 {
                     lscExist20 = true;
                     //move to backup
@@ -94,7 +94,7 @@ namespace SaledServices.Test_Outlook
             foreach (string file in foldersLSC60)
             {
                 lsc60name = Path.GetFileName(file);
-                if (lsc60name.Contains(custom_serial_no_temp) && lsc60name.Contains("_PASS"))
+                if (lsc60name.Contains(custom_serial_no_temp))
                 {
                     lscExist60 = true;
                     //move to backup
@@ -158,7 +158,7 @@ namespace SaledServices.Test_Outlook
             {
                 _3dmarkfileName = Path.GetFileName(file);
                // Console.WriteLine(filename);
-                if (_3dmarkfileName.Contains(custom_serial_no_temp) && _3dmarkfileName.Contains("_PASS"))
+                if (_3dmarkfileName.Contains(custom_serial_no_temp))
                 {
                     _3dmarkerExist = true;
                     //move to backup
@@ -225,11 +225,7 @@ namespace SaledServices.Test_Outlook
                         this.tracker_bar_textBox.SelectAll();
                         return;
                     }
-
-
-
-
-
+                    
                     //if (track_serial_no == "")
                     //{
                     //    cmd.CommandText = "select track_serial_no from test2table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";

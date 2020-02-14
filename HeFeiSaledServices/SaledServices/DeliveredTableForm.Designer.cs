@@ -34,10 +34,8 @@
             this.modify = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.mb_describeTextBox = new System.Windows.Forms.TextBox();
             this.mb_make_dateTextBox = new System.Windows.Forms.TextBox();
             this.warranty_periodTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -64,15 +62,12 @@
             this.custom_machine_typeTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.vendorTextBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.mb_briefTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.productTextBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.mpnTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.storehouseTextBox = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
             this.inputUserTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.custommaterialNoTextBox = new System.Windows.Forms.TextBox();
@@ -82,8 +77,6 @@
             this.custom_faultComboBox = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.macTextBox = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.uuidTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.vendor_serail_noTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -96,6 +89,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.inputCustommaterialNoTextBox = new System.Windows.Forms.TextBox();
             this.source_briefComboBox = new System.Windows.Forms.ComboBox();
+            this.uuidTextBox = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.mb_briefTextBox = new System.Windows.Forms.TextBox();
+            this.mb_describeTextBox = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.macQrTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -181,10 +183,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Controls.Add(this.label18, 2, 8);
             this.tableLayoutPanel1.Controls.Add(this.label19, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.label20, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.mb_describeTextBox, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.mb_make_dateTextBox, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.warranty_periodTextBox, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
@@ -211,15 +211,12 @@
             this.tableLayoutPanel1.Controls.Add(this.custom_machine_typeTextBox, 5, 6);
             this.tableLayoutPanel1.Controls.Add(this.label1, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.vendorTextBox, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 2, 9);
-            this.tableLayoutPanel1.Controls.Add(this.mb_briefTextBox, 3, 9);
             this.tableLayoutPanel1.Controls.Add(this.label2, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.productTextBox, 3, 6);
             this.tableLayoutPanel1.Controls.Add(this.label17, 4, 4);
             this.tableLayoutPanel1.Controls.Add(this.mpnTextBox, 5, 4);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 7);
             this.tableLayoutPanel1.Controls.Add(this.storehouseTextBox, 3, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label29, 4, 8);
             this.tableLayoutPanel1.Controls.Add(this.inputUserTextBox, 5, 8);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.custommaterialNoTextBox, 1, 1);
@@ -229,8 +226,6 @@
             this.tableLayoutPanel1.Controls.Add(this.custom_faultComboBox, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.label16, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.macTextBox, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 2, 10);
-            this.tableLayoutPanel1.Controls.Add(this.uuidTextBox, 3, 10);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.vendor_serail_noTextBox, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 6);
@@ -243,36 +238,34 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.inputCustommaterialNoTextBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.source_briefComboBox, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.uuidTextBox, 5, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label29, 4, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 4, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 2, 10);
+            this.tableLayoutPanel1.Controls.Add(this.label18, 2, 9);
+            this.tableLayoutPanel1.Controls.Add(this.mb_briefTextBox, 3, 10);
+            this.tableLayoutPanel1.Controls.Add(this.mb_describeTextBox, 3, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label32, 2, 8);
+            this.tableLayoutPanel1.Controls.Add(this.macQrTextBox, 3, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 11;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 375);
             this.tableLayoutPanel1.TabIndex = 2;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("宋体", 15F);
-            this.label18.Location = new System.Drawing.Point(453, 275);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(69, 20);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "MB描述";
             // 
             // label19
             // 
@@ -289,22 +282,12 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("宋体", 15F);
-            this.label20.Location = new System.Drawing.Point(899, 37);
+            this.label20.Location = new System.Drawing.Point(899, 36);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(69, 20);
             this.label20.TabIndex = 4;
             this.label20.Text = "保修期";
-            // 
-            // mb_describeTextBox
-            // 
-            this.mb_describeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_describeTextBox.Location = new System.Drawing.Point(676, 279);
-            this.mb_describeTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_describeTextBox.Name = "mb_describeTextBox";
-            this.mb_describeTextBox.ReadOnly = true;
-            this.mb_describeTextBox.Size = new System.Drawing.Size(212, 26);
-            this.mb_describeTextBox.TabIndex = 0;
             // 
             // mb_make_dateTextBox
             // 
@@ -319,7 +302,7 @@
             // warranty_periodTextBox
             // 
             this.warranty_periodTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warranty_periodTextBox.Location = new System.Drawing.Point(1122, 41);
+            this.warranty_periodTextBox.Location = new System.Drawing.Point(1122, 40);
             this.warranty_periodTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.warranty_periodTextBox.Name = "warranty_periodTextBox";
             this.warranty_periodTextBox.ReadOnly = true;
@@ -354,7 +337,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("宋体", 15F);
-            this.label28.Location = new System.Drawing.Point(899, 71);
+            this.label28.Location = new System.Drawing.Point(899, 69);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(29, 20);
@@ -364,7 +347,7 @@
             // numTextBox
             // 
             this.numTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numTextBox.Location = new System.Drawing.Point(1122, 75);
+            this.numTextBox.Location = new System.Drawing.Point(1122, 73);
             this.numTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
@@ -375,7 +358,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("宋体", 15F);
-            this.label11.Location = new System.Drawing.Point(899, 105);
+            this.label11.Location = new System.Drawing.Point(899, 102);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 20);
@@ -385,7 +368,7 @@
             // dpk_statusTextBox
             // 
             this.dpk_statusTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dpk_statusTextBox.Location = new System.Drawing.Point(1122, 109);
+            this.dpk_statusTextBox.Location = new System.Drawing.Point(1122, 106);
             this.dpk_statusTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.dpk_statusTextBox.Name = "dpk_statusTextBox";
             this.dpk_statusTextBox.ReadOnly = true;
@@ -417,7 +400,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("宋体", 15F);
-            this.label24.Location = new System.Drawing.Point(453, 37);
+            this.label24.Location = new System.Drawing.Point(453, 36);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(129, 20);
@@ -427,7 +410,7 @@
             // lenovo_custom_service_noTextBox
             // 
             this.lenovo_custom_service_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lenovo_custom_service_noTextBox.Location = new System.Drawing.Point(676, 41);
+            this.lenovo_custom_service_noTextBox.Location = new System.Drawing.Point(676, 40);
             this.lenovo_custom_service_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.lenovo_custom_service_noTextBox.Name = "lenovo_custom_service_noTextBox";
             this.lenovo_custom_service_noTextBox.Size = new System.Drawing.Size(212, 26);
@@ -438,7 +421,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 15F);
-            this.label6.Location = new System.Drawing.Point(899, 173);
+            this.label6.Location = new System.Drawing.Point(899, 168);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 20);
@@ -448,7 +431,7 @@
             // order_out_dateTextBox
             // 
             this.order_out_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.order_out_dateTextBox.Location = new System.Drawing.Point(1122, 177);
+            this.order_out_dateTextBox.Location = new System.Drawing.Point(1122, 172);
             this.order_out_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.order_out_dateTextBox.Name = "order_out_dateTextBox";
             this.order_out_dateTextBox.ReadOnly = true;
@@ -459,7 +442,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("宋体", 15F);
-            this.label25.Location = new System.Drawing.Point(453, 71);
+            this.label25.Location = new System.Drawing.Point(453, 69);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(149, 20);
@@ -469,7 +452,7 @@
             // lenovo_maintenance_noTextBox
             // 
             this.lenovo_maintenance_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lenovo_maintenance_noTextBox.Location = new System.Drawing.Point(676, 75);
+            this.lenovo_maintenance_noTextBox.Location = new System.Drawing.Point(676, 73);
             this.lenovo_maintenance_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.lenovo_maintenance_noTextBox.Name = "lenovo_maintenance_noTextBox";
             this.lenovo_maintenance_noTextBox.Size = new System.Drawing.Size(212, 26);
@@ -480,7 +463,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("宋体", 15F);
-            this.label26.Location = new System.Drawing.Point(453, 105);
+            this.label26.Location = new System.Drawing.Point(453, 102);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(149, 20);
@@ -490,7 +473,7 @@
             // order_receive_dateTextBox
             // 
             this.order_receive_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.order_receive_dateTextBox.Location = new System.Drawing.Point(1122, 245);
+            this.order_receive_dateTextBox.Location = new System.Drawing.Point(1122, 238);
             this.order_receive_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.order_receive_dateTextBox.Name = "order_receive_dateTextBox";
             this.order_receive_dateTextBox.ReadOnly = true;
@@ -500,7 +483,7 @@
             // lenovo_repair_noTextBox
             // 
             this.lenovo_repair_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lenovo_repair_noTextBox.Location = new System.Drawing.Point(676, 109);
+            this.lenovo_repair_noTextBox.Location = new System.Drawing.Point(676, 106);
             this.lenovo_repair_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.lenovo_repair_noTextBox.Name = "lenovo_repair_noTextBox";
             this.lenovo_repair_noTextBox.Size = new System.Drawing.Size(212, 26);
@@ -511,7 +494,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 15F);
-            this.label7.Location = new System.Drawing.Point(899, 241);
+            this.label7.Location = new System.Drawing.Point(899, 234);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 20);
@@ -522,7 +505,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("宋体", 15F);
-            this.label27.Location = new System.Drawing.Point(453, 139);
+            this.label27.Location = new System.Drawing.Point(453, 135);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(89, 20);
@@ -532,7 +515,7 @@
             // whole_machine_noTextBox
             // 
             this.whole_machine_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.whole_machine_noTextBox.Location = new System.Drawing.Point(676, 143);
+            this.whole_machine_noTextBox.Location = new System.Drawing.Point(676, 139);
             this.whole_machine_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.whole_machine_noTextBox.Name = "whole_machine_noTextBox";
             this.whole_machine_noTextBox.Size = new System.Drawing.Size(212, 26);
@@ -543,7 +526,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 15F);
-            this.label8.Location = new System.Drawing.Point(899, 207);
+            this.label8.Location = new System.Drawing.Point(899, 201);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 20);
@@ -553,7 +536,7 @@
             // custom_machine_typeTextBox
             // 
             this.custom_machine_typeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_machine_typeTextBox.Location = new System.Drawing.Point(1122, 211);
+            this.custom_machine_typeTextBox.Location = new System.Drawing.Point(1122, 205);
             this.custom_machine_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_machine_typeTextBox.Name = "custom_machine_typeTextBox";
             this.custom_machine_typeTextBox.ReadOnly = true;
@@ -564,7 +547,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(453, 173);
+            this.label1.Location = new System.Drawing.Point(453, 168);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 20);
@@ -574,39 +557,18 @@
             // vendorTextBox
             // 
             this.vendorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendorTextBox.Location = new System.Drawing.Point(676, 177);
+            this.vendorTextBox.Location = new System.Drawing.Point(676, 172);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendorTextBox.Name = "vendorTextBox";
             this.vendorTextBox.ReadOnly = true;
             this.vendorTextBox.Size = new System.Drawing.Size(212, 26);
             this.vendorTextBox.TabIndex = 0;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("宋体", 15F);
-            this.label9.Location = new System.Drawing.Point(453, 309);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 20);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "MB简称";
-            // 
-            // mb_briefTextBox
-            // 
-            this.mb_briefTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_briefTextBox.Location = new System.Drawing.Point(676, 313);
-            this.mb_briefTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_briefTextBox.Name = "mb_briefTextBox";
-            this.mb_briefTextBox.ReadOnly = true;
-            this.mb_briefTextBox.Size = new System.Drawing.Size(212, 26);
-            this.mb_briefTextBox.TabIndex = 0;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 15F);
-            this.label2.Location = new System.Drawing.Point(453, 207);
+            this.label2.Location = new System.Drawing.Point(453, 201);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
@@ -616,7 +578,7 @@
             // productTextBox
             // 
             this.productTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.productTextBox.Location = new System.Drawing.Point(676, 211);
+            this.productTextBox.Location = new System.Drawing.Point(676, 205);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.productTextBox.Name = "productTextBox";
             this.productTextBox.ReadOnly = true;
@@ -627,7 +589,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("宋体", 15F);
-            this.label17.Location = new System.Drawing.Point(899, 139);
+            this.label17.Location = new System.Drawing.Point(899, 135);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(39, 20);
@@ -637,7 +599,7 @@
             // mpnTextBox
             // 
             this.mpnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mpnTextBox.Location = new System.Drawing.Point(1122, 143);
+            this.mpnTextBox.Location = new System.Drawing.Point(1122, 139);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
             this.mpnTextBox.ReadOnly = true;
@@ -648,7 +610,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 15F);
-            this.label4.Location = new System.Drawing.Point(453, 241);
+            this.label4.Location = new System.Drawing.Point(453, 234);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 20);
@@ -658,28 +620,17 @@
             // storehouseTextBox
             // 
             this.storehouseTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.storehouseTextBox.Location = new System.Drawing.Point(676, 245);
+            this.storehouseTextBox.Location = new System.Drawing.Point(676, 238);
             this.storehouseTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.storehouseTextBox.Name = "storehouseTextBox";
             this.storehouseTextBox.ReadOnly = true;
             this.storehouseTextBox.Size = new System.Drawing.Size(212, 26);
             this.storehouseTextBox.TabIndex = 0;
             // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("宋体", 15F);
-            this.label29.Location = new System.Drawing.Point(899, 275);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(69, 20);
-            this.label29.TabIndex = 1;
-            this.label29.Text = "收货人";
-            // 
             // inputUserTextBox
             // 
             this.inputUserTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputUserTextBox.Location = new System.Drawing.Point(1121, 278);
+            this.inputUserTextBox.Location = new System.Drawing.Point(1121, 270);
             this.inputUserTextBox.Name = "inputUserTextBox";
             this.inputUserTextBox.ReadOnly = true;
             this.inputUserTextBox.Size = new System.Drawing.Size(219, 26);
@@ -689,7 +640,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(7, 37);
+            this.label10.Location = new System.Drawing.Point(7, 36);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(89, 20);
@@ -700,7 +651,7 @@
             // 
             this.custommaterialNoTextBox.BackColor = System.Drawing.Color.Lime;
             this.custommaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custommaterialNoTextBox.Location = new System.Drawing.Point(230, 41);
+            this.custommaterialNoTextBox.Location = new System.Drawing.Point(230, 40);
             this.custommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custommaterialNoTextBox.Name = "custommaterialNoTextBox";
             this.custommaterialNoTextBox.ReadOnly = true;
@@ -712,7 +663,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("宋体", 15F);
-            this.label22.Location = new System.Drawing.Point(7, 343);
+            this.label22.Location = new System.Drawing.Point(7, 333);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(99, 20);
@@ -724,7 +675,7 @@
             this.guaranteeComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guaranteeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.guaranteeComboBox.FormattingEnabled = true;
-            this.guaranteeComboBox.Location = new System.Drawing.Point(230, 347);
+            this.guaranteeComboBox.Location = new System.Drawing.Point(230, 337);
             this.guaranteeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.guaranteeComboBox.Name = "guaranteeComboBox";
             this.guaranteeComboBox.Size = new System.Drawing.Size(212, 24);
@@ -735,7 +686,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("宋体", 15F);
-            this.label21.Location = new System.Drawing.Point(7, 309);
+            this.label21.Location = new System.Drawing.Point(7, 300);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(89, 20);
@@ -746,7 +697,7 @@
             // 
             this.custom_faultComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custom_faultComboBox.FormattingEnabled = true;
-            this.custom_faultComboBox.Location = new System.Drawing.Point(230, 313);
+            this.custom_faultComboBox.Location = new System.Drawing.Point(230, 304);
             this.custom_faultComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_faultComboBox.Name = "custom_faultComboBox";
             this.custom_faultComboBox.Size = new System.Drawing.Size(212, 24);
@@ -757,7 +708,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("宋体", 15F);
-            this.label16.Location = new System.Drawing.Point(7, 275);
+            this.label16.Location = new System.Drawing.Point(7, 267);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(39, 20);
@@ -767,40 +718,18 @@
             // macTextBox
             // 
             this.macTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.macTextBox.Location = new System.Drawing.Point(230, 279);
+            this.macTextBox.Location = new System.Drawing.Point(230, 271);
             this.macTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.macTextBox.Name = "macTextBox";
             this.macTextBox.Size = new System.Drawing.Size(212, 26);
             this.macTextBox.TabIndex = 0;
             this.macTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.macTextBox_KeyPress);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("宋体", 15F);
-            this.label15.Location = new System.Drawing.Point(453, 343);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(49, 20);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "UUID";
-            // 
-            // uuidTextBox
-            // 
-            this.uuidTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uuidTextBox.Location = new System.Drawing.Point(676, 347);
-            this.uuidTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.uuidTextBox.Name = "uuidTextBox";
-            this.uuidTextBox.Size = new System.Drawing.Size(212, 26);
-            this.uuidTextBox.TabIndex = 0;
-            this.uuidTextBox.Text = "00000000000000000000000000000000";
-            this.uuidTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uuidTextBox_KeyPress);
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 15F);
-            this.label14.Location = new System.Drawing.Point(7, 241);
+            this.label14.Location = new System.Drawing.Point(7, 234);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(89, 20);
@@ -810,7 +739,7 @@
             // vendor_serail_noTextBox
             // 
             this.vendor_serail_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendor_serail_noTextBox.Location = new System.Drawing.Point(230, 245);
+            this.vendor_serail_noTextBox.Location = new System.Drawing.Point(230, 238);
             this.vendor_serail_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendor_serail_noTextBox.Name = "vendor_serail_noTextBox";
             this.vendor_serail_noTextBox.Size = new System.Drawing.Size(212, 26);
@@ -821,7 +750,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 15F);
-            this.label13.Location = new System.Drawing.Point(7, 207);
+            this.label13.Location = new System.Drawing.Point(7, 201);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(89, 20);
@@ -831,7 +760,7 @@
             // custom_serial_noTextBox
             // 
             this.custom_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_serial_noTextBox.Location = new System.Drawing.Point(230, 211);
+            this.custom_serial_noTextBox.Location = new System.Drawing.Point(230, 205);
             this.custom_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_serial_noTextBox.Name = "custom_serial_noTextBox";
             this.custom_serial_noTextBox.Size = new System.Drawing.Size(212, 26);
@@ -842,7 +771,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("宋体", 15F);
-            this.label30.Location = new System.Drawing.Point(7, 173);
+            this.label30.Location = new System.Drawing.Point(7, 168);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(69, 20);
@@ -852,7 +781,7 @@
             // flexidTextBox
             // 
             this.flexidTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flexidTextBox.Location = new System.Drawing.Point(230, 177);
+            this.flexidTextBox.Location = new System.Drawing.Point(230, 172);
             this.flexidTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.flexidTextBox.Name = "flexidTextBox";
             this.flexidTextBox.Size = new System.Drawing.Size(212, 26);
@@ -863,7 +792,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 15F);
-            this.label12.Location = new System.Drawing.Point(7, 139);
+            this.label12.Location = new System.Drawing.Point(7, 135);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(89, 20);
@@ -873,7 +802,7 @@
             // track_serial_noTextBox
             // 
             this.track_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.track_serial_noTextBox.Location = new System.Drawing.Point(230, 143);
+            this.track_serial_noTextBox.Location = new System.Drawing.Point(230, 139);
             this.track_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.track_serial_noTextBox.Name = "track_serial_noTextBox";
             this.track_serial_noTextBox.Size = new System.Drawing.Size(212, 26);
@@ -884,7 +813,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label31.Location = new System.Drawing.Point(7, 105);
+            this.label31.Location = new System.Drawing.Point(7, 102);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(129, 20);
@@ -895,7 +824,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 15F);
-            this.label3.Location = new System.Drawing.Point(7, 71);
+            this.label3.Location = new System.Drawing.Point(7, 69);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 20);
@@ -905,7 +834,7 @@
             // inputCustommaterialNoTextBox
             // 
             this.inputCustommaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputCustommaterialNoTextBox.Location = new System.Drawing.Point(230, 109);
+            this.inputCustommaterialNoTextBox.Location = new System.Drawing.Point(230, 106);
             this.inputCustommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.inputCustommaterialNoTextBox.Name = "inputCustommaterialNoTextBox";
             this.inputCustommaterialNoTextBox.ShortcutsEnabled = false;
@@ -918,11 +847,106 @@
             this.source_briefComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.source_briefComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.source_briefComboBox.FormattingEnabled = true;
-            this.source_briefComboBox.Location = new System.Drawing.Point(230, 75);
+            this.source_briefComboBox.Location = new System.Drawing.Point(230, 73);
             this.source_briefComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.source_briefComboBox.Name = "source_briefComboBox";
             this.source_briefComboBox.Size = new System.Drawing.Size(212, 24);
             this.source_briefComboBox.TabIndex = 5;
+            // 
+            // uuidTextBox
+            // 
+            this.uuidTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uuidTextBox.Location = new System.Drawing.Point(1122, 304);
+            this.uuidTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.uuidTextBox.Name = "uuidTextBox";
+            this.uuidTextBox.Size = new System.Drawing.Size(217, 26);
+            this.uuidTextBox.TabIndex = 0;
+            this.uuidTextBox.Text = "00000000000000000000000000000000";
+            this.uuidTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uuidTextBox_KeyPress);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("宋体", 15F);
+            this.label29.Location = new System.Drawing.Point(899, 267);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(69, 20);
+            this.label29.TabIndex = 1;
+            this.label29.Text = "收货人";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("宋体", 15F);
+            this.label15.Location = new System.Drawing.Point(899, 300);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(49, 20);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "UUID";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("宋体", 15F);
+            this.label9.Location = new System.Drawing.Point(453, 333);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 20);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "MB简称";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("宋体", 15F);
+            this.label18.Location = new System.Drawing.Point(453, 300);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(69, 20);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "MB描述";
+            // 
+            // mb_briefTextBox
+            // 
+            this.mb_briefTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mb_briefTextBox.Location = new System.Drawing.Point(676, 337);
+            this.mb_briefTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mb_briefTextBox.Name = "mb_briefTextBox";
+            this.mb_briefTextBox.ReadOnly = true;
+            this.mb_briefTextBox.Size = new System.Drawing.Size(212, 26);
+            this.mb_briefTextBox.TabIndex = 0;
+            // 
+            // mb_describeTextBox
+            // 
+            this.mb_describeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mb_describeTextBox.Location = new System.Drawing.Point(676, 304);
+            this.mb_describeTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mb_describeTextBox.Name = "mb_describeTextBox";
+            this.mb_describeTextBox.ReadOnly = true;
+            this.mb_describeTextBox.Size = new System.Drawing.Size(212, 26);
+            this.mb_describeTextBox.TabIndex = 0;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("宋体", 15F);
+            this.label32.Location = new System.Drawing.Point(453, 267);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(99, 20);
+            this.label32.TabIndex = 4;
+            this.label32.Text = "MAC二维码";
+            // 
+            // macQrTextBox
+            // 
+            this.macQrTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.macQrTextBox.Location = new System.Drawing.Point(675, 270);
+            this.macQrTextBox.Name = "macQrTextBox";
+            this.macQrTextBox.Size = new System.Drawing.Size(214, 26);
+            this.macQrTextBox.TabIndex = 8;
+            this.macQrTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.macQrTextBox_KeyPress);
             // 
             // tableLayoutPanel2
             // 
@@ -1089,5 +1113,7 @@
         private System.Windows.Forms.TextBox flexidTextBox;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox inputCustommaterialNoTextBox;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox macQrTextBox;
     }
 }

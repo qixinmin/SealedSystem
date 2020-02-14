@@ -64,6 +64,9 @@ namespace SaledServices
 
                     cmd.CommandText = "update mb_repair_status_record set track_serial_no='" + right + "' where track_serial_no='" + error + "'";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "update stationInfoRecord set trackno='" + right + "' where trackno='" + error + "'";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

@@ -605,6 +605,15 @@ namespace SaledServices
             //    return;
             //}
 
+            if (this.macTextBox.Text.Equals(this.macQrTextBox.Text) == false)
+            {
+                MessageBox.Show("MAC的内容与MAC二维码的内容不是相同的！");
+                this.macQrTextBox.Text = "";
+                this.macQrTextBox.Focus();
+                this.macQrTextBox.SelectAll();
+                return;
+            }
+
             try
             {
                 //事前检查，现在要考虑7位与10位的问题，要兼容
@@ -1381,9 +1390,74 @@ namespace SaledServices
                     return;
                 }
 
+                this.macQrTextBox.Focus();
+                this.macQrTextBox.SelectAll();
+            }
+        }
+
+        private void macQrTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.macTextBox.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("请选输入MAC的内容！");
+                    this.macQrTextBox.Text = "";
+                    this.macTextBox.Focus();
+                    this.macTextBox.SelectAll();
+                    return;
+                }
+                string macqrtext = this.macQrTextBox.Text.Trim();
+                if (macqrtext.Length == 13 || macqrtext.Length == 15)
+                {
+                    if (macqrtext.Length == 13)
+                    {
+                        if (macqrtext.EndsWith("*") == false)
+                        {
+                            MessageBox.Show("MAC二维码的内容不是*结尾的！");
+                            this.macQrTextBox.Text = "";
+                            this.macQrTextBox.Focus();
+                            this.macQrTextBox.SelectAll();
+                            return;
+                        }
+                        macqrtext = macqrtext.Substring(0, 12);
+                        // Regex.Replace(mactext, "[^a-zA-Z0-9]", "");
+                        this.macQrTextBox.Text = macqrtext;
+                    }
+                    else if (macqrtext.Length == 15)
+                    {
+                        this.macQrTextBox.Text = macqrtext.Substring(3);
+
+                        if (this.macQrTextBox.Text.Length != 12)
+                        {
+                            this.macQrTextBox.SelectAll();
+                            MessageBox.Show("处理后的 MAC 二维码的长度不是12位，请检查！");
+                            return;
+                        }
+                    }
+                }
+                else
+                {                    
+                    MessageBox.Show("MAC二维码的内容不是13位 或 15位！");
+                    this.macQrTextBox.Text = "";
+                    this.macQrTextBox.Focus();
+                    this.macQrTextBox.SelectAll();
+                    return;
+                }
+
+                if (this.macTextBox.Text.Equals(this.macQrTextBox.Text) == false)
+                {
+                    MessageBox.Show("MAC的内容与MAC二维码的内容不是相同的！");
+                    this.macQrTextBox.Text = "";
+                    this.macQrTextBox.Focus();
+                    this.macQrTextBox.SelectAll();
+                    return;
+                }
+
                 this.custom_faultComboBox.Focus();
                 this.custom_faultComboBox.SelectAll();
             }
+
         }
 
         private void lenovo_custom_service_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -1581,5 +1655,7 @@ namespace SaledServices
                 this.track_serial_noTextBox.SelectAll();
             }
         }
+
+       
     }
 }
