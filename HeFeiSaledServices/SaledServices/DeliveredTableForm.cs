@@ -416,34 +416,52 @@ namespace SaledServices
                         return;
                     }
 
-                    //查询整个表格中是否有来过超过2次以上的记录，否则判成报废
-                    cmd.CommandText = "select COUNT(*) as a from  " + this.tableName + "  where custom_serial_no = '" + this.custom_serial_noTextBox.Text + "'";
+                    //根据历史出库的8s记录查找是否在120天内同一个板子再次维修
+                    cmd.CommandText = "select D.custom_order,D.custom_serial_no from DeliveredTable as D inner join repaired_out_house_excel_table as R on D.track_serial_no = R.track_serial_no order by R.input_date DESC";
                     querySdr = cmd.ExecuteReader();
-                    string hasnumber = "0";
+                    string latestDate = "", custom_order = "";
                     while (querySdr.Read())
                     {
-                        hasnumber = querySdr[0].ToString();
+                        if (querySdr[1].ToString() == this.custom_serial_noTextBox.Text.Trim())
+                        {
+                            custom_order = latestDate = querySdr[0].ToString();
+                            break;
+                        }
                     }
                     querySdr.Close();
-                    try
-                    {
-                        if (Int32.Parse(hasnumber) >= 2)
+
+                    if (!this.custom_orderComboBox.Text.ToUpper().StartsWith("REP0001R026"))
+                    {//R026不需要判断RR等
+
+                        //查询整个表格中是否有来过超过2次以上的记录，否则判成报废
+                        cmd.CommandText = "select COUNT(*) as a from  " + this.tableName + "  where custom_serial_no = '" + this.custom_serial_noTextBox.Text + "'";
+                        querySdr = cmd.ExecuteReader();
+                        string hasnumber = "0";
+                        while (querySdr.Read())
                         {
-                            isComeMoreThanThree = true;//并在插入数据的时候插入记录
-                            MessageBox.Show("提示：此主板已经来第三次，主板锁定报废！");
+                            hasnumber = querySdr[0].ToString();
                         }
-                        else
+                        querySdr.Close();
+                        try
                         {
-                            isComeMoreThanThree = false;
+                            if (Int32.Parse(hasnumber) >= 2)
+                            {
+                                isComeMoreThanThree = true;//并在插入数据的时候插入记录
+                                MessageBox.Show("提示：此主板已经来第三次，主板锁定报废！");
+                            }
+                            else
+                            {
+                                isComeMoreThanThree = false;
+                            }
                         }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                            mConn.Close();
+                            return;
+                        }
+                        //end
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                        mConn.Close();
-                        return;
-                    }
-                    //end
 
                     //查询需要分析表格中是否包含需要分析的8s码
                     cmd.CommandText = "select _8sCode from to_analysis_8s_table where _8sCode = '" + this.custom_serial_noTextBox.Text + "'";
@@ -480,56 +498,52 @@ namespace SaledServices
                         //return;
                     }
 
-                    //根据历史出库的8s记录查找是否在120天内同一个板子再次维修
-                    cmd.CommandText = "select D.custom_order,D.custom_serial_no from DeliveredTable as D inner join repaired_out_house_excel_table as R on D.track_serial_no = R.track_serial_no order by R.input_date DESC";
-                    querySdr = cmd.ExecuteReader();
-                    string latestDate = "", custom_order="";
-                    while (querySdr.Read())
+                    if (!this.custom_orderComboBox.Text.ToUpper().StartsWith("REP0001R026"))//R026不需要判断RR等
                     {
-                        if (querySdr[1].ToString() == this.custom_serial_noTextBox.Text.Trim())
+                        if (latestDate != "")
                         {
-                            custom_order = latestDate = querySdr[0].ToString();
-                            break;
+
+                            string cutDate = "";// "20" + latestDate.Substring(4, 6);
+                            if (custom_order.ToUpper().StartsWith("REP0001R02120"))
+                            {//REP0001R021201906250001
+                                cutDate = latestDate.Substring(11, 8);
+                            }
+                            else
+                            {
+                                cutDate = "20" + latestDate.Substring(4, 6);
+                            }
+
+                            string cutDateFinal = cutDate.Substring(0, 4) + "-" + cutDate.Substring(4, 2) + "-" + cutDate.Substring(6, 2);
+                            int diffDays = LCDDisplay.diffDays(cutDateFinal, this.order_receive_dateTextBox.Text.Trim());
+                            if (diffDays <= 120)
+                            {
+                                this.source_briefComboBox.Text = "DOA";
+                            }
+                            else if (diffDays <= 120)//这个逻辑暂时不管
+                            {
+                                this.source_briefComboBox.Text = "RR";
+                            }
+
+                            //下面逻辑指针对国外版子
+                            if (this.storehouseTextBox.Text.Trim() != "CN")
+                            {
+                                if (diffDays <= 120)
+                                {
+                                    this.source_briefComboBox.Text = "RR_120";
+                                }
+                                else if (diffDays > 120)
+                                {
+                                    this.source_briefComboBox.Text = "RR_over_120";
+                                }
+
+                            }
                         }
+
                     }
-                    querySdr.Close();
-                    if (latestDate != "")
+
+                    if (this.custom_orderComboBox.Text.ToUpper().StartsWith("REP0001R026"))
                     {
-                       
-                        string cutDate = "";// "20" + latestDate.Substring(4, 6);
-                        if (custom_order.ToUpper().StartsWith("REP0001R02120"))
-                        {//REP0001R021201906250001
-                            cutDate = latestDate.Substring(11, 8);
-                        }
-                        else
-                        {
-                            cutDate = "20" + latestDate.Substring(4, 6);
-                        }
-
-                       string cutDateFinal = cutDate.Substring(0, 4) + "-" + cutDate.Substring(4, 2) + "-" + cutDate.Substring(6, 2);
-                       int diffDays = LCDDisplay.diffDays(cutDateFinal, this.order_receive_dateTextBox.Text.Trim());
-                       if(diffDays  <=120)
-                       {
-                           this.source_briefComboBox.Text = "DOA";
-                       }
-                       else if (diffDays <= 120)//这个逻辑暂时不管
-                       {
-                           this.source_briefComboBox.Text = "RR";
-                       }
-
-                        //下面逻辑指针对国外版子
-                        if(this.storehouseTextBox.Text.Trim() != "CN")
-                        {
-                            if(diffDays  <=120)
-                           {
-                               this.source_briefComboBox.Text = "RR_120";
-                           }
-                           else if (diffDays > 120)
-                           {
-                               this.source_briefComboBox.Text = "RR_over_120";
-                           }
-
-                        }
+                        this.guaranteeComboBox.Text = "保外";
                     }
 
                     mConn.Close();

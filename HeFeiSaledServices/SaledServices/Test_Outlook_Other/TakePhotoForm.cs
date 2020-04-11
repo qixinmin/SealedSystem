@@ -129,9 +129,10 @@ namespace SaledServices.Test_Outlook
                 return;
             }
 
-            if (this.frutextBox.Text.Trim().Length != 7 && this.frutextBox.Text.Trim().Length != 11)
+            if (this.frutextBox.Text.Trim().Length != 7 && this.frutextBox.Text.Trim().Length != 11
+                && this.frutextBox.Text.Trim().Length != 10 && this.frutextBox.Text.Trim().Length != 12)
             {
-                MessageBox.Show("Fru的输入框内容不是7位或11位，请检查！");
+                MessageBox.Show("Fru的输入框内容不是7位或10,11,12位，请检查！");
                 return;
             }
 
@@ -397,9 +398,10 @@ namespace SaledServices.Test_Outlook
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                if (this.frutextBox.Text.Trim().Length != 7 && this.frutextBox.Text.Trim().Length != 11)
+                if (this.frutextBox.Text.Trim().Length != 7 && this.frutextBox.Text.Trim().Length != 11
+               && this.frutextBox.Text.Trim().Length != 10 && this.frutextBox.Text.Trim().Length != 12)
                 {
-                    MessageBox.Show("Fru的输入框内容不是7位或11位，请检查！");
+                    MessageBox.Show("Fru的输入框内容不是7位或10,11,12位，请检查！");
                     return;
                 }
 

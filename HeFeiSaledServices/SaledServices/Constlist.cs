@@ -172,6 +172,22 @@ namespace SaledServices
             doc.Variables.FormVariables.Item("LPN").Value = customMaterial;
             doc.Variables.FormVariables.Item("SNN").Value = _8sCode;
 
+            try
+            {
+                if (rma.ToUpper().Contains("R021"))
+                {
+                    doc.Variables.FormVariables.Item("TLAB").Value = "SI";
+                }
+                else if (rma.ToUpper().Contains("R026"))
+                {
+                    doc.Variables.FormVariables.Item("TLAB").Value = "OOW";
+                }
+            }
+            catch (Exception ex)//防止模板没内容，报错提示
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
             doc.PrintDocument(); //打印一次
             doc.FormFeed(); //结束打印
         }

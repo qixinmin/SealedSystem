@@ -47,6 +47,43 @@ namespace SaledServices.additionForm
                 cmd.ExecuteNonQuery();
                 mConn.Close();
 
+               // StockInOutForm.showMessage("备份成功到服务器的 " + filename, true);
+                MessageBox.Show("备份成功！");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void backup()
+        {
+            try
+            {
+                if (StockInOutForm.GetAddressIP() != Constlist.ipConst)
+                {
+                    return;
+                }
+
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                string path = "D:\\DatabaseBackup\\";
+                if (Directory.Exists(path) == false)
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                string filename = path + DateTime.Now.ToString("yyyyMMddHHmmss") + ".bak";
+
+                cmd.CommandText = "BACKUP DATABASE  SaledService TO DISK = '" + filename + "'";
+                cmd.ExecuteNonQuery();
+                mConn.Close();
+
                 StockInOutForm.showMessage("备份成功到服务器的 " + filename, true);
             }
             catch (Exception ex)
@@ -54,6 +91,7 @@ namespace SaledServices.additionForm
                 MessageBox.Show(ex.ToString());
             }
         }
+
 
     }
 }

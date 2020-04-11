@@ -51,8 +51,8 @@ namespace SaledServices
             int intMinute = e.SignalTime.Minute;
             int intSecond = e.SignalTime.Second;
             // 定制时间； 比如 在10：30 ：00 的时候执行某个函数  
-            int iHour = 23;
-            int iMinute = 30;
+            int iHour = 20;
+            int iMinute = 28;
             int iSecond = 00;
             //// 设置　 每分钟的开始执行一次  
             //if (intSecond == iSecond)
@@ -72,7 +72,7 @@ namespace SaledServices
                 new StockInOutForm().exportXMLInfo(DateTime.Now, DateTime.Now, true);
 
                 //第二个任务，数据库备份
-                new DatabaseForm().button1_Click(null, null);
+                new DatabaseForm().backup();//(null, null);
             }
             int iHour2 = 11;
             int iMinute2 = 40;
@@ -80,7 +80,7 @@ namespace SaledServices
             if (intHour == iHour2 && intMinute == iMinute2 && intSecond == iSecond2)
             {
                 //第二次数据库备份
-                new DatabaseForm().button1_Click(null, null);
+                new DatabaseForm().backup();//(null, null);
             }
 
             if ((e.SignalTime.DayOfWeek == DayOfWeek.Sunday) && (intHour == 23 && intMinute == 10 && intSecond == 10))

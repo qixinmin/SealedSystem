@@ -850,4 +850,15 @@ D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.dll
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OOXML.dll
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OpenXml4Net.dll
 D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\bin\Release\NPOI.OpenXmlFormats.dll
-D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.UnlockForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ObeRateForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ModifyErrorTrackNoForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.TestCheckMbBriefForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.ObeCheckMbBriefForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.EcoForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ObeCheckExport.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Export.SITaxExport.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Repair.RepairOtherMaterialInputForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.BGAInfoInputModifyForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.LiangpinMaterialOutForm.resources
+D:\GitHub\SealedSystem\HeFeiSaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.TakePhotoForm.resources

@@ -145,10 +145,36 @@ namespace SaledServices.Test_Outlook
                                   + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
                         cmd.ExecuteNonQuery();
                     }
+                    else if (currentStation == "Obe")
+                    {
+                        //插入obe站别信息
+                        cmd.CommandText = "INSERT INTO ObeStationtable VALUES('"
+                           + this.tracker_bar_textBox.Text.Trim() + "','"
+                           + "" + "','"
+                           + "" + "','"
+                           + "P','"// checkresult F fail
+                           + "" + "','"//failreason non empty
+                           + LoginForm.currentUser + "','"
+                           + DateTime.Now.ToString("yyyy/MM/dd")
+                           + "')";
+                        cmd.ExecuteNonQuery();
+
+                        //cmd.CommandText = "update ObeStationtable set checkresult = 'P', input_date = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                        //        + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        //cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                "','" + currentStation + "_change','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + User.UserSelfForm.username + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "update stationInformation set station = '" + currentStation + "', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                  + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.ExecuteNonQuery();
+                    }
                     else //if (currentStation == "维修")
                     {
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-                  "','"+currentStation+"_change','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + User.UserSelfForm.username + "')";
+                  "','" + currentStation + "_change','OK','" + DateTime.Now.ToString() + "','','','','','','','','','','','','','','','','" + User.UserSelfForm.username + "')";
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "update stationInformation set station = '" + currentStation + "', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
