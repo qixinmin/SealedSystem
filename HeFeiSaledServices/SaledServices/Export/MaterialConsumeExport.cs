@@ -96,22 +96,22 @@ namespace SaledServices.Export
                 //材料消耗信息需要增加一列数据---某段时间内出库数据
                 foreach (MaterialConsumeStruct stockcheck in receiveOrderList)
                 {
-                    cmd.CommandText = "select mpn, count(*) from fru_smt_out_stock where input_date between '" + startTime + "' and '" + endTime + "' and mpn='"+stockcheck.mpn+"' group by mpn";
+                    cmd.CommandText = "select SUM(cast(stock_out_num as int)) from fru_smt_out_stock where input_date between '" + startTime + "' and '" + endTime + "' and mpn='" + stockcheck.mpn + "'";
                     querySdr = cmd.ExecuteReader();
                     string number = "";
                     while (querySdr.Read())
                     {
-                        number = querySdr[1].ToString();
+                        number = querySdr[0].ToString();
                     }
                     querySdr.Close();
                     if (number == "")
                     {
-                        cmd.CommandText = "select mpn, count(*) from bga_out_stock where input_date between '" + startTime + "' and '" + endTime + "' and mpn='" + stockcheck.mpn + "' group by mpn";
+                        cmd.CommandText = "select SUM(cast(out_number as int)) from bga_out_stock where input_date between '" + startTime + "' and '" + endTime + "' and mpn='" + stockcheck.mpn + "'";
                         querySdr = cmd.ExecuteReader();
                         number = "";
                         while (querySdr.Read())
                         {
-                            number = querySdr[1].ToString();
+                            number = querySdr[0].ToString();
                         }
                         querySdr.Close();
                     }
@@ -143,6 +143,33 @@ namespace SaledServices.Export
                     querySdr.Close();
                 }
 
+                foreach (MaterialConsumeStruct stockcheck in receiveOrderList)
+                {
+                    cmd.CommandText = "select SUM(cast(in_number as int)) from smt_bga_ng_in_house_table where mpn='" + stockcheck.mpn+ "' and input_date between '" + startTime + "' and '" + endTime + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        stockcheck.number_ng = querySdr[0].ToString();
+                        break;//只需要一条记录即可
+                    }
+                    querySdr.Close();
+
+                }
+
+                //foreach (MaterialConsumeStruct stockcheck in receiveOrderList)
+                //{
+                //    cmd.CommandText = "select SUM(cast(out_number as int)) from bga_out_stock where mpn='" + stockcheck.mpn + "' and input_date between '" + startTime + "' and '" + endTime + "'";
+
+                //    querySdr = cmd.ExecuteReader();
+                //    while (querySdr.Read())
+                //    {
+                //        stockcheck.number_ng = querySdr[0].ToString();
+                //        break;//只需要一条记录即可
+                //    }
+                //    querySdr.Close();
+                //}
+
                 mConn.Close();
             }
             catch (Exception ex)
@@ -164,6 +191,7 @@ namespace SaledServices.Export
             titleList.Add("此段时间出库数量");
             titleList.Add("消耗数量");
             titleList.Add("当前库存数量");
+            titleList.Add("不良品数量");
 
             foreach (MaterialConsumeStruct stockcheck in StockCheckList)
             {
@@ -175,6 +203,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.stock_out_number);
                 ct1.Add(stockcheck.out_number);
                 ct1.Add(stockcheck.left_number);
+                ct1.Add(stockcheck.number_ng);
 
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
@@ -192,5 +221,6 @@ namespace SaledServices.Export
         public string stock_out_number;
         public string out_number;        
         public string left_number;
+       public string number_ng;
     }
 }

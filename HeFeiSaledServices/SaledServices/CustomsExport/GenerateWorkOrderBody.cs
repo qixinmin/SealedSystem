@@ -103,7 +103,7 @@ namespace SaledServices.CustomsExport
 
                 //for bga材料
                 MaterialCustomRelationList.Clear();
-                cmd.CommandText = "select track_serial_no,BGAPN,repair_date from bga_repair_record_table where bga_repair_result!='BGA待换' and bga_repair_date between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "select track_serial_no,BGAPN,repair_date,bga_repair_date from bga_repair_record_table where bga_repair_result!='BGA待换' and bga_repair_date between '" + startTime + "' and '" + endTime + "'";
                 querySdr = cmd.ExecuteReader();
 
                 while (querySdr.Read())
@@ -117,7 +117,7 @@ namespace SaledServices.CustomsExport
                     }
 
                     MaterialCustomRelationTemp.mpn = _71bomDic[querySdr[1].ToString()];//因为报关原因，需要改成71料号（联想料号）done
-                    MaterialCustomRelationTemp.date = querySdr[2].ToString();
+                    MaterialCustomRelationTemp.date = querySdr[3].ToString();
                     MaterialCustomRelationTemp.num = "-1";
 
                     MaterialCustomRelationList.Add(MaterialCustomRelationTemp);

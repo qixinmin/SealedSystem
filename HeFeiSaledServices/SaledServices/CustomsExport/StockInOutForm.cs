@@ -699,7 +699,8 @@ namespace SaledServices.CustomsExport
                         string currentDeclear = "";
                         string nowMatrialNo = querySdr[1].ToString();
 
-                        if (checkMpnfruOrSmt[nowMatrialNo].Trim().ToUpper() == "FRU")
+                        if (nowMatrialNo.StartsWith("000") == false//非主板
+                            && checkMpnfruOrSmt[nowMatrialNo].Trim().ToUpper() == "FRU")
                         {
                             continue;//FRU 材料不上報                            
                         }

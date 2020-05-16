@@ -417,7 +417,7 @@ namespace SaledServices
                     }
 
                     //根据历史出库的8s记录查找是否在120天内同一个板子再次维修
-                    cmd.CommandText = "select D.custom_order,D.custom_serial_no from DeliveredTable as D inner join repaired_out_house_excel_table as R on D.track_serial_no = R.track_serial_no order by R.input_date DESC";
+                    cmd.CommandText = "select D.custom_order,D.custom_serial_no from DeliveredTable as D inner join repaired_out_house_excel_table as R on D.track_serial_no = R.track_serial_no where R.input_date>'2020-01-01' order by R.input_date DESC";
                     querySdr = cmd.ExecuteReader();
                     string latestDate = "", custom_order = "";
                     while (querySdr.Read())
@@ -430,7 +430,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    if (!this.custom_orderComboBox.Text.ToUpper().StartsWith("REP0001R026"))
+                   // if (!this.custom_orderComboBox.Text.ToUpper().StartsWith("REP0001R026"))
                     {//R026不需要判断RR等
 
                         //查询整个表格中是否有来过超过2次以上的记录，否则判成报废
@@ -498,7 +498,7 @@ namespace SaledServices
                         //return;
                     }
 
-                    if (!this.custom_orderComboBox.Text.ToUpper().StartsWith("REP0001R026"))//R026不需要判断RR等
+                    //if (!this.custom_orderComboBox.Text.ToUpper().StartsWith("REP0001R026"))//R026不需要判断RR等
                     {
                         if (latestDate != "")
                         {

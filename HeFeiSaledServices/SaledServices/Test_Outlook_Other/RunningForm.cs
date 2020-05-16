@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Diagnostics;
 
 namespace SaledServices.Test_Outlook
 {
@@ -288,6 +289,29 @@ namespace SaledServices.Test_Outlook
             }
         }
 
+        private void runBatFile(string path, string filename)
+        {
+            try
+            {
+                string targetDir = string.Format(path);//this is where testChange.bat lies
+                Process proc = new Process();
+                proc.StartInfo.WorkingDirectory = targetDir;
+                proc.StartInfo.FileName = filename;
+
+                // proc.StartInfo.Arguments = string.Format("10");//this is argument
+                //proc.StartInfo.CreateNoWindow = true;
+                //proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+               // proc.Start();
+                Process.Start("runas.exe", @"/trustlevel:0x40000 " + path+filename);
+               
+                proc.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
+            }
+        }
+
         private void confirmbutton_Click(object sender, EventArgs e)
         {
             if (this.tracker_bar_textBox.Text.Trim() == "")
@@ -455,7 +479,9 @@ namespace SaledServices.Test_Outlook
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("出现错误，联系操作服务器上的bat脚本，开始执行清除连接的脚本，然后再试一下" + ex.ToString());
+                //MessageBox.Show(ex.ToString());
+                //runBatFile(@"D:\GitHub\SealedSystem\", "net.bat"); //问题在于机器是否执行本地还是计算机
             }
         }
 

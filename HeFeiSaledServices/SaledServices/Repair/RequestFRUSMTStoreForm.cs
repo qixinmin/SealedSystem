@@ -249,6 +249,20 @@ namespace SaledServices.Store
                             querySdr.Close();
                         }
 
+                        foreach (useClass temp in list)
+                        {
+                            cmd.CommandText = "select number,house,place from store_house where mpn ='" + temp.materialName + "' and number <= 0";
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                temp.storeNum = querySdr[0].ToString();
+                                temp.house = querySdr[1].ToString();
+                                temp.place = querySdr[2].ToString();
+                                reallist.Add(temp);
+                            }
+                            querySdr.Close();
+                        }
+
                         dataGridView.DataSource = reallist;
                     }
 
@@ -274,6 +288,30 @@ namespace SaledServices.Store
             {
                 return;
             }
+
+            this.materialMpnTextBox.Text = "";
+            this.materialDescribetextBox.Text = "";
+
+            bool isHasStore = true;
+            try
+            {
+                int number = Int32.Parse(dataGridView.SelectedCells[2].Value.ToString().Trim());
+                if (number <= 0)
+                {
+                    isHasStore = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                isHasStore = false;
+            }
+            if (isHasStore == false)
+            {
+                
+                MessageBox.Show("选择的料需要有库存");
+                return;
+            }
+           
             this.materialMpnTextBox.Text = dataGridView.SelectedCells[0].Value.ToString();
             this.materialDescribetextBox.Text = dataGridView.SelectedCells[1].Value.ToString();
         }
@@ -452,7 +490,21 @@ namespace SaledServices.Store
 
         private void RequestFRUSMTStoreForm_Load(object sender, EventArgs e)
         {
-
+            tableLayoutPanel1.GetType().
+            GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+            SetValue(tableLayoutPanel1, true, null);
+            tableLayoutPanel2.GetType().
+            GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+            SetValue(tableLayoutPanel2, true, null);
+            tableLayoutPanel3.GetType().
+            GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+            SetValue(tableLayoutPanel3, true, null);
+            tableLayoutPanel4.GetType().
+            GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+            SetValue(tableLayoutPanel4, true, null);
+            tableLayoutPanel5.GetType().
+            GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+            SetValue(tableLayoutPanel5, true, null);
         }
     }
 }

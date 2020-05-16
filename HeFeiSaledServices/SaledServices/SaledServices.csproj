@@ -1087,6 +1087,7 @@
     <Compile Include="CustomsContentClass\StockInOutClass.cs" />
     <Compile Include="CustomsContentClass\WorkListBodyClass.cs" />
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Files\syncTime.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
