@@ -34,6 +34,7 @@ namespace SaledServices.additionForm
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
+                cmd.CommandTimeout = 2 * 60;
 
                 string path = "D:\\DatabaseBackup\\";
                 if (Directory.Exists(path) == false)
@@ -70,6 +71,7 @@ namespace SaledServices.additionForm
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
+                cmd.CommandTimeout = 2 * 60;
                 cmd.CommandType = CommandType.Text;
 
                 string path = "D:\\DatabaseBackup\\";

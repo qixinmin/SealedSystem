@@ -236,7 +236,11 @@ namespace SaledServices.Export
                             {
                                 if (bgarecord.vendor != "LCFC")
                                 {
-                                    bgarecord.thisprice = Math.Round(Double.Parse(bgarecord.thisprice) / Double.Parse(this.textBoxHuilu.Text.Trim()),2) + "";
+                                    // bgarecord.thisprice = Math.Round(Double.Parse(bgarecord.thisprice) / Double.Parse(this.textBoxHuilu.Text.Trim()),2) + "";
+                                }
+                                else
+                                {
+                                    bgarecord.thisprice = Math.Round(Double.Parse(bgarecord.thisprice) * Double.Parse(this.textBoxHuilu.Text.Trim()), 2) + "";
                                 }
 
                                 bgarecord.totalMoney = Math.Round(Double.Parse(bgarecord.thisprice) * Double.Parse(bgarecord.usedNum),2) + "";
@@ -286,7 +290,11 @@ namespace SaledServices.Export
                             {
                                 if (smtrecord.vendor != "LCFC")
                                 {
-                                    smtrecord.thisprice = Math.Round( Double.Parse(smtrecord.thisprice) / Double.Parse(this.textBoxHuilu.Text.Trim()),2) + "";
+                                   // smtrecord.thisprice = Math.Round(Double.Parse(smtrecord.thisprice) / Double.Parse(this.textBoxHuilu.Text.Trim()), 2) + "";
+                                }
+                                else
+                                {
+                                    smtrecord.thisprice = Math.Round(Double.Parse(smtrecord.thisprice) * Double.Parse(this.textBoxHuilu.Text.Trim()), 2) + "";
                                 }
 
                                 smtrecord.totalMoney = Math.Round(Double.Parse(smtrecord.thisprice) * Double.Parse(smtrecord.usedNum),2) + "";
@@ -310,7 +318,7 @@ namespace SaledServices.Export
                 {
                     if (repairRecord.smtRecords.Count == 0 && repairRecord.bgaRecords.Count == 0)
                     {
-                        repairRecord.totalMoney = "25";
+                        repairRecord.totalMoney = "173";//25->换成人民币
                         SIBgaRecord sub = new SIBgaRecord();
 
                         sub.bgampn = "无故障";

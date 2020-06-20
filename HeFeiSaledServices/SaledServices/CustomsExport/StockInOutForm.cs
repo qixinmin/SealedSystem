@@ -699,21 +699,21 @@ namespace SaledServices.CustomsExport
                         string currentDeclear = "";
                         string nowMatrialNo = querySdr[1].ToString();
 
-                        if (nowMatrialNo.StartsWith("000") == false//非主板
+                        if (checkMpnfruOrSmt.ContainsKey(nowMatrialNo)//非主板
                             && checkMpnfruOrSmt[nowMatrialNo].Trim().ToUpper() == "FRU")
                         {
                             continue;//FRU 材料不上報                            
                         }
 
-                        if (_71bomDic.ContainsKey(nowMatrialNo))
+                        if (checkMpnfruOrSmt.ContainsKey(nowMatrialNo) && _71bomDic.ContainsKey(nowMatrialNo))
                         {
                             currentDeclear = _71bomDic[nowMatrialNo] + "-1";//不良品的料号要加-1
                         }
                         else if (materialbomDic.ContainsKey(nowMatrialNo))//主板只查询物料对照表
                         {
-                            currentDeclear = materialbomDic[nowMatrialNo];
+                            //currentDeclear = materialbomDic[nowMatrialNo];//不良品的主板不需要換71料號
 
-                            string temp = currentDeclear;
+                            string temp = nowMatrialNo;
                             if (temp.Length == 10 && temp.StartsWith("000"))
                             {
                                 temp = temp.Substring(3);

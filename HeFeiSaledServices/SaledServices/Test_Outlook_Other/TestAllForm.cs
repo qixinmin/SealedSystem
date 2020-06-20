@@ -149,7 +149,7 @@ namespace SaledServices.Test_Outlook
                         }
                     }                    
 
-                    if (product != "" && product != "LBG")//TBG, DT, AIO 
+                    if (product != ""/* && product != "LBG"*/)//TBG, DT, AIO 
                     {
                         if (track_serial_no != "")
                         {
